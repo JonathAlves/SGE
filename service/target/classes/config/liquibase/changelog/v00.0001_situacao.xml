@@ -31,6 +31,6 @@
             <column name="descricao">Cancelada</column>
         </insert>
 
-        <addPrimaryKey tableName="situacao" columnNames="id" constraintName="pk_situacao"/>
+        
     </changeSet>
 </databaseChangeLog>
