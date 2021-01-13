@@ -11,9 +11,8 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class Inscricao implements Serializable{
-    @Id
     @Column(name="id")
-    private long id;
+    private Integer id;
 
     @Column(name="id_evento")
     private Integer idEvento;
@@ -21,9 +20,7 @@ public class Inscricao implements Serializable{
     @Column(name="id_usuario")
     private Integer idUsuario;
 
-    @Column(name="id_tipo_situacao")
-    @OneToMany(mappedBy="idTipoSituacao")
-    @JoinColumn()
-    private List<TipoSituacao> TiposSituacao;
-
+    @OneToMany(CascadeType.All, mappedBy= "tipo_situacao" )
+    @JoinColumn(name="id_tipo_situacao")
+    private List<TipoSituacao> tipoSituacaoList;
 }

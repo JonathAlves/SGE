@@ -12,11 +12,10 @@ import java.io.Serializable;
 
 public class TipoSituacao implements Serializable{
     @Id
-    @Column(name="id")
+    @Column(name="id_tipo_situacao")
     @ManyToOne
-    private Inscricao idTipoSituacao;
+    private TipoSituacao idTipoSituacao;
 
     @Column(name="descricao")
     private String descricao;
-
 }
