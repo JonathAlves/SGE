@@ -66,9 +66,9 @@ public class Evento implements Serializable {
             joinColumns = @JoinColumn(name = "id_evento"),
             inverseJoinColumns = @JoinColumn(name = "id_pergunta")
     )
-    private List<Perguntas> perguntas;
+    private List<Pergunta> perguntas;
 
-    public List<Perguntas> getPergunta() {
+    public List<Pergunta> getPergunta() {
         return perguntas;
     }
 
