@@ -8,4 +8,6 @@
     <include file="/config/liquibase/changelog/v00.0001_evento.xml" relativeToChangelogFile="false"/>
 
 
+
+
 </databaseChangeLog>
