@@ -14,11 +14,7 @@ import java.io.Serializable;
 public class TipoSituacao implements Serializable{
 
     @Id
-<<<<<<< HEAD
     @Column(name="id")
-=======
-    @Column(name="id_tipo_situacao")
->>>>>>> bb6c4eae029567c0af8fec4c205f9aee985f2fb4
     private Integer id;
 
     @Column(name="descricao")
