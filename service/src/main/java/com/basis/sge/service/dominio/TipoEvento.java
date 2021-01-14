@@ -15,8 +15,10 @@ import java.io.Serializable;
 public class TipoEvento implements Serializable {
 
     @Id
+
     @Column (name = "id")
     private Integer id;
+
     @Column(name ="descricao")
     private String descricao;
 }
