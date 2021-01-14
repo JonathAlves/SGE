@@ -6,8 +6,12 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
+
 @Entity
 @Table (name = "tipo_evento")
 @Getter
@@ -21,4 +25,8 @@ public class TipoEvento implements Serializable {
 
     @Column(name ="descricao")
     private String descricao;
+
+    @OneToMany
+    @JoinColumn(name = "id_tipo_evento")
+    private List<Evento> evento;
 }

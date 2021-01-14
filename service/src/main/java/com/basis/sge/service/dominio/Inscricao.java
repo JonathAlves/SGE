@@ -4,6 +4,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -20,7 +21,7 @@ public class Inscricao implements Serializable{
     @Column(name="id_usuario")
     private Integer idUsuario;
 
-    @OneToMany(CascadeType.All, mappedBy= "tipo_situacao" )
+    @OneToMany(cascade=CascadeType.ALL, mappedBy= "tipo_situacao" )
     @JoinColumn(name="id_tipo_situacao")
     private List<TipoSituacao> tipoSituacaoList;
 }
