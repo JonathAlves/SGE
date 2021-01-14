@@ -27,24 +27,16 @@ public class InscricaoResposta implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_inscricao")
     private Inscricao inscricao;
-    @Id
-    @Column (name = "id_inscricao")
-    private Integer idinscricao;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_evento")
     private Evento evento;
-    @Id
-    @Column (name = "id_evento")
-    private Integer idEvento;
+
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pergunta")
     private Pergunta pergunta;
-    @Id
-    @Column(name = "id_pergunta")
-    private Integer idPergunta;
-
 
 
     @Column (name = "resposta")
