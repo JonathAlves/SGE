@@ -24,10 +24,13 @@ import java.io.Serializable;
 public class InscricaoResposta implements Serializable {
 
     @Id
+<<<<<<< HEAD
     private Integer id;
 
 
     @Id
+=======
+>>>>>>> bb6c4eae029567c0af8fec4c205f9aee985f2fb4
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_inscricao")
     private Inscricao inscricao;
