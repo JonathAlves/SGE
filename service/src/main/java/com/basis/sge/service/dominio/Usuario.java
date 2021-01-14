@@ -8,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @Table (name = "usuario")
 @Getter
@@ -41,4 +44,8 @@ public class Usuario implements Serializable {
 
     @Column (name = "chave")
     private String chave;
+
+    @OneToMany
+    @Column(name = "id_usuario")
+    private List<Inscricao> inscricao;
 }
