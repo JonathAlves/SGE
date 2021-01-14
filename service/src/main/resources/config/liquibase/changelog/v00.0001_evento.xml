@@ -20,7 +20,7 @@
 
     <changeSet id="2" author="alexandre.oliveira">
         <createTable tableName="evento">
-            <column name="id" type="number">
+            <column name="id" type="number" remarks="Criacao da coluna id">
                 <constraints nullable="false"/>
             </column>
             <column name="titulo" type="VARCHAR(255)">
