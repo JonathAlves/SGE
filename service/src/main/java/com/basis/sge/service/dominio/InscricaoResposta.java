@@ -5,6 +5,10 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -19,17 +23,28 @@ import java.io.Serializable;
 @Setter
 public class InscricaoResposta implements Serializable {
 
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_inscricao")
     private Inscricao inscricao;
+    @Id
+    @Column (name = "id_inscricao")
+    private Integer idinscricao;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_evento")
     private Evento evento;
+    @Id
+    @Column (name = "id_evento")
+    private Integer idEvento;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_pergunta")
     private Pergunta pergunta;
+    @Id
+    @Column(name = "id_pergunta")
+    private Integer idPergunta;
+
 
 
     @Column (name = "resposta")
