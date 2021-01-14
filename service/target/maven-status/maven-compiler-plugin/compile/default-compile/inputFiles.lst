@@ -1,0 +1,14 @@
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/dominio/TipoSituacao.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/dominio/InscricaoResposta.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/dominio/Usuario.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/recurso/UsuarioRecurso.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/servico/mapper/dto/UsuarioDTO.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/servico/UsuarioServico.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/dominio/Inscricao.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/servico/mapper/EntityMapper.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/repositorio/UsuarioRepositorio.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/dominio/TipoEvento.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/servico/mapper/UsuarioMapper.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/dominio/Evento.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/ServiceApplication.java
+/home/alexandre/SGE/service/src/main/java/com/basis/sge/service/dominio/Pergunta.java
