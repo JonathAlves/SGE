@@ -15,6 +15,26 @@
         </createTable>
         <addPrimaryKey tableName="tipo_evento" columnNames="id" constraintName="pk_tipo_evento"/>
 
+        <insert tableName="tipo_de_evento">
+            <column name="id">1</column>
+            <column name="descricao">Workshop</column>
+        </insert>
+
+        <insert tableName="tipo_de_evento">
+            <column name="id">2</column>
+            <column name="descricao">Palestra</column>
+        </insert>
+
+        <insert tableName="tipo_de_evento">
+            <column name="id">3</column>
+            <column name="descricao">Mini curso</column>
+        </insert>
+
+        <insert tableName="tipo_de_evento">
+            <column name="id">4</column>
+            <column name="descricao">Treinamento</column>
+        </insert>
+
 
     </changeSet>
 
