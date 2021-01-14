@@ -33,7 +33,7 @@ public class Pergunta implements Serializable {
     @Column(name = "titulo")
     private String titulo;
 
-    @ManyToMany(mappedBy = "perguntas")
+    @ManyToMany(mappedBy = "pergunta")
     private List<Evento> eventos;
 
     @OneToMany
