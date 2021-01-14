@@ -6,8 +6,8 @@
     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="/config/liquibase/changelog/v00.0001_evento.xml" relativeToChangelogFile="false"/>
-    <include file="/config/liquibase/changelog/v00.0001_situacao.xml" relativeToChangelogFile="false"/>
-    <include file="/config/liquibase/changelog/v00.0001_pergunta.xml" relativeToChangelogFile="false"/>
-    <include file="/config/liquibase/changelog/v00.0001_usuario.xml" relativeToChangelogFile="false"/>
+
+
+
 
 </databaseChangeLog>
