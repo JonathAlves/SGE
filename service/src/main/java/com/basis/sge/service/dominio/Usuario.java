@@ -41,7 +41,7 @@ public class Usuario implements Serializable {
     private String telefone;
 
     @Column (name = "data_nascimento")
-    private Date data_nascimento;
+    private Date dataNascimento;
 
     @Column (name = "chave")
     private String chave;
