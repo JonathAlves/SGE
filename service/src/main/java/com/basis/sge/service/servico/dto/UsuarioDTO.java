@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public class UsuarioDTO {
 
     private Integer id;
+    private String cpf;
     private String nome;
     private LocalDate dataNascimento;
     private String telefone;

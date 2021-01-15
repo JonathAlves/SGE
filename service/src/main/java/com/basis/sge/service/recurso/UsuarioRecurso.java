@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +43,7 @@ public class UsuarioRecurso {
 
     }
 
-    @PostMapping
+    @PutMapping
     public ResponseEntity<UsuarioDTO> editar(@RequestBody UsuarioDTO usuarioDTO){
         UsuarioDTO usuario = usuarioServico.editar(usuarioDTO);
         return ResponseEntity.ok(usuario);
@@ -52,7 +53,7 @@ public class UsuarioRecurso {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable Integer id){
-        UsuarioServico.remover(id);
+        usuarioServico.remover(id);
         return ResponseEntity.ok().build();
     }
 

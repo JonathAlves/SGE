@@ -19,7 +19,7 @@ import java.util.List;
 @Transactional
 public class UsuarioServico {
 
-    private final UsuarioRepositorio usuarioRepositorio;
+    private static UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
 
     public List<UsuarioDTO> listar(){
@@ -29,35 +29,39 @@ public class UsuarioServico {
 
     public UsuarioDTO obterPorId(Integer id){
        Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()
-               -> new RegraNegocioException("Usuario nao encontrado");
+               -> new RegraNegocioException("Usuario nao encontrado"));
                 return usuarioMapper.toDto(usuario);
     }
     public UsuarioDTO salvar(UsuarioDTO usuarioDTO){
-        Usuario usuario = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
+        Usuario usuario = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
 
-        if(usuario =! null){
+        if(usuario != null){
+            throw new RegraNegocioException("Usuario já existe");
 
         }
-        usuarioRepositorio.save((usuario);
+        usuarioRepositorio.save(usuario);
         return usuarioMapper.toDto(usuario);
 
 
     }
     public UsuarioDTO editar(UsuarioDTO usuarioDTO){
-        Usuario usuario = usuarioRepositorio.findByNome(usuarioDTO.getNome());
+        Usuario usuario = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
 
-        if(usuario =! null){
-
+        if(usuario != null){
+            throw new RegraNegocioException("Usuario ");
         }
-        usuarioRepositorio.save((usuario);
+        usuarioRepositorio.save(usuario);
         return usuarioMapper.toDto(usuario);
 
 
 
+    }
 
-    /*private boolean findByEmail(Usuario email){
+       public void remover(Integer id){
+        Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()
+                -> new RegraNegocioException("Usuario não encontrado"));
+        usuarioRepositorio.deleteById(usuario.getId());
 
-    }*/
 
-
+    }
 }

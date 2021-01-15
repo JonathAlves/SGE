@@ -12,21 +12,23 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-15T12:45:05-0300",
+    date = "2021-01-15T17:20:26-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class UsuarioMapperImpl implements UsuarioMapper {
 
     @Override
-    public Usuario toDto(UsuarioDTO dto) {
+    public Usuario toEntity(UsuarioDTO dto) {
         if ( dto == null ) {
             return null;
         }
 
         Usuario usuario = new Usuario();
 
+        usuario.setId( dto.getId() );
         usuario.setNome( dto.getNome() );
+        usuario.setCpf( dto.getCpf() );
         usuario.setEmail( dto.getEmail() );
         usuario.setTelefone( dto.getTelefone() );
         if ( dto.getDataNascimento() != null ) {
@@ -37,13 +39,15 @@ public class UsuarioMapperImpl implements UsuarioMapper {
     }
 
     @Override
-    public UsuarioDTO toEntity(Usuario entity) {
+    public UsuarioDTO toDto(Usuario entity) {
         if ( entity == null ) {
             return null;
         }
 
         UsuarioDTO usuarioDTO = new UsuarioDTO();
 
+        usuarioDTO.setId( entity.getId() );
+        usuarioDTO.setCpf( entity.getCpf() );
         usuarioDTO.setNome( entity.getNome() );
         if ( entity.getDataNascimento() != null ) {
             usuarioDTO.setDataNascimento( LocalDateTime.ofInstant( entity.getDataNascimento().toInstant(), ZoneOffset.UTC ).toLocalDate() );
@@ -55,28 +59,28 @@ public class UsuarioMapperImpl implements UsuarioMapper {
     }
 
     @Override
-    public List<Usuario> toDto(List<UsuarioDTO> dtoList) {
+    public List<Usuario> toEntity(List<UsuarioDTO> dtoList) {
         if ( dtoList == null ) {
             return null;
         }
 
         List<Usuario> list = new ArrayList<Usuario>( dtoList.size() );
         for ( UsuarioDTO usuarioDTO : dtoList ) {
-            list.add( toDto( usuarioDTO ) );
+            list.add( toEntity( usuarioDTO ) );
         }
 
         return list;
     }
 
     @Override
-    public List<UsuarioDTO> toEntity(List<Usuario> entityList) {
+    public List<UsuarioDTO> toDto(List<Usuario> entityList) {
         if ( entityList == null ) {
             return null;
         }
 
         List<UsuarioDTO> list = new ArrayList<UsuarioDTO>( entityList.size() );
         for ( Usuario usuario : entityList ) {
-            list.add( toEntity( usuario ) );
+            list.add( toDto( usuario ) );
         }
 
         return list;

@@ -11,9 +11,7 @@ import sun.misc.Request;
 @Repository
 
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
-     Boolean  findByEmail (String email);
-     boolean findByNome (String nome);
-     Boolean findByCpf (String cpf);
+     Usuario findByCpf(String cpf);
 
 
 }
