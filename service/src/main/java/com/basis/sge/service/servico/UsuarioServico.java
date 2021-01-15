@@ -16,6 +16,7 @@ import java.util.List;
 public class UsuarioServico {
 
     private final UsuarioRepositorio usuarioRepositorio;
+    
     private final UsuarioMapper usuarioMapper;
 
     public List<UsuarioDTO> listar(){
