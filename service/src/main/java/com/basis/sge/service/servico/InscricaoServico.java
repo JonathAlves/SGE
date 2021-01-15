@@ -23,9 +23,32 @@ public class InscricaoServico {
         return inscricaoMapper.toDto(inscricoes);
     }
 
-    public InscricaoDTO obterPorId(Integer id){return null;}
-    public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){return null;}
-    public InscricaoDTO editar(InscricaoDTO inscricaoDTO){return null;}
-    public void remover(Integer id){}
+    public InscricaoDTO obterPorId(Integer id){
+        Inscricao inscricao = inscricaoRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Inscrição não encontrada!"));
+        return inscricaoMapper.toDto(inscricao);
+
+    }
+    public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){
+        Inscricao inscricao = inscricaoRepositorio.findById(inscricaoDTO.getId()).orElseThrow(() -> new RegraNegocioException( "Inscrição não encontrada!"));
+
+        if(inscricao != null){
+            throw new RegraNegocioException("Já existe uma inscrição correspondente!");
+        }
+        inscricaoRepositorio.save(inscricao);
+        return inscricaoMapper.toDto(inscricao);
+    }
+    public InscricaoDTO editar(InscricaoDTO inscricaoDTO){
+        Inscricao inscricao = inscricaoRepositorio.findById(inscricaoDTO.getId()).orElseThrow(() -> new RegraNegocioException( "Inscrição não encontrada!"));
+
+        if(inscricao != null){
+            throw new RegraNegocioException("Já existe uma inscrição correspondente!");
+        }
+        inscricaoRepositorio.save(inscricao);
+        return inscricaoMapper.toDto(inscricao);
+    }
+    public void remover(Integer id){
+        Inscricao inscricao = inscricaoRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Inscrição não encontrada!"));
+        inscricaoRepositorio.deleteById(id);
+    }
 
 }
