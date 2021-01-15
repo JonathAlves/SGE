@@ -1,0 +1,6 @@
+com/basis/sge/service/dominio/Inscricao.class
+com/basis/sge/service/dominio/TipoSituacao.class
+com/basis/sge/service/dominio/InscricaoResposta.class
+com/basis/sge/service/dominio/TipoEvento.class
+com/basis/sge/service/dominio/Pergunta.class
+com/basis/sge/service/dominio/Evento.class

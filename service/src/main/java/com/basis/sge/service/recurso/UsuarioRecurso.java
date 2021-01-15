@@ -4,6 +4,7 @@ import com.basis.sge.service.servico.UsuarioServico;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +24,7 @@ public class UsuarioRecurso {
 
     @GetMapping
     public ResponseEntity<List <UsuarioDTO>> listar(){
-        List list  usuarioServico.listar();
+        List list = usuarioServico.listar();
         return ResponseEntity.ok(list);
     }
 
@@ -47,6 +48,18 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(usuario);
 
     }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> remover(@PathVariable Integer id){
+        UsuarioServico.remover(id);
+        return ResponseEntity.ok().build();
+    }
+
+
+
+
+
 
 
     }

@@ -9,6 +9,7 @@ import java.time.LocalDate;
 @Setter
 public class UsuarioDTO {
 
+    private Integer id;
     private String nome;
     private LocalDate dataNascimento;
     private String telefone;
