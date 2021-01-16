@@ -23,7 +23,7 @@ import java.io.Serializable;
 @Setter
 public class InscricaoResposta implements Serializable {
 
-
+    @Id
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_inscricao")
     private Inscricao inscricao;
