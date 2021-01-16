@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
-
-
-
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -28,6 +25,7 @@ public class InscricaoServico {
         return inscricaoMapper.toDto(inscricao);
 
     }
+
     public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){
         Inscricao inscricao = inscricaoRepositorio.findById(inscricaoDTO.getId()).orElseThrow(() -> new RegraNegocioException( "Inscrição não encontrada!"));
 
@@ -40,9 +38,6 @@ public class InscricaoServico {
     public InscricaoDTO editar(InscricaoDTO inscricaoDTO){
         Inscricao inscricao = inscricaoRepositorio.findById(inscricaoDTO.getId()).orElseThrow(() -> new RegraNegocioException( "Inscrição não encontrada!"));
 
-        if(inscricao != null){
-            throw new RegraNegocioException("Já existe uma inscrição correspondente!");
-        }
         inscricaoRepositorio.save(inscricao);
         return inscricaoMapper.toDto(inscricao);
     }
@@ -50,5 +45,4 @@ public class InscricaoServico {
         Inscricao inscricao = inscricaoRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Inscrição não encontrada!"));
         inscricaoRepositorio.deleteById(id);
     }
-
 }

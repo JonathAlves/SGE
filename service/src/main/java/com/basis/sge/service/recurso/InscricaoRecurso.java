@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/inscricoes")
 @RequiredArgsConstructor
-public class InscricaoRecurso {
+public class InscricaoRecurso   {
 
     private final InscricaoServico inscricaoServico;
 
