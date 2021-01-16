@@ -46,4 +46,8 @@ public class Usuario implements Serializable {
     @Column (name = "chave")
     private String chave;
 
+    @OneToMany
+    @Column(name = "id_usuario")
+    private List<Inscricao> inscricao;
+
 }

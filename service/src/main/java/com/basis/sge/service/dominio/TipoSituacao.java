@@ -11,6 +11,7 @@ import java.io.Serializable;
 @Setter
 
 public class TipoSituacao implements Serializable{
+
     @Id
     @Column(name="id")
     private Integer id;

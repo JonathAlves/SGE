@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-15T14:57:28-0300",
+    date = "2021-01-16T17:35:19-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -23,6 +23,8 @@ public class InscricaoMapperImpl implements InscricaoMapper {
 
         Inscricao inscricao = new Inscricao();
 
+        inscricao.setId( dto.getId() );
+
         return inscricao;
     }
 
@@ -33,6 +35,8 @@ public class InscricaoMapperImpl implements InscricaoMapper {
         }
 
         InscricaoDTO inscricaoDTO = new InscricaoDTO();
+
+        inscricaoDTO.setId( entity.getId() );
 
         return inscricaoDTO;
     }
