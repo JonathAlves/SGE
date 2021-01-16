@@ -3,6 +3,7 @@ package com.basis.sge.service.recurso;
 import com.basis.sge.service.servico.UsuarioServico;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -43,7 +47,14 @@ public class UsuarioRecurso {
 
     }
 
-    @PutMapping
+   /* @PostMapping
+    public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
+        UsuarioDTO usuario = usuarioServico.adicionar(usuarioDTO);
+       return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
+    }*/
+
+
+   @PutMapping
     public ResponseEntity<UsuarioDTO> editar(@RequestBody UsuarioDTO usuarioDTO){
         UsuarioDTO usuario = usuarioServico.editar(usuarioDTO);
         return ResponseEntity.ok(usuario);

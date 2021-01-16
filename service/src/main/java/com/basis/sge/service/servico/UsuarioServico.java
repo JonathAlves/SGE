@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -19,7 +20,7 @@ import java.util.List;
 @Transactional
 public class UsuarioServico {
 
-    private static UsuarioRepositorio usuarioRepositorio;
+    private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
 
     public List<UsuarioDTO> listar(){
@@ -42,13 +43,16 @@ public class UsuarioServico {
         usuarioRepositorio.save(usuario);
         return usuarioMapper.toDto(usuario);
 
-
     }
+
+
     public UsuarioDTO editar(UsuarioDTO usuarioDTO){
         Usuario usuario = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
-
         if(usuario != null){
-            throw new RegraNegocioException("Usuario ");
+            usuario.setEmail(usuarioDTO.getEmail());
+            usuario.setCpf(usuarioDTO.getCpf());
+            usuario.setNome(usuarioDTO.getNome());
+            usuario.setTelefone(usuarioDTO.getTelefone());
         }
         usuarioRepositorio.save(usuario);
         return usuarioMapper.toDto(usuario);
@@ -64,4 +68,13 @@ public class UsuarioServico {
 
 
     }
+
+    /*public  void adicionar(UsuarioDTO usuarioDTO){
+        Usuario usuario = usuarioRepositorio.findAll();
+
+
+    }*/
+
+
+
 }
