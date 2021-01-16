@@ -12,9 +12,6 @@ import java.util.List;
 @Setter
 public class Inscricao implements Serializable{
     @Id
-
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_inscricao")
-
     @Column(name="id")
     private Integer id;
 
