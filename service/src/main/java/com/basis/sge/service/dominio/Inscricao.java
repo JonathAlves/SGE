@@ -1,7 +1,6 @@
 package com.basis.sge.service.dominio;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -13,9 +12,6 @@ import java.util.List;
 @Setter
 public class Inscricao implements Serializable{
     @Id
-
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_inscricao")
-
     @Column(name="id")
     private Integer id;
 

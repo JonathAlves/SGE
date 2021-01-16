@@ -12,10 +12,7 @@ import sun.misc.Request;
 
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
 
-      Usuario existId(Integer id);
       Usuario  findByCpf(String cpf);
-      Usuario findByEmail(String email);
-
 
 
 }
