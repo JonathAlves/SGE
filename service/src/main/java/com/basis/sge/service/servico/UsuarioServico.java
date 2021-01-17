@@ -68,12 +68,23 @@ public class UsuarioServico {
 
 
     }
+    public UsuarioDTO adicionar(UsuarioDTO usuarioDTO) {
+        Usuario usuarioCpf = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
+        Usuario usuarioEmail = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
 
-    /*public  void adicionar(UsuarioDTO usuarioDTO){
-        Usuario usuario = usuarioRepositorio.findAll();
+        if (usuarioCpf != null) {
+            throw new RegraNegocioException("CPF já existente");
+        } else if (usuarioEmail != null) {
+            throw new RegraNegocioException("Email já existente");
+        }
+        /*else if */
+            Usuario usuarioNovo = usuarioMapper.toEntity(usuarioDTO);
+            Usuario usuarioSalvo = usuarioRepositorio.save(usuarioNovo);
+            return usuarioMapper.toDto(usuarioSalvo);
 
 
-    }*/
+
+    }
 
 
 

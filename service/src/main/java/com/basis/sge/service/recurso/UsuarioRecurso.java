@@ -47,11 +47,11 @@ public class UsuarioRecurso {
 
     }
 
-   /* @PostMapping
+    @PostMapping
     public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
         UsuarioDTO usuario = usuarioServico.adicionar(usuarioDTO);
        return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
-    }*/
+    }
 
 
    @PutMapping
@@ -67,9 +67,6 @@ public class UsuarioRecurso {
         usuarioServico.remover(id);
         return ResponseEntity.ok().build();
     }
-
-
-
 
 
 
