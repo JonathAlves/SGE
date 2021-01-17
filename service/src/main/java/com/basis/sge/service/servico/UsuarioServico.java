@@ -53,10 +53,13 @@ public class UsuarioServico {
             usuario.setCpf(usuarioDTO.getCpf());
             usuario.setNome(usuarioDTO.getNome());
             usuario.setTelefone(usuarioDTO.getTelefone());
+
+
+
+
         }
         usuarioRepositorio.save(usuario);
         return usuarioMapper.toDto(usuario);
-
 
 
     }
@@ -70,19 +73,21 @@ public class UsuarioServico {
     }
     public UsuarioDTO adicionar(UsuarioDTO usuarioDTO) {
         Usuario usuarioCpf = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
-        Usuario usuarioEmail = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
 
-        if (usuarioCpf != null) {
-            throw new RegraNegocioException("CPF já existente");
-        } else if (usuarioEmail != null) {
-            throw new RegraNegocioException("Email já existente");
-        }
-        /*else if */
             Usuario usuarioNovo = usuarioMapper.toEntity(usuarioDTO);
+        if (usuarioCpf == null) {
+
+            usuarioNovo.setCpf(usuarioDTO.getCpf());
+            usuarioNovo.setEmail(usuarioDTO.getEmail());
+            usuarioNovo.setNome(usuarioDTO.getNome());
+            usuarioNovo.setTelefone(usuarioDTO.getTelefone());
+
+
             Usuario usuarioSalvo = usuarioRepositorio.save(usuarioNovo);
             return usuarioMapper.toDto(usuarioSalvo);
 
-
+        } else
+            throw new RegraNegocioException("Usuario já existente");
 
     }
 
