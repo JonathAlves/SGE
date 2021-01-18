@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.rmi.server.UID;
 import java.util.List;
 
 @RestController
@@ -50,19 +51,19 @@ public class UsuarioRecurso {
 
     }
 
-    @PostMapping (path = "/api/usuarios")
-    public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
-        UsuarioDTO usuario = usuarioServico.adicionar(usuarioDTO);
+    @PutMapping
+    public ResponseEntity<UsuarioDTO> atualizar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
+        UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);
        return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
     }
 
 
-   @PutMapping
-    public ResponseEntity<UsuarioDTO> editar(@RequestBody UsuarioDTO usuarioDTO){
-        UsuarioDTO usuario = usuarioServico.editar(usuarioDTO);
+   /*@PutMapping
+    public ResponseEntity<UsuarioDTO> atualizar(@RequestBody UsuarioDTO usuarioDTO){
+        UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);
         return ResponseEntity.ok(usuario);
 
-    }
+    }*/
 
 
     @DeleteMapping("/{id}")

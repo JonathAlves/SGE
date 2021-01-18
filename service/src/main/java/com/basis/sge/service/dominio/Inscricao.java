@@ -21,6 +21,7 @@ public class Inscricao implements Serializable{
     @Column(name="id_usuario")
     private Integer idUsuario;
 
+
     @OneToMany(cascade=CascadeType.ALL)
     @JoinColumn(name="id_tipo_situacao")
     private List<TipoSituacao> tipoSituacaoList;

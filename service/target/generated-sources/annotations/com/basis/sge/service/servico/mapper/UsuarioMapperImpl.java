@@ -2,17 +2,14 @@ package com.basis.sge.service.servico.mapper;
 
 import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-16T20:36:58-0300",
+    date = "2021-01-18T17:13:23-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -31,9 +28,7 @@ public class UsuarioMapperImpl implements UsuarioMapper {
         usuario.setCpf( dto.getCpf() );
         usuario.setEmail( dto.getEmail() );
         usuario.setTelefone( dto.getTelefone() );
-        if ( dto.getDataNascimento() != null ) {
-            usuario.setDataNascimento( Date.from( dto.getDataNascimento().atStartOfDay( ZoneOffset.UTC ).toInstant() ) );
-        }
+        usuario.setDataNascimento( dto.getDataNascimento() );
 
         return usuario;
     }
@@ -49,9 +44,7 @@ public class UsuarioMapperImpl implements UsuarioMapper {
         usuarioDTO.setId( entity.getId() );
         usuarioDTO.setCpf( entity.getCpf() );
         usuarioDTO.setNome( entity.getNome() );
-        if ( entity.getDataNascimento() != null ) {
-            usuarioDTO.setDataNascimento( LocalDateTime.ofInstant( entity.getDataNascimento().toInstant(), ZoneOffset.UTC ).toLocalDate() );
-        }
+        usuarioDTO.setDataNascimento( entity.getDataNascimento() );
         usuarioDTO.setTelefone( entity.getTelefone() );
         usuarioDTO.setEmail( entity.getEmail() );
 

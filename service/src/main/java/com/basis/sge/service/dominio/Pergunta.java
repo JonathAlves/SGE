@@ -36,8 +36,8 @@ public class Pergunta implements Serializable {
     @ManyToMany(mappedBy = "perguntas")
     private List<Evento> eventos;
 
-    @OneToMany
+    /*@OneToMany
     @JoinColumn(name = "id_pergunta")
     private List<InscricaoResposta> inscricaoRespostas;
-
+*/
 }

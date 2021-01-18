@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
 
-      Usuario  findByCpf(String cpf);
-      Usuario findByEmail(String email);
+      Boolean  findByCpf(String cpf);
+      Boolean  findByEmail(String email);
 
 
 }
