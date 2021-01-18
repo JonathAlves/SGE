@@ -1,5 +1,8 @@
 application:
     appName: sge
+    mail:
+        endereco-remetente: ancine-mailer@basis.com.br
+        nome-remetente: Ancine
 
 spring:
     application:
@@ -27,5 +30,18 @@ spring:
     liquibase:
         change-log: classpath:/config/liquibase/master.xml
 #        drop-first: true
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: sapedteste@gmail.com
+        password: sapedteste123
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+                    quitwait: false
 server:
     port: 8080

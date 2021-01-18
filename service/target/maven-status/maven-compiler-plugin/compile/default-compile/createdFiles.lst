@@ -1,16 +1,23 @@
-com/basis/sge/service/dominio/Inscricao.class
-com/basis/sge/service/dominio/TipoSituacao.class
-com/basis/sge/service/dominio/InscricaoResposta.class
-com/basis/sge/service/dominio/Usuario.class
-<<<<<<< HEAD
+com/basis/sge/service/servico/mapper/dto/EmailDTO.class
+com/basis/sge/service/recurso/EventoRecurso.class
 com/basis/sge/service/servico/UsuarioServico.class
-com/basis/sge/service/dominio/Pergunta.class
-com/basis/sge/service/dominio/TipoEvento.class
-com/basis/sge/service/dominio/Evento.class
-com/basis/sge/service/servico/mapper/dto/UsuarioDTO.class
-=======
-com/basis/sge/service/dominio/TipoEvento.class
-com/basis/sge/service/dominio/Pergunta.class
+com/basis/sge/service/servico/mapper/dto/EventoDTO.class
 com/basis/sge/service/dominio/Evento.class
 com/basis/sge/service/ServiceApplication.class
->>>>>>> 39b833aba42317b266bc1f799a1211a048ad03c6
+com/basis/sge/service/servico/mapper/EventoMapperImpl.class
+com/basis/sge/service/dominio/TipoSituacao.class
+com/basis/sge/service/servico/mapper/UsuarioMapper.class
+com/basis/sge/service/dominio/Usuario.class
+com/basis/sge/service/dominio/Pergunta.class
+com/basis/sge/service/servico/exception/RegraNegocioException.class
+com/basis/sge/service/dominio/Inscricao.class
+com/basis/sge/service/servico/EventoServico.class
+com/basis/sge/service/dominio/TipoEvento.class
+com/basis/sge/service/repositorio/EventoRepositorio.class
+com/basis/sge/service/servico/mapper/EventoMapper.class
+com/basis/sge/service/servico/mapper/EntityMapper.class
+com/basis/sge/service/repositorio/UsuarioRepositorio.class
+com/basis/sge/service/dominio/InscricaoResposta.class
+com/basis/sge/service/recurso/UsuarioRecurso.class
+com/basis/sge/service/servico/mapper/dto/UsuarioDTO.class
+com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class

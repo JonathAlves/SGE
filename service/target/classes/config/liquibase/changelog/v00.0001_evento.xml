@@ -15,29 +15,26 @@
         </createTable>
         <addPrimaryKey tableName="tipo_evento" columnNames="id" constraintName="pk_tipo_evento"/>
 
-<<<<<<< HEAD
-        <insert tableName="tipo_de_evento">
+        <insert tableName="tipo_evento">
             <column name="id">1</column>
             <column name="descricao">Workshop</column>
         </insert>
 
-        <insert tableName="tipo_de_evento">
+        <insert tableName="tipo_evento">
             <column name="id">2</column>
             <column name="descricao">Palestra</column>
         </insert>
 
-        <insert tableName="tipo_de_evento">
+        <insert tableName="tipo_evento">
             <column name="id">3</column>
             <column name="descricao">Mini curso</column>
         </insert>
 
-        <insert tableName="tipo_de_evento">
+        <insert tableName="tipo_evento">
             <column name="id">4</column>
             <column name="descricao">Treinamento</column>
         </insert>
 
-=======
->>>>>>> 39b833aba42317b266bc1f799a1211a048ad03c6
 
     </changeSet>
 
@@ -119,34 +116,10 @@
                 <constraints nullable="false"/>
             </column>
             <column name="chave" type="VARCHAR(255)">
-<<<<<<< HEAD
-=======
                 <constraints nullable="false"/>
             </column>
         </createTable>
 
-
-        <addPrimaryKey tableName="usuario" columnNames="id" constraintName="pk_usuario"/>
-        <createSequence sequenceName="sq_usuario"  incrementBy="1" startValue="1"/>
-        <addUniqueConstraint tableName="usuario" columnNames="cpf" constraintName="un_usuario_cpf"/>
-        <addUniqueConstraint tableName="usuario" columnNames="email" constraintName="un_usuario_email"/>
-        <addUniqueConstraint tableName="usuario" columnNames="chave" constraintName="un_usuario_chave"/>
-
-    </changeSet>
-
-
-    <changeSet id="5" author="jonathan.felipe">
-        <createTable tableName="tipo_situacao">
-            <column name="id" type="NUMBER">
->>>>>>> 39b833aba42317b266bc1f799a1211a048ad03c6
-                <constraints nullable="false"/>
-            </column>
-            <column name="descricao" type="VARCHAR(255)">
-                <constraints nullable="false"></constraints>
-            </column>
-        </createTable>
-
-<<<<<<< HEAD
 
         <addPrimaryKey tableName="usuario" columnNames="id" constraintName="pk_usuario"/>
         <createSequence sequenceName="sq_usuario"  incrementBy="1" startValue="1"/>
@@ -167,8 +140,6 @@
             </column>
         </createTable>
 
-=======
->>>>>>> 39b833aba42317b266bc1f799a1211a048ad03c6
         <insert tableName="tipo_situacao">
             <column name="id">1</column>
             <column name="descricao">Aguardando aprovação</column>
@@ -243,35 +214,6 @@
         <addForeignKeyConstraint baseTableName="inscricao" baseColumnNames="id_tipo_situacao"
                                  constraintName="fk_inscricao_tipo_situacao" referencedTableName="tipo_situacao"
                                  referencedColumnNames="id"/>
-<<<<<<< HEAD
-=======
-    </changeSet>
-
-    <changeSet id="8" author="tiago.santiago">
-        <createTable tableName="inscricao_resposta">
-            <column name="id_inscricao" type="NUMBER" >
-                <constraints nullable="false"></constraints>
-            </column>
-            <column name="id_evento" type="NUMBER" >
-                <constraints nullable="false"></constraints>
-            </column>
-            <column name="id_pergunta" type="NUMBER" >
-                <constraints nullable="false"></constraints>
-            </column>
-            <column name="respota" type="VARCHAR(255)" >
-                <constraints nullable="true"></constraints>
-            </column>
-
-        </createTable>
-
-        <addPrimaryKey tableName="inscricao_resposta" columnNames="id_inscricao, id_evento, id_pergunta"  constraintName="pk_inscricao_resposta"/>
-        <addForeignKeyConstraint baseTableName="inscricao_resposta" baseColumnNames="id_inscricao" constraintName="fk_inscricao_resposta_inscricao" referencedTableName="inscricao"
-                                 referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="inscricao_resposta" baseColumnNames="id_evento" constraintName="fk_inscricao_resposta_evento_" referencedTableName="evento"
-                                 referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="inscricao_resposta" baseColumnNames="id_pergunta" constraintName="fk_inscricao_resposta_pergunta" referencedTableName="pergunta"
-                                 referencedColumnNames="id"/>
->>>>>>> 39b833aba42317b266bc1f799a1211a048ad03c6
     </changeSet>
 
     <changeSet id="8" author="tiago.santiago">
@@ -311,17 +253,4 @@
 
 
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
->>>>>>> 39b833aba42317b266bc1f799a1211a048ad03c6
 </databaseChangeLog>

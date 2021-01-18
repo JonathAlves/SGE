@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,8 +15,10 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -29,21 +32,26 @@ public class Evento implements Serializable {
     @SequenceGenerator(name = "sq_evento", allocationSize = 1, sequenceName = "sq_evento")
     @Column(name = "id")
     private Integer id;
+
+    @NotNull
     @Column (name = "titulo", nullable = false)
     private String titulo;
 
+    @NotNull
     @Column (name = "datahora_inicio", nullable = false)
-    private Timestamp datahora_inicio;
+    private LocalDateTime datahora_inicio;
 
+    @NotNull
     @Column (name = "datahora_final", nullable = false)
-    private Timestamp datahora_final;
+    private LocalDateTime datahora_final;
+
 
     @Column (name = "descricao", nullable = false)
     private String descricao;
 
     //    @Column (name = "id_tipo_evento", nullable = false)
 //    private Integer id_tipo_evento;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_tipo_evento", nullable = true, referencedColumnName = "id")
     private TipoEvento id_tipo_evento;
 
@@ -63,8 +71,8 @@ public class Evento implements Serializable {
     @ManyToMany
     @JoinTable(
             name = "evento_pergunta",
-            joinColumns = @JoinColumn(name = "id_evento"),
-            inverseJoinColumns = @JoinColumn(name = "id_pergunta")
+            joinColumns = {@JoinColumn(name = "id_evento")},
+            inverseJoinColumns = {@JoinColumn(name = "id_pergunta")}
     )
     private List<Pergunta> perguntas;
 

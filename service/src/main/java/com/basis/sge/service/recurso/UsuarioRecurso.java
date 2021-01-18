@@ -43,7 +43,7 @@ public class UsuarioRecurso {
     }
     @PutMapping
     public ResponseEntity<UsuarioDTO> editar(@RequestBody UsuarioDTO usuarioDTO) {
-        UsuarioDTO usuario = usuarioServico.salvar(usuarioDTO);
+        UsuarioDTO usuario = usuarioServico.editar(usuarioDTO);
         return ResponseEntity.ok(usuario);
     }
     @DeleteMapping("/{id}")
