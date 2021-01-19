@@ -8,5 +8,4 @@ import lombok.Setter;
 public class TipoSituacaoDTO {
     private Integer id;
     private String descricao;
-
 }
