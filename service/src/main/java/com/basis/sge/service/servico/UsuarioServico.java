@@ -42,7 +42,7 @@ public class UsuarioServico {
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         usuario.setChave(UUID.randomUUID().toString());
         if (usuarioRepositorio.findByEmail(usuario.getEmail()) != null) {
-            throw new RegraNegocioException("Email não existe");
+            throw new RegraNegocioException("Email já existe");
 
         } else if (usuarioRepositorio.findByCpf(usuario.getCpf()) != null) {
             throw new RegraNegocioException("CPF não existe");
