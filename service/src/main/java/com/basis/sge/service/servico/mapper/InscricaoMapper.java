@@ -8,7 +8,6 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring", uses = Inscricao.class)
 public interface InscricaoMapper extends EntityMapper<InscricaoDTO, Inscricao>{
 
-    @Mapping(source = "id", target = "idEvento")
-    @Mapping(source = "id", target = "idUsuario")
-    Inscricao toEntity(InscricaoDTO inscricaoDTO);
+    
+
 }
