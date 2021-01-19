@@ -1,5 +1,21 @@
 com/basis/sge/service/servico/dto/TipoSituacaoDTO.class
 com/basis/sge/service/repositorio/InscricaoRepositorio.class
+<<<<<<< HEAD
+com/basis/sge/service/servico/UsuarioServico.class
+com/basis/sge/service/dominio/Evento.class
+com/basis/sge/service/servico/dto/UsuarioDTO.class
+com/basis/sge/service/ServiceApplication.class
+com/basis/sge/service/repositorio/TipoSituacaoRepositorio.class
+com/basis/sge/service/dominio/TipoSituacao.class
+com/basis/sge/service/servico/mapper/UsuarioMapper.class
+com/basis/sge/service/dominio/Usuario.class
+com/basis/sge/service/dominio/Pergunta.class
+com/basis/sge/service/servico/mapper/TipoSituacaoMapper.class
+com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.class
+com/basis/sge/service/servico/RegraNegocioException.class
+com/basis/sge/service/dominio/Inscricao.class
+com/basis/sge/service/servico/dto/EmailDTO.class
+=======
 com/basis/sge/service/servico/mapper/PerguntaMapper.class
 com/basis/sge/service/dominio/Evento.class
 com/basis/sge/service/ServiceApplication.class
@@ -18,10 +34,22 @@ com/basis/sge/service/servico/RegraNegocioException.class
 com/basis/sge/service/servico/dto/InscricaoRespostaDTO.class
 com/basis/sge/service/dominio/Inscricao.class
 com/basis/sge/service/recurso/InscricaoRespostaRecurso.class
+>>>>>>> d04482f3e87d59056340f4c4ef91b5dc378d0ae5
 com/basis/sge/service/recurso/InscricaoRecurso.class
 com/basis/sge/service/servico/dto/InscricaoDTO.class
 com/basis/sge/service/dominio/TipoEvento.class
 com/basis/sge/service/servico/mapper/InscricaoMapper.class
+<<<<<<< HEAD
+com/basis/sge/service/repositorio/UsuarioRepositorio.class
+com/basis/sge/service/servico/mapper/EntityMapper.class
+com/basis/sge/service/servico/TipoSituacaoServico.class
+com/basis/sge/service/servico/mapper/InscricaoMapperImpl.class
+com/basis/sge/service/servico/InscricaoServico.class
+com/basis/sge/service/recurso/UsuarioRecurso.class
+com/basis/sge/service/recurso/TipoSituacaoRecurso.class
+com/basis/sge/service/servico/Exception/RegraNegocioException.class
+com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class
+=======
 com/basis/sge/service/servico/InscricaoRespostaServico.class
 com/basis/sge/service/repositorio/PerguntaRepositorio.class
 com/basis/sge/service/servico/dto/PerguntaDTO.class
@@ -36,3 +64,4 @@ com/basis/sge/service/servico/InscricaoServico.class
 com/basis/sge/service/dominio/EventoPergunta.class
 com/basis/sge/service/servico/mapper/InscricaoRespostaMapper.class
 com/basis/sge/service/recurso/TipoSituacaoRecurso.class
+>>>>>>> d04482f3e87d59056340f4c4ef91b5dc378d0ae5
