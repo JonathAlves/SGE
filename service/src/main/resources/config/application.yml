@@ -1,5 +1,8 @@
 application:
     appName: sge
+    mail:
+        endereco-remetente: ancine-mailer@basis.com.br
+        nome-remetente: Ancine
 
 spring:
     application:
@@ -9,12 +12,14 @@ spring:
         url: jdbc:postgresql://localhost:5432/sge
         username: sge
         password: sge
+        hikari:
+            auto-commit: false
     jackson:
         date-format: yyyy-MM-dd
         deserialization:
             fail-on-unknown-properties: false
     jpa:
-        #database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect
+        #    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect
         database: POSTGRESQL
         show-sql: true
         open-in-view: false
@@ -26,6 +31,19 @@ spring:
             hibernate.generate_statistics: false
     liquibase:
         change-log: classpath:/config/liquibase/master.xml
-#        drop-first: true
-server:
-    port: 8080
+        # drop-first: true
+    mail:
+        host: smtp.gmail.com
+        port: 587
+        username: sapedteste@gmail.com
+        password: sapedteste123
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    starttls:
+                        enable: true
+                        required: true
+                    quitwait: false
+    server:
+        port: 8080
