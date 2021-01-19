@@ -1,13 +1,18 @@
 package com.basis.sge.service.servico.mapper;
 
 import com.basis.sge.service.dominio.Inscricao;
+import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
+import com.basis.sge.service.servico.dto.UsuarioDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+
 @Mapper(componentModel = "spring", uses = Inscricao.class)
 public interface InscricaoMapper extends EntityMapper<InscricaoDTO, Inscricao>{
-
-    
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "idUsuario", target = "idUsuario")
+    @Mapping(source = "idEvento", target = "idEvento")
+    Inscricao toEntity(InscricaoDTO inscricaoDTO);
 
 }
