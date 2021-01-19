@@ -12,17 +12,24 @@ import java.util.List;
 @Setter
 public class Inscricao implements Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_inscricao")
+    @SequenceGenerator(name = "sq_inscricao", allocationSize = 1, sequenceName = "sq_inscricao")
     @Column(name="id")
     private Integer id;
 
-    @Column(name="id_evento")
-    private Integer idEvento;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_evento")
+    private Evento idEvento;
 
-    @Column(name="id_usuario")
-    private Integer idUsuario;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="id_usuario")
+    private Usuario idUsuario;
 
 
     @OneToMany(cascade=CascadeType.ALL)
+
+    @ManyToOne(fetch = FetchType.LAZY)
+
     @JoinColumn(name="id_tipo_situacao")
-    private List<TipoSituacao> tipoSituacaoList;
+    private TipoSituacao idTipoSituacao;
 }
