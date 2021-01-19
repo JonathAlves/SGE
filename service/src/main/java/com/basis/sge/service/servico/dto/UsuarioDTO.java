@@ -10,7 +10,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public class UsuarioDTO implements Serializable{
+public class UsuarioDTO{
 
     private Integer id;
     @CPF

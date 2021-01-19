@@ -44,26 +44,20 @@ public class UsuarioRecurso {
     }
 
 
+
+
     @PostMapping
-    public ResponseEntity<UsuarioDTO> salvar(@RequestBody UsuarioDTO usuarioDTO){
-        UsuarioDTO usuario = usuarioServico.salvar(usuarioDTO);
-        return ResponseEntity.ok(usuario);
-
-    }
-
-    @PutMapping
-    public ResponseEntity<UsuarioDTO> atualizar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
-        UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);
+    public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
+        UsuarioDTO usuario = usuarioServico.criar(usuarioDTO);
        return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
     }
 
-
-   /*@PutMapping
-    public ResponseEntity<UsuarioDTO> atualizar(@RequestBody UsuarioDTO usuarioDTO){
+    @PutMapping
+    public ResponseEntity<UsuarioDTO> atualizarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO){
         UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);
         return ResponseEntity.ok(usuario);
 
-    }*/
+    }
 
 
     @DeleteMapping("/{id}")

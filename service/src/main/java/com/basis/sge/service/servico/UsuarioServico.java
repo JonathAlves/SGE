@@ -6,17 +6,11 @@ import com.basis.sge.service.repositorio.UsuarioRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
-import liquibase.pro.packaged.U;
 import lombok.RequiredArgsConstructor;
-import net.bytebuddy.utility.RandomString;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
-import java.rmi.server.UID;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -38,44 +32,24 @@ public class UsuarioServico {
                 return usuarioMapper.toDto(usuario);
     }
 
-    public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
-        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
-        usuario.setChave(UUID.randomUUID().toString());
-        if (usuarioRepositorio.findByEmail(usuario.getEmail()) != null) {
-            throw new RegraNegocioException("Email não existe");
 
-        } else if (usuarioRepositorio.findByCpf(usuario.getCpf()) != null) {
-            throw new RegraNegocioException("CPF não existe");
+   public UsuarioDTO criar(UsuarioDTO usuarioDTO) {
+        verificarUsuario(usuarioDTO);
+       Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+       usuario.setChave(UUID.randomUUID().toString());
 
-        }
+       usuarioRepositorio.save(usuario);
+       return usuarioMapper.toDto(usuario);
 
-            usuarioRepositorio.save(usuario);
-            return usuarioMapper.toDto(usuario);
+   }
 
+    public UsuarioDTO atualizar(UsuarioDTO usuarioDTO){
+            Usuario usuario = usuarioRepositorio.findById(usuarioDTO.getId()).orElseThrow(() -> new com.basis.sge.service.servico.RegraNegocioException( "Usuario não encontrado!"));
+            Usuario usuarioRecebido = usuarioMapper.toEntity(usuarioDTO);
+            usuarioRecebido.setChave(usuario.getChave());
+            Usuario usuarioAtualizado = usuarioRepositorio.save(usuarioRecebido);
 
-
-
-
-
-
-
-
-
-    }
-
-    public UsuarioDTO atualizar(UsuarioDTO verificarId){
-            verificarId(verificarId.getId());
-            Usuario usuario = usuarioMapper.toEntity(verificarId);
-            usuario.setChave(usuario.getChave());
-            if(verificarId != null){
-
-                usuarioRepositorio.save(usuario);
-                return usuarioMapper.toDto(usuario);
-
-            }
-            else
-                throw new RegraNegocioException("Usuario não existe");
-
+            return usuarioMapper.toDto(usuarioAtualizado);
 
         }
 
@@ -84,25 +58,32 @@ public class UsuarioServico {
        public void remover(Integer id){
         Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()
                 -> new RegraNegocioException("Usuario não encontrado"));
-        usuarioRepositorio.deleteById(usuario.getId());
+        usuarioRepositorio.deleteById(id);
 
 
     }
 
-    public void verificarId(Integer id){
-        Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()
-                -> new RegraNegocioException("Usuario nao encontrado"));
-    }
 
+        public void verificarUsuario(UsuarioDTO usuarioDTO){
+        if(usuarioDTO == null){
+            throw new RegraNegocioException("Dados invalidos!");
+            }
+            else if(usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null){
+            throw new RegraNegocioException("Email já cadastrado");
 
-    public void verificarUsuario(UsuarioDTO usuarioDTO){
-        if(usuarioRepositorio.findByCpf(usuarioDTO.getCpf())){
+              }
+            else if(usuarioRepositorio.findByCpf(usuarioDTO.getCpf()) != null){
+                throw new RegraNegocioException("CPF já cadastrado");
+
+                 }
+        }
+
+    public void verificarUsuarioAtualizar(UsuarioDTO usuarioDTO) {
+        if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf())){
             throw new RegraNegocioException("CPF já cadastrado");
 
         }
 
     }
-
-
 
 }
