@@ -26,8 +26,8 @@ public class UsuarioRecurso {
 
     @GetMapping
     public ResponseEntity<List<UsuarioDTO>> Listar(){
-        List list = usuarioServico.listar();
-        return ResponseEntity.ok(list);
+        List<UsuarioDTO> lista = usuarioServico.listar();
+        return ResponseEntity.ok(lista);
     }
 
     @GetMapping("/{id}")

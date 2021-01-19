@@ -8,8 +8,11 @@ com/basis/sge/service/servico/mapper/EventoMapperImpl.class
 com/basis/sge/service/dominio/TipoSituacao.class
 com/basis/sge/service/servico/mapper/UsuarioMapper.class
 com/basis/sge/service/dominio/Usuario.class
+com/basis/sge/service/servico/mapper/dto/TipoEventoDTO.class
 com/basis/sge/service/dominio/Pergunta.class
+com/basis/sge/service/recurso/TipoEventoRecurso.class
 com/basis/sge/service/servico/exception/RegraNegocioException.class
+com/basis/sge/service/servico/mapper/TipoEventoMapper.class
 com/basis/sge/service/dominio/Inscricao.class
 com/basis/sge/service/servico/EventoServico.class
 com/basis/sge/service/dominio/TipoEvento.class
@@ -18,6 +21,9 @@ com/basis/sge/service/servico/mapper/EventoMapper.class
 com/basis/sge/service/servico/mapper/EntityMapper.class
 com/basis/sge/service/repositorio/UsuarioRepositorio.class
 com/basis/sge/service/dominio/InscricaoResposta.class
+com/basis/sge/service/repositorio/TipoEventoRepositorio.class
 com/basis/sge/service/recurso/UsuarioRecurso.class
 com/basis/sge/service/servico/mapper/dto/UsuarioDTO.class
+com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.class
 com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class
+com/basis/sge/service/servico/TipoEventoServico.class

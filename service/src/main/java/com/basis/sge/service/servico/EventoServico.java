@@ -26,32 +26,26 @@ public class EventoServico {
     }
 
     public EventoDTO obterPorId(Integer id) {
-        Evento evento = eventoRepositorio.findById(id).orElseThrow(()
-        -> new RegraNegocioException("Evento não encontrado!"));
+        Evento evento = obter(id);
         return eventoMapper.toDto(evento);
+    }
+    public Evento obter(Integer id) {
+        return eventoRepositorio.findById(id).orElseThrow(()
+                -> new RegraNegocioException("Evento não encontrado!"));
     }
     public EventoDTO salvar(EventoDTO eventoDTO) {
-        Evento evento = eventoRepositorio.findByTitulo(eventoDTO.getTitulo());
-
-        if(evento != null){
-            throw new RegraNegocioException("O Evento já existe com esse titulo!");
-        }
-        eventoRepositorio.save(evento);
-        return eventoMapper.toDto(evento);
+        Evento evento = eventoMapper.toEntity(eventoDTO);
+        Evento eventoSalvo = eventoRepositorio.save(evento);
+        return eventoMapper.toDto(eventoSalvo);
     }
     public EventoDTO editar(EventoDTO eventoDTO) {
-        Evento evento = eventoRepositorio.findByTitulo(eventoDTO.getTitulo());
-
-        if(evento != null){
-            throw new RegraNegocioException("O Evento já existe com esse titulo!");
-        }
+        Evento evento = eventoMapper.toEntity(eventoDTO);
         eventoRepositorio.save(evento);
         return eventoMapper.toDto(evento);
     }
     public void remover(Integer id){
-        Evento evento = eventoRepositorio.findById(id).orElseThrow(()
-        -> new RegraNegocioException("Evento não exite!"));
-        eventoRepositorio.deleteById(evento.getId());
+        Evento evento = obter(id);
+        eventoRepositorio.delete(evento);
 
     }
 }

@@ -15,7 +15,7 @@ public class Inscricao implements Serializable{
     @Id
 
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_inscricao")
-
+    @SequenceGenerator(name = "sq_inscricao", allocationSize = 1, sequenceName = "sq_inscricao")
     @Column(name="id")
     private Integer id;
 

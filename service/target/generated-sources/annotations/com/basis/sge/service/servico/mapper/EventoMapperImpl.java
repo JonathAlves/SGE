@@ -1,6 +1,7 @@
 package com.basis.sge.service.servico.mapper;
 
 import com.basis.sge.service.dominio.Evento;
+import com.basis.sge.service.dominio.TipoEvento;
 import com.basis.sge.service.servico.mapper.dto.EventoDTO;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,53 +10,11 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-17T23:12:31-0300",
+    date = "2021-01-19T00:30:36-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.9.1 (Ubuntu)"
 )
 @Component
 public class EventoMapperImpl implements EventoMapper {
-
-    @Override
-    public Evento toEntity(EventoDTO dto) {
-        if ( dto == null ) {
-            return null;
-        }
-
-        Evento evento = new Evento();
-
-        evento.setId( dto.getId() );
-        evento.setTitulo( dto.getTitulo() );
-        evento.setDatahora_inicio( dto.getDatahora_inicio() );
-        evento.setDatahora_final( dto.getDatahora_final() );
-        evento.setDescricao( dto.getDescricao() );
-        evento.setQuantidade_vaga( dto.getQuantidade_vaga() );
-        evento.setValor( dto.getValor() );
-        evento.setLocal_evento( dto.getLocal_evento() );
-        evento.setTipo_inscricao( dto.getTipo_inscricao() );
-
-        return evento;
-    }
-
-    @Override
-    public EventoDTO toDto(Evento entity) {
-        if ( entity == null ) {
-            return null;
-        }
-
-        EventoDTO eventoDTO = new EventoDTO();
-
-        eventoDTO.setId( entity.getId() );
-        eventoDTO.setTitulo( entity.getTitulo() );
-        eventoDTO.setDatahora_inicio( entity.getDatahora_inicio() );
-        eventoDTO.setDatahora_final( entity.getDatahora_final() );
-        eventoDTO.setDescricao( entity.getDescricao() );
-        eventoDTO.setQuantidade_vaga( entity.getQuantidade_vaga() );
-        eventoDTO.setValor( entity.getValor() );
-        eventoDTO.setLocal_evento( entity.getLocal_evento() );
-        eventoDTO.setTipo_inscricao( entity.getTipo_inscricao() );
-
-        return eventoDTO;
-    }
 
     @Override
     public List<Evento> toEntity(List<EventoDTO> dtoList) {
@@ -83,5 +42,76 @@ public class EventoMapperImpl implements EventoMapper {
         }
 
         return list;
+    }
+
+    @Override
+    public Evento toEntity(EventoDTO eventoDTO) {
+        if ( eventoDTO == null ) {
+            return null;
+        }
+
+        Evento evento = new Evento();
+
+        evento.setTipoEvento( eventoDTOToTipoEvento( eventoDTO ) );
+        evento.setId( eventoDTO.getId() );
+        evento.setTitulo( eventoDTO.getTitulo() );
+        evento.setDatahoraInicio( eventoDTO.getDatahoraInicio() );
+        evento.setDatahoraFinal( eventoDTO.getDatahoraFinal() );
+        evento.setDescricao( eventoDTO.getDescricao() );
+        evento.setQuantidadeVaga( eventoDTO.getQuantidadeVaga() );
+        evento.setValor( eventoDTO.getValor() );
+        evento.setLocalEvento( eventoDTO.getLocalEvento() );
+        evento.setTipoInscricao( eventoDTO.getTipoInscricao() );
+
+        return evento;
+    }
+
+    @Override
+    public EventoDTO toDto(Evento evento) {
+        if ( evento == null ) {
+            return null;
+        }
+
+        EventoDTO eventoDTO = new EventoDTO();
+
+        eventoDTO.setIdTipoEvento( eventoTipoEventoId( evento ) );
+        eventoDTO.setId( evento.getId() );
+        eventoDTO.setTitulo( evento.getTitulo() );
+        eventoDTO.setDatahoraInicio( evento.getDatahoraInicio() );
+        eventoDTO.setDatahoraFinal( evento.getDatahoraFinal() );
+        eventoDTO.setDescricao( evento.getDescricao() );
+        eventoDTO.setQuantidadeVaga( evento.getQuantidadeVaga() );
+        eventoDTO.setValor( evento.getValor() );
+        eventoDTO.setLocalEvento( evento.getLocalEvento() );
+        eventoDTO.setTipoInscricao( evento.getTipoInscricao() );
+
+        return eventoDTO;
+    }
+
+    protected TipoEvento eventoDTOToTipoEvento(EventoDTO eventoDTO) {
+        if ( eventoDTO == null ) {
+            return null;
+        }
+
+        TipoEvento tipoEvento = new TipoEvento();
+
+        tipoEvento.setId( eventoDTO.getIdTipoEvento() );
+
+        return tipoEvento;
+    }
+
+    private Integer eventoTipoEventoId(Evento evento) {
+        if ( evento == null ) {
+            return null;
+        }
+        TipoEvento tipoEvento = evento.getTipoEvento();
+        if ( tipoEvento == null ) {
+            return null;
+        }
+        Integer id = tipoEvento.getId();
+        if ( id == null ) {
+            return null;
+        }
+        return id;
     }
 }

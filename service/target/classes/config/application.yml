@@ -12,12 +12,14 @@ spring:
         url: jdbc:postgresql://localhost:5432/sge
         username: sge
         password: sge
+        hikari:
+            auto-commit: false
     jackson:
         date-format: yyyy-MM-dd
         deserialization:
             fail-on-unknown-properties: false
     jpa:
-        #database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect
+        #    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect
         database: POSTGRESQL
         show-sql: true
         open-in-view: false
@@ -29,7 +31,7 @@ spring:
             hibernate.generate_statistics: false
     liquibase:
         change-log: classpath:/config/liquibase/master.xml
-#        drop-first: true
+        # drop-first: true
     mail:
         host: smtp.gmail.com
         port: 587
@@ -43,5 +45,5 @@ spring:
                         enable: true
                         required: true
                     quitwait: false
-server:
-    port: 8080
+    server:
+        port: 8080
