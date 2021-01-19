@@ -27,11 +27,8 @@ public class InscricaoServico {
     }
 
     public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){
-        Inscricao inscricao = inscricaoRepositorio.findById(inscricaoDTO.getId()).orElseThrow(() -> new RegraNegocioException( "Inscrição não encontrada!"));
+        Inscricao inscricao = inscricaoMapper.toEntity(inscricaoDTO);
 
-        if(inscricao != null){
-            throw new RegraNegocioException("Já existe uma inscrição correspondente!");
-        }
         inscricaoRepositorio.save(inscricao);
         return inscricaoMapper.toDto(inscricao);
     }
