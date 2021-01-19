@@ -25,13 +25,13 @@ public class TipoSituacaoRecurso {
         List list = tipoSituacaoServico.listar();
         return ResponseEntity.ok(list);
     }
-
+/*
     @GetMapping("/{id}")
     public ResponseEntity <TipoSituacaoDTO> obterPorId(@PathVariable Integer id){
         TipoSituacaoDTO tipoSituacaoDTO = tipoSituacaoServico.obterPorId(id);
         return ResponseEntity.ok(tipoSituacaoDTO);
     }
-
+*/
     @PostMapping
     public ResponseEntity <TipoSituacaoDTO> salvar(@RequestBody TipoSituacaoDTO tipoSituacaoDTO){
         TipoSituacaoDTO tipoSituacao = tipoSituacaoServico.salvar(tipoSituacaoDTO);

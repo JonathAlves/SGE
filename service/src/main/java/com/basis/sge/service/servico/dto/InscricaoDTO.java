@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 public class InscricaoDTO{
     private Integer id;
-    private Usuario idUsuario;
-    private Evento idEvento;
-    private TipoSituacao idTipoSituacao;
+    private Integer idUsuario;
+    private Integer idEvento;
+    private Integer idTipoSituacao;
     private String pergunta;
 }
