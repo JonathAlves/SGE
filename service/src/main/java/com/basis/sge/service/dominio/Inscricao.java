@@ -31,5 +31,5 @@ public class Inscricao implements Serializable{
     private TipoSituacao idTipoSituacao;
 
     @OneToMany(fetch = FetchType.LAZY)
-    private List<Pergunta> respostas;
+    private List<InscricaoResposta> respostas;
 }
