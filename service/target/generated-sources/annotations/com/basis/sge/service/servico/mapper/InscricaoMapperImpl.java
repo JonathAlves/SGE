@@ -9,33 +9,52 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-19T02:51:59-0300",
+    date = "2021-01-19T14:28:31-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class InscricaoMapperImpl implements InscricaoMapper {
 
     @Override
-    public InscricaoDTO toDto(Inscricao arg0) {
-        if ( arg0 == null ) {
+    public Inscricao toEntity(InscricaoDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        Inscricao inscricao = new Inscricao();
+
+        inscricao.setId( dto.getId() );
+        inscricao.setIdEvento( dto.getIdEvento() );
+        inscricao.setIdUsuario( dto.getIdUsuario() );
+        inscricao.setIdTipoSituacao( dto.getIdTipoSituacao() );
+
+        return inscricao;
+    }
+
+    @Override
+    public InscricaoDTO toDto(Inscricao entity) {
+        if ( entity == null ) {
             return null;
         }
 
         InscricaoDTO inscricaoDTO = new InscricaoDTO();
 
-        inscricaoDTO.setId( arg0.getId() );
+        inscricaoDTO.setId( entity.getId() );
+        inscricaoDTO.setIdUsuario( entity.getIdUsuario() );
+        inscricaoDTO.setIdEvento( entity.getIdEvento() );
+        inscricaoDTO.setIdTipoSituacao( entity.getIdTipoSituacao() );
 
         return inscricaoDTO;
     }
 
     @Override
-    public List<Inscricao> toEntity(List<InscricaoDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Inscricao> toEntity(List<InscricaoDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Inscricao> list = new ArrayList<Inscricao>( arg0.size() );
-        for ( InscricaoDTO inscricaoDTO : arg0 ) {
+        List<Inscricao> list = new ArrayList<Inscricao>( dtoList.size() );
+        for ( InscricaoDTO inscricaoDTO : dtoList ) {
             list.add( toEntity( inscricaoDTO ) );
         }
 
@@ -43,31 +62,16 @@ public class InscricaoMapperImpl implements InscricaoMapper {
     }
 
     @Override
-    public List<InscricaoDTO> toDto(List<Inscricao> arg0) {
-        if ( arg0 == null ) {
+    public List<InscricaoDTO> toDto(List<Inscricao> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<InscricaoDTO> list = new ArrayList<InscricaoDTO>( arg0.size() );
-        for ( Inscricao inscricao : arg0 ) {
+        List<InscricaoDTO> list = new ArrayList<InscricaoDTO>( entityList.size() );
+        for ( Inscricao inscricao : entityList ) {
             list.add( toDto( inscricao ) );
         }
 
         return list;
-    }
-
-    @Override
-    public Inscricao toEntity(InscricaoDTO inscricaoDTO) {
-        if ( inscricaoDTO == null ) {
-            return null;
-        }
-
-        Inscricao inscricao = new Inscricao();
-
-        inscricao.setIdEvento( inscricaoDTO.getId() );
-        inscricao.setIdUsuario( inscricaoDTO.getId() );
-        inscricao.setId( inscricaoDTO.getId() );
-
-        return inscricao;
     }
 }
