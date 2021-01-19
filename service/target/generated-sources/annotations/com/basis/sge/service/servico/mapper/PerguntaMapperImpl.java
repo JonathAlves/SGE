@@ -9,48 +9,48 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-18T17:34:24-0300",
+    date = "2021-01-19T13:05:21-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class PerguntaMapperImpl implements PerguntaMapper {
 
     @Override
-    public Pergunta toEntity(PerguntaDTO arg0) {
-        if ( arg0 == null ) {
+    public Pergunta toEntity(PerguntaDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
         Pergunta pergunta = new Pergunta();
 
-        pergunta.setId( arg0.getId() );
-        pergunta.setTitulo( arg0.getTitulo() );
+        pergunta.setId( dto.getId() );
+        pergunta.setTitulo( dto.getTitulo() );
 
         return pergunta;
     }
 
     @Override
-    public PerguntaDTO toDto(Pergunta arg0) {
-        if ( arg0 == null ) {
+    public PerguntaDTO toDto(Pergunta entity) {
+        if ( entity == null ) {
             return null;
         }
 
         PerguntaDTO perguntaDTO = new PerguntaDTO();
 
-        perguntaDTO.setId( arg0.getId() );
-        perguntaDTO.setTitulo( arg0.getTitulo() );
+        perguntaDTO.setId( entity.getId() );
+        perguntaDTO.setTitulo( entity.getTitulo() );
 
         return perguntaDTO;
     }
 
     @Override
-    public List<Pergunta> toEntity(List<PerguntaDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Pergunta> toEntity(List<PerguntaDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Pergunta> list = new ArrayList<Pergunta>( arg0.size() );
-        for ( PerguntaDTO perguntaDTO : arg0 ) {
+        List<Pergunta> list = new ArrayList<Pergunta>( dtoList.size() );
+        for ( PerguntaDTO perguntaDTO : dtoList ) {
             list.add( toEntity( perguntaDTO ) );
         }
 
@@ -58,13 +58,13 @@ public class PerguntaMapperImpl implements PerguntaMapper {
     }
 
     @Override
-    public List<PerguntaDTO> toDto(List<Pergunta> arg0) {
-        if ( arg0 == null ) {
+    public List<PerguntaDTO> toDto(List<Pergunta> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<PerguntaDTO> list = new ArrayList<PerguntaDTO>( arg0.size() );
-        for ( Pergunta pergunta : arg0 ) {
+        List<PerguntaDTO> list = new ArrayList<PerguntaDTO>( entityList.size() );
+        for ( Pergunta pergunta : entityList ) {
             list.add( toDto( pergunta ) );
         }
 

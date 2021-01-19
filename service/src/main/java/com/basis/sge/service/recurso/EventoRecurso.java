@@ -24,7 +24,7 @@ public class EventoRecurso {
     private final EventoServico eventoServico;
 
     @GetMapping
-    public ResponseEntity<List><EventoDTO>> listar() {
+    public ResponseEntity<List<EventoDTO>> listar() {
         List<EventoDTO> list = eventoServico.listar();
         return new ResponseEntity<>(list, HttpStatus.OK);
     }
