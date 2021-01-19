@@ -1,5 +1,6 @@
 package com.basis.sge.service.recurso;
 
+import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.UsuarioServico;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
@@ -37,7 +38,7 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping
     public  ResponseEntity<UsuarioDTO> obterPorId(@PathVariable Integer id){
         UsuarioDTO usuarioDTO = usuarioServico.obterPorId(id);
         return ResponseEntity.ok(usuarioDTO);
@@ -52,8 +53,9 @@ public class UsuarioRecurso {
        return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
     }
 
-    @PutMapping
-    public ResponseEntity<UsuarioDTO> atualizarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO){
+    @PutMapping ("/{id}")
+    public ResponseEntity<UsuarioDTO> atualizar(Integer id, @RequestBody UsuarioDTO usuarioDTO){
+
         UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);
         return ResponseEntity.ok(usuario);
 

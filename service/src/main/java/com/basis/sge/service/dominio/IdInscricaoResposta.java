@@ -4,11 +4,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
+import java.io.Serializable;
 
 @Embeddable
 @Getter
 @Setter
-public class IdInscricaoResposta {
+public class IdInscricaoResposta implements Serializable {
 
     private Integer idInscricao;
 

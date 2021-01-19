@@ -5,9 +5,11 @@ import com.basis.sge.service.servico.dto.InscricaoDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = {})
+@Mapper(componentModel = "spring", uses = Inscricao.class)
 public interface InscricaoMapper extends EntityMapper<InscricaoDTO, Inscricao>{
 
+
     Inscricao toEntity(InscricaoDTO inscricaoDTO);
+
 
 }

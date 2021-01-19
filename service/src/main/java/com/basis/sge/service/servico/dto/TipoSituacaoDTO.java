@@ -11,5 +11,4 @@ public class TipoSituacaoDTO implements Serializable  {
 
     private Integer id;
     private String descricao;
-
 }
