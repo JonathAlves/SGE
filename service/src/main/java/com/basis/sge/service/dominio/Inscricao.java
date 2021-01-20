@@ -26,10 +26,10 @@ public class Inscricao implements Serializable{
     private Usuario idUsuario;
 
 
-    @OneToMany(cascade=CascadeType.ALL)
-
     @ManyToOne(fetch = FetchType.LAZY)
-
     @JoinColumn(name="id_tipo_situacao")
     private TipoSituacao idTipoSituacao;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Pergunta> respostas;
 }

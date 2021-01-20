@@ -26,7 +26,4 @@ public class TipoEvento implements Serializable {
     @Column(name ="descricao")
     private String descricao;
 
-    @OneToMany
-    @JoinColumn(name = "id_tipo_evento")
-    private List<Evento> evento;
 }

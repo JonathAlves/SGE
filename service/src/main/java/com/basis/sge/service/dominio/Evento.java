@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
@@ -29,47 +31,36 @@ public class Evento implements Serializable {
     @SequenceGenerator(name = "sq_evento", allocationSize = 1, sequenceName = "sq_evento")
     @Column(name = "id")
     private Integer id;
-    @Column (name = "titulo", nullable = false)
+    @Column (name = "titulo")
     private String titulo;
 
-    @Column (name = "datahora_inicio", nullable = false)
-    private Timestamp datahora_inicio;
+    @Column (name = "datahora_inicio")
+    private Timestamp datahoraInicio;
 
-    @Column (name = "datahora_final", nullable = false)
-    private Timestamp datahora_final;
+    @Column (name = "datahora_final")
+    private Timestamp datahoraFinal;
 
-    @Column (name = "descricao", nullable = false)
+    @Column (name = "descricao")
     private String descricao;
 
-    //    @Column (name = "id_tipo_evento", nullable = false)
-//    private Integer id_tipo_evento;
-    @ManyToOne
-    @JoinColumn(name = "id_tipo_evento", nullable = true, referencedColumnName = "id")
-    private TipoEvento id_tipo_evento;
+    @Column (name = "quantidade_vaga")
+    private Integer quantidadeVaga;
 
-    @Column (name = "quantidade_vaga", nullable = true)
-    private Integer quantidade_vaga;
-
-    @Column (name = "valor", nullable = true)
+    @Column (name = "valor")
     private Double valor;
 
-    @Column (name = "local_evento", nullable = false)
-    private String local_evento;
+    @Column (name = "local_evento")
+    private String localEvento;
 
-    @Column (name = "tipo_inscricao", nullable = false)
-    private Boolean tipo_inscricao;
+    @Column (name = "tipo_inscricao")
+    private Boolean tipoInscricao;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_tipo_evento")
+    private TipoEvento tipoEvento;
 
-    @ManyToMany
-    @JoinTable(
-            name = "evento_pergunta",
-            joinColumns = @JoinColumn(name = "id_evento"),
-            inverseJoinColumns = @JoinColumn(name = "id_pergunta")
-    )
-    private List<Pergunta> perguntas;
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "evento")
+    private List<EventoPergunta> perguntas;
 
-    public List<Pergunta> getPergunta() {
-        return perguntas;
-    }
 
 }
