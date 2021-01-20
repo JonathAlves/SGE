@@ -1,11 +1,7 @@
 package com.basis.sge.service.servico.dto;
 
-<<<<<<< HEAD
 import lombok.Getter;
 import lombok.Setter;
-
-=======
->>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
