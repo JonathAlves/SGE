@@ -9,9 +9,13 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = {})
 public interface TipoSituacaoMapper extends EntityMapper<TipoSituacaoDTO, TipoSituacao>{
+
     @Mapping(source = "id", target = "id")
     TipoSituacao toEntity(TipoSituacaoDTO tipoSituacaoDTO);
 
     @Mapping(source = "id", target = "id")
     TipoSituacaoDTO toDto(TipoSituacao tipoSituacao);
+
+
+
 }

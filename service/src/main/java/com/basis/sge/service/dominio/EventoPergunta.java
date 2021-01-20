@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "evento-pergunta")
+@Table(name = "evento_pergunta")
 @Getter
 @Setter
 public class EventoPergunta implements Serializable {
