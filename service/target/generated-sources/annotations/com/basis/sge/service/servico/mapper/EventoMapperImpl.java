@@ -11,56 +11,56 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-20T12:50:42-0300",
+    date = "2021-01-20T14:38:34-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class EventoMapperImpl implements EventoMapper {
 
     @Override
-    public Evento toEntity(EventoDTO arg0) {
-        if ( arg0 == null ) {
+    public Evento toEntity(EventoDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
         Evento evento = new Evento();
 
-        evento.setId( arg0.getId() );
-        evento.setTitulo( arg0.getTitulo() );
-        evento.setDescricao( arg0.getDescricao() );
-        evento.setValor( arg0.getValor() );
-        evento.setTipoInscricao( arg0.getTipoInscricao() );
-        evento.setPerguntas( eventoPerguntaDTOListToEventoPerguntaList( arg0.getPerguntas() ) );
+        evento.setId( dto.getId() );
+        evento.setTitulo( dto.getTitulo() );
+        evento.setDescricao( dto.getDescricao() );
+        evento.setValor( dto.getValor() );
+        evento.setTipoInscricao( dto.getTipoInscricao() );
+        evento.setPerguntas( eventoPerguntaDTOListToEventoPerguntaList( dto.getPerguntas() ) );
 
         return evento;
     }
 
     @Override
-    public EventoDTO toDto(Evento arg0) {
-        if ( arg0 == null ) {
+    public EventoDTO toDto(Evento entity) {
+        if ( entity == null ) {
             return null;
         }
 
         EventoDTO eventoDTO = new EventoDTO();
 
-        eventoDTO.setId( arg0.getId() );
-        eventoDTO.setTitulo( arg0.getTitulo() );
-        eventoDTO.setDescricao( arg0.getDescricao() );
-        eventoDTO.setValor( arg0.getValor() );
-        eventoDTO.setTipoInscricao( arg0.getTipoInscricao() );
-        eventoDTO.setPerguntas( eventoPerguntaListToEventoPerguntaDTOList( arg0.getPerguntas() ) );
+        eventoDTO.setId( entity.getId() );
+        eventoDTO.setTitulo( entity.getTitulo() );
+        eventoDTO.setDescricao( entity.getDescricao() );
+        eventoDTO.setValor( entity.getValor() );
+        eventoDTO.setTipoInscricao( entity.getTipoInscricao() );
+        eventoDTO.setPerguntas( eventoPerguntaListToEventoPerguntaDTOList( entity.getPerguntas() ) );
 
         return eventoDTO;
     }
 
     @Override
-    public List<Evento> toEntity(List<EventoDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Evento> toEntity(List<EventoDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Evento> list = new ArrayList<Evento>( arg0.size() );
-        for ( EventoDTO eventoDTO : arg0 ) {
+        List<Evento> list = new ArrayList<Evento>( dtoList.size() );
+        for ( EventoDTO eventoDTO : dtoList ) {
             list.add( toEntity( eventoDTO ) );
         }
 
@@ -68,13 +68,13 @@ public class EventoMapperImpl implements EventoMapper {
     }
 
     @Override
-    public List<EventoDTO> toDto(List<Evento> arg0) {
-        if ( arg0 == null ) {
+    public List<EventoDTO> toDto(List<Evento> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<EventoDTO> list = new ArrayList<EventoDTO>( arg0.size() );
-        for ( Evento evento : arg0 ) {
+        List<EventoDTO> list = new ArrayList<EventoDTO>( entityList.size() );
+        for ( Evento evento : entityList ) {
             list.add( toDto( evento ) );
         }
 

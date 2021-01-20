@@ -24,8 +24,8 @@ com/basis/sge/service/dominio/EventoPerguntaId.class
 com/basis/sge/service/configuracao/ApplicationProperties.class
 com/basis/sge/service/dominio/InscricaoResposta.class
 com/basis/sge/service/servico/dto/EventoDTO.class
-com/basis/sge/service/recurso/UsuarioRecurso.class
 com/basis/sge/service/dominio/EventoPergunta.class
+com/basis/sge/service/recurso/UsuarioRecurso.class
 com/basis/sge/service/servico/mapper/InscricaoRespostaMapper.class
 com/basis/sge/service/servico/Exception/RegraNegocioException.class
 com/basis/sge/service/servico/UsuarioServico.class
@@ -47,8 +47,8 @@ com/basis/sge/service/servico/dto/InscricaoDTO.class
 com/basis/sge/service/servico/mapper/InscricaoMapper.class
 com/basis/sge/service/repositorio/EventoRepositorio.class
 com/basis/sge/service/servico/mapper/EntityMapper.class
-com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/servico/TipoSituacaoServico.class
+com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/servico/InscricaoServico.class
 com/basis/sge/service/utils/EmailUtils.class
 com/basis/sge/service/recurso/TipoSituacaoRecurso.class

@@ -43,8 +43,8 @@ public class InscricaoRecurso   {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable Integer id){
+    public void deletar(@PathVariable Integer id){
         inscricaoServico.remover(id);
-        return ResponseEntity.ok().build();
+
     }
 }

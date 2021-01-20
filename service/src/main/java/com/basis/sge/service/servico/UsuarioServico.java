@@ -69,11 +69,9 @@ public class UsuarioServico {
 
 
     public void remover(Integer id) {
-        Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()
-                -> new RegraNegocioException("Usuario nao encontrado"));
-
+        Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Usuario nao encontrado"));
         usuarioRepositorio.deleteById(id);
-       }
+    }
       
 
 
