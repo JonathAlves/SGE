@@ -1,5 +1,5 @@
 package com.basis.sge.service.servico;
-
+import com.basis.sge.service.configuracao.ApplicationProperties;
 import com.basis.sge.service.servico.dto.EmailDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;

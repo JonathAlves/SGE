@@ -1,12 +1,10 @@
 package com.basis.sge.service.servico.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -32,4 +30,5 @@ public class EventoDTO implements Serializable {
     private Integer idTipoEvento;
 
     private List<EventoPerguntaDTO> perguntas;
+
 }
