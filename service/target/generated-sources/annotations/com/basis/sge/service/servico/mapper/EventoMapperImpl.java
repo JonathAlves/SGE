@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-19T14:15:20-0300",
+    date = "2021-01-19T23:45:40-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -57,8 +57,12 @@ public class EventoMapperImpl implements EventoMapper {
         evento.setTipoEvento( eventoDTOToTipoEvento( eventoDTO ) );
         evento.setId( eventoDTO.getId() );
         evento.setTitulo( eventoDTO.getTitulo() );
+        evento.setDataInicio( eventoDTO.getDataInicio() );
+        evento.setDataTermino( eventoDTO.getDataTermino() );
         evento.setDescricao( eventoDTO.getDescricao() );
+        evento.setQtVagas( eventoDTO.getQtVagas() );
         evento.setValor( eventoDTO.getValor() );
+        evento.setLocal( eventoDTO.getLocal() );
         evento.setTipoInscricao( eventoDTO.getTipoInscricao() );
         evento.setPerguntas( eventoPerguntaDTOListToEventoPerguntaList( eventoDTO.getPerguntas() ) );
 
@@ -76,8 +80,12 @@ public class EventoMapperImpl implements EventoMapper {
         eventoDTO.setIdTipoEvento( eventoTipoEventoId( evento ) );
         eventoDTO.setId( evento.getId() );
         eventoDTO.setTitulo( evento.getTitulo() );
+        eventoDTO.setDataInicio( evento.getDataInicio() );
+        eventoDTO.setDataTermino( evento.getDataTermino() );
         eventoDTO.setDescricao( evento.getDescricao() );
+        eventoDTO.setQtVagas( evento.getQtVagas() );
         eventoDTO.setValor( evento.getValor() );
+        eventoDTO.setLocal( evento.getLocal() );
         eventoDTO.setTipoInscricao( evento.getTipoInscricao() );
         eventoDTO.setPerguntas( eventoPerguntaListToEventoPerguntaDTOList( evento.getPerguntas() ) );
 

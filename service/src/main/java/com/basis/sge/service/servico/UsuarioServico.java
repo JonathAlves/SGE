@@ -53,8 +53,6 @@ public class UsuarioServico {
 
         }
 
-
-
        public void remover(Integer id){
         Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()
                 -> new RegraNegocioException("Usuario não encontrado"));
