@@ -55,6 +55,12 @@ public class UsuarioServico {
 
             verificarUsuarioAtualizar(usuarioDTO);
 
+<<<<<<< HEAD
+       public void remover(Integer id){
+        Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()
+                -> new RegraNegocioException("Usuario não encontrado"));
+        usuarioRepositorio.deleteById(id);
+=======
         Usuario usuario = usuarioRepositorio.findById(usuarioDTO.getId()).orElseThrow(() -> new RegraNegocioException("Usuario nao encontrado"));
         usuario.setCpf(usuarioDTO.getCpf());
         usuario.setNome(usuarioDTO.getNome());
@@ -66,6 +72,7 @@ public class UsuarioServico {
 
     }
 
+>>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
 
 
     public void remover(Integer id) {
