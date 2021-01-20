@@ -1,7 +1,9 @@
 package com.basis.sge.service.servico;
 
 import com.basis.sge.service.dominio.Evento;
+import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.repositorio.EventoRepositorio;
+import com.basis.sge.service.repositorio.TipoEventoRepositorio;
 import com.basis.sge.service.servico.dto.EventoDTO;
 import com.basis.sge.service.servico.mapper.EventoMapper;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ import java.util.UUID;
 public class EventoServico {
 
     private final EventoRepositorio eventoRepositorio;
+    private final TipoEventoRepositorio tipoEventoRepositorio;
     private final EventoMapper eventoMapper;
 
     public List<EventoDTO> listar() {
@@ -35,20 +38,60 @@ public class EventoServico {
     }
 
     public EventoDTO salvar(EventoDTO eventoDTO) {
+        verificaTitulo(eventoDTO.getTitulo());
+        verificaTipoEvento(eventoDTO.getIdTipoEvento());
+
         Evento evento = eventoMapper.toEntity(eventoDTO);
-        //evento.setChave(UUID.randomUUID().toString());
         eventoRepositorio.save(evento);
         return eventoMapper.toDto(evento);
     }
 
     public EventoDTO editar(EventoDTO eventoDTO) {
-        Evento evento = eventoMapper.toEntity(eventoDTO);
-        eventoRepositorio.save(evento);
-        return eventoMapper.toDto(evento);
+        Evento evento = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
+                -> new com.basis.sge.service.servico.RegraNegocioException( "Evento não encontrado!"));
+        verificaTipoEvento(eventoDTO.getIdTipoEvento());
+        Evento eventoRecebido = eventoMapper.toEntity(eventoDTO);
+        eventoRecebido.setTitulo(eventoDTO.getTitulo());
+        eventoRecebido.setDataInicio(eventoDTO.getDataInicio());
+        eventoRecebido.setDataTermino(eventoDTO.getDataTermino());
+        eventoRecebido.setDescricao(eventoDTO.getDescricao());
+        eventoRecebido.setQtVagas(eventoDTO.getQtVagas());
+        eventoRecebido.setValor(eventoDTO.getValor());
+        eventoRecebido.setLocal(eventoDTO.getLocal());
+        eventoRecebido.setTipoInscricao(eventoDTO.getTipoInscricao());
+        if (!eventoRepositorio.existsByTitulo(eventoDTO.getTitulo())) {
+            throw new RegraNegocioException("Um evento com esse titulo já existe");
+        } else {
+            eventoRepositorio.save(eventoRecebido);
+        }
+        return eventoMapper.toDto(eventoRecebido);
     }
 
     public void remover(Integer id) {
-        Evento evento = obter(id);
-        eventoRepositorio.delete(evento);
+        verificaIdEvento(id);
+        eventoRepositorio.deleteById(id);
+    }
+    //Verifica se o titulo do evento já existe ou esta vazio, em caso positivo solta a exceção
+    public void verificaTitulo(String titulo){
+        if (eventoRepositorio.existsByTitulo(titulo)){
+            throw new RegraNegocioException("Um evento com esse titulo já existe");
+        }
+    }
+
+    //verifica se o tipo de evento existe no banco
+    public void verificaTipoEvento(Integer idTipoEvento) {
+        if(!tipoEventoRepositorio.existsById(idTipoEvento)){
+            throw new RegraNegocioException("Esse Tipo de Evento não existe");
+        }
+    }
+
+    //verifica se o evento correspondente ao id existe
+    public void verificaIdEvento(Integer idEvento){
+        if(!eventoRepositorio.existsById(idEvento)){
+            throw new RegraNegocioException("Evento Não Existe");
+        }
     }
 }
+
+
+

@@ -19,6 +19,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -60,8 +61,8 @@ public class Evento implements Serializable {
     @JoinColumn(name = "id_tipo_evento")
     private TipoEvento tipoEvento;
 
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "evento")
-    private List<EventoPergunta> perguntas;
+//    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "evento")
+//    private List<EventoPergunta> perguntas = new ArrayList<>();
 
 
 }

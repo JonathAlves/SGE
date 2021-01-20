@@ -47,10 +47,11 @@ public class EventoRecurso {
     }
 
     @PutMapping
-    public ResponseEntity<EventoDTO> editar(@RequestBody EventoDTO entidadeDTO) {
-        EventoDTO entidade = eventoServico.salvar(entidadeDTO);
+    public ResponseEntity<EventoDTO> editar(@RequestBody EventoDTO eventoDTO) {
+        EventoDTO entidade = eventoServico.editar(eventoDTO);
         return ResponseEntity.ok(entidade);
     }
+
 
     @DeleteMapping("/{id}")
     public void remover(@PathVariable Integer id) {
