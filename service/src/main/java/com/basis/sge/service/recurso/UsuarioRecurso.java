@@ -47,7 +47,7 @@ public class UsuarioRecurso {
 
 
     @PostMapping
-    public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
+    public ResponseEntity<UsuarioDTO> criar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
         UsuarioDTO usuario = usuarioServico.criar(usuarioDTO);
        return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
     }
@@ -58,7 +58,6 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(usuario);
 
     }
-
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> remover(@PathVariable Integer id){

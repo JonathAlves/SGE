@@ -19,17 +19,17 @@ public class Inscricao implements Serializable{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_evento")
-    private Evento idEvento;
+    private Evento evento;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_usuario")
-    private Usuario idUsuario;
+    private Usuario usuario;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_tipo_situacao")
-    private TipoSituacao idTipoSituacao;
+    private TipoSituacao tipoSituacao;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "inscricao")
     private List<InscricaoResposta> respostas;
 }
