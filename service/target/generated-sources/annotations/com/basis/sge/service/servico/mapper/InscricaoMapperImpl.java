@@ -9,11 +9,27 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-20T14:38:34-0300",
+    date = "2021-01-20T14:52:57-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class InscricaoMapperImpl implements InscricaoMapper {
+
+    @Override
+    public Inscricao toEntity(InscricaoDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        Inscricao inscricao = new Inscricao();
+
+        inscricao.setId( dto.getId() );
+        inscricao.setIdEvento( dto.getIdEvento() );
+        inscricao.setIdUsuario( dto.getIdUsuario() );
+        inscricao.setIdTipoSituacao( dto.getIdTipoSituacao() );
+
+        return inscricao;
+    }
 
     @Override
     public InscricaoDTO toDto(Inscricao entity) {
@@ -57,21 +73,5 @@ public class InscricaoMapperImpl implements InscricaoMapper {
         }
 
         return list;
-    }
-
-    @Override
-    public Inscricao toEntity(InscricaoDTO inscricaoDTO) {
-        if ( inscricaoDTO == null ) {
-            return null;
-        }
-
-        Inscricao inscricao = new Inscricao();
-
-        inscricao.setId( inscricaoDTO.getId() );
-        inscricao.setIdEvento( inscricaoDTO.getIdEvento() );
-        inscricao.setIdUsuario( inscricaoDTO.getIdUsuario() );
-        inscricao.setIdTipoSituacao( inscricaoDTO.getIdTipoSituacao() );
-
-        return inscricao;
     }
 }
