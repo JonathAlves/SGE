@@ -34,42 +34,41 @@ public class UsuarioRecurso {
 
 
     @GetMapping
-    public ResponseEntity<List <UsuarioDTO>> listar(){
+    public ResponseEntity<List<UsuarioDTO>> listar() {
         List list = usuarioServico.listar();
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping ("/{id}")
-    public  ResponseEntity<UsuarioDTO> buscar(@PathVariable Integer id){
+    @GetMapping("/{id}")
+    public ResponseEntity<UsuarioDTO> buscar(@PathVariable Integer id) {
         UsuarioDTO usuarioDTO = usuarioServico.obterPorId(id);
         return ResponseEntity.ok(usuarioDTO);
     }
 
 
-
-
     @PostMapping
-    public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
-        UsuarioDTO usuario = usuarioServico.salvar(usuarioDTO);
-        return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
-    }
 
-    @PutMapping
-    public ResponseEntity<UsuarioDTO> atualizar(@RequestBody UsuarioDTO usuarioDTO){
-        UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);
-        return ResponseEntity.ok(usuario);
+        public ResponseEntity<UsuarioDTO> adicionar (@Valid @RequestBody UsuarioDTO usuarioDTO) throws
+        URISyntaxException {
+            UsuarioDTO usuario = usuarioServico.salvar(usuarioDTO);
+            return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
 
-    }
+        }
 
+        @PutMapping
+        public ResponseEntity<UsuarioDTO> atualizar (@RequestBody UsuarioDTO usuarioDTO){
+            UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);
+            return ResponseEntity.ok(usuario);
 
-
-    @DeleteMapping ("/{id}")
-    public void deletar(@PathVariable Integer id) {
-         usuarioServico.remover(id);
-
-    }
+        }
 
 
+        @DeleteMapping("/{id}")
+        public void deletar (@PathVariable Integer id){
+            usuarioServico.remover(id);
+
+        }
 
 
 }
+
