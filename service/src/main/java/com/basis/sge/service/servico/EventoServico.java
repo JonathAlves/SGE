@@ -38,8 +38,8 @@ public class EventoServico {
     }
 
     public EventoDTO salvar(EventoDTO eventoDTO) {
-        Evento evento = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
-                -> new com.basis.sge.service.servico.RegraNegocioException( "Evento não encontrado!"));
+//        Evento evento = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
+//                -> new com.basis.sge.service.servico.RegraNegocioException( "Evento não encontrado!"));
         verificaTitulo(eventoDTO.getTitulo());
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
 
