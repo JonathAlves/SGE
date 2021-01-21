@@ -53,7 +53,7 @@ public class UsuarioServico {
 
     public UsuarioDTO atualizar(UsuarioDTO usuarioDTO) {
 
-            verificarUsuarioAtualizar(usuarioDTO);
+        verificarUsuarioAtualizar(usuarioDTO);
 
         Usuario usuario = usuarioRepositorio.findById(usuarioDTO.getId()).orElseThrow(() -> new RegraNegocioException("Usuario nao encontrado"));
         usuario.setCpf(usuarioDTO.getCpf());
@@ -72,7 +72,7 @@ public class UsuarioServico {
         Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Usuario nao encontrado"));
         usuarioRepositorio.deleteById(id);
     }
-      
+
 
 
 
@@ -95,19 +95,13 @@ public class UsuarioServico {
             throw new RegraNegocioException("Dados invalidos!");
         }
 
-       else if (usuarioRepositorio.findByCpf(usuarioNovo.getCpf()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf()))
-        throw new RegraNegocioException("CPF já existente!");
+        else if (usuarioRepositorio.findByCpf(usuarioNovo.getCpf()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf()))
+            throw new RegraNegocioException("CPF já existente!");
 
-          else if (usuarioRepositorio.findByEmail(usuarioNovo.getEmail()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf()))
+        else if (usuarioRepositorio.findByEmail(usuarioNovo.getEmail()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf()))
             throw new RegraNegocioException("Email já existente!");
 
 
     }
 
-        }
-
-
-
-
-
-
+}
