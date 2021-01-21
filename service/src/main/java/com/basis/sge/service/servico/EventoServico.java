@@ -59,7 +59,7 @@ public class EventoServico {
         eventoRecebido.setValor(eventoDTO.getValor());
         eventoRecebido.setLocal(eventoDTO.getLocal());
         eventoRecebido.setTipoInscricao(eventoDTO.getTipoInscricao());
-        if (!eventoRepositorio.existsByTitulo(eventoDTO.getTitulo())) {
+        if (eventoRepositorio.existsByTitulo(eventoDTO.getTitulo())) {
             throw new RegraNegocioException("Um evento com esse titulo já existe");
         } else {
             eventoRepositorio.save(eventoRecebido);
