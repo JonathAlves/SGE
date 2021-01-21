@@ -64,7 +64,10 @@ com/basis/sge/service/servico/InscricaoServico.class
 com/basis/sge/service/servico/TipoSituacaoServico.class
 com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/servico/InscricaoServico.class
+<<<<<<< HEAD
+=======
 com/basis/sge/service/utils/EmailUtils.class
 >>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
+>>>>>>> 0fa98efb43e19289c6f62be56eb3651962aa84f8
 com/basis/sge/service/recurso/TipoSituacaoRecurso.class
 com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class
