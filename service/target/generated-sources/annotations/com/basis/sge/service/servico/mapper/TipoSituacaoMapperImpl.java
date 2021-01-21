@@ -9,48 +9,48 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-19T23:43:41-0300",
+    date = "2021-01-21T01:46:31-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class TipoSituacaoMapperImpl implements TipoSituacaoMapper {
 
     @Override
-    public TipoSituacao toEntity(TipoSituacaoDTO arg0) {
-        if ( arg0 == null ) {
+    public TipoSituacao toEntity(TipoSituacaoDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
         TipoSituacao tipoSituacao = new TipoSituacao();
 
-        tipoSituacao.setId( arg0.getId() );
-        tipoSituacao.setDescricao( arg0.getDescricao() );
+        tipoSituacao.setId( dto.getId() );
+        tipoSituacao.setDescricao( dto.getDescricao() );
 
         return tipoSituacao;
     }
 
     @Override
-    public TipoSituacaoDTO toDto(TipoSituacao arg0) {
-        if ( arg0 == null ) {
+    public TipoSituacaoDTO toDto(TipoSituacao entity) {
+        if ( entity == null ) {
             return null;
         }
 
         TipoSituacaoDTO tipoSituacaoDTO = new TipoSituacaoDTO();
 
-        tipoSituacaoDTO.setId( arg0.getId() );
-        tipoSituacaoDTO.setDescricao( arg0.getDescricao() );
+        tipoSituacaoDTO.setId( entity.getId() );
+        tipoSituacaoDTO.setDescricao( entity.getDescricao() );
 
         return tipoSituacaoDTO;
     }
 
     @Override
-    public List<TipoSituacao> toEntity(List<TipoSituacaoDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<TipoSituacao> toEntity(List<TipoSituacaoDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<TipoSituacao> list = new ArrayList<TipoSituacao>( arg0.size() );
-        for ( TipoSituacaoDTO tipoSituacaoDTO : arg0 ) {
+        List<TipoSituacao> list = new ArrayList<TipoSituacao>( dtoList.size() );
+        for ( TipoSituacaoDTO tipoSituacaoDTO : dtoList ) {
             list.add( toEntity( tipoSituacaoDTO ) );
         }
 
@@ -58,13 +58,13 @@ public class TipoSituacaoMapperImpl implements TipoSituacaoMapper {
     }
 
     @Override
-    public List<TipoSituacaoDTO> toDto(List<TipoSituacao> arg0) {
-        if ( arg0 == null ) {
+    public List<TipoSituacaoDTO> toDto(List<TipoSituacao> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<TipoSituacaoDTO> list = new ArrayList<TipoSituacaoDTO>( arg0.size() );
-        for ( TipoSituacao tipoSituacao : arg0 ) {
+        List<TipoSituacaoDTO> list = new ArrayList<TipoSituacaoDTO>( entityList.size() );
+        for ( TipoSituacao tipoSituacao : entityList ) {
             list.add( toDto( tipoSituacao ) );
         }
 
