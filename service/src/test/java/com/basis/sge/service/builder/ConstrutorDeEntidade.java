@@ -35,7 +35,7 @@ public abstract class ConstrutorDeEntidade<E> {
      * @param customizacao customizacao
      * @return entidade customizada
      */
-    public com.basis.sge.service.builder.ConstrutorDeEntidade<E> customizar(CustomizacaoEntidade<E> customizacao) {
+    public ConstrutorDeEntidade<E> customizar(CustomizacaoEntidade<E> customizacao) {
         this.customizacao = customizacao;
         return this;
     }

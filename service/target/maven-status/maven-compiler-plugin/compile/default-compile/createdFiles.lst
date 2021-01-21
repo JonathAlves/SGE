@@ -17,11 +17,17 @@ com/basis/sge/service/servico/InscricaoRespostaServico.class
 com/basis/sge/service/servico/dto/PerguntaDTO.class
 com/basis/sge/service/repositorio/UsuarioRepositorio.class
 com/basis/sge/service/servico/mapper/EventoMapper.class
+<<<<<<< HEAD
+com/basis/sge/service/servico/mapper/InscricaoMapperImpl.class
+com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.class
+com/basis/sge/service/dominio/EventoPerguntaId.class
+=======
 com/basis/sge/service/servico/EmailServico.class
 com/basis/sge/service/servico/mapper/InscricaoMapperImpl.class
 com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.class
 com/basis/sge/service/dominio/EventoPerguntaId.class
 com/basis/sge/service/configuracao/ApplicationProperties.class
+>>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
 com/basis/sge/service/dominio/InscricaoResposta.class
 com/basis/sge/service/servico/dto/EventoDTO.class
 com/basis/sge/service/dominio/EventoPergunta.class
@@ -38,8 +44,11 @@ com/basis/sge/service/servico/mapper/TipoSituacaoMapper.class
 com/basis/sge/service/dominio/IdInscricaoResposta.class
 com/basis/sge/service/servico/PerguntaServico.class
 com/basis/sge/service/recurso/PerguntaRecurso.class
-com/basis/sge/service/servico/mapper/PerguntaMapperImpl.class
 com/basis/sge/service/servico/RegraNegocioException.class
+<<<<<<< HEAD
+com/basis/sge/service/servico/mapper/PerguntaMapperImpl.class
+=======
+>>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
 com/basis/sge/service/recurso/InscricaoRespostaRecurso.class
 com/basis/sge/service/recurso/InscricaoRecurso.class
 com/basis/sge/service/servico/EventoServico.class
@@ -47,8 +56,18 @@ com/basis/sge/service/servico/dto/InscricaoDTO.class
 com/basis/sge/service/servico/mapper/InscricaoMapper.class
 com/basis/sge/service/repositorio/EventoRepositorio.class
 com/basis/sge/service/servico/mapper/EntityMapper.class
+<<<<<<< HEAD
+com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
+com/basis/sge/service/servico/TipoSituacaoServico.class
+com/basis/sge/service/servico/InscricaoServico.class
+=======
 com/basis/sge/service/servico/TipoSituacaoServico.class
 com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/servico/InscricaoServico.class
+<<<<<<< HEAD
+=======
+com/basis/sge/service/utils/EmailUtils.class
+>>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
+>>>>>>> 0fa98efb43e19289c6f62be56eb3651962aa84f8
 com/basis/sge/service/recurso/TipoSituacaoRecurso.class
 com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class

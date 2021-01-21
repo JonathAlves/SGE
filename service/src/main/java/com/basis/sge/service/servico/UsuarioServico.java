@@ -34,14 +34,12 @@ public class UsuarioServico {
     }
 
 
-
-
-
-
     public UsuarioDTO adicionar (UsuarioDTO usuarioDTO){
         if(usuarioDTO.getId() != null){
             obterPorId(usuarioDTO.getId());
             verificarUsuarioAtualizar(usuarioDTO);
+
+        verificarUsuarioAtualizar(usuarioDTO);
 
         }else
             verificarUsuario(usuarioDTO);
@@ -64,6 +62,7 @@ public class UsuarioServico {
         usuarioRepositorio.deleteById(id);
     }
 
+
         public void verificarUsuario (UsuarioDTO usuarioDTO){
 
                      if (usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null)
@@ -74,9 +73,6 @@ public class UsuarioServico {
 
                     }
                 }
-
-
-
 
 
 

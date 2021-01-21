@@ -28,22 +28,14 @@ public class TipoSituacaoServico {
         return tipoSituacaoMapper.toDto(tipoSituacao);
     }
 
-    public TipoSituacaoDTO salvar(TipoSituacaoDTO tipoSituacaoDTO){
-        TipoSituacao tipoSituacao = tipoSituacaoRepositorio.findById(tipoSituacaoDTO.getId()).orElseThrow(() -> new RegraNegocioException("Tipo de situação não encontrado!"));
-
-        if(tipoSituacao != null){
-            throw new RegraNegocioException("Situação já cadastrada!");
-        }
-        return tipoSituacaoMapper.toDto(tipoSituacao);
-    }
 
     public TipoSituacaoDTO editar(TipoSituacaoDTO tipoSituacaoDTO){
         TipoSituacao tipoSituacao = tipoSituacaoRepositorio.findById(tipoSituacaoDTO.getId()).orElseThrow(() -> new RegraNegocioException("Tipo de situação não encontrado!"));
         return tipoSituacaoMapper.toDto(tipoSituacao);
     }
 
-    public void remover(Integer id){
-        TipoSituacao tipoSituacao = tipoSituacaoRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Não foi encontrada situação correspondente"));
-        System.out.println("Situação removida!");
-    }
+//    public void remover(Integer id){
+//        TipoSituacao tipoSituacao = tipoSituacaoRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Não foi encontrada situação correspondente"));
+//        System.out.println("Situação removida!");
+//    }
 }

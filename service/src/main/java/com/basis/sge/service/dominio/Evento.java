@@ -18,6 +18,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -34,23 +36,23 @@ public class Evento implements Serializable {
     @Column (name = "titulo")
     private String titulo;
 
-    @Column (name = "datahora_inicio")
-    private Timestamp datahoraInicio;
+    @Column (name = "data_inicio")
+    private LocalDateTime dataInicio;
 
-    @Column (name = "datahora_final")
-    private Timestamp datahoraFinal;
+    @Column (name = "data_termino")
+    private LocalDateTime dataTermino;
 
     @Column (name = "descricao")
     private String descricao;
 
-    @Column (name = "quantidade_vaga")
-    private Integer quantidadeVaga;
+    @Column (name = "qt_vagas")
+    private Integer qtVagas;
 
     @Column (name = "valor")
     private Double valor;
 
-    @Column (name = "local_evento")
-    private String localEvento;
+    @Column (name = "local")
+    private String local;
 
     @Column (name = "tipo_inscricao")
     private Boolean tipoInscricao;
@@ -59,8 +61,8 @@ public class Evento implements Serializable {
     @JoinColumn(name = "id_tipo_evento")
     private TipoEvento tipoEvento;
 
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "evento")
-    private List<EventoPergunta> perguntas;
+//    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "evento")
+//    private List<EventoPergunta> perguntas = new ArrayList<>();
 
 
 }
