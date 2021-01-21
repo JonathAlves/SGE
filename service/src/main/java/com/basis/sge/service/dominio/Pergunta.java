@@ -33,11 +33,7 @@ public class Pergunta implements Serializable {
     @Column(name = "titulo")
     private String titulo;
 
-    @Column(name = "obrigatoria")
-    private Boolean obrigatoria;
+    @Column(name = "obrigatoriedade")
+    private Boolean obrigatoriedade;
 
-    /*@OneToMany
-    @JoinColumn(name = "id_pergunta")
-    private List<InscricaoResposta> inscricaoRespostas;
-*/
 }
