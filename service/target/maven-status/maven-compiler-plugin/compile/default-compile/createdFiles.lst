@@ -50,6 +50,5 @@ com/basis/sge/service/servico/mapper/EntityMapper.class
 com/basis/sge/service/servico/TipoSituacaoServico.class
 com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/servico/InscricaoServico.class
-com/basis/sge/service/utils/EmailUtils.class
 com/basis/sge/service/recurso/TipoSituacaoRecurso.class
 com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class

@@ -5,8 +5,9 @@ import com.basis.sge.service.repositorio.UsuarioRepositorio;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
 import com.basis.sge.service.util.IntTestComum;
 import com.basis.sge.service.util.TestUtil;
-import org.junit.Test;
+import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -20,7 +21,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @RunWith(SpringRunner.class)
 @Transactional
-
 public class UsuarioRecursoIT extends IntTestComum {
     @Autowired
     private UsuarioBuilder usuarioBuilder;
@@ -35,6 +35,8 @@ public class UsuarioRecursoIT extends IntTestComum {
         usuarioRepositorio.deleteAll();
     }
 
+
+
     @Test
     public void listarTeste() throws Exception {
         Usuario usuario = usuarioBuilder.construir();
@@ -42,7 +44,6 @@ public class UsuarioRecursoIT extends IntTestComum {
         getMockMvc().perform(get("/api/usuarios"))
                 .andExpect(status().isOk());
     }
-
     @Test
     public void salvarTeste() throws Exception {
         Usuario usuario = usuarioBuilder.construirEntidade();
@@ -51,12 +52,17 @@ public class UsuarioRecursoIT extends IntTestComum {
                 .content(TestUtil.convertObjectToJsonBytes(usuarioMapper.toDto(usuario))))
                 .andExpect(status().isCreated());
     }
+
+
+
     @Test
     public void editarTeste() throws Exception {
         Usuario usuario = usuarioBuilder.construir();
+        usuario.setCpf("61256835080");
         usuario.setNome("Alterando Nome");
         usuario.setEmail("alterandoemail@gmail.com");
-        usuario.setCpf("55264267006");
+
+
 
         getMockMvc().perform(put("/api/usuarios")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -89,7 +95,7 @@ public class UsuarioRecursoIT extends IntTestComum {
     public void erroIdInexistente() throws Exception{
         Usuario usuario = usuarioBuilder.construir();
         usuario.setId(111);
-        getMockMvc().perform(get("/api/usuarios" + usuario.getId()))
+        getMockMvc().perform(get("/api/usuarios/" + usuario.getId()))
                 .andExpect(status().isBadRequest());
 
     }
@@ -97,15 +103,17 @@ public class UsuarioRecursoIT extends IntTestComum {
     @Test
     public void idTeste() throws Exception{
         Usuario usuario = usuarioBuilder.construir();
-        getMockMvc().perform(get("/api/usuarios" + usuario.getId()))
+        getMockMvc().perform(get("/api/usuarios/" + usuario.getId()))
                 .andExpect(status().isOk());
 
     }
     @Test
     public void deletarTeste() throws Exception{
         Usuario usuario = usuarioBuilder.construir();
-        getMockMvc().perform(delete("/api/usuarios" + usuario.getId()))
+        getMockMvc().perform(delete("/api/usuarios/" + usuario.getId()))
                 .andExpect(status().isOk());
+        Assert.assertEquals(0, usuarioRepositorio.findAll().size());
+
 
     }
 }
