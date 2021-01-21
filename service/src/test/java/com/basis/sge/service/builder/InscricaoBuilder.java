@@ -44,7 +44,12 @@ public class InscricaoBuilder extends ConstrutorDeEntidade<Inscricao> {
     }
 
     @Override
-    protected Inscricao obterPorId(Long id) {
-        return null;
+    protected Inscricao obterPorId(Integer id) {
+        InscricaoDTO inscricao = inscricaoServico.obterPorId(id);
+        return inscricaoMapper.toEntity(inscricao);
+    }
+
+    protected void removerPorId(Integer id){
+        inscricaoServico.remover(id);
     }
 }
