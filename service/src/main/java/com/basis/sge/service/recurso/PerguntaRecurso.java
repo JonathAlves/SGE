@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -24,33 +26,31 @@ public class PerguntaRecurso {
 
     @GetMapping
     public ResponseEntity<List<PerguntaDTO>> listar(){
-        List list = perguntaServico.listar();
-        return ResponseEntity.ok(list);
+        return ResponseEntity.ok(perguntaServico.listar());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PerguntaDTO> obterPorId(@PathVariable Integer Id){
-        PerguntaDTO perguntaDTO = perguntaServico.obterPorId(Id);
+    public ResponseEntity<PerguntaDTO> obterPorId(@PathVariable Integer id){
+        PerguntaDTO perguntaDTO = perguntaServico.obterPorId(id);
         return ResponseEntity.ok(perguntaDTO);
     }
 
     @PostMapping
-    public ResponseEntity<PerguntaDTO> salvar(@RequestBody PerguntaDTO perguntaDTO){
-        PerguntaDTO pergunta = perguntaServico.salvar(perguntaDTO);
-        return ResponseEntity.ok(pergunta);
+    public ResponseEntity<PerguntaDTO> salvar(@RequestBody PerguntaDTO perguntaDTO) throws URISyntaxException {
+        PerguntaDTO perguntaDTOSalvo = perguntaServico.salvar(perguntaDTO);
+        return ResponseEntity.created(new URI("/api/perguntas")).body(perguntaDTOSalvo);
     }
 
     @PutMapping
-    public ResponseEntity<PerguntaDTO> editar(@PathVariable PerguntaDTO perguntaDTO){
-        perguntaServico.obterPorId(perguntaDTO.getId());
+    public ResponseEntity<PerguntaDTO> editar(@RequestBody PerguntaDTO perguntaDTO){
         PerguntaDTO dto = perguntaServico.salvar(perguntaDTO);
-        return ResponseEntity.ok(perguntaDTO);
+        return ResponseEntity.ok(dto);
     }
 
-    @DeleteMapping
-    public ResponseEntity<PerguntaDTO> remover(@PathVariable Integer Id){
-        perguntaServico.remover(Id);
-        return ResponseEntity.ok().build();
+    @DeleteMapping ("/{id}")
+    public void remover(@PathVariable Integer id){
+        perguntaServico.remover(id);
+
     }
 
 }

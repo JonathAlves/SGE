@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
 <<<<<<< HEAD
+    date = "2021-01-21T15:40:35-0300",
+=======
+<<<<<<< HEAD
     date = "2021-01-21T15:07:40-0300",
 =======
 <<<<<<< HEAD
@@ -22,6 +25,7 @@ import org.springframework.stereotype.Component;
 >>>>>>> 51c233f465907d7461f9d5d781a4680b57f1e1e2
 >>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
 >>>>>>> 0fa98efb43e19289c6f62be56eb3651962aa84f8
+>>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -37,6 +41,7 @@ public class PerguntaMapperImpl implements PerguntaMapper {
 
         pergunta.setId( dto.getId() );
         pergunta.setTitulo( dto.getTitulo() );
+        pergunta.setObrigatoriedade( dto.getObrigatoriedade() );
 
         return pergunta;
     }
@@ -51,6 +56,7 @@ public class PerguntaMapperImpl implements PerguntaMapper {
 
         perguntaDTO.setId( entity.getId() );
         perguntaDTO.setTitulo( entity.getTitulo() );
+        perguntaDTO.setObrigatoriedade( entity.getObrigatoriedade() );
 
         return perguntaDTO;
     }

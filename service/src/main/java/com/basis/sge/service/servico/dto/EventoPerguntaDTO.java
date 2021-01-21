@@ -11,7 +11,6 @@ import lombok.Setter;
 @Setter
 public class EventoPerguntaDTO {
 
-    private EventoPerguntaId id;
     private Evento evento;
     private Pergunta pergunta;
 }
