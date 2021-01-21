@@ -1,1 +1,9 @@
+com/basis/sge/service/recurso/UsuarioRecursoIT.class
+com/basis/sge/service/util/IntTestComum.class
+com/basis/sge/service/util/TestUtil.class
+com/basis/sge/service/builder/ConstrutorDeEntidade.class
+com/basis/sge/service/builder/InscricaoBuilder.class
+com/basis/sge/service/builder/UsuarioBuilder.class
+com/basis/sge/service/builder/CustomizacaoEntidade.class
+com/basis/sge/service/util/TestUtil$ZonedDateTimeMatcher.class
 com/basis/sge/service/ServiceApplicationTests.class

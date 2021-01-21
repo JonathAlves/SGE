@@ -1,16 +1,12 @@
 package com.basis.sge.service.recurso;
 
 
-import com.basis.sge.service.dominio.Inscricao;
 import com.basis.sge.service.servico.InscricaoServico;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
 import java.util.List;
-import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping("/api/inscricoes")
@@ -33,9 +29,9 @@ public class InscricaoRecurso   {
     }
 
     @PostMapping
-    public ResponseEntity <InscricaoDTO> criar(@RequestBody InscricaoDTO inscricaoDTO) throws URISyntaxException {
+    public ResponseEntity <InscricaoDTO> salvar(@RequestBody InscricaoDTO inscricaoDTO){
         InscricaoDTO inscricao = inscricaoServico.salvar(inscricaoDTO);
-        return ResponseEntity.created(new URI("/api/inscricoes")).body(inscricao);
+        return ResponseEntity.ok(inscricao);
     }
 
     @PutMapping

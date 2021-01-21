@@ -1,11 +1,22 @@
 package com.basis.sge.service.servico;
 import com.basis.sge.service.dominio.Inscricao;
+import com.basis.sge.service.dominio.InscricaoResposta;
+import com.basis.sge.service.dominio.TipoSituacao;
 import com.basis.sge.service.repositorio.InscricaoRepositorio;
+import com.basis.sge.service.repositorio.InscricaoRespostaRepositorio;
+import com.basis.sge.service.repositorio.TipoSituacaoRepositorio;
+import com.basis.sge.service.repositorio.UsuarioRepositorio;
+import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
+import com.basis.sge.service.servico.dto.TipoSituacaoDTO;
 import com.basis.sge.service.servico.mapper.InscricaoMapper;
+//import com.basis.sge.service.utils.EmailUtils;
+import com.basis.sge.service.servico.mapper.TipoSituacaoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,6 +25,8 @@ import java.util.List;
 public class InscricaoServico {
     private final InscricaoRepositorio inscricaoRepositorio;
     private final InscricaoMapper inscricaoMapper;
+    private final TipoSituacaoRepositorio tipoSituacaoRepositorio;
+    private final TipoSituacaoMapper tipoSituacaoMapper;
 
     public List<InscricaoDTO> listar(){
         List<Inscricao> inscricoes = inscricaoRepositorio.findAll();
@@ -28,10 +41,17 @@ public class InscricaoServico {
 
     public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){
         Inscricao inscricao = inscricaoMapper.toEntity(inscricaoDTO);
-
+        TipoSituacaoDTO tipoSituacaoDTO = new TipoSituacaoDTO();
+        TipoSituacao tipoSituacao = tipoSituacaoMapper.toEntity(tipoSituacaoDTO);
+        tipoSituacaoRepositorio.findById(tipoSituacao.getId());
+        inscricao.setTipoSituacao(tipoSituacao);
+        //Pegar id do DTO
+        //Pesquisar id no repositorio de TS
+        //Pegar TS e setar no dominio de inscricao
         inscricaoRepositorio.save(inscricao);
         return inscricaoMapper.toDto(inscricao);
     }
+
     public InscricaoDTO editar(InscricaoDTO inscricaoDTO){
         Inscricao inscricao = inscricaoRepositorio.findById(inscricaoDTO.getId()).orElseThrow(() -> new RegraNegocioException( "Inscrição não encontrada!"));
 
