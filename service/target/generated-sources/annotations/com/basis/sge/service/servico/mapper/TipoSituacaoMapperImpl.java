@@ -9,20 +9,24 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-21T16:58:01-0300",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.9.1 (Ubuntu)"
+<<<<<<< HEAD
+    date = "2021-01-21T15:07:40-0300",
+=======
+    date = "2021-01-20T15:48:02-0300",
+>>>>>>> 0fa98efb43e19289c6f62be56eb3651962aa84f8
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class TipoSituacaoMapperImpl implements TipoSituacaoMapper {
 
     @Override
-    public List<TipoSituacao> toEntity(List<TipoSituacaoDTO> dtoList) {
-        if ( dtoList == null ) {
+    public List<TipoSituacao> toEntity(List<TipoSituacaoDTO> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<TipoSituacao> list = new ArrayList<TipoSituacao>( dtoList.size() );
-        for ( TipoSituacaoDTO tipoSituacaoDTO : dtoList ) {
+        List<TipoSituacao> list = new ArrayList<TipoSituacao>( arg0.size() );
+        for ( TipoSituacaoDTO tipoSituacaoDTO : arg0 ) {
             list.add( toEntity( tipoSituacaoDTO ) );
         }
 
@@ -30,13 +34,13 @@ public class TipoSituacaoMapperImpl implements TipoSituacaoMapper {
     }
 
     @Override
-    public List<TipoSituacaoDTO> toDto(List<TipoSituacao> entityList) {
-        if ( entityList == null ) {
+    public List<TipoSituacaoDTO> toDto(List<TipoSituacao> arg0) {
+        if ( arg0 == null ) {
             return null;
         }
 
-        List<TipoSituacaoDTO> list = new ArrayList<TipoSituacaoDTO>( entityList.size() );
-        for ( TipoSituacao tipoSituacao : entityList ) {
+        List<TipoSituacaoDTO> list = new ArrayList<TipoSituacaoDTO>( arg0.size() );
+        for ( TipoSituacao tipoSituacao : arg0 ) {
             list.add( toDto( tipoSituacao ) );
         }
 

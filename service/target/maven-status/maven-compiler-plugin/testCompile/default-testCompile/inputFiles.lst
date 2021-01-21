@@ -1,10 +1,15 @@
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/util/IntTestComum.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/builder/ConstrutorDeEntidade.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/builder/CustomizacaoEntidade.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/util/TestUtil.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/recurso/UsuarioRecursoIT.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/recurso/EventoRecursoIT.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/builder/EventoBuilder.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/builder/InscricaoBuilder.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/ServiceApplicationTests.java
-/home/alexandre/SGE/service/src/test/java/com/basis/sge/service/builder/UsuarioBuilder.java
+<<<<<<< HEAD
+/home/basis/SGE/service/src/test/java/com/basis/sge/service/recurso/UsuarioRecursoIT.java
+/home/basis/SGE/service/src/test/java/com/basis/sge/service/builder/CustomizacaoEntidade.java
+/home/basis/SGE/service/src/test/java/com/basis/sge/service/ServiceApplicationTests.java
+/home/basis/SGE/service/src/test/java/com/basis/sge/service/builder/ConstrutorDeEntidade.java
+/home/basis/SGE/service/src/test/java/com/basis/sge/service/util/IntTestComum.java
+/home/basis/SGE/service/src/test/java/com/basis/sge/service/builder/UsuarioBuilder.java
+/home/basis/SGE/service/src/test/java/com/basis/sge/service/util/TestUtil.java
+=======
+<<<<<<< HEAD
+/home/jonathan/SGE/service/src/test/java/com/basis/sge/service/ServiceApplicationTests.java
+=======
+/home/basis/SGE/service/src/test/java/com/basis/sge/service/ServiceApplicationTests.java
+>>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
+>>>>>>> 0fa98efb43e19289c6f62be56eb3651962aa84f8

@@ -5,12 +5,13 @@ import com.basis.sge.service.servico.UsuarioServico;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
-
+@Component
 public class UsuarioBuilder extends ConstrutorDeEntidade<Usuario> {
 
     @Autowired
@@ -21,7 +22,7 @@ public class UsuarioBuilder extends ConstrutorDeEntidade<Usuario> {
 
 
     @Override
-    protected Usuario construirEntidade() throws ParseException {
+    public Usuario construirEntidade() throws ParseException {
         Usuario usuario = new Usuario();
         usuario.setNome("Tiaguin");
         usuario.setCpf("70180211030");
@@ -35,7 +36,7 @@ public class UsuarioBuilder extends ConstrutorDeEntidade<Usuario> {
     @Override
     protected Usuario persistir(Usuario entidade) {
         UsuarioDTO usuarioDTO = usuarioMapper.toDto(entidade);
-        UsuarioDTO salvo = usuarioServico.salvar(usuarioDTO);
+        UsuarioDTO salvo = usuarioServico.adicionar(usuarioDTO);
         return usuarioMapper.toEntity(salvo);
     }
 
@@ -50,4 +51,10 @@ public class UsuarioBuilder extends ConstrutorDeEntidade<Usuario> {
        UsuarioDTO usuario = usuarioServico.obterPorId(id);
        return usuarioMapper.toEntity(usuario);
     }
+
+    protected void deletarPorId(Integer id){
+        usuarioServico.remover(id);
+    }
+
+
 }
