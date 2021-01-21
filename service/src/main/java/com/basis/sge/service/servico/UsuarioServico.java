@@ -74,7 +74,7 @@ public class UsuarioServico {
 
         usuarioRepositorio.deleteById(id);
        }
-      
+
 
 
 
