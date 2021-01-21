@@ -2,6 +2,7 @@ package com.basis.sge.service.recurso;
 
 import com.basis.sge.service.servico.EventoServico;
 import com.basis.sge.service.servico.dto.EventoDTO;
+import com.basis.sge.service.servico.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -37,20 +41,20 @@ public class EventoRecurso {
 
 
     @PostMapping
-    public ResponseEntity<EventoDTO> salvar(@RequestBody EventoDTO entidadeDTO) {
-        EventoDTO entidade = eventoServico.salvar(entidadeDTO);
-        return ResponseEntity.ok(entidade);
+    public ResponseEntity<EventoDTO> salvar(@RequestBody EventoDTO eventoDTO) {
+        EventoDTO evento = eventoServico.salvar(eventoDTO);
+        return ResponseEntity.ok(evento);
     }
 
     @PutMapping
-    public ResponseEntity<EventoDTO> editar(@RequestBody EventoDTO entidadeDTO) {
-        EventoDTO entidade = eventoServico.salvar(entidadeDTO);
+    public ResponseEntity<EventoDTO> editar(@RequestBody EventoDTO eventoDTO) {
+        EventoDTO entidade = eventoServico.editar(eventoDTO);
         return ResponseEntity.ok(entidade);
     }
 
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable Integer id) {
+    public void remover(@PathVariable Integer id) {
         eventoServico.remover(id);
-        return ResponseEntity.ok().build();
     }
 }
