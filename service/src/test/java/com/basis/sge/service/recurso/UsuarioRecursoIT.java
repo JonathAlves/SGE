@@ -54,16 +54,13 @@ public class UsuarioRecursoIT extends IntTestComum {
     }
 
 
-
     @Test
     public void editarTeste() throws Exception {
         Usuario usuario = usuarioBuilder.construir();
         usuario.setCpf("61256835080");
         usuario.setNome("Alterando Nome");
         usuario.setEmail("alterandoemail@gmail.com");
-
-
-
+        
         getMockMvc().perform(put("/api/usuarios")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(usuarioMapper.toDto(usuario))))

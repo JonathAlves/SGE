@@ -53,7 +53,7 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(usuario);
 
         }
-        
+
 
         @DeleteMapping("/{id}")
         public void deletar (@PathVariable Integer id){

@@ -44,7 +44,7 @@ public class InscricaoBuilder extends ConstrutorDeEntidade<Inscricao> {
     }
 
     @Override
-    protected Inscricao obterPorId(Long id) {
+    protected Inscricao obterPorId(Integer id) {
         return null;
     }
 }
