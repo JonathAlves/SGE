@@ -38,12 +38,14 @@ public class EventoServico {
     }
 
     public EventoDTO salvar(EventoDTO eventoDTO) {
+        Evento evento = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
+                -> new com.basis.sge.service.servico.RegraNegocioException( "Evento não encontrado!"));
         verificaTitulo(eventoDTO.getTitulo());
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
 
-        Evento evento = eventoMapper.toEntity(eventoDTO);
-        eventoRepositorio.save(evento);
-        return eventoMapper.toDto(evento);
+        Evento novoEvento = eventoMapper.toEntity(eventoDTO);
+        eventoRepositorio.save(novoEvento);
+        return eventoMapper.toDto(novoEvento);
     }
 
     public EventoDTO editar(EventoDTO eventoDTO) {
@@ -71,7 +73,7 @@ public class EventoServico {
         verificaIdEvento(id);
         eventoRepositorio.deleteById(id);
     }
-    //Verifica se o titulo do evento já existe ou esta vazio, em caso positivo solta a exceção
+    //Verifica se o titulo do evento já existe
     public void verificaTitulo(String titulo){
         if (eventoRepositorio.existsByTitulo(titulo)){
             throw new RegraNegocioException("Um evento com esse titulo já existe");
