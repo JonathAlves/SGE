@@ -1,5 +1,6 @@
 package com.basis.sge.service.recurso;
 
+import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.UsuarioServico;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -37,8 +39,8 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(list);
     }
 
-    @GetMapping("/{id}")
-    public  ResponseEntity<UsuarioDTO> obterPorId(@PathVariable Integer id){
+    @GetMapping ("/{id}")
+    public  ResponseEntity<UsuarioDTO> buscar(@PathVariable Integer id){
         UsuarioDTO usuarioDTO = usuarioServico.obterPorId(id);
         return ResponseEntity.ok(usuarioDTO);
     }
@@ -48,31 +50,26 @@ public class UsuarioRecurso {
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
-        UsuarioDTO usuario = usuarioServico.criar(usuarioDTO);
-       return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
+        UsuarioDTO usuario = usuarioServico.salvar(usuarioDTO);
+        return ResponseEntity.created(new URI("/api/usuarios")).body(usuario);
     }
 
     @PutMapping
-    public ResponseEntity<UsuarioDTO> atualizarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO){
+    public ResponseEntity<UsuarioDTO> atualizar(@RequestBody UsuarioDTO usuarioDTO){
         UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);
         return ResponseEntity.ok(usuario);
 
     }
 
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable Integer id){
-        usuarioServico.remover(id);
-        return ResponseEntity.ok().build();
-    }
 
-
-
+    @DeleteMapping ("/{id}")
+    public void deletar(@PathVariable Integer id) {
+         usuarioServico.remover(id);
 
     }
 
 
 
 
-
-
+}

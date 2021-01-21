@@ -217,10 +217,8 @@
         <addPrimaryKey tableName="inscricao_resposta" columnNames="id_inscricao, id_evento, id_pergunta"  constraintName="pk_inscricao_resposta"/>
         <addForeignKeyConstraint baseTableName="inscricao_resposta" baseColumnNames="id_inscricao" constraintName="fk_inscricao_resposta_inscricao" referencedTableName="inscricao"
                                  referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="inscricao_resposta" baseColumnNames="id_evento" constraintName="fk_inscricao_resposta_evento_" referencedTableName="evento"
-                                 referencedColumnNames="id"/>
-        <addForeignKeyConstraint baseTableName="inscricao_resposta" baseColumnNames="id_pergunta" constraintName="fk_inscricao_resposta_pergunta" referencedTableName="pergunta"
-                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="inscricao_resposta" baseColumnNames="id_evento, id_pergunta" constraintName="fk_inscricao_resposta_evento_pergunta" referencedTableName="evento_pergunta"
+                                 referencedColumnNames="id_evento, id_pergunta"/>
     </changeSet>
 
 
