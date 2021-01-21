@@ -12,40 +12,15 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2021-01-20T13:40:26-0300",
-=======
-    date = "2021-01-20T14:52:57-0300",
->>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
+    date = "2021-01-20T15:48:01-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class InscricaoMapperImpl implements InscricaoMapper {
 
     @Override
-<<<<<<< HEAD
     public List<Inscricao> toEntity(List<InscricaoDTO> arg0) {
         if ( arg0 == null ) {
-=======
-    public Inscricao toEntity(InscricaoDTO dto) {
-        if ( dto == null ) {
-            return null;
-        }
-
-        Inscricao inscricao = new Inscricao();
-
-        inscricao.setId( dto.getId() );
-        inscricao.setIdEvento( dto.getIdEvento() );
-        inscricao.setIdUsuario( dto.getIdUsuario() );
-        inscricao.setIdTipoSituacao( dto.getIdTipoSituacao() );
-
-        return inscricao;
-    }
-
-    @Override
-    public InscricaoDTO toDto(Inscricao entity) {
-        if ( entity == null ) {
->>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
             return null;
         }
 
@@ -70,7 +45,6 @@ public class InscricaoMapperImpl implements InscricaoMapper {
 
         return list;
     }
-<<<<<<< HEAD
 
     @Override
     public Inscricao toEntity(InscricaoDTO inscricaoDTO) {
@@ -184,6 +158,4 @@ public class InscricaoMapperImpl implements InscricaoMapper {
         }
         return id;
     }
-=======
->>>>>>> 51bef42067148ae8ea03b4ee204ef80a18f8fbf9
 }
