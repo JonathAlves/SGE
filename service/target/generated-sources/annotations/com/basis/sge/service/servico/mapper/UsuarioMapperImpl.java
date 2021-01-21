@@ -9,56 +9,56 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-20T15:48:02-0300",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
+    date = "2021-01-21T16:58:01-0300",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.9.1 (Ubuntu)"
 )
 @Component
 public class UsuarioMapperImpl implements UsuarioMapper {
 
     @Override
-    public Usuario toEntity(UsuarioDTO arg0) {
-        if ( arg0 == null ) {
+    public Usuario toEntity(UsuarioDTO dto) {
+        if ( dto == null ) {
             return null;
         }
 
         Usuario usuario = new Usuario();
 
-        usuario.setId( arg0.getId() );
-        usuario.setNome( arg0.getNome() );
-        usuario.setCpf( arg0.getCpf() );
-        usuario.setEmail( arg0.getEmail() );
-        usuario.setTelefone( arg0.getTelefone() );
-        usuario.setDataNascimento( arg0.getDataNascimento() );
+        usuario.setId( dto.getId() );
+        usuario.setNome( dto.getNome() );
+        usuario.setCpf( dto.getCpf() );
+        usuario.setEmail( dto.getEmail() );
+        usuario.setTelefone( dto.getTelefone() );
+        usuario.setDataNascimento( dto.getDataNascimento() );
 
         return usuario;
     }
 
     @Override
-    public UsuarioDTO toDto(Usuario arg0) {
-        if ( arg0 == null ) {
+    public UsuarioDTO toDto(Usuario entity) {
+        if ( entity == null ) {
             return null;
         }
 
         UsuarioDTO usuarioDTO = new UsuarioDTO();
 
-        usuarioDTO.setId( arg0.getId() );
-        usuarioDTO.setCpf( arg0.getCpf() );
-        usuarioDTO.setNome( arg0.getNome() );
-        usuarioDTO.setDataNascimento( arg0.getDataNascimento() );
-        usuarioDTO.setTelefone( arg0.getTelefone() );
-        usuarioDTO.setEmail( arg0.getEmail() );
+        usuarioDTO.setId( entity.getId() );
+        usuarioDTO.setCpf( entity.getCpf() );
+        usuarioDTO.setNome( entity.getNome() );
+        usuarioDTO.setDataNascimento( entity.getDataNascimento() );
+        usuarioDTO.setTelefone( entity.getTelefone() );
+        usuarioDTO.setEmail( entity.getEmail() );
 
         return usuarioDTO;
     }
 
     @Override
-    public List<Usuario> toEntity(List<UsuarioDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Usuario> toEntity(List<UsuarioDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Usuario> list = new ArrayList<Usuario>( arg0.size() );
-        for ( UsuarioDTO usuarioDTO : arg0 ) {
+        List<Usuario> list = new ArrayList<Usuario>( dtoList.size() );
+        for ( UsuarioDTO usuarioDTO : dtoList ) {
             list.add( toEntity( usuarioDTO ) );
         }
 
@@ -66,13 +66,13 @@ public class UsuarioMapperImpl implements UsuarioMapper {
     }
 
     @Override
-    public List<UsuarioDTO> toDto(List<Usuario> arg0) {
-        if ( arg0 == null ) {
+    public List<UsuarioDTO> toDto(List<Usuario> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<UsuarioDTO> list = new ArrayList<UsuarioDTO>( arg0.size() );
-        for ( Usuario usuario : arg0 ) {
+        List<UsuarioDTO> list = new ArrayList<UsuarioDTO>( entityList.size() );
+        for ( Usuario usuario : entityList ) {
             list.add( toDto( usuario ) );
         }
 

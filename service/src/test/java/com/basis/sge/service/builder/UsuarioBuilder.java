@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
-public class UsuarioBuilder extends ConstrutorDeEntidade<Usuario {
+public class UsuarioBuilder extends ConstrutorDeEntidade<Usuario> {
 
     @Autowired
     private  UsuarioMapper usuarioMapper;

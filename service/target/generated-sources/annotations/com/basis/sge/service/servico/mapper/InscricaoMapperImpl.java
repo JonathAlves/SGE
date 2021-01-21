@@ -12,20 +12,20 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-20T15:48:01-0300",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
+    date = "2021-01-21T16:58:01-0300",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.9.1 (Ubuntu)"
 )
 @Component
 public class InscricaoMapperImpl implements InscricaoMapper {
 
     @Override
-    public List<Inscricao> toEntity(List<InscricaoDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Inscricao> toEntity(List<InscricaoDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Inscricao> list = new ArrayList<Inscricao>( arg0.size() );
-        for ( InscricaoDTO inscricaoDTO : arg0 ) {
+        List<Inscricao> list = new ArrayList<Inscricao>( dtoList.size() );
+        for ( InscricaoDTO inscricaoDTO : dtoList ) {
             list.add( toEntity( inscricaoDTO ) );
         }
 
@@ -33,13 +33,13 @@ public class InscricaoMapperImpl implements InscricaoMapper {
     }
 
     @Override
-    public List<InscricaoDTO> toDto(List<Inscricao> arg0) {
-        if ( arg0 == null ) {
+    public List<InscricaoDTO> toDto(List<Inscricao> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<InscricaoDTO> list = new ArrayList<InscricaoDTO>( arg0.size() );
-        for ( Inscricao inscricao : arg0 ) {
+        List<InscricaoDTO> list = new ArrayList<InscricaoDTO>( entityList.size() );
+        for ( Inscricao inscricao : entityList ) {
             list.add( toDto( inscricao ) );
         }
 
