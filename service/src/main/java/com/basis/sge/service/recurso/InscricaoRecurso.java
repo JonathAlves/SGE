@@ -33,7 +33,7 @@ public class InscricaoRecurso   {
     }
 
     @PostMapping
-    public ResponseEntity <InscricaoDTO> salvar(@RequestBody InscricaoDTO inscricaoDTO) throws URISyntaxException {
+    public ResponseEntity <InscricaoDTO> criar(@RequestBody InscricaoDTO inscricaoDTO) throws URISyntaxException {
         InscricaoDTO inscricao = inscricaoServico.salvar(inscricaoDTO);
         return ResponseEntity.created(new URI("/api/inscricoes")).body(inscricao);
     }

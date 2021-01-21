@@ -26,34 +26,34 @@
             <column name="titulo" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="datahora_inicio" type="timestamp">
+            <column name="data_inicio" type="timestamp">
                 <constraints nullable="false"/>
             </column>
-            <column name="datahora_final" type="timestamp">
+            <column name="data_termino" type="timestamp">
                 <constraints nullable="false"/>
             </column>
             <column name="descricao" type="text">
                 <constraints nullable="false"/>
             </column>
-            <column name="id_tipo_evento" type="number">
-                <constraints nullable="false"/>
-            </column>
-            <column name="quantidade_vaga" type="NUMBER">
+            <column name="qt_vagas" type="NUMBER">
                 <constraints nullable="true"/>
             </column>
             <column name="valor" type="double">
                 <constraints nullable="true"/>
             </column>
-            <column name="local_evento" type="VARCHAR(255)">
+            <column name="local" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
             <column name="tipo_inscricao" type="boolean">
                 <constraints nullable="false"/>
             </column>
+            <column name="id_tipo_evento" type="number">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <addPrimaryKey tableName="evento" columnNames="id" constraintName="pk_evento"/>
-        <createSequence sequenceName="sq_evento" cycle="false" cacheSize="20" incrementBy="1" startValue="1"/>
+        <createSequence sequenceName="sq_evento" incrementBy="1" startValue="1"/>
         <addForeignKeyConstraint baseTableName="evento" baseColumnNames="id_tipo_evento"
                                  constraintName="fk_tipo_evento" referencedTableName="tipo_evento"
                                  referencedColumnNames="id"/>
@@ -219,17 +219,28 @@
                                  referencedColumnNames="id"/>
         <addForeignKeyConstraint baseTableName="inscricao_resposta" baseColumnNames="id_evento, id_pergunta" constraintName="fk_inscricao_resposta_evento_pergunta" referencedTableName="evento_pergunta"
                                  referencedColumnNames="id_evento, id_pergunta"/>
-
     </changeSet>
 
 
+    <changeSet id="9" author="alexandre.oliveira">
+        <insert tableName="tipo_evento">
+            <column name="id" value="1"/>
+            <column name="descricao" value="Workshop" />
+        </insert>
+        <insert tableName="tipo_evento">
+            <column name="id" value="2"/>
+            <column name="descricao" value="Minicurso" />
+        </insert>
+        <insert tableName="tipo_evento">
+            <column name="id" value="3"/>
+            <column name="descricao" value="Treinamento" />
+        </insert>
+        <insert tableName="tipo_evento">
+            <column name="id" value="4"/>
+            <column name="descricao" value="Palestra" />
+        </insert>
 
-
-
-
-
-
-
+    </changeSet>
 
 
 

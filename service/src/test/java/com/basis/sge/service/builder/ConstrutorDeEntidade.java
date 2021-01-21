@@ -35,7 +35,11 @@ public abstract class ConstrutorDeEntidade<E> {
      * @param customizacao customizacao
      * @return entidade customizada
      */
+<<<<<<< HEAD
     public com.basis.sge.service.builder.ConstrutorDeEntidade<E> customizar(CustomizacaoEntidade<E> customizacao) {
+=======
+    public ConstrutorDeEntidade<E> customizar(CustomizacaoEntidade<E> customizacao) {
+>>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
         this.customizacao = customizacao;
         return this;
     }
@@ -73,7 +77,11 @@ public abstract class ConstrutorDeEntidade<E> {
      * @param id id
      * @return entidade persistida
      */
+<<<<<<< HEAD
     protected abstract E obterPorId(Long id);
+=======
+    protected abstract E obterPorId(Integer id);
+>>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 
     /**
      * Is customizado boolean.

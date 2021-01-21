@@ -11,9 +11,9 @@ import java.io.Serializable;
 @Setter
 public class InscricaoDTO implements Serializable {
     private Integer id;
-    private Usuario idUsuario;
-    private Evento idEvento;
-    private TipoSituacao idTipoSituacao;
+    private Integer idUsuario;
+    private Integer idEvento;
+    private Integer idTipoSituacao;
     private String pergunta;
 
 }
