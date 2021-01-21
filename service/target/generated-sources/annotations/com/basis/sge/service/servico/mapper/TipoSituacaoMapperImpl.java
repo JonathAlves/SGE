@@ -9,11 +9,25 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-01-20T23:43:04-0300",
+    date = "2021-01-21T00:44:15-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class TipoSituacaoMapperImpl implements TipoSituacaoMapper {
+
+    @Override
+    public TipoSituacao toEntity(TipoSituacaoDTO dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        TipoSituacao tipoSituacao = new TipoSituacao();
+
+        tipoSituacao.setId( dto.getId() );
+        tipoSituacao.setDescricao( dto.getDescricao() );
+
+        return tipoSituacao;
+    }
 
     @Override
     public TipoSituacaoDTO toDto(TipoSituacao entity) {
@@ -55,19 +69,5 @@ public class TipoSituacaoMapperImpl implements TipoSituacaoMapper {
         }
 
         return list;
-    }
-
-    @Override
-    public TipoSituacao toEntity(TipoSituacaoDTO tipoSituacaoDTO) {
-        if ( tipoSituacaoDTO == null ) {
-            return null;
-        }
-
-        TipoSituacao tipoSituacao = new TipoSituacao();
-
-        tipoSituacao.setId( tipoSituacaoDTO.getId() );
-        tipoSituacao.setDescricao( tipoSituacaoDTO.getDescricao() );
-
-        return tipoSituacao;
     }
 }
