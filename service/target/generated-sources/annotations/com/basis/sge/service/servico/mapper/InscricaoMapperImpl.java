@@ -13,14 +13,10 @@ import org.springframework.stereotype.Component;
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
 <<<<<<< HEAD
-    date = "2021-01-21T15:40:35-0300",
-=======
-<<<<<<< HEAD
     date = "2021-01-21T15:07:40-0300",
 =======
     date = "2021-01-20T15:48:01-0300",
 >>>>>>> 0fa98efb43e19289c6f62be56eb3651962aa84f8
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -62,14 +58,10 @@ public class InscricaoMapperImpl implements InscricaoMapper {
 
         Inscricao inscricao = new Inscricao();
 
-<<<<<<< HEAD
-        inscricao.setId( dto.getId() );
-=======
         inscricao.setTipoSituacao( inscricaoDTOToTipoSituacao( inscricaoDTO ) );
         inscricao.setUsuario( inscricaoDTOToUsuario( inscricaoDTO ) );
         inscricao.setEvento( inscricaoDTOToEvento( inscricaoDTO ) );
         inscricao.setId( inscricaoDTO.getId() );
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 
         return inscricao;
     }
@@ -82,14 +74,10 @@ public class InscricaoMapperImpl implements InscricaoMapper {
 
         InscricaoDTO inscricaoDTO = new InscricaoDTO();
 
-<<<<<<< HEAD
-        inscricaoDTO.setId( entity.getId() );
-=======
         inscricaoDTO.setIdTipoSituacao( inscricaoTipoSituacaoId( inscricao ) );
         inscricaoDTO.setIdUsuario( inscricaoUsuarioId( inscricao ) );
         inscricaoDTO.setIdEvento( inscricaoEventoId( inscricao ) );
         inscricaoDTO.setId( inscricao.getId() );
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 
         return inscricaoDTO;
     }

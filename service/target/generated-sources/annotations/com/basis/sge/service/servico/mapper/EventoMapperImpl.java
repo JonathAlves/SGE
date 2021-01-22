@@ -10,13 +10,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2021-01-21T15:40:35-0300",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
-=======
     date = "2021-01-21T16:58:01-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.9.1 (Ubuntu)"
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 )
 @Component
 public class EventoMapperImpl implements EventoMapper {
@@ -57,10 +52,6 @@ public class EventoMapperImpl implements EventoMapper {
 
         Evento evento = new Evento();
 
-<<<<<<< HEAD
-        eventoPergunta.setEvento( eventoPerguntaDTO.getEvento() );
-        eventoPergunta.setPergunta( eventoPerguntaDTO.getPergunta() );
-=======
         evento.setTipoEvento( eventoDTOToTipoEvento( eventoDTO ) );
         evento.setId( eventoDTO.getId() );
         evento.setTitulo( eventoDTO.getTitulo() );
@@ -71,7 +62,6 @@ public class EventoMapperImpl implements EventoMapper {
         evento.setValor( eventoDTO.getValor() );
         evento.setLocal( eventoDTO.getLocal() );
         evento.setTipoInscricao( eventoDTO.getTipoInscricao() );
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 
         return evento;
     }
@@ -105,12 +95,7 @@ public class EventoMapperImpl implements EventoMapper {
 
         TipoEvento tipoEvento = new TipoEvento();
 
-<<<<<<< HEAD
-        eventoPerguntaDTO.setEvento( eventoPergunta.getEvento() );
-        eventoPerguntaDTO.setPergunta( eventoPergunta.getPergunta() );
-=======
         tipoEvento.setId( eventoDTO.getIdTipoEvento() );
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 
         return tipoEvento;
     }
