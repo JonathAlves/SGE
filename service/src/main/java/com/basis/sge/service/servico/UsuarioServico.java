@@ -5,6 +5,7 @@ import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
+import com.basis.sge.service.util.EmailEnviar;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,6 @@ public class UsuarioServico {
     private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
     private final EmailServico emailServico;
-
 
     public List<UsuarioDTO> listar() {
         List<Usuario> usuarios = usuarioRepositorio.findAll();
@@ -49,7 +49,6 @@ public class UsuarioServico {
         emailDTO.setAssunto("Cadastro do usuario");
         emailDTO.setCorpo("Obrigado por se inscrever no nosso evento! Sua chave:" + usuario.getChave());
         emailDTO.setDestinatario(usuario.getEmail());
-        emailDTO.setCopias(emailDTO.getCopias());
         emailServico.sendMail(emailDTO);
         Usuario usuarioSalvo = usuarioRepositorio.save(usuario);
         return usuarioMapper.toDto(usuarioSalvo);
@@ -85,13 +84,14 @@ public class UsuarioServico {
                 throw new RegraNegocioException("CPF já cadastrado!");
             }
 
-
             else if (usuarioRepositorio.findByEmail(usuarioNovo.getEmail()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf())){
                 throw new RegraNegocioException("Email já existente!");
             }
 
 
         }
+
+        
 
 }
 
