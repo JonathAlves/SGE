@@ -24,10 +24,6 @@ public class Inscricao implements Serializable{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_usuario")
     private Usuario usuario;
-<<<<<<< HEAD
-
-=======
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_tipo_situacao")

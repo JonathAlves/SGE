@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -26,31 +24,33 @@ public class PerguntaRecurso {
 
     @GetMapping
     public ResponseEntity<List<PerguntaDTO>> listar(){
-        return ResponseEntity.ok(perguntaServico.listar());
+        List list = perguntaServico.listar();
+        return ResponseEntity.ok(list);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PerguntaDTO> obterPorId(@PathVariable Integer id){
-        PerguntaDTO perguntaDTO = perguntaServico.obterPorId(id);
+    public ResponseEntity<PerguntaDTO> obterPorId(@PathVariable Integer Id){
+        PerguntaDTO perguntaDTO = perguntaServico.obterPorId(Id);
         return ResponseEntity.ok(perguntaDTO);
     }
 
     @PostMapping
-    public ResponseEntity<PerguntaDTO> salvar(@RequestBody PerguntaDTO perguntaDTO) throws URISyntaxException {
-        PerguntaDTO perguntaDTOSalvo = perguntaServico.salvar(perguntaDTO);
-        return ResponseEntity.created(new URI("/api/perguntas")).body(perguntaDTOSalvo);
+    public ResponseEntity<PerguntaDTO> salvar(@RequestBody PerguntaDTO perguntaDTO){
+        PerguntaDTO pergunta = perguntaServico.salvar(perguntaDTO);
+        return ResponseEntity.ok(pergunta);
     }
 
     @PutMapping
-    public ResponseEntity<PerguntaDTO> editar(@RequestBody PerguntaDTO perguntaDTO){
+    public ResponseEntity<PerguntaDTO> editar(@PathVariable PerguntaDTO perguntaDTO){
+        perguntaServico.obterPorId(perguntaDTO.getId());
         PerguntaDTO dto = perguntaServico.salvar(perguntaDTO);
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(perguntaDTO);
     }
 
-    @DeleteMapping ("/{id}")
-    public void remover(@PathVariable Integer id){
-        perguntaServico.remover(id);
-
+    @DeleteMapping
+    public ResponseEntity<PerguntaDTO> remover(@PathVariable Integer Id){
+        perguntaServico.remover(Id);
+        return ResponseEntity.ok().build();
     }
 
 }
