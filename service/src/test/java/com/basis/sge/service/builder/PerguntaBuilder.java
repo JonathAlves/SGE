@@ -5,11 +5,13 @@ import com.basis.sge.service.servico.PerguntaServico;
 import com.basis.sge.service.servico.dto.PerguntaDTO;
 import com.basis.sge.service.servico.mapper.PerguntaMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.util.Collection;
 import java.util.List;
 
+@Component
 public class PerguntaBuilder extends ConstrutorDeEntidade<Pergunta>{
 
     @Autowired
@@ -19,7 +21,7 @@ public class PerguntaBuilder extends ConstrutorDeEntidade<Pergunta>{
     private PerguntaMapper perguntaMapper;
 
     @Override
-    protected Pergunta construirEntidade() throws ParseException {
+    public Pergunta construirEntidade() throws ParseException {
         Pergunta pergunta = new Pergunta();
         pergunta.setTitulo("Já programar em ruby?");
         pergunta.setObrigatoriedade(true);
@@ -40,17 +42,9 @@ public class PerguntaBuilder extends ConstrutorDeEntidade<Pergunta>{
     }
 
     @Override
-    protected Pergunta obterPorId(Long id) {
-        return null;
-    }
-
-    @Autowired
     protected Pergunta obterPorId(Integer id) {
-        PerguntaDTO pergunta = perguntaServico.obterPorId(id);
-        return perguntaMapper.toEntity(pergunta);
+        return perguntaMapper.toEntity(perguntaServico.obterPorId(id));
     }
 
-    protected void deletarPorId(Integer id){
-        perguntaServico.remover(id);
-    }
+
 }

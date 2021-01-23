@@ -1,10 +1,7 @@
 package com.basis.sge.service.util;
 
 import com.basis.sge.service.ServiceApplication;
-<<<<<<< HEAD
-=======
 import org.junit.Test;
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +22,9 @@ public abstract class IntTestComum {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
-<<<<<<< HEAD
-
-    private MockMvc mockMvc;
-
-=======
     private MockMvc mockMvc;
 
 
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
     protected MockMvc getMockMvc() {
         return mockMvc;
     }
