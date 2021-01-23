@@ -1,0 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: com.basis.sge.service.recurso.TestNegativosRecursoIT
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 9.128 s <<< FAILURE! - in com.basis.sge.service.recurso.TestNegativosRecursoIT
+idInexistente  Time elapsed: 0.161 s  <<< ERROR!
+org.springframework.web.util.NestedServletException: Request processing failed; nested exception is com.basis.sge.service.servico.RegraNegocioException: Evento não encontrado
+	at com.basis.sge.service.recurso.TestNegativosRecursoIT.idInexistente(TestNegativosRecursoIT.java:57)
+Caused by: com.basis.sge.service.servico.RegraNegocioException: Evento não encontrado
+	at com.basis.sge.service.recurso.TestNegativosRecursoIT.idInexistente(TestNegativosRecursoIT.java:57)
+
+tipoEventoInexistenteTest  Time elapsed: 0.037 s  <<< ERROR!
+org.springframework.web.util.NestedServletException: Request processing failed; nested exception is com.basis.sge.service.servico.RegraNegocioException: Evento não encontrado
+	at com.basis.sge.service.recurso.TestNegativosRecursoIT.tipoEventoInexistenteTest(TestNegativosRecursoIT.java:75)
+Caused by: com.basis.sge.service.servico.RegraNegocioException: Evento não encontrado
+	at com.basis.sge.service.recurso.TestNegativosRecursoIT.tipoEventoInexistenteTest(TestNegativosRecursoIT.java:75)
+
+tituloIgual  Time elapsed: 0.247 s  <<< ERROR!
+org.springframework.web.util.NestedServletException: Request processing failed; nested exception is com.basis.sge.service.servico.RegraNegocioException: Um evento com esse titulo já existe
+	at com.basis.sge.service.recurso.TestNegativosRecursoIT.tituloIgual(TestNegativosRecursoIT.java:67)
+Caused by: com.basis.sge.service.servico.RegraNegocioException: Um evento com esse titulo já existe
+	at com.basis.sge.service.recurso.TestNegativosRecursoIT.tituloIgual(TestNegativosRecursoIT.java:67)
+

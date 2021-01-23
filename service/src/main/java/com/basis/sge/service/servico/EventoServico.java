@@ -1,7 +1,7 @@
 package com.basis.sge.service.servico;
 
 import com.basis.sge.service.dominio.Evento;
-import com.basis.sge.service.dominio.Usuario;
+import com.basis.sge.service.dominio.EventoPergunta;
 import com.basis.sge.service.repositorio.EventoRepositorio;
 import com.basis.sge.service.repositorio.TipoEventoRepositorio;
 import com.basis.sge.service.servico.dto.EventoDTO;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -21,6 +20,7 @@ public class EventoServico {
     private final EventoRepositorio eventoRepositorio;
     private final TipoEventoRepositorio tipoEventoRepositorio;
     private final EventoMapper eventoMapper;
+    //private final EventoPerguntaRepositorio eventoPerguntaRepositorio;
 
     public List<EventoDTO> listar() {
         List<Evento> eventos = eventoRepositorio.findAll();
@@ -28,23 +28,32 @@ public class EventoServico {
     }
 
     public EventoDTO obterPorId(Integer id) {
-        Evento evento = obter(id);
+        Evento evento = eventoRepositorio.findById(id)
+                .orElseThrow(() -> new RegraNegocioException("Evento não encontrado!"));
         return eventoMapper.toDto(evento);
     }
 
-    private Evento obter(Integer id) {
-        return eventoRepositorio.findById(id)
-                .orElseThrow(() -> new RegraNegocioException("Evento não encontrado"));
-    }
+//    private Evento obter(Integer id) {
+//        return eventoRepositorio.findById(id)
+//                .orElseThrow(() -> new RegraNegocioException("Evento não encontrado"));
+//    }
 
     public EventoDTO salvar(EventoDTO eventoDTO) {
-//        Evento evento = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
-//                -> new com.basis.sge.service.servico.RegraNegocioException( "Evento não encontrado!"));
         verificaTitulo(eventoDTO.getTitulo());
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
-
         Evento novoEvento = eventoMapper.toEntity(eventoDTO);
+
+        List<EventoPergunta> perguntas = novoEvento.getPerguntas();
+        novoEvento.setPerguntas(perguntas);
         eventoRepositorio.save(novoEvento);
+
+        if(perguntas != null && !perguntas.isEmpty()){
+            perguntas.forEach(eventoPergunta -> {
+                eventoPergunta.setEvento(novoEvento);
+            });
+            //eventoPerguntaRepositorio.saveAll(perguntas);
+        }
+
         return eventoMapper.toDto(novoEvento);
     }
 
@@ -73,6 +82,12 @@ public class EventoServico {
         verificaIdEvento(id);
         eventoRepositorio.deleteById(id);
     }
+    //Verifica o numero se é maior que 0
+    public void verificaNumero(Number n){
+        if(n != null && n.doubleValue()<0){
+            throw new RegraNegocioException("Passe um número maior que 0");
+        }
+    }
     //Verifica se o titulo do evento já existe
     public void verificaTitulo(String titulo){
         if (eventoRepositorio.existsByTitulo(titulo)){
@@ -93,6 +108,7 @@ public class EventoServico {
             throw new RegraNegocioException("Evento Não Existe");
         }
     }
+
 }
 
 
