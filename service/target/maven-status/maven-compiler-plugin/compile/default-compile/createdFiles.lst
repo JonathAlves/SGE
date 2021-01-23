@@ -1,5 +1,5 @@
-com/basis/sge/service/servico/dto/TipoSituacaoDTO.class
 com/basis/sge/service/servico/dto/TipoEventoDTO.class
+com/basis/sge/service/servico/dto/TipoSituacaoDTO.class
 com/basis/sge/service/repositorio/InscricaoRepositorio.class
 com/basis/sge/service/recurso/EventoRecurso.class
 com/basis/sge/service/servico/mapper/PerguntaMapper.class
@@ -14,7 +14,6 @@ com/basis/sge/service/servico/dto/InscricaoRespostaDTO.class
 com/basis/sge/service/dominio/Inscricao.class
 com/basis/sge/service/servico/dto/EmailDTO.class
 com/basis/sge/service/dominio/TipoEvento.class
-com/basis/sge/service/servico/InscricaoRespostaServico.class
 com/basis/sge/service/repositorio/PerguntaRepositorio.class
 com/basis/sge/service/servico/dto/PerguntaDTO.class
 com/basis/sge/service/servico/mapper/EventoMapper.class
@@ -41,17 +40,16 @@ com/basis/sge/service/servico/mapper/TipoSituacaoMapper.class
 com/basis/sge/service/dominio/IdInscricaoResposta.class
 com/basis/sge/service/servico/PerguntaServico.class
 com/basis/sge/service/recurso/PerguntaRecurso.class
-com/basis/sge/service/servico/RegraNegocioException.class
 com/basis/sge/service/servico/mapper/PerguntaMapperImpl.class
-com/basis/sge/service/recurso/InscricaoRespostaRecurso.class
+com/basis/sge/service/servico/RegraNegocioException.class
 com/basis/sge/service/recurso/InscricaoRecurso.class
 com/basis/sge/service/servico/EventoServico.class
 com/basis/sge/service/servico/dto/InscricaoDTO.class
 com/basis/sge/service/servico/mapper/InscricaoMapper.class
 com/basis/sge/service/repositorio/EventoRepositorio.class
 com/basis/sge/service/servico/mapper/EntityMapper.class
-com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/servico/TipoSituacaoServico.class
+com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/repositorio/TipoEventoRepositorio.class
 com/basis/sge/service/servico/InscricaoServico.class
 com/basis/sge/service/recurso/TipoSituacaoRecurso.class
