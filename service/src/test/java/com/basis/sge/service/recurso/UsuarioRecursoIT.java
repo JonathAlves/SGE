@@ -71,7 +71,7 @@ public class UsuarioRecursoIT extends IntTestComum {
     public void erroCpfIgual() throws Exception {
         Usuario usuario = usuarioBuilder.construir();
         Usuario usuario1 = usuarioBuilder.construirEntidade();
-        usuario1.setCpf("49582458046");
+        usuario1.setEmail("tiagosantiagotsm@gmail.com");
 
         getMockMvc().perform(post("/api/usuarios"))
                 .andExpect(status().isBadRequest());
@@ -82,8 +82,7 @@ public class UsuarioRecursoIT extends IntTestComum {
     public void erroEmailIgual() throws Exception {
         Usuario usuario = usuarioBuilder.construir();
         Usuario usuario1 = usuarioBuilder.construirEntidade();
-        usuario1.setEmail("aaaaatsts2321@gmail.com");
-
+        usuario1.setCpf("95933838080");
         getMockMvc().perform(post("/api/usuarios"))
                 .andExpect(status().isBadRequest());
 
