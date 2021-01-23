@@ -12,28 +12,20 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2021-01-21T15:40:35-0300",
-=======
-<<<<<<< HEAD
-    date = "2021-01-21T15:07:40-0300",
-=======
-    date = "2021-01-20T15:48:01-0300",
->>>>>>> 0fa98efb43e19289c6f62be56eb3651962aa84f8
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
+    date = "2021-01-23T16:57:08-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class InscricaoMapperImpl implements InscricaoMapper {
 
     @Override
-    public List<Inscricao> toEntity(List<InscricaoDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Inscricao> toEntity(List<InscricaoDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Inscricao> list = new ArrayList<Inscricao>( arg0.size() );
-        for ( InscricaoDTO inscricaoDTO : arg0 ) {
+        List<Inscricao> list = new ArrayList<Inscricao>( dtoList.size() );
+        for ( InscricaoDTO inscricaoDTO : dtoList ) {
             list.add( toEntity( inscricaoDTO ) );
         }
 
@@ -41,13 +33,13 @@ public class InscricaoMapperImpl implements InscricaoMapper {
     }
 
     @Override
-    public List<InscricaoDTO> toDto(List<Inscricao> arg0) {
-        if ( arg0 == null ) {
+    public List<InscricaoDTO> toDto(List<Inscricao> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<InscricaoDTO> list = new ArrayList<InscricaoDTO>( arg0.size() );
-        for ( Inscricao inscricao : arg0 ) {
+        List<InscricaoDTO> list = new ArrayList<InscricaoDTO>( entityList.size() );
+        for ( Inscricao inscricao : entityList ) {
             list.add( toDto( inscricao ) );
         }
 
@@ -62,14 +54,10 @@ public class InscricaoMapperImpl implements InscricaoMapper {
 
         Inscricao inscricao = new Inscricao();
 
-<<<<<<< HEAD
-        inscricao.setId( dto.getId() );
-=======
         inscricao.setTipoSituacao( inscricaoDTOToTipoSituacao( inscricaoDTO ) );
         inscricao.setUsuario( inscricaoDTOToUsuario( inscricaoDTO ) );
         inscricao.setEvento( inscricaoDTOToEvento( inscricaoDTO ) );
         inscricao.setId( inscricaoDTO.getId() );
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 
         return inscricao;
     }
@@ -82,14 +70,10 @@ public class InscricaoMapperImpl implements InscricaoMapper {
 
         InscricaoDTO inscricaoDTO = new InscricaoDTO();
 
-<<<<<<< HEAD
-        inscricaoDTO.setId( entity.getId() );
-=======
         inscricaoDTO.setIdTipoSituacao( inscricaoTipoSituacaoId( inscricao ) );
         inscricaoDTO.setIdUsuario( inscricaoUsuarioId( inscricao ) );
         inscricaoDTO.setIdEvento( inscricaoEventoId( inscricao ) );
         inscricaoDTO.setId( inscricao.getId() );
->>>>>>> f3faba0148205cded612fae26d356fe6d7121dd6
 
         return inscricaoDTO;
     }
