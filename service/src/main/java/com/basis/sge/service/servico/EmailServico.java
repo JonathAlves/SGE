@@ -18,7 +18,6 @@ public class EmailServico {
     private static final String ERROR_TITLE = "error.title";
 
     private final JavaMailSender javaMailSender;
-
     private final ApplicationProperties properties;
 
     public void sendMail(EmailDTO emailDTO) {
@@ -34,16 +33,14 @@ public class EmailServico {
             message.setText(emailDTO.getCorpo(), true);
             javaMailSender.send(mimeMessage);
         } catch (MessagingException | UnsupportedEncodingException e) {
-            throw new RuntimeException( ERROR_TITLE);
+            throw new RuntimeException(ERROR_TITLE);
         }
-
-
-
-
-
-
-        }
-
-
+    }
 
 }
+        
+
+
+
+
+
