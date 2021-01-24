@@ -27,6 +27,7 @@ public class InscricaoServico {
     private final InscricaoMapper inscricaoMapper;
     private final TipoSituacaoRepositorio tipoSituacaoRepositorio;
     private final TipoSituacaoMapper tipoSituacaoMapper;
+    private final UsuarioRepositorio usuarioRepositorio;
 
     public List<InscricaoDTO> listar(){
         List<Inscricao> inscricoes = inscricaoRepositorio.findAll();
@@ -40,14 +41,9 @@ public class InscricaoServico {
     }
 
     public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){
+
         Inscricao inscricao = inscricaoMapper.toEntity(inscricaoDTO);
-        TipoSituacaoDTO tipoSituacaoDTO = new TipoSituacaoDTO();
-        TipoSituacao tipoSituacao = tipoSituacaoMapper.toEntity(tipoSituacaoDTO);
-        tipoSituacaoRepositorio.findById(tipoSituacao.getId());
-        inscricao.setTipoSituacao(tipoSituacao);
-        //Pegar id do DTO
-        //Pesquisar id no repositorio de TS
-        //Pegar TS e setar no dominio de inscricao
+
         inscricaoRepositorio.save(inscricao);
         return inscricaoMapper.toDto(inscricao);
     }
