@@ -20,6 +20,7 @@ public class EmailServico {
     private final JavaMailSender javaMailSender;
     private final ApplicationProperties properties;
 
+
     public void sendMail(EmailDTO emailDTO) {
         try {
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
@@ -35,7 +36,17 @@ public class EmailServico {
         } catch (MessagingException | UnsupportedEncodingException e) {
             throw new RuntimeException(ERROR_TITLE);
         }
+
+        }
+    public void  emailEnviarCadastro(Usuario usuario){
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setAssunto("Cadastro do usuario");
+        emailDTO.setCorpo("Obrigado por se inscrever no nosso evento! Sua chave:"  + usuario.getChave());
+        emailDTO.setDestinatario(usuario.getEmail());
+        sendMail(emailDTO);
     }
+
+
 
 }
         

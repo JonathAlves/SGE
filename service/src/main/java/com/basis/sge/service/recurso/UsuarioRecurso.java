@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.rmi.server.UID;
 import java.util.List;
 
 @RestController

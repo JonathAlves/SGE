@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /home/tiago/SGE/service/src/test/java/com/basis/sge/service/ServiceApplicationTests.java
 /home/tiago/SGE/service/src/test/java/com/basis/sge/service/util/TestUtil.java
 /home/tiago/SGE/service/src/test/java/com/basis/sge/service/util/IntTestComum.java
@@ -7,13 +6,3 @@
 /home/tiago/SGE/service/src/test/java/com/basis/sge/service/builder/CustomizacaoEntidade.java
 /home/tiago/SGE/service/src/test/java/com/basis/sge/service/builder/UsuarioBuilder.java
 /home/tiago/SGE/service/src/test/java/com/basis/sge/service/builder/InscricaoBuilder.java
-=======
-/home/basis/SGE/service/src/test/java/com/basis/sge/service/recurso/UsuarioRecursoIT.java
-/home/basis/SGE/service/src/test/java/com/basis/sge/service/builder/CustomizacaoEntidade.java
-/home/basis/SGE/service/src/test/java/com/basis/sge/service/ServiceApplicationTests.java
-/home/basis/SGE/service/src/test/java/com/basis/sge/service/builder/ConstrutorDeEntidade.java
-/home/basis/SGE/service/src/test/java/com/basis/sge/service/util/IntTestComum.java
-/home/basis/SGE/service/src/test/java/com/basis/sge/service/builder/InscricaoBuilder.java
-/home/basis/SGE/service/src/test/java/com/basis/sge/service/builder/UsuarioBuilder.java
-/home/basis/SGE/service/src/test/java/com/basis/sge/service/util/TestUtil.java
->>>>>>> 4df249179c224f93bffb42f6978c3ba24190de17

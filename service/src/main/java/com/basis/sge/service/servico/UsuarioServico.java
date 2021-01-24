@@ -2,10 +2,8 @@ package com.basis.sge.service.servico;
 import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.repositorio.UsuarioRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
-import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
-import com.basis.sge.service.util.EmailEnviar;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -43,11 +41,7 @@ public class UsuarioServico {
             verificarUsuario(usuarioDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         usuario.setChave(UUID.randomUUID().toString());
-        EmailDTO emailDTO = new EmailDTO();
-        emailDTO.setAssunto("Cadastro do usuario");
-        emailDTO.setCorpo("Obrigado por se inscrever no nosso evento! Sua chave:" + usuario.getChave());
-        emailDTO.setDestinatario(usuario.getEmail());
-        emailServico.sendMail(emailDTO);
+        emailServico.emailEnviarCadastro(usuario);
         Usuario usuarioSalvo = usuarioRepositorio.save(usuario);
         return usuarioMapper.toDto(usuarioSalvo);
 
