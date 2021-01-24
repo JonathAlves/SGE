@@ -66,6 +66,7 @@ public class InscricaoBuilder extends ConstrutorDeEntidade<Inscricao> {
     public void removerPorId(Integer id){
         inscricaoRepositorio.deleteById(id);
     }
+
     public void limparBanco(){
         inscricaoRepositorio.deleteAll();
     }

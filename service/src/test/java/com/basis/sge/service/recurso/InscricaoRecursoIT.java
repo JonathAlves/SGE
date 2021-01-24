@@ -2,7 +2,6 @@ package com.basis.sge.service.recurso;
 
 import com.basis.sge.service.builder.InscricaoBuilder;
 import com.basis.sge.service.dominio.Inscricao;
-import com.basis.sge.service.servico.InscricaoServico;
 import com.basis.sge.service.util.IntTestComum;
 import com.basis.sge.service.util.TestUtil;
 import org.hamcrest.Matchers;
@@ -16,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -24,8 +22,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(SpringExtension.class)
 @Transactional
 public class InscricaoRecursoIT extends IntTestComum {
-    @Autowired
-    private InscricaoServico inscricaoServico;
+
     @Autowired
     private InscricaoBuilder inscricaoBuilder;
     @Autowired
@@ -38,7 +35,7 @@ public class InscricaoRecursoIT extends IntTestComum {
     }
 
     @Test
-    public void listar()throws Exception{
+    public void listar() throws Exception{
         inscricaoBuilder.construir();
         getMockMvc().perform(get("/api/inscricoes"))
                 .andExpect(status().isOk())
@@ -55,8 +52,8 @@ public class InscricaoRecursoIT extends IntTestComum {
     public void salvar() throws Exception{
         inscricaoBuilder.construirEntidade();
         getMockMvc().perform(post("/api/inscricoes")
-        .contentType(TestUtil.APPLICATION_JSON_UTF8)
-        .content(TestUtil.convertObjectToJsonBytes(inscricaoBuilder.convertToDto(inscricao))))
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(inscricaoBuilder.convertToDto(inscricao))))
                 .andExpect(status().isOk());
     }
 
@@ -65,6 +62,18 @@ public class InscricaoRecursoIT extends IntTestComum {
         inscricaoBuilder.construir();
         getMockMvc().perform(delete("/api/inscricoes/" + inscricao.getId()))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    public void salvarExistente() throws Exception{
+        inscricaoBuilder.construirEntidade();
+        getMockMvc().perform(post("/api/inscricoes")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(inscricaoBuilder.convertToDto(inscricao))));
+        getMockMvc().perform(post("/api/inscricoes")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(inscricaoBuilder.convertToDto(inscricao))))
+                .andExpect(status().isBadRequest());
     }
 }
 

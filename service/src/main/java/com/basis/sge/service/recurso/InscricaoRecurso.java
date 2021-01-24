@@ -6,6 +6,9 @@ import com.basis.sge.service.servico.dto.InscricaoDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -14,7 +17,6 @@ import java.util.List;
 public class InscricaoRecurso   {
 
     private final InscricaoServico inscricaoServico;
-
 
     @GetMapping
     public ResponseEntity<List<InscricaoDTO>> listar(){
@@ -29,20 +31,13 @@ public class InscricaoRecurso   {
     }
 
     @PostMapping
-    public ResponseEntity <InscricaoDTO> salvar(@RequestBody InscricaoDTO inscricaoDTO){
+    public ResponseEntity <InscricaoDTO> salvar(@RequestBody InscricaoDTO inscricaoDTO) throws URISyntaxException {
         InscricaoDTO inscricao = inscricaoServico.salvar(inscricaoDTO);
-        return ResponseEntity.ok(inscricao);
-    }
-
-    @PutMapping
-    public ResponseEntity <InscricaoDTO> editar(@RequestBody InscricaoDTO inscricaoDTO){
-        InscricaoDTO inscricao = inscricaoServico.editar(inscricaoDTO);
-        return ResponseEntity.ok(inscricao);
+        return ResponseEntity.created(new URI("/api/inscricoes")).body(inscricao);
     }
 
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Integer id){
         inscricaoServico.remover(id);
-
     }
 }
