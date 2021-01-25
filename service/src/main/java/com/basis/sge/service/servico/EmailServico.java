@@ -1,5 +1,6 @@
 package com.basis.sge.service.servico;
 import com.basis.sge.service.configuracao.ApplicationProperties;
+import com.basis.sge.service.dominio.Inscricao;
 import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.dto.EmailDTO;
 import lombok.RequiredArgsConstructor;
@@ -41,8 +42,16 @@ public class EmailServico {
     public void  emailEnviarCadastro(Usuario usuario){
         EmailDTO emailDTO = new EmailDTO();
         emailDTO.setAssunto("Cadastro do usuario");
-        emailDTO.setCorpo("Obrigado por se inscrever no nosso evento! Sua chave:"  + usuario.getChave());
+        emailDTO.setCorpo("Obrigado por se cadastrar na nossa plataforma! Sua chave:"  + usuario.getChave());
         emailDTO.setDestinatario(usuario.getEmail());
+        sendMail(emailDTO);
+    }
+
+    public void  emailEnviarInscricao(Inscricao inscricao){
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setAssunto("Inscrição no evento");
+        emailDTO.setCorpo("Obrigado por se inscrever no nosso evento!");
+        emailDTO.setDestinatario(inscricao.getUsuario().getEmail());
         sendMail(emailDTO);
     }
 

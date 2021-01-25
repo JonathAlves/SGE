@@ -29,6 +29,6 @@ public class Inscricao implements Serializable{
     @JoinColumn(name="id_tipo_situacao")
     private TipoSituacao tipoSituacao;
 
-//    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "inscricao")
-//    private List<InscricaoResposta> respostas;
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "inscricao")
+    private List<InscricaoResposta> respostas;
 }

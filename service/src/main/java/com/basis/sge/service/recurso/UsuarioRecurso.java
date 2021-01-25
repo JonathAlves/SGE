@@ -1,5 +1,5 @@
 package com.basis.sge.service.recurso;
-;
+
 import com.basis.sge.service.servico.UsuarioServico;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;

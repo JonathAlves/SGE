@@ -1,27 +1,15 @@
 package com.basis.sge.service.servico;
-import com.basis.sge.service.dominio.Evento;
 import com.basis.sge.service.dominio.Inscricao;
 import com.basis.sge.service.dominio.InscricaoResposta;
-import com.basis.sge.service.dominio.TipoSituacao;
-import com.basis.sge.service.dominio.Usuario;
-import com.basis.sge.service.repositorio.EventoRepositorio;
 import com.basis.sge.service.repositorio.InscricaoRepositorio;
-import com.basis.sge.service.repositorio.InscricaoRespostaRepositorio;
 import com.basis.sge.service.repositorio.TipoSituacaoRepositorio;
-import com.basis.sge.service.repositorio.UsuarioRepositorio;
-import com.basis.sge.service.servico.dto.EmailDTO;
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
-import com.basis.sge.service.servico.dto.TipoSituacaoDTO;
 import com.basis.sge.service.servico.mapper.InscricaoMapper;
-//import com.basis.sge.service.utils.EmailUtils;
-import com.basis.sge.service.servico.mapper.TipoSituacaoMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.xml.ws.Response;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -31,7 +19,8 @@ public class InscricaoServico {
     private final InscricaoRepositorio inscricaoRepositorio;
     private final InscricaoMapper inscricaoMapper;
     private final TipoSituacaoRepositorio tipoSituacaoRepositorio;
-    private final TipoSituacaoMapper tipoSituacaoMapper;
+    private final EmailServico emailServico;
+
 
 
 
@@ -47,21 +36,26 @@ public class InscricaoServico {
     }
 
     public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){
-        Inscricao inscricao = inscricaoMapper.toEntity(inscricaoDTO);
         verificaInscricaoExistente(inscricaoDTO.getIdUsuario(), inscricaoDTO.getIdEvento());
+        verificaTipoSituacao(inscricaoDTO.getIdTipoSituacao());
 
-        inscricaoRepositorio.save(inscricao);
-        return inscricaoMapper.toDto(inscricao);
+        Inscricao inscricao = inscricaoMapper.toEntity(inscricaoDTO);
+        List<InscricaoResposta> respostas = inscricao.getRespostas();
+        inscricao.setRespostas(respostas);
+
+        if(respostas != null && !respostas.isEmpty()){
+            respostas.forEach(inscricaoResposta -> {
+                inscricaoResposta.setInscricao(inscricao);
+            });
+            //eventoPerguntaRepositorio.saveAll(perguntas);
+        }
+        emailServico.emailEnviarInscricao(inscricao);
+        Inscricao novaInscricao = inscricaoRepositorio.save(inscricao);
+        return inscricaoMapper.toDto(novaInscricao);
 
 
     }
 
-    public InscricaoDTO editar(InscricaoDTO inscricaoDTO){
-        Inscricao inscricao = inscricaoRepositorio.findById(inscricaoDTO.getId()).orElseThrow(() -> new RegraNegocioException( "Inscrição não encontrada!"));
-
-        inscricaoRepositorio.save(inscricao);
-        return inscricaoMapper.toDto(inscricao);
-    }
     public void remover(Integer id){
         Inscricao inscricao = inscricaoRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Inscrição não encontrada!"));
         inscricaoRepositorio.deleteById(id);
@@ -69,9 +63,15 @@ public class InscricaoServico {
 
     public void verificaInscricaoExistente(Integer idUsuario, Integer idEvento){
         for(InscricaoDTO inscr: listar()){
-            if((inscr.getIdEvento() == idEvento) &&(inscr.getIdUsuario() == idUsuario)){
+            if((inscr.getIdEvento() == idEvento) && (inscr.getIdUsuario() == idUsuario)){
                 throw new RegraNegocioException("Usuario já inscrito neste evento!");
             }
+        }
+    }
+
+    public void verificaTipoSituacao(Integer idTipoSituacao) {
+        if(!tipoSituacaoRepositorio.existsById(idTipoSituacao)){
+            throw new RegraNegocioException("Esse Tipo de situação não existe");
         }
     }
 }

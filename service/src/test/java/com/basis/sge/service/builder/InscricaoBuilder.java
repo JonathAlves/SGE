@@ -1,6 +1,8 @@
 package com.basis.sge.service.builder;
 
+import com.basis.sge.service.dominio.EventoPergunta;
 import com.basis.sge.service.dominio.Inscricao;
+import com.basis.sge.service.dominio.InscricaoResposta;
 import com.basis.sge.service.dominio.TipoEvento;
 import com.basis.sge.service.dominio.TipoSituacao;
 import com.basis.sge.service.repositorio.InscricaoRepositorio;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -41,6 +44,7 @@ public class InscricaoBuilder extends ConstrutorDeEntidade<Inscricao> {
         inscricao.getEvento();
         inscricao.getUsuario();
         inscricao.setTipoSituacao(tipoSituacao);
+        inscricao.setRespostas(new ArrayList<InscricaoResposta>());
 
         return inscricao;
     }
@@ -53,7 +57,7 @@ public class InscricaoBuilder extends ConstrutorDeEntidade<Inscricao> {
     }
 
     @Override
-    public Collection obterTodos() {
+    public List<Inscricao> obterTodos() {
         return inscricaoRepositorio.findAll();
     }
 
