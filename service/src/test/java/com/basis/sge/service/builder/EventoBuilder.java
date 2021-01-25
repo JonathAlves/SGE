@@ -46,7 +46,7 @@ public class EventoBuilder extends ConstrutorDeEntidade<Evento> {
     }
 
     @Override
-    protected Evento persistir(Evento entidade) {
+    public Evento persistir(Evento entidade) {
         EventoDTO eventoDTO = eventoMapper.toDto(entidade);
         EventoDTO eventoSalvo = eventoServico.salvar(eventoDTO);
         return eventoMapper.toEntity(eventoSalvo);

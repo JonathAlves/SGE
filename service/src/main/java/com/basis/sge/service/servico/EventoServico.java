@@ -4,6 +4,7 @@ import com.basis.sge.service.dominio.Evento;
 import com.basis.sge.service.dominio.EventoPergunta;
 import com.basis.sge.service.repositorio.EventoRepositorio;
 import com.basis.sge.service.repositorio.TipoEventoRepositorio;
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import com.basis.sge.service.servico.dto.EventoDTO;
 import com.basis.sge.service.servico.mapper.EventoMapper;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,8 @@ public class EventoServico {
     public EventoDTO salvar(EventoDTO eventoDTO) {
         verificaTitulo(eventoDTO.getTitulo());
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
+        verificaNumero(eventoDTO.getQtVagas());
+        verificaNumero(eventoDTO.getValor());
         Evento novoEvento = eventoMapper.toEntity(eventoDTO);
 
         List<EventoPergunta> perguntas = novoEvento.getPerguntas();
@@ -59,7 +62,7 @@ public class EventoServico {
 
     public EventoDTO editar(EventoDTO eventoDTO) {
         Evento evento = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
-                -> new com.basis.sge.service.servico.RegraNegocioException( "Evento não encontrado!"));
+                -> new RegraNegocioException( "Evento não encontrado!"));
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
         Evento eventoRecebido = eventoMapper.toEntity(eventoDTO);
         eventoRecebido.setTitulo(eventoDTO.getTitulo());
