@@ -45,10 +45,7 @@ public class UsuarioServico {
             verificarUsuario(usuarioDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         usuario.setChave(UUID.randomUUID().toString());
-        EmailDTO emailDTO = new EmailDTO();
-        emailDTO.setAssunto("Cadastro do usuario");
-        emailDTO.setCorpo("Obrigado por se inscrever no nosso evento! Sua chave:" + usuario.getChave());
-        emailDTO.setDestinatario(usuario.getEmail());
+       EmailDTO emailDTO = new EmailDTO();
         emailServico.sendMail(emailDTO);
         Usuario usuarioSalvo = usuarioRepositorio.save(usuario);
         return usuarioMapper.toDto(usuarioSalvo);
@@ -91,7 +88,7 @@ public class UsuarioServico {
 
         }
 
-        
+
 
 }
 
