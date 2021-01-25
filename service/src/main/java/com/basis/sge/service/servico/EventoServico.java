@@ -44,6 +44,9 @@ public class EventoServico {
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
         verificaNumero(eventoDTO.getQtVagas());
         verificaNumero(eventoDTO.getValor());
+        if(eventoDTO.getTipoInscricao() == null){
+            throw new RegraNegocioException("Tipo de inscrição não pode ser NULO!");
+        }
         Evento novoEvento = eventoMapper.toEntity(eventoDTO);
 
         List<EventoPergunta> perguntas = novoEvento.getPerguntas();
