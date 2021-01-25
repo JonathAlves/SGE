@@ -8,7 +8,7 @@ import com.basis.sge.service.servico.dto.EventoDTO;
 import com.basis.sge.service.servico.mapper.EventoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
@@ -50,7 +50,7 @@ public class EventoServico {
 
     public EventoDTO editar(EventoDTO eventoDTO) {
         Evento evento = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
-                -> new com.basis.sge.service.servico.RegraNegocioException( "Evento não encontrado!"));
+                -> new RegraNegocioException( "Evento não encontrado!"));
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
         Evento eventoRecebido = eventoMapper.toEntity(eventoDTO);
         eventoRecebido.setTitulo(eventoDTO.getTitulo());
