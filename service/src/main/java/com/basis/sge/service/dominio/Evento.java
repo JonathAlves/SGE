@@ -3,6 +3,7 @@ package com.basis.sge.service.dominio;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -61,8 +62,8 @@ public class Evento implements Serializable {
     @JoinColumn(name = "id_tipo_evento")
     private TipoEvento tipoEvento;
 
-//    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "evento")
-//    private List<EventoPergunta> perguntas = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "evento")
+    private List<EventoPergunta> perguntas;
 
 
 }

@@ -2,6 +2,7 @@ package com.basis.sge.service.recurso;
 
 import com.basis.sge.service.builder.EventoBuilder;
 import com.basis.sge.service.dominio.Evento;
+import com.basis.sge.service.dominio.TipoEvento;
 import com.basis.sge.service.repositorio.EventoRepositorio;
 import com.basis.sge.service.servico.mapper.EventoMapper;
 import com.basis.sge.service.util.IntTestComum;
@@ -41,7 +42,7 @@ public class EventoRecursoIT extends IntTestComum {
 
     @Test
     public void listarTeste() throws Exception {
-        Evento evento = eventoBuilder.construir();
+       eventoBuilder.construir();
 
         getMockMvc().perform(get("/api/eventos"))
                 .andExpect(status().isOk());
@@ -54,11 +55,13 @@ public class EventoRecursoIT extends IntTestComum {
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(eventoMapper.toDto(evento))))
                 .andExpect(status().isCreated());
+        Assert.assertEquals(1,eventoRepositorio.findAll().size());
     }
 
     @Test
     public void editarTeste() throws Exception {
         Evento evento = eventoBuilder.construir();
+        Integer idEvento = evento.getId();
         evento.setTitulo("Torneio de dominó");
         evento.setLocal("sindicato do dominó");
         evento.setQtVagas(100);
@@ -66,44 +69,113 @@ public class EventoRecursoIT extends IntTestComum {
         getMockMvc().perform(put("/api/eventos")
                 .contentType(TestUtil.APPLICATION_JSON_UTF8)
                 .content(TestUtil.convertObjectToJsonBytes(eventoMapper.toDto(evento))))
-                .andExpect(status().isCreated());
+                .andExpect(status().isOk());
 
-    }
-
-    @Test
-    public void tituloIgual() throws Exception {
-        Evento evento = eventoBuilder.construir();
-        Evento evento1 = eventoBuilder.construirEntidade();
-        evento1.setTitulo("Campeonato de sinuca");
-
-        getMockMvc().perform(post("/api/eventos"))
-                .andExpect(status().isBadRequest());
-
-    }
-
-    @Test
-    public void idInexistente() throws Exception{
-        Evento evento = eventoBuilder.construir();
-        evento.setId(10);
-
-        getMockMvc().perform(get("/api/eventos" + evento.getId()))
-                .andExpect(status().isBadRequest());
     }
 
     @Test
     public void idTeste() throws Exception{
         Evento evento = eventoBuilder.construir();
-
-        getMockMvc().perform(get("/api/eventos" + evento.getId()))
+        Integer idEvento = evento.getId();
+        getMockMvc().perform(get("/api/eventos/" + idEvento))
                 .andExpect(status().isOk());
     }
 
     @Test
     public void deletarTeste() throws Exception{
         Evento evento = eventoBuilder.construir();
-
-        getMockMvc().perform(delete("/api/eventos" + evento.getId()))
+        Integer idEvento = evento.getId();
+        getMockMvc().perform(delete("/api/eventos/"+idEvento))
                 .andExpect(status().isOk());
         Assert.assertEquals(0, eventoRepositorio.findAll().size());
     }
+
+    //Test de bad request e de exception
+    @Test
+    public void idInexistente() throws Exception{
+        Evento evento = eventoBuilder.construir();
+        Integer idInvalido = 10;
+        getMockMvc().perform(get("/api/eventos/" + idInvalido))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void tituloIgual() throws Exception {
+        Evento evento = eventoBuilder.construir();
+        Evento evento1 = eventoBuilder.construirEntidade();
+        evento1.setTitulo(evento.getTitulo());
+
+        getMockMvc().perform(post("/api/eventos")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(eventoMapper.toDto(evento1))))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void EditarComtituloIgual() throws Exception {
+        Evento evento = eventoBuilder.persistir(eventoBuilder.construirEntidade());
+
+        Evento evento1 = eventoBuilder.construirEntidade();
+        evento1.setTitulo("NovoEvento");
+
+        Evento evento2 = eventoBuilder.persistir(evento1);
+        evento2.setTitulo(evento.getTitulo());
+
+        getMockMvc().perform(put("/api/eventos")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(eventoMapper.toDto(evento2))))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void salvarTesteNumerosNegativo() throws Exception {
+        Evento evento = eventoBuilder.construirEntidade();
+        evento.setValor(-2.0);
+        evento.setQtVagas(-1);
+        getMockMvc().perform(post("/api/eventos")
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(eventoMapper.toDto(evento))))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void buscarIdInvalido() throws Exception{
+        Evento evento = eventoBuilder.construir();
+        Integer idInvalido = evento.getId() + 10;
+
+        getMockMvc().perform(get("/api/eventos/"+idInvalido))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void deletarIdInvalido() throws Exception{
+        Evento evento = eventoBuilder.construir();
+        Integer idInvalido = evento.getId() + 10;
+
+        getMockMvc().perform(delete("/api/eventos/"+idInvalido))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void tipoEventoInexistenteTest() throws Exception {
+        Evento evento = eventoBuilder.construir();
+        TipoEvento idTipoEvento = new TipoEvento();
+        idTipoEvento.setId(10);
+        evento.setTipoEvento(idTipoEvento);
+        getMockMvc().perform(get("/api/eventos/" + evento.getTipoEvento()))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void salvarTipoEventoInexistente() throws Exception {
+        Evento evento = eventoBuilder.construirEntidade();
+        TipoEvento idTipoEvento = new TipoEvento();
+        idTipoEvento.setId(10);
+        evento.setTipoEvento(idTipoEvento);
+        getMockMvc().perform(post("/api/eventos/" )
+                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+                .content(TestUtil.convertObjectToJsonBytes(eventoMapper.toDto(evento))))
+                .andExpect(status().isBadRequest());
+    }
+
 }

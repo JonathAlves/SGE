@@ -2,6 +2,7 @@ package com.basis.sge.service.servico;
 
 import com.basis.sge.service.dominio.TipoEvento;
 import com.basis.sge.service.repositorio.TipoEventoRepositorio;
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import com.basis.sge.service.servico.dto.TipoEventoDTO;
 import com.basis.sge.service.servico.mapper.TipoEventoMapper;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;

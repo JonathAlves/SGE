@@ -1,8 +1,10 @@
 package com.basis.sge.service.servico.mapper;
 
 import com.basis.sge.service.dominio.Evento;
+import com.basis.sge.service.dominio.EventoPergunta;
 import com.basis.sge.service.dominio.TipoEvento;
 import com.basis.sge.service.servico.dto.EventoDTO;
+import com.basis.sge.service.servico.dto.EventoPerguntaDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -10,11 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2021-01-24T18:34:19-0300",
-=======
-    date = "2021-01-23T16:57:08-0300",
->>>>>>> 13f051b2f091e63a3767cf93d5d6175536f674f2
+    date = "2021-01-25T00:27:08-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -66,6 +64,7 @@ public class EventoMapperImpl implements EventoMapper {
         evento.setValor( eventoDTO.getValor() );
         evento.setLocal( eventoDTO.getLocal() );
         evento.setTipoInscricao( eventoDTO.getTipoInscricao() );
+        evento.setPerguntas( eventoPerguntaDTOListToEventoPerguntaList( eventoDTO.getPerguntas() ) );
 
         return evento;
     }
@@ -88,6 +87,7 @@ public class EventoMapperImpl implements EventoMapper {
         eventoDTO.setValor( evento.getValor() );
         eventoDTO.setLocal( evento.getLocal() );
         eventoDTO.setTipoInscricao( evento.getTipoInscricao() );
+        eventoDTO.setPerguntas( eventoPerguntaListToEventoPerguntaDTOList( evento.getPerguntas() ) );
 
         return eventoDTO;
     }
@@ -104,6 +104,33 @@ public class EventoMapperImpl implements EventoMapper {
         return tipoEvento;
     }
 
+    protected EventoPergunta eventoPerguntaDTOToEventoPergunta(EventoPerguntaDTO eventoPerguntaDTO) {
+        if ( eventoPerguntaDTO == null ) {
+            return null;
+        }
+
+        EventoPergunta eventoPergunta = new EventoPergunta();
+
+        eventoPergunta.setId( eventoPerguntaDTO.getId() );
+        eventoPergunta.setEvento( eventoPerguntaDTO.getEvento() );
+        eventoPergunta.setPergunta( eventoPerguntaDTO.getPergunta() );
+
+        return eventoPergunta;
+    }
+
+    protected List<EventoPergunta> eventoPerguntaDTOListToEventoPerguntaList(List<EventoPerguntaDTO> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<EventoPergunta> list1 = new ArrayList<EventoPergunta>( list.size() );
+        for ( EventoPerguntaDTO eventoPerguntaDTO : list ) {
+            list1.add( eventoPerguntaDTOToEventoPergunta( eventoPerguntaDTO ) );
+        }
+
+        return list1;
+    }
+
     private Integer eventoTipoEventoId(Evento evento) {
         if ( evento == null ) {
             return null;
@@ -117,5 +144,32 @@ public class EventoMapperImpl implements EventoMapper {
             return null;
         }
         return id;
+    }
+
+    protected EventoPerguntaDTO eventoPerguntaToEventoPerguntaDTO(EventoPergunta eventoPergunta) {
+        if ( eventoPergunta == null ) {
+            return null;
+        }
+
+        EventoPerguntaDTO eventoPerguntaDTO = new EventoPerguntaDTO();
+
+        eventoPerguntaDTO.setId( eventoPergunta.getId() );
+        eventoPerguntaDTO.setEvento( eventoPergunta.getEvento() );
+        eventoPerguntaDTO.setPergunta( eventoPergunta.getPergunta() );
+
+        return eventoPerguntaDTO;
+    }
+
+    protected List<EventoPerguntaDTO> eventoPerguntaListToEventoPerguntaDTOList(List<EventoPergunta> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<EventoPerguntaDTO> list1 = new ArrayList<EventoPerguntaDTO>( list.size() );
+        for ( EventoPergunta eventoPergunta : list ) {
+            list1.add( eventoPerguntaToEventoPerguntaDTO( eventoPergunta ) );
+        }
+
+        return list1;
     }
 }

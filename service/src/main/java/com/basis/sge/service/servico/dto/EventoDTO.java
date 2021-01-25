@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -29,5 +30,5 @@ public class EventoDTO implements Serializable {
 
     private Integer idTipoEvento;
 
-    private List<EventoPerguntaDTO> perguntas;
+    private List<EventoPerguntaDTO> perguntas = new ArrayList<>();
 }
