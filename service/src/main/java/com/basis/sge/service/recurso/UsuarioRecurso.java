@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.rmi.server.UID;
 import java.util.List;
 
 @RestController
@@ -53,7 +52,7 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(usuario);
 
         }
-        
+
 
         @DeleteMapping("/{id}")
         public void deletar (@PathVariable Integer id){

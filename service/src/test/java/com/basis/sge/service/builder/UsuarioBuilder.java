@@ -53,6 +53,7 @@ public class UsuarioBuilder extends ConstrutorDeEntidade<Usuario> {
     }
 
     protected void deletarPorId(Integer id){
+
         usuarioServico.remover(id);
     }
 

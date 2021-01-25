@@ -5,6 +5,7 @@ import com.basis.sge.service.repositorio.PerguntaRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import com.basis.sge.service.servico.dto.PerguntaDTO;
 import com.basis.sge.service.servico.mapper.PerguntaMapper;
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -2,9 +2,14 @@ com/basis/sge/service/recurso/UsuarioRecursoIT.class
 com/basis/sge/service/util/IntTestComum.class
 com/basis/sge/service/util/TestUtil.class
 com/basis/sge/service/builder/ConstrutorDeEntidade.class
+<<<<<<< HEAD
+com/basis/sge/service/builder/InscricaoBuilder.class
+com/basis/sge/service/builder/UsuarioBuilder.class
+com/basis/sge/service/builder/CustomizacaoEntidade.class
+=======
 com/basis/sge/service/recurso/PerguntaRecursoIT.class
 com/basis/sge/service/builder/InscricaoBuilder.class
-com/basis/sge/service/recurso/TipoEventoRecursoIT.class
+>>>>>>> 13f051b2f091e63a3767cf93d5d6175536f674f2
 com/basis/sge/service/util/TestUtil$ZonedDateTimeMatcher.class
 com/basis/sge/service/ServiceApplicationTests.class
 com/basis/sge/service/builder/EventoBuilder.class

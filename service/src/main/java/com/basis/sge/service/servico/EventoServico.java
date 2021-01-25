@@ -9,7 +9,7 @@ import com.basis.sge.service.servico.dto.EventoDTO;
 import com.basis.sge.service.servico.mapper.EventoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import javax.transaction.Transactional;
 import java.util.List;
 
