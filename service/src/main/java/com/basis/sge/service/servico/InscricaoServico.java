@@ -3,6 +3,7 @@ import com.basis.sge.service.dominio.Inscricao;
 import com.basis.sge.service.repositorio.InscricaoRepositorio;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
 import com.basis.sge.service.servico.mapper.InscricaoMapper;
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
