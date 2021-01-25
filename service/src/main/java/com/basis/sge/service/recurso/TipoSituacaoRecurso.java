@@ -36,10 +36,5 @@ public class TipoSituacaoRecurso {
         return ResponseEntity.ok(tipoSituacaoDTO);
     }
 
-    @PutMapping
-    public ResponseEntity <TipoSituacaoDTO> editar(@RequestBody TipoSituacaoDTO tipoSituacaoDTO) throws URISyntaxException {
-        TipoSituacaoDTO tipoSituacao = tipoSituacaoServico.editar(tipoSituacaoDTO);
-        return ResponseEntity.ok(tipoSituacao);
-    }
 }
 

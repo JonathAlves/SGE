@@ -3,6 +3,8 @@ import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 
 @Entity
 @Table(name = "inscricao")
@@ -27,6 +29,6 @@ public class Inscricao implements Serializable{
     @JoinColumn(name="id_tipo_situacao")
     private TipoSituacao tipoSituacao;
 
-//    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "inscricao")
-//    private List<InscricaoResposta> resposta;
+//    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = false, mappedBy = "inscricao")
+//    private List<InscricaoResposta> respostas;
 }
