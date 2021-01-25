@@ -9,13 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.List;
 
 
 @Entity
@@ -33,11 +29,7 @@ public class Pergunta implements Serializable {
     @Column(name = "titulo")
     private String titulo;
 
-    @Column(name = "obrigatoria")
-    private Boolean obrigatoria;
+    @Column(name = "obrigatoriedade")
+    private Boolean obrigatoriedade;
 
-    /*@OneToMany
-    @JoinColumn(name = "id_pergunta")
-    private List<InscricaoResposta> inscricaoRespostas;
-*/
 }

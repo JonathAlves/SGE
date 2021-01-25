@@ -4,6 +4,7 @@ import com.basis.sge.service.servico.EventoServico;
 import com.basis.sge.service.servico.dto.EventoDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,7 +25,7 @@ import java.util.List;
 @RequestMapping("/api/eventos")
 @RequiredArgsConstructor
 public class EventoRecurso {
-
+    @Autowired
     private final EventoServico eventoServico;
 
     @GetMapping
@@ -35,19 +36,19 @@ public class EventoRecurso {
 
     @GetMapping("/{id}")
     public ResponseEntity<EventoDTO> obterPorId(@PathVariable Integer id) {
-        EventoDTO entidadeDTO = eventoServico.obterPorId(id);
-        return ResponseEntity.ok(entidadeDTO);
+
+        return ResponseEntity.ok(eventoServico.obterPorId(id));
     }
 
 
     @PostMapping
-    public ResponseEntity<EventoDTO> salvar(@RequestBody EventoDTO eventoDTO) {
+    public ResponseEntity<EventoDTO> salvar(@RequestBody @Valid EventoDTO eventoDTO) {
         EventoDTO evento = eventoServico.salvar(eventoDTO);
-        return ResponseEntity.ok(evento);
+        return ResponseEntity.created(URI.create("/api/eventos")).body(evento);
     }
 
     @PutMapping
-    public ResponseEntity<EventoDTO> editar(@RequestBody EventoDTO eventoDTO) {
+    public ResponseEntity<EventoDTO> editar(@RequestBody @Valid EventoDTO eventoDTO) {
         EventoDTO entidade = eventoServico.editar(eventoDTO);
         return ResponseEntity.ok(entidade);
     }

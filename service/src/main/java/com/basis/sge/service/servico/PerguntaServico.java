@@ -2,8 +2,10 @@ package com.basis.sge.service.servico;
 
 import com.basis.sge.service.dominio.Pergunta;
 import com.basis.sge.service.repositorio.PerguntaRepositorio;
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import com.basis.sge.service.servico.dto.PerguntaDTO;
 import com.basis.sge.service.servico.mapper.PerguntaMapper;
+import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,49 +22,42 @@ public class PerguntaServico {
     private final PerguntaMapper perguntaMapper;
 
     // GET
-    public List<PerguntaDTO> listar(){
-        List<Pergunta> perguntas = perguntaRepositorio.findAll();
-        return perguntaMapper.toDto(perguntas);
+    public List<PerguntaDTO> listar() {
+        List<Pergunta> listarPerguntas = perguntaRepositorio.findAll();
+        return perguntaMapper.toDto(listarPerguntas);
     }
 
     // GET {id}
-    public PerguntaDTO obterPorId(Integer Id){
-        Pergunta pergunta = perguntaRepositorio.findById(Id)
-                .orElseThrow(() -> new RegraNegocioException("Pergunta não encontrada"));
-        PerguntaDTO perguntaDTO = perguntaMapper.toDto(pergunta);
-        return perguntaDTO;
+    public PerguntaDTO obterPorId(Integer id) {
+        Pergunta pergunta = perguntaRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Pergunta não encontrada"));
+        return perguntaMapper.toDto(pergunta);
     }
 
     // POST
-    public PerguntaDTO salvar(PerguntaDTO perguntaDTO){
-        Pergunta pergunta = perguntaRepositorio.findByTitulo(perguntaDTO.getTitulo());
-
-        if (pergunta != null){
-            throw new RegraNegocioException("Pergunta já existe");
+    public PerguntaDTO salvar(PerguntaDTO perguntaDTO) {
+        if (perguntaDTO.getId() != null){
+            Pergunta pergunta = perguntaRepositorio.findById(perguntaDTO.getId()).orElseThrow(() -> new RegraNegocioException(("Pergunta não existe")));
         }
-        perguntaRepositorio.save(pergunta);
-        return perguntaMapper.toDto(pergunta);
+        else
+            checarDuplicata(perguntaDTO);
+
+        Pergunta pergunta = perguntaMapper.toEntity(perguntaDTO);
+        Pergunta perguntaSalvar = perguntaRepositorio.save(pergunta);
+        return perguntaMapper.toDto(perguntaSalvar);
+
     }
 
-    // PUT
-    public PerguntaDTO editar(PerguntaDTO perguntaDTO){
-        Pergunta pergunta = perguntaRepositorio.findByTitulo(perguntaDTO.getTitulo());
-        if (pergunta != null){
-            pergunta.setTitulo(perguntaDTO.getTitulo());
+    private void checarDuplicata(PerguntaDTO novaPergunta){
+        for(PerguntaDTO perguntaInstancia: listar()){
+            if(perguntaInstancia.getTitulo().equals(novaPergunta.getTitulo())){
+                throw new RegraNegocioException("Perguntas duplicadas");
+            }
         }
-        perguntaRepositorio.save(pergunta);
-        return perguntaMapper.toDto(pergunta);
     }
 
     // DELETE {id}
-    public void remover(Integer Id) {
-        Pergunta pergunta = perguntaRepositorio.findById(Id)
-                .orElseThrow(() -> new RegraNegocioException("Pergunta não encontrada"));
-        perguntaRepositorio.deleteById(Id);
-
+    public void remover(Integer id) {
+        Pergunta pergunta = perguntaRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Pergunta não encontrado"));
+        perguntaRepositorio.deleteById(id);
     }
-
-
-
-
 }

@@ -21,8 +21,8 @@ public abstract class IntTestComum {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
-
     private MockMvc mockMvc;
+
 
     protected MockMvc getMockMvc() {
         return mockMvc;
