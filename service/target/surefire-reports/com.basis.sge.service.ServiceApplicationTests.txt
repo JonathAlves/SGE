@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.basis.sge.service.ServiceApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 61.708 s - in com.basis.sge.service.ServiceApplicationTests
