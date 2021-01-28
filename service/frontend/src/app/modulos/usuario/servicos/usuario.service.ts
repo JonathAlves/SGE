@@ -13,8 +13,15 @@ export class UsuarioService {
   getUsuarios(): Observable<Usuario[]>{
     return this.http.get<Usuario[]> (`${this.url}`);
 
-
   }
+  salvarUsuario(usuario: Usuario): Observable<Usuario> {
+    return this.http.post<Usuario>(this.url, usuario);
+  }
+
+  editarUsuario(usario: Usuario): Observable<Usuario>{
+    return this.http.put<Usuario>(this.url, usario);
+  }
+
 
  
   }

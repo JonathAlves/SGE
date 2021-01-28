@@ -7,7 +7,8 @@ import { ListagemComponent } from './components/listagem/listagem.component';
 
 const routes: Routes = [
   { path: '', component: ListagemComponent},
-  { path: 'formulario', component: FormularioComponent }
+  { path: 'formulario', component: FormularioComponent },
+
   
 ];
 
