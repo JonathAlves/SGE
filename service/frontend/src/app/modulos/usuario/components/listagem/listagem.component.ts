@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from 'src/app/dominios/usuario';
+import { UsuarioService } from '../../servicos/usuario.service';
 
 @Component({
   selector: 'app-listagem',
@@ -12,7 +12,7 @@ export class ListagemComponent implements OnInit {
   usuarios: Usuario[] = [];
 
   constructor(
-    public servico: UsuarioService
+    private servico: UsuarioService
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +24,15 @@ export class ListagemComponent implements OnInit {
       .subscribe((usuarios: Usuario[]) => {
         this.usuarios = usuarios;
       });
+  }
+
+  deletarUsuario(id: number) {
+    this.servico.deletarUsuario(id)
+      .subscribe(() => {
+        alert('Usuário deletado');
+        this.buscarUsuarios();
+      },
+      err => alert(err));
   }
 
 }

@@ -1,8 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/dominios/usuario';
-import { UsuarioService } from '../../services/usuario.service';
+import { UsuarioService } from '../../servicos/usuario.service';
 
 @Component({
   selector: 'app-formulario',
@@ -11,22 +12,41 @@ import { UsuarioService } from '../../services/usuario.service';
 })
 export class FormularioComponent implements OnInit {
 
+  edicao = false;
   formUsuario: FormGroup;
   usuario = new Usuario();
 
   constructor(
     private fb: FormBuilder,
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    this.formUsuario = this.fb.group({
-      nome: ['', Validators.minLength(3)],
-      cpf: '',
-      email: '', 
-      telefone: '',
-      dataNascimento: '',
-    });
+    this.criarUsuario();
+  }
+
+  criarUsuario(){
+    this.route.params.subscribe(params => {
+        if (params.id) {
+          this.edicao = true;
+          this.buscarUsuario(params.id);
+        }
+      });
+
+      this.formUsuario = this.fb.group({
+        nome: ['', Validators.minLength(3)],
+        cpf:  ['', Validators.maxLength(11)],
+        email: ['', Validators.email],
+        telefone: ['', Validators.maxLength(14)],
+        dataNascimento: '',
+      });
+
+  }
+
+  buscarUsuario(id: number) {
+    this.usuarioService.buscarUsuarioPorId(id)
+      .subscribe(usuario => this.usuario = usuario);
   }
 
   salvar() {
@@ -35,13 +55,21 @@ export class FormularioComponent implements OnInit {
       return;
     }
 
-    this.usuarioService.salvarUsuario(this.usuario)
-      .subscribe(usuario => {
-        console.log('usuario salvo', usuario);
-        alert('Usuário Salvo')
-      }, (erro: HttpErrorResponse) => {
-        alert(erro.error.message);
-      });
+    if (this.edicao) {
+      this.usuarioService.editarUsuario(this.usuario)
+        .subscribe(usuario => {
+          alert('Usuário Editado')
+        }, (erro: HttpErrorResponse) => {
+          alert(erro.error.message);
+        });
+    } else {
+      this.usuarioService.salvarUsuario(this.usuario)
+        .subscribe(usuario => {
+          alert('Usuário Salvo')
+        }, (erro: HttpErrorResponse) => {
+          alert(erro.error.message);
+        });
+    }
   }
 
 }

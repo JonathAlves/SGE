@@ -5,15 +5,16 @@ import { UsuarioRoutingModule } from './usuario-routing.module';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { ListagemComponent } from './components/listagem/listagem.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { UsuarioService } from './services/usuario.service';
+import { UsuarioService } from './servicos/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
   declarations: [
     FormularioComponent,
-    ListagemComponent
+    ListagemComponent,
   ],
   providers: [
     UsuarioService

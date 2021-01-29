@@ -2,6 +2,7 @@ package com.basis.sge.service.servico;
 
 import com.basis.sge.service.dominio.Evento;
 import com.basis.sge.service.dominio.EventoPergunta;
+import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.repositorio.EventoRepositorio;
 import com.basis.sge.service.repositorio.TipoEventoRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
@@ -49,11 +50,12 @@ public class EventoServico {
         }
         Evento novoEvento = eventoMapper.toEntity(eventoDTO);
 
+
         List<EventoPergunta> perguntas = novoEvento.getPerguntas();
         novoEvento.setPerguntas(perguntas);
         eventoRepositorio.save(novoEvento);
 
-        if(perguntas != null && !perguntas.isEmpty()){
+        if (perguntas != null && !perguntas.isEmpty()) {
             perguntas.forEach(eventoPergunta -> {
                 eventoPergunta.setEvento(novoEvento);
             });
@@ -65,7 +67,7 @@ public class EventoServico {
 
     public EventoDTO editar(EventoDTO eventoDTO) {
         Evento evento = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
-                -> new RegraNegocioException( "Evento não encontrado!"));
+                -> new RegraNegocioException("Evento não encontrado!"));
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
         Evento eventoRecebido = eventoMapper.toEntity(eventoDTO);
         eventoRecebido.setTitulo(eventoDTO.getTitulo());
@@ -89,34 +91,35 @@ public class EventoServico {
         verificaIdEvento(id);
         eventoRepositorio.deleteById(id);
     }
+
     //Verifica o numero se é maior que 0
-    public void verificaNumero(Number n){
-        if(n != null && n.doubleValue()<0){
+    public void verificaNumero(Number n) {
+        if (n != null && n.doubleValue() < 0) {
             throw new RegraNegocioException("Passe um número maior que 0");
         }
     }
+
     //Verifica se o titulo do evento já existe
-    public void verificaTitulo(String titulo){
-        if (eventoRepositorio.existsByTitulo(titulo)){
+    public void verificaTitulo(String titulo) {
+        if (eventoRepositorio.existsByTitulo(titulo)) {
             throw new RegraNegocioException("Um evento com esse titulo já existe");
         }
     }
 
     //verifica se o tipo de evento existe no banco
     public void verificaTipoEvento(Integer idTipoEvento) {
-        if(!tipoEventoRepositorio.existsById(idTipoEvento)){
+        if (!tipoEventoRepositorio.existsById(idTipoEvento)) {
             throw new RegraNegocioException("Esse Tipo de Evento não existe");
         }
     }
 
     //verifica se o evento correspondente ao id existe
-    public void verificaIdEvento(Integer idEvento){
-        if(!eventoRepositorio.existsById(idEvento)){
+    public void verificaIdEvento(Integer idEvento) {
+        if (!eventoRepositorio.existsById(idEvento)) {
             throw new RegraNegocioException("Evento Não Existe");
         }
     }
 
+
+
 }
-
-
-
