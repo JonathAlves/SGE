@@ -5,7 +5,6 @@
 
       <input type="text" [(ngModel)]="usuario.nome" placeholder="Nome Usuário" formControlName="nome" pInputText />
       <div *ngIf="formUsuario.get('nome').invalid">Nome inválido</div>
-
       <input type="text" [(ngModel)]="usuario.cpf" placeholder="CPF" formControlName="cpf" pKeyFilter="num" />
       <div *ngIf="formUsuario.get('cpf').invalid">CPF inválido</div>
       <input type="text" [(ngModel)]="usuario.email" placeholder="Email" formControlName="email" pKeyFilter="email" />
