@@ -1,0 +1,32 @@
+<app-card [titulo]="'Lista de eventos'">
+
+    <div class="p-d-flex p-jc-end">
+        <button routerLink="formulario" icon="pi pi-plus" pButton type="button" label="Evento" ></button>
+    </div>
+    <p-tabView>
+        <p-tabPanel header="Eventos">
+            <p-table [value]="eventos">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Data de Inicio</th>
+                        <th style="width: 80px;">Ações</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-evento>
+                    <tr>
+                        <td>{{evento.titulo}}</td>
+                        <td>{{evento.dataInicio | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td class="p-d-flex p-jc-center">
+                        <button [routerLink]="['formulario', evento.id]" pButton type="button" icon="pi pi-pencil"></button>
+                        <button (click)="deletarEvento(evento.id)" class="p-ml-2" pButton type="button" icon="pi pi-trash"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-tabPanel>
+            <p-tabPanel header="Eventos Realizados">
+                Content 2
+            </p-tabPanel>
+    </p-tabView>
+</app-card>
