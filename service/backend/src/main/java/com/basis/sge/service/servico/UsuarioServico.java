@@ -32,6 +32,7 @@ public class UsuarioServico {
     }
 
 
+
     public UsuarioDTO adicionar (UsuarioDTO usuarioDTO){
         if(usuarioDTO.getId() != null){
             obterPorId(usuarioDTO.getId());
@@ -64,9 +65,6 @@ public class UsuarioServico {
 
                     }
                 }
-
-
-
 
 
         public void verificarUsuarioAtualizar (UsuarioDTO usuarioNovo){
