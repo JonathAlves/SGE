@@ -65,7 +65,7 @@ export class FormularioComponent implements OnInit {
       this.eventoService.salvarEvento(this.evento)
       .subscribe(usuario => {
         console.log('usuario salvo', usuario);
-        alert('Usuário Salvo')
+        alert('Evento Salvo')
       }, (erro: HttpErrorResponse) => {
         alert(erro.error.message);
       });
