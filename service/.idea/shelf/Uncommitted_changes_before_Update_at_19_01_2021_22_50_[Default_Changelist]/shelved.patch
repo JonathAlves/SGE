@@ -1,0 +1,414 @@
+Index: src/main/java/com/basis/sge/service/recurso/UsuarioRecurso.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.basis.sge.service.recurso;\n\nimport com.basis.sge.service.servico.UsuarioServico;\nimport com.basis.sge.service.servico.dto.UsuarioDTO;\nimport lombok.RequiredArgsConstructor;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.beans.factory.annotation.Value;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.CrossOrigin;\nimport org.springframework.web.bind.annotation.DeleteMapping;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.PatchMapping;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.PostMapping;\nimport org.springframework.web.bind.annotation.PutMapping;\nimport org.springframework.web.bind.annotation.RequestBody;\nimport org.springframework.web.bind.annotation.RequestMapping;\nimport org.springframework.web.bind.annotation.RestController;\n\nimport javax.validation.Valid;\nimport java.net.URI;\nimport java.net.URISyntaxException;\nimport java.rmi.server.UID;\nimport java.util.List;\n\n@RestController\n@RequestMapping (\"/api/usuarios\")\n@RequiredArgsConstructor\npublic class UsuarioRecurso {\n    @Autowired\n    private final UsuarioServico usuarioServico;\n\n\n    @GetMapping\n    public ResponseEntity<List <UsuarioDTO>> listar(){\n        List list = usuarioServico.listar();\n        return ResponseEntity.ok(list);\n    }\n\n    @GetMapping(\"/{id}\")\n    public  ResponseEntity<UsuarioDTO> obterPorId(@PathVariable Integer id){\n        UsuarioDTO usuarioDTO = usuarioServico.obterPorId(id);\n        return ResponseEntity.ok(usuarioDTO);\n    }\n\n\n\n\n    @PostMapping\n    public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {\n        UsuarioDTO usuario = usuarioServico.criar(usuarioDTO);\n       return ResponseEntity.created(new URI(\"/api/usuarios\")).body(usuario);\n    }\n\n    @PutMapping\n    public ResponseEntity<UsuarioDTO> atualizarUsuario(@Valid @RequestBody UsuarioDTO usuarioDTO){\n        UsuarioDTO usuario = usuarioServico.atualizar(usuarioDTO);\n        return ResponseEntity.ok(usuario);\n\n    }\n\n\n    @DeleteMapping(\"/{id}\")\n    public ResponseEntity<Void> remover(@PathVariable Integer id){\n        usuarioServico.remover(id);\n        return ResponseEntity.ok().build();\n    }\n\n\n\n\n    }\n\n\n\n\n\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/basis/sge/service/recurso/UsuarioRecurso.java b/src/main/java/com/basis/sge/service/recurso/UsuarioRecurso.java
+--- a/src/main/java/com/basis/sge/service/recurso/UsuarioRecurso.java	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/src/main/java/com/basis/sge/service/recurso/UsuarioRecurso.java	(date 1611034688390)
+@@ -44,8 +44,6 @@
+     }
+ 
+ 
+-
+-
+     @PostMapping
+     public ResponseEntity<UsuarioDTO> adicionar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
+         UsuarioDTO usuario = usuarioServico.criar(usuarioDTO);
+Index: src/main/java/com/basis/sge/service/servico/UsuarioServico.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.basis.sge.service.servico;\n\n\nimport com.basis.sge.service.dominio.Usuario;\nimport com.basis.sge.service.repositorio.UsuarioRepositorio;\nimport com.basis.sge.service.servico.Exception.RegraNegocioException;\nimport com.basis.sge.service.servico.dto.UsuarioDTO;\nimport com.basis.sge.service.servico.mapper.UsuarioMapper;\nimport lombok.RequiredArgsConstructor;\nimport org.springframework.stereotype.Service;\n\nimport javax.transaction.Transactional;\nimport java.util.List;\nimport java.util.UUID;\n\n@RequiredArgsConstructor\n@Service\n@Transactional\npublic class UsuarioServico {\n\n    private final UsuarioRepositorio usuarioRepositorio;\n    private final UsuarioMapper usuarioMapper;\n\n    public List<UsuarioDTO> listar(){\n        List<Usuario> usuarios = usuarioRepositorio.findAll();\n        return usuarioMapper.toDto(usuarios);\n    }\n\n    public UsuarioDTO obterPorId(Integer id){\n       Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()\n               -> new RegraNegocioException(\"Usuario nao encontrado\"));\n                return usuarioMapper.toDto(usuario);\n    }\n\n\n   public UsuarioDTO criar(UsuarioDTO usuarioDTO) {\n        verificarUsuario(usuarioDTO);\n       Usuario usuario = usuarioMapper.toEntity(usuarioDTO);\n       usuario.setChave(UUID.randomUUID().toString());\n\n       usuarioRepositorio.save(usuario);\n       return usuarioMapper.toDto(usuario);\n\n   }\n\n    public UsuarioDTO atualizar(UsuarioDTO usuarioDTO){\n            Usuario usuario = usuarioRepositorio.findById(usuarioDTO.getId()).orElseThrow(() -> new com.basis.sge.service.servico.RegraNegocioException( \"Usuario não encontrado!\"));\n            Usuario usuarioRecebido = usuarioMapper.toEntity(usuarioDTO);\n            usuarioRecebido.setChave(usuario.getChave());\n            Usuario usuarioAtualizado = usuarioRepositorio.save(usuarioRecebido);\n\n            return usuarioMapper.toDto(usuarioAtualizado);\n\n        }\n\n\n\n       public void remover(Integer id){\n        Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(()\n                -> new RegraNegocioException(\"Usuario não encontrado\"));\n        usuarioRepositorio.deleteById(id);\n\n\n    }\n\n\n        public void verificarUsuario(UsuarioDTO usuarioDTO){\n        if(usuarioDTO == null){\n            throw new RegraNegocioException(\"Dados invalidos!\");\n            }\n            else if(usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null){\n            throw new RegraNegocioException(\"Email já cadastrado\");\n\n              }\n            else if(usuarioRepositorio.findByCpf(usuarioDTO.getCpf()) != null){\n                throw new RegraNegocioException(\"CPF já cadastrado\");\n\n                 }\n        }\n\n    public void verificarUsuarioAtualizar(UsuarioDTO usuarioDTO) {\n        if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf())){\n            throw new RegraNegocioException(\"CPF já cadastrado\");\n\n        }\n\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/basis/sge/service/servico/UsuarioServico.java b/src/main/java/com/basis/sge/service/servico/UsuarioServico.java
+--- a/src/main/java/com/basis/sge/service/servico/UsuarioServico.java	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/src/main/java/com/basis/sge/service/servico/UsuarioServico.java	(date 1611060899026)
+@@ -44,6 +44,7 @@
+    }
+ 
+     public UsuarioDTO atualizar(UsuarioDTO usuarioDTO){
++      //  verificarUsuarioAtualizar(usuarioDTO);
+             Usuario usuario = usuarioRepositorio.findById(usuarioDTO.getId()).orElseThrow(() -> new com.basis.sge.service.servico.RegraNegocioException( "Usuario não encontrado!"));
+             Usuario usuarioRecebido = usuarioMapper.toEntity(usuarioDTO);
+             usuarioRecebido.setChave(usuario.getChave());
+@@ -78,12 +79,12 @@
+                  }
+         }
+ 
+-    public void verificarUsuarioAtualizar(UsuarioDTO usuarioDTO) {
+-        if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf())){
++   /* public void verificarUsuarioAtualizar(UsuarioDTO usuarioDTO) {
++        if (usuarioRepositorio.existByCpfAndNdotId(usuarioDTO.getCpf(), usuarioDTO.getId())){
+             throw new RegraNegocioException("CPF já cadastrado");
+ 
+         }
+ 
+-    }
++    }*/
+ 
+ }
+Index: src/main/java/com/basis/sge/service/servico/dto/UsuarioDTO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.basis.sge.service.servico.dto;\n\nimport lombok.Getter;\nimport lombok.Setter;\nimport org.hibernate.validator.constraints.br.CPF;\n\nimport javax.validation.constraints.Email;\nimport java.io.Serializable;\nimport java.time.LocalDate;\n\n@Getter\n@Setter\npublic class UsuarioDTO{\n\n    private Integer id;\n    @CPF\n    private String cpf;\n    private String nome;\n    private LocalDate dataNascimento;\n    private String telefone;\n    @Email\n    private String email;\n\n\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/basis/sge/service/servico/dto/UsuarioDTO.java b/src/main/java/com/basis/sge/service/servico/dto/UsuarioDTO.java
+--- a/src/main/java/com/basis/sge/service/servico/dto/UsuarioDTO.java	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/src/main/java/com/basis/sge/service/servico/dto/UsuarioDTO.java	(date 1611060661421)
+@@ -4,6 +4,7 @@
+ import lombok.Setter;
+ import org.hibernate.validator.constraints.br.CPF;
+ 
++import javax.persistence.Id;
+ import javax.validation.constraints.Email;
+ import java.io.Serializable;
+ import java.time.LocalDate;
+@@ -11,7 +12,7 @@
+ @Getter
+ @Setter
+ public class UsuarioDTO{
+-
++    @Id
+     private Integer id;
+     @CPF
+     private String cpf;
+Index: target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.basis.sge.service.servico.mapper;\n\nimport com.basis.sge.service.dominio.Pergunta;\nimport com.basis.sge.service.servico.dto.PerguntaDTO;\nimport java.util.ArrayList;\nimport java.util.List;\nimport javax.annotation.Generated;\nimport org.springframework.stereotype.Component;\n\n@Generated(\n    value = \"org.mapstruct.ap.MappingProcessor\",\n    date = \"2021-01-18T17:34:24-0300\",\n    comments = \"version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)\"\n)\n@Component\npublic class PerguntaMapperImpl implements PerguntaMapper {\n\n    @Override\n    public Pergunta toEntity(PerguntaDTO arg0) {\n        if ( arg0 == null ) {\n            return null;\n        }\n\n        Pergunta pergunta = new Pergunta();\n\n        pergunta.setId( arg0.getId() );\n        pergunta.setTitulo( arg0.getTitulo() );\n\n        return pergunta;\n    }\n\n    @Override\n    public PerguntaDTO toDto(Pergunta arg0) {\n        if ( arg0 == null ) {\n            return null;\n        }\n\n        PerguntaDTO perguntaDTO = new PerguntaDTO();\n\n        perguntaDTO.setId( arg0.getId() );\n        perguntaDTO.setTitulo( arg0.getTitulo() );\n\n        return perguntaDTO;\n    }\n\n    @Override\n    public List<Pergunta> toEntity(List<PerguntaDTO> arg0) {\n        if ( arg0 == null ) {\n            return null;\n        }\n\n        List<Pergunta> list = new ArrayList<Pergunta>( arg0.size() );\n        for ( PerguntaDTO perguntaDTO : arg0 ) {\n            list.add( toEntity( perguntaDTO ) );\n        }\n\n        return list;\n    }\n\n    @Override\n    public List<PerguntaDTO> toDto(List<Pergunta> arg0) {\n        if ( arg0 == null ) {\n            return null;\n        }\n\n        List<PerguntaDTO> list = new ArrayList<PerguntaDTO>( arg0.size() );\n        for ( Pergunta pergunta : arg0 ) {\n            list.add( toDto( pergunta ) );\n        }\n\n        return list;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java b/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java
+--- a/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java	(date 1611060905870)
+@@ -9,48 +9,48 @@
+ 
+ @Generated(
+     value = "org.mapstruct.ap.MappingProcessor",
+-    date = "2021-01-18T17:34:24-0300",
++    date = "2021-01-19T09:55:05-0300",
+     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
+ )
+ @Component
+ public class PerguntaMapperImpl implements PerguntaMapper {
+ 
+     @Override
+-    public Pergunta toEntity(PerguntaDTO arg0) {
+-        if ( arg0 == null ) {
++    public Pergunta toEntity(PerguntaDTO dto) {
++        if ( dto == null ) {
+             return null;
+         }
+ 
+         Pergunta pergunta = new Pergunta();
+ 
+-        pergunta.setId( arg0.getId() );
+-        pergunta.setTitulo( arg0.getTitulo() );
++        pergunta.setId( dto.getId() );
++        pergunta.setTitulo( dto.getTitulo() );
+ 
+         return pergunta;
+     }
+ 
+     @Override
+-    public PerguntaDTO toDto(Pergunta arg0) {
+-        if ( arg0 == null ) {
++    public PerguntaDTO toDto(Pergunta entity) {
++        if ( entity == null ) {
+             return null;
+         }
+ 
+         PerguntaDTO perguntaDTO = new PerguntaDTO();
+ 
+-        perguntaDTO.setId( arg0.getId() );
+-        perguntaDTO.setTitulo( arg0.getTitulo() );
++        perguntaDTO.setId( entity.getId() );
++        perguntaDTO.setTitulo( entity.getTitulo() );
+ 
+         return perguntaDTO;
+     }
+ 
+     @Override
+-    public List<Pergunta> toEntity(List<PerguntaDTO> arg0) {
+-        if ( arg0 == null ) {
++    public List<Pergunta> toEntity(List<PerguntaDTO> dtoList) {
++        if ( dtoList == null ) {
+             return null;
+         }
+ 
+-        List<Pergunta> list = new ArrayList<Pergunta>( arg0.size() );
+-        for ( PerguntaDTO perguntaDTO : arg0 ) {
++        List<Pergunta> list = new ArrayList<Pergunta>( dtoList.size() );
++        for ( PerguntaDTO perguntaDTO : dtoList ) {
+             list.add( toEntity( perguntaDTO ) );
+         }
+ 
+@@ -58,13 +58,13 @@
+     }
+ 
+     @Override
+-    public List<PerguntaDTO> toDto(List<Pergunta> arg0) {
+-        if ( arg0 == null ) {
++    public List<PerguntaDTO> toDto(List<Pergunta> entityList) {
++        if ( entityList == null ) {
+             return null;
+         }
+ 
+-        List<PerguntaDTO> list = new ArrayList<PerguntaDTO>( arg0.size() );
+-        for ( Pergunta pergunta : arg0 ) {
++        List<PerguntaDTO> list = new ArrayList<PerguntaDTO>( entityList.size() );
++        for ( Pergunta pergunta : entityList ) {
+             list.add( toDto( pergunta ) );
+         }
+ 
+Index: target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.basis.sge.service.servico.mapper;\n\nimport com.basis.sge.service.dominio.InscricaoResposta;\nimport com.basis.sge.service.servico.dto.InscricaoRespostaDTO;\nimport java.util.ArrayList;\nimport java.util.List;\nimport javax.annotation.Generated;\nimport org.springframework.stereotype.Component;\n\n@Generated(\n    value = \"org.mapstruct.ap.MappingProcessor\",\n    date = \"2021-01-18T17:33:27-0300\",\n    comments = \"version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)\"\n)\n@Component\npublic class InscricaoRespostaMapperImpl implements InscricaoRespostaMapper {\n\n    @Override\n    public InscricaoResposta toEntity(InscricaoRespostaDTO arg0) {\n        if ( arg0 == null ) {\n            return null;\n        }\n\n        InscricaoResposta inscricaoResposta = new InscricaoResposta();\n\n        inscricaoResposta.setResposta( arg0.getResposta() );\n        inscricaoResposta.setInscricao( arg0.getInscricao() );\n        inscricaoResposta.setEvento( arg0.getEvento() );\n        inscricaoResposta.setPergunta( arg0.getPergunta() );\n\n        return inscricaoResposta;\n    }\n\n    @Override\n    public InscricaoRespostaDTO toDto(InscricaoResposta arg0) {\n        if ( arg0 == null ) {\n            return null;\n        }\n\n        InscricaoRespostaDTO inscricaoRespostaDTO = new InscricaoRespostaDTO();\n\n        inscricaoRespostaDTO.setEvento( arg0.getEvento() );\n        inscricaoRespostaDTO.setPergunta( arg0.getPergunta() );\n        inscricaoRespostaDTO.setInscricao( arg0.getInscricao() );\n        inscricaoRespostaDTO.setResposta( arg0.getResposta() );\n\n        return inscricaoRespostaDTO;\n    }\n\n    @Override\n    public List<InscricaoResposta> toEntity(List<InscricaoRespostaDTO> arg0) {\n        if ( arg0 == null ) {\n            return null;\n        }\n\n        List<InscricaoResposta> list = new ArrayList<InscricaoResposta>( arg0.size() );\n        for ( InscricaoRespostaDTO inscricaoRespostaDTO : arg0 ) {\n            list.add( toEntity( inscricaoRespostaDTO ) );\n        }\n\n        return list;\n    }\n\n    @Override\n    public List<InscricaoRespostaDTO> toDto(List<InscricaoResposta> arg0) {\n        if ( arg0 == null ) {\n            return null;\n        }\n\n        List<InscricaoRespostaDTO> list = new ArrayList<InscricaoRespostaDTO>( arg0.size() );\n        for ( InscricaoResposta inscricaoResposta : arg0 ) {\n            list.add( toDto( inscricaoResposta ) );\n        }\n\n        return list;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java b/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java
+--- a/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java	(date 1611060905738)
+@@ -9,52 +9,52 @@
+ 
+ @Generated(
+     value = "org.mapstruct.ap.MappingProcessor",
+-    date = "2021-01-18T17:33:27-0300",
++    date = "2021-01-19T09:55:05-0300",
+     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
+ )
+ @Component
+ public class InscricaoRespostaMapperImpl implements InscricaoRespostaMapper {
+ 
+     @Override
+-    public InscricaoResposta toEntity(InscricaoRespostaDTO arg0) {
+-        if ( arg0 == null ) {
++    public InscricaoResposta toEntity(InscricaoRespostaDTO dto) {
++        if ( dto == null ) {
+             return null;
+         }
+ 
+         InscricaoResposta inscricaoResposta = new InscricaoResposta();
+ 
+-        inscricaoResposta.setResposta( arg0.getResposta() );
+-        inscricaoResposta.setInscricao( arg0.getInscricao() );
+-        inscricaoResposta.setEvento( arg0.getEvento() );
+-        inscricaoResposta.setPergunta( arg0.getPergunta() );
++        inscricaoResposta.setResposta( dto.getResposta() );
++        inscricaoResposta.setInscricao( dto.getInscricao() );
++        inscricaoResposta.setEvento( dto.getEvento() );
++        inscricaoResposta.setPergunta( dto.getPergunta() );
+ 
+         return inscricaoResposta;
+     }
+ 
+     @Override
+-    public InscricaoRespostaDTO toDto(InscricaoResposta arg0) {
+-        if ( arg0 == null ) {
++    public InscricaoRespostaDTO toDto(InscricaoResposta entity) {
++        if ( entity == null ) {
+             return null;
+         }
+ 
+         InscricaoRespostaDTO inscricaoRespostaDTO = new InscricaoRespostaDTO();
+ 
+-        inscricaoRespostaDTO.setEvento( arg0.getEvento() );
+-        inscricaoRespostaDTO.setPergunta( arg0.getPergunta() );
+-        inscricaoRespostaDTO.setInscricao( arg0.getInscricao() );
+-        inscricaoRespostaDTO.setResposta( arg0.getResposta() );
++        inscricaoRespostaDTO.setEvento( entity.getEvento() );
++        inscricaoRespostaDTO.setPergunta( entity.getPergunta() );
++        inscricaoRespostaDTO.setInscricao( entity.getInscricao() );
++        inscricaoRespostaDTO.setResposta( entity.getResposta() );
+ 
+         return inscricaoRespostaDTO;
+     }
+ 
+     @Override
+-    public List<InscricaoResposta> toEntity(List<InscricaoRespostaDTO> arg0) {
+-        if ( arg0 == null ) {
++    public List<InscricaoResposta> toEntity(List<InscricaoRespostaDTO> dtoList) {
++        if ( dtoList == null ) {
+             return null;
+         }
+ 
+-        List<InscricaoResposta> list = new ArrayList<InscricaoResposta>( arg0.size() );
+-        for ( InscricaoRespostaDTO inscricaoRespostaDTO : arg0 ) {
++        List<InscricaoResposta> list = new ArrayList<InscricaoResposta>( dtoList.size() );
++        for ( InscricaoRespostaDTO inscricaoRespostaDTO : dtoList ) {
+             list.add( toEntity( inscricaoRespostaDTO ) );
+         }
+ 
+@@ -62,13 +62,13 @@
+     }
+ 
+     @Override
+-    public List<InscricaoRespostaDTO> toDto(List<InscricaoResposta> arg0) {
+-        if ( arg0 == null ) {
++    public List<InscricaoRespostaDTO> toDto(List<InscricaoResposta> entityList) {
++        if ( entityList == null ) {
+             return null;
+         }
+ 
+-        List<InscricaoRespostaDTO> list = new ArrayList<InscricaoRespostaDTO>( arg0.size() );
+-        for ( InscricaoResposta inscricaoResposta : arg0 ) {
++        List<InscricaoRespostaDTO> list = new ArrayList<InscricaoRespostaDTO>( entityList.size() );
++        for ( InscricaoResposta inscricaoResposta : entityList ) {
+             list.add( toDto( inscricaoResposta ) );
+         }
+ 
+Index: target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.basis.sge.service.servico.mapper;\n\nimport com.basis.sge.service.dominio.Usuario;\nimport com.basis.sge.service.servico.dto.UsuarioDTO;\nimport java.util.ArrayList;\nimport java.util.List;\nimport javax.annotation.Generated;\nimport org.springframework.stereotype.Component;\n\n@Generated(\n    value = \"org.mapstruct.ap.MappingProcessor\",\n    date = \"2021-01-18T23:49:10-0300\",\n    comments = \"version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)\"\n)\n@Component\npublic class UsuarioMapperImpl implements UsuarioMapper {\n\n    @Override\n    public Usuario toEntity(UsuarioDTO dto) {\n        if ( dto == null ) {\n            return null;\n        }\n\n        Usuario usuario = new Usuario();\n\n        usuario.setId( dto.getId() );\n        usuario.setNome( dto.getNome() );\n        usuario.setCpf( dto.getCpf() );\n        usuario.setEmail( dto.getEmail() );\n        usuario.setTelefone( dto.getTelefone() );\n        usuario.setDataNascimento( dto.getDataNascimento() );\n\n        return usuario;\n    }\n\n    @Override\n    public UsuarioDTO toDto(Usuario entity) {\n        if ( entity == null ) {\n            return null;\n        }\n\n        UsuarioDTO usuarioDTO = new UsuarioDTO();\n\n        usuarioDTO.setId( entity.getId() );\n        usuarioDTO.setCpf( entity.getCpf() );\n        usuarioDTO.setNome( entity.getNome() );\n        usuarioDTO.setDataNascimento( entity.getDataNascimento() );\n        usuarioDTO.setTelefone( entity.getTelefone() );\n        usuarioDTO.setEmail( entity.getEmail() );\n\n        return usuarioDTO;\n    }\n\n    @Override\n    public List<Usuario> toEntity(List<UsuarioDTO> dtoList) {\n        if ( dtoList == null ) {\n            return null;\n        }\n\n        List<Usuario> list = new ArrayList<Usuario>( dtoList.size() );\n        for ( UsuarioDTO usuarioDTO : dtoList ) {\n            list.add( toEntity( usuarioDTO ) );\n        }\n\n        return list;\n    }\n\n    @Override\n    public List<UsuarioDTO> toDto(List<Usuario> entityList) {\n        if ( entityList == null ) {\n            return null;\n        }\n\n        List<UsuarioDTO> list = new ArrayList<UsuarioDTO>( entityList.size() );\n        for ( Usuario usuario : entityList ) {\n            list.add( toDto( usuario ) );\n        }\n\n        return list;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java b/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java
+--- a/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java	(date 1611060905818)
+@@ -9,7 +9,7 @@
+ 
+ @Generated(
+     value = "org.mapstruct.ap.MappingProcessor",
+-    date = "2021-01-18T23:49:10-0300",
++    date = "2021-01-19T09:55:05-0300",
+     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
+ )
+ @Component
+Index: target/classes/config/application.yml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>application:\n<<<<<<< HEAD\n  appName: sge\n  mail:\n    endereco-remetente: ancine-mailer@basis.com.br\n    nome-remetente: Ancine\n\nspring:\n  application:\n    name: sgeservice\n  datasource:\n    type: com.zaxxer.hikari.HikariDataSource\n    url: jdbc:postgresql://localhost:5432/sge\n    username: sge\n    password: sge\n    hikari:\n      auto-commit: false\n  jackson:\n    date-format: yyyy-MM-dd\n    deserialization:\n      fail-on-unknown-properties: false\n  jpa:\n#    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect\n    database: POSTGRESQL\n    show-sql: true\n    open-in-view: false\n    properties:\n      hibernate.id.new_generator_mappings: true\n      hibernate.connection.provider_disables_autocommit: true\n      hibernate.cache.use_second_level_cache: false\n      hibernate.cache.use_query_cache: false\n      hibernate.generate_statistics: false\n  liquibase:\n    change-log: classpath:/config/liquibase/master.xml\n    # drop-first: true\n  mail:\n    host: smtp.gmail.com\n    port: 587\n    username: sapedteste@gmail.com\n    password: sapedteste123\n    properties:\n      mail:\n        smtp:\n          auth: true\n          starttls:\n            enable: true\n            required: true\n          quitwait: false\n  server:\n    port: 8080\n=======\n    appName: sge\n    mail:\n        endereco-remetente: ancine-mailer@basis.com.br\n        nome-remetente: Ancine\n\nspring:\n    application:\n        name: sgeservice\n    datasource:\n        type: com.zaxxer.hikari.HikariDataSource\n        url: jdbc:postgresql://localhost:5432/sge\n        username: sge\n        password: sge\n        hikari:\n            auto-commit: false\n    jackson:\n        date-format: yyyy-MM-dd\n        deserialization:\n            fail-on-unknown-properties: false\n    jpa:\n        #    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect\n        database: POSTGRESQL\n        show-sql: true\n        open-in-view: false\n        properties:\n            hibernate.id.new_generator_mappings: true\n            hibernate.connection.provider_disables_autocommit: true\n            hibernate.cache.use_second_level_cache: false\n            hibernate.cache.use_query_cache: false\n            hibernate.generate_statistics: false\n    liquibase:\n        change-log: classpath:/config/liquibase/master.xml\n        # drop-first: true\n    mail:\n        host: smtp.gmail.com\n        port: 587\n        username: sapedteste@gmail.com\n        password: sapedteste123\n        properties:\n            mail:\n                smtp:\n                    auth: true\n                    starttls:\n                        enable: true\n                        required: true\n                    quitwait: false\n    server:\n        port: 8080\n>>>>>>> d04482f3e87d59056340f4c4ef91b5dc378d0ae5\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/config/application.yml b/target/classes/config/application.yml
+--- a/target/classes/config/application.yml	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/target/classes/config/application.yml	(date 1611060731409)
+@@ -47,54 +47,4 @@
+             required: true
+           quitwait: false
+   server:
+-    port: 8080
+-=======
+-    appName: sge
+-    mail:
+-        endereco-remetente: ancine-mailer@basis.com.br
+-        nome-remetente: Ancine
+-
+-spring:
+-    application:
+-        name: sgeservice
+-    datasource:
+-        type: com.zaxxer.hikari.HikariDataSource
+-        url: jdbc:postgresql://localhost:5432/sge
+-        username: sge
+-        password: sge
+-        hikari:
+-            auto-commit: false
+-    jackson:
+-        date-format: yyyy-MM-dd
+-        deserialization:
+-            fail-on-unknown-properties: false
+-    jpa:
+-        #    database-platform: io.github.jhipster.domain.util.FixedPostgreSQL95Dialect
+-        database: POSTGRESQL
+-        show-sql: true
+-        open-in-view: false
+-        properties:
+-            hibernate.id.new_generator_mappings: true
+-            hibernate.connection.provider_disables_autocommit: true
+-            hibernate.cache.use_second_level_cache: false
+-            hibernate.cache.use_query_cache: false
+-            hibernate.generate_statistics: false
+-    liquibase:
+-        change-log: classpath:/config/liquibase/master.xml
+-        # drop-first: true
+-    mail:
+-        host: smtp.gmail.com
+-        port: 587
+-        username: sapedteste@gmail.com
+-        password: sapedteste123
+-        properties:
+-            mail:
+-                smtp:
+-                    auth: true
+-                    starttls:
+-                        enable: true
+-                        required: true
+-                    quitwait: false
+-    server:
+-        port: 8080
+->>>>>>> d04482f3e87d59056340f4c4ef91b5dc378d0ae5
++    port: 8080
+\ No newline at end of file
+Index: src/main/java/com/basis/sge/service/servico/mapper/EventoMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/basis/sge/service/servico/mapper/EventoMapper.java b/src/main/java/com/basis/sge/service/servico/mapper/EventoMapper.java
+new file mode 100644
+--- /dev/null	(date 1611107368108)
++++ b/src/main/java/com/basis/sge/service/servico/mapper/EventoMapper.java	(date 1611107368108)
+@@ -0,0 +1,8 @@
++package com.basis.sge.service.servico.mapper;
++
++import com.basis.sge.service.dominio.Inscricao;
++import com.basis.sge.service.servico.dto.EventoDTO;
++import com.basis.sge.service.servico.dto.InscricaoDTO;
++
++public interface EventoMapper extends EntityMapper<EventoDTO, Inscricao>{
++}
+Index: src/main/java/com/basis/sge/service/repositorio/UsuarioRepositorio.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.basis.sge.service.repositorio;\n\nimport com.basis.sge.service.dominio.Usuario;\nimport org.springframework.data.jpa.repository.JpaRepository;\nimport org.springframework.stereotype.Repository;\nimport org.springframework.transaction.annotation.Transactional;\n\n\n@Repository\n@Transactional\npublic interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {\n\n      Boolean  findByCpf(String cpf);\n      Boolean  findByEmail(String email);\n\n\n\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/basis/sge/service/repositorio/UsuarioRepositorio.java b/src/main/java/com/basis/sge/service/repositorio/UsuarioRepositorio.java
+--- a/src/main/java/com/basis/sge/service/repositorio/UsuarioRepositorio.java	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/src/main/java/com/basis/sge/service/repositorio/UsuarioRepositorio.java	(date 1611060898986)
+@@ -13,6 +13,8 @@
+       Boolean  findByCpf(String cpf);
+       Boolean  findByEmail(String email);
+ 
++      //Boolean existByCpfAndNdotId(String cpf, Integer id);
++
+ 
+ 
+ 
+Index: target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.basis.sge.service.servico.mapper;\n\nimport com.basis.sge.service.dominio.TipoSituacao;\nimport com.basis.sge.service.servico.dto.TipoSituacaoDTO;\nimport java.util.ArrayList;\nimport java.util.List;\nimport javax.annotation.Generated;\nimport org.springframework.stereotype.Component;\n\n@Generated(\n    value = \"org.mapstruct.ap.MappingProcessor\",\n<<<<<<< HEAD\n    date = \"2021-01-18T23:49:09-0300\",\n=======\n    date = \"2021-01-18T17:31:11-0300\",\n>>>>>>> d04482f3e87d59056340f4c4ef91b5dc378d0ae5\n    comments = \"version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)\"\n)\n@Component\npublic class TipoSituacaoMapperImpl implements TipoSituacaoMapper {\n\n    @Override\n    public TipoSituacao toEntity(TipoSituacaoDTO dto) {\n        if ( dto == null ) {\n            return null;\n        }\n\n        TipoSituacao tipoSituacao = new TipoSituacao();\n\n        tipoSituacao.setId( dto.getId() );\n        tipoSituacao.setDescricao( dto.getDescricao() );\n\n        return tipoSituacao;\n    }\n\n    @Override\n    public TipoSituacaoDTO toDto(TipoSituacao entity) {\n        if ( entity == null ) {\n            return null;\n        }\n\n        TipoSituacaoDTO tipoSituacaoDTO = new TipoSituacaoDTO();\n\n        tipoSituacaoDTO.setId( entity.getId() );\n        tipoSituacaoDTO.setDescricao( entity.getDescricao() );\n\n        return tipoSituacaoDTO;\n    }\n\n    @Override\n    public List<TipoSituacao> toEntity(List<TipoSituacaoDTO> dtoList) {\n        if ( dtoList == null ) {\n            return null;\n        }\n\n        List<TipoSituacao> list = new ArrayList<TipoSituacao>( dtoList.size() );\n        for ( TipoSituacaoDTO tipoSituacaoDTO : dtoList ) {\n            list.add( toEntity( tipoSituacaoDTO ) );\n        }\n\n        return list;\n    }\n\n    @Override\n    public List<TipoSituacaoDTO> toDto(List<TipoSituacao> entityList) {\n        if ( entityList == null ) {\n            return null;\n        }\n\n        List<TipoSituacaoDTO> list = new ArrayList<TipoSituacaoDTO>( entityList.size() );\n        for ( TipoSituacao tipoSituacao : entityList ) {\n            list.add( toDto( tipoSituacao ) );\n        }\n\n        return list;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java b/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java
+--- a/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java	(revision 2f2766d89ef2ea1c33021942f3d1d94152e42c66)
++++ b/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java	(date 1611060905946)
+@@ -9,11 +9,7 @@
+ 
+ @Generated(
+     value = "org.mapstruct.ap.MappingProcessor",
+-<<<<<<< HEAD
+-    date = "2021-01-18T23:49:09-0300",
+-=======
+-    date = "2021-01-18T17:31:11-0300",
+->>>>>>> d04482f3e87d59056340f4c4ef91b5dc378d0ae5
++    date = "2021-01-19T09:55:05-0300",
+     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
+ )
+ @Component
