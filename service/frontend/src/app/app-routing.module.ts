@@ -9,6 +9,7 @@ const routes: Routes = [
     { path: 'usuarios', loadChildren: () => UsuarioModule},
     { path: 'diario-erros', component: DiarioErrosComponent, data: { breadcrumb: 'Diário de Erros'} },
     { path: 'login-success', component: LoginSuccessComponent },
+    { path: 'minha-conta', loadChildren: () => import('./modulos/minha-conta/minha-conta/minha-conta/minha-conta.module').then(m => m.MinhaContaModule) },
 ];
 
 @NgModule({

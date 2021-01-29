@@ -10,6 +10,10 @@ export class UsuarioService {
 
   constructor( private  http: HttpClient) { }
 
+  buscarUsuarioPorId(id: number): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.url}/${id}`);
+  }
+
   getUsuarios(): Observable<Usuario[]>{
     return this.http.get<Usuario[]> (`${this.url}`);
 
@@ -21,14 +25,10 @@ export class UsuarioService {
   editarUsuario(usario: Usuario): Observable<Usuario>{
     return this.http.put<Usuario>(this.url, usario);
   }
-  buscarUsuarioPorId(id: number): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.url}/${id}`);
-  }
+  
   deletarUsuario(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
-
-
 
 
   }

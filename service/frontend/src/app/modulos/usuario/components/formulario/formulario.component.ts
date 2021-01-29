@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/dominios/usuario';
@@ -12,10 +12,11 @@ import { UsuarioService } from '../../servicos/usuario.service';
 })
 export class FormularioComponent implements OnInit {
 
-  edicao = false;
-  formUsuario: FormGroup;
-  usuario = new Usuario();
+  @Input() usuario = new Usuario();
+  @Input() edicao = false;
+  @Output() usuarioSalvo = new EventEmitter<Usuario>();
 
+  formUsuario: FormGroup;
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
@@ -57,19 +58,25 @@ export class FormularioComponent implements OnInit {
 
     if (this.edicao) {
       this.usuarioService.editarUsuario(this.usuario)
-        .subscribe(usuario => {
-          alert('Usuário Editado')
+        .subscribe(usuario => {   
+          alert('Usuário Editado');
+          this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
           alert(erro.error.message);
         });
     } else {
       this.usuarioService.salvarUsuario(this.usuario)
         .subscribe(usuario => {
-          alert('Usuário Salvo')
+          alert('Usuário Salvo');
+          this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
           alert(erro.error.message);
         });
     }
+  }
+
+  fecharDialog(usuarioSalvo: Usuario) {
+    this.usuarioSalvo.emit(usuarioSalvo);
   }
 
 }
