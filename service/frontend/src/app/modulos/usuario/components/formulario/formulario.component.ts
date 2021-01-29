@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/dominios/usuario';
-import { UsuarioService } from '../../servicos/usuario.service';
+import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   selector: 'app-formulario',

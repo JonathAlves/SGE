@@ -13,8 +13,9 @@ import { PageNotificationModule, BreadcrumbModule, MenuModule, ErrorStackModule 
 import { SecurityModule, VersionTagModule } from '@nuvem/angular-base';
 import { DiarioErrosComponent } from './components/diario-erros/diario-erros.component';
 import { BlockUIModule } from 'ng-block-ui';
-import { ListagemComponent } from './modulos/minha-conta/components/listagem/listagem.component';
-import { MinhaContaModule } from './modulos/minha-conta/minha-conta/minha-conta.module';
+import {ToolbarModule} from 'primeng/toolbar';
+import {CardModule} from 'primeng/card';
+import {TabViewModule} from 'primeng/tabview';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,7 @@ import { MinhaContaModule } from './modulos/minha-conta/minha-conta/minha-conta.
         AppTopbarComponent,
         AppFooterComponent,
         DiarioErrosComponent,
-        ListagemComponent,
+    
     ],
     imports: [
         BlockUIModule.forRoot({
@@ -39,7 +40,9 @@ import { MinhaContaModule } from './modulos/minha-conta/minha-conta/minha-conta.
         VersionTagModule,
         SecurityModule.forRoot(environment.auth),
         MenuModule,
-        MinhaContaModule
+        ToolbarModule,
+        CardModule,
+        TabViewModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }
