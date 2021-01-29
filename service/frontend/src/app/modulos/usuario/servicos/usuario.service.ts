@@ -29,7 +29,7 @@ export class UsuarioService {
   deletarUsuario(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
-
+//sad
 
   }
 
