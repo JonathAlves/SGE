@@ -1,1 +1,20 @@
-<p>formulario works!</p>
+<app-card [titulo]="'Cadastro'">
+<form [formGroup]="formUsuario">
+
+    <div class="p-grid p-dir-col">
+
+      <input type="text" [(ngModel)]="usuario.nome" placeholder="Nome Usuário" formControlName="nome" pInputText />
+      <div *ngIf="formUsuario.get('nome').invalid">Nome inválido</div>
+
+      <input type="text" [(ngModel)]="usuario.cpf" placeholder="CPF" formControlName="cpf" pKeyFilter="num" />
+      <div *ngIf="formUsuario.get('cpf').invalid">CPF inválido</div>
+      <input type="text" [(ngModel)]="usuario.email" placeholder="Email" formControlName="email" pKeyFilter="email" />
+      <div *ngIf="formUsuario.get('email').invalid">Email inválido</div>
+      <input type="text" [(ngModel)]="usuario.telefone" placeholder="telefone" formControlName="telefone" pKeyFilter="num">
+      <div *ngIf="formUsuario.get('telefone').invalid">Telefone inválido</div>
+      <input type="text" [(ngModel)]="usuario.dataNascimento" placeholder="Data de Nascimento" formControlName="dataNascimento" pInputText />
+    </div>
+
+  </form>
+  <button (click)="salvar()" pButton type="button" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
+</app-card>
