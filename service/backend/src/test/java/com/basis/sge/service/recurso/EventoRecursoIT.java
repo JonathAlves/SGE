@@ -2,6 +2,7 @@ package com.basis.sge.service.recurso;
 
 import com.basis.sge.service.builder.EventoBuilder;
 import com.basis.sge.service.dominio.Evento;
+import com.basis.sge.service.dominio.EventoPergunta;
 import com.basis.sge.service.dominio.TipoEvento;
 import com.basis.sge.service.repositorio.EventoRepositorio;
 import com.basis.sge.service.servico.mapper.EventoMapper;
@@ -15,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -89,6 +93,23 @@ public class EventoRecursoIT extends IntTestComum {
                 .andExpect(status().isOk());
         Assert.assertEquals(0, eventoRepositorio.findAll().size());
     }
+
+//    @Test
+//    public void eventoComPergunta() throws Exception{
+//        List<EventoPergunta> eventoPerguntaList = new ArrayList<>();
+//        EventoPergunta eventoPergunta = eventoPerguntaBuilder.construirEntidade();
+//        Evento evento = eventoBuilder.construirEntidade();
+//
+//        eventoPergunta.setEvento(evento);
+//        eventoPerguntaList.add(eventoPergunta);
+//        evento.setPerguntas(eventoPerguntaList);
+//
+//        getMockMvc().perform(post("/api/eventos")
+//                .contentType(TestUtil.APPLICATION_JSON_UTF8)
+//                .content(TestUtil.convertObjectToJsonBytes(eventoMapper.toDto(evento))))
+//                .andExpect(status().isCreated());
+//        Assert.assertEquals(1, eventoRepositorio.findAll().size());
+//    }
 
     //Test de bad request e de exception
     @Test

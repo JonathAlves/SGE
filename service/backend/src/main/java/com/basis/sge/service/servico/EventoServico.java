@@ -45,6 +45,9 @@ public class EventoServico {
         verificaTipoEvento(eventoDTO.getIdTipoEvento());
         verificaNumero(eventoDTO.getQtVagas());
         verificaNumero(eventoDTO.getValor());
+        if(eventoDTO.getTipoInscricao() == null){
+            throw new RegraNegocioException("Tipo de inscrição não pode ser NULO!");
+        }
         Evento novoEvento = eventoMapper.toEntity(eventoDTO);
 
 
@@ -75,11 +78,12 @@ public class EventoServico {
         eventoRecebido.setValor(eventoDTO.getValor());
         eventoRecebido.setLocal(eventoDTO.getLocal());
         eventoRecebido.setTipoInscricao(eventoDTO.getTipoInscricao());
-        if (eventoRepositorio.existsByTitulo(eventoDTO.getTitulo())) {
-            throw new RegraNegocioException("Um evento com esse titulo já existe");
-        } else {
-            eventoRepositorio.save(eventoRecebido);
-        }
+//        if (eventoRepositorio.existsByTitulo(eventoDTO.getTitulo())) {
+//            throw new RegraNegocioException("Um evento com esse titulo já existe");
+//        } else {
+//            eventoRepositorio.save(eventoRecebido);
+//        }
+        eventoRepositorio.save(eventoRecebido);
         return eventoMapper.toDto(eventoRecebido);
     }
 
