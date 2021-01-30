@@ -47,7 +47,6 @@ public class InscricaoServico {
             respostas.forEach(inscricaoResposta -> {
                 inscricaoResposta.setInscricao(inscricao);
             });
-            //eventoPerguntaRepositorio.saveAll(perguntas);
         }
         emailServico.emailEnviarInscricao(inscricao);
         Inscricao novaInscricao = inscricaoRepositorio.save(inscricao);

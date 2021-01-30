@@ -1,0 +1,11 @@
+<form [formGroup]="formInscricao">
+    <div class="p-grid p-dri-col">
+
+        <input type="text" [(ngModel)]="inscricao.respostas[0]" placeholder="Pergunta 1" formControlName="resposta1" pInputText />
+        <div *ngIf="formInscricao.get('resposta1').invalid">Resposta inválido</div>
+
+        <input type="text" [(ngModel)]="inscricao.respostas[1]" placeholder="Pergunta 2" formControlName="resposta2" pInputText />
+        <div *ngIf="formInscricao.get('resposta2').invalid">Resposta inválido</div>
+
+    </div>
+</form>
