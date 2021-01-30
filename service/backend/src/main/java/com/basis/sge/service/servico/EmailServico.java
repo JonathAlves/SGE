@@ -1,13 +1,11 @@
 package com.basis.sge.service.servico;
 import com.basis.sge.service.configuracao.ApplicationProperties;
 import com.basis.sge.service.dominio.Inscricao;
-import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.dto.EmailDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import java.io.UnsupportedEncodingException;
@@ -39,13 +37,7 @@ public class EmailServico {
         }
 
         }
-    public void  emailEnviarCadastro(Usuario usuario){
-        EmailDTO emailDTO = new EmailDTO();
-        emailDTO.setAssunto("Cadastro do usuario");
-        emailDTO.setCorpo("Obrigado por se cadastrar na nossa plataforma! Sua chave:"  + usuario.getChave());
-        emailDTO.setDestinatario(usuario.getEmail());
-        sendMail(emailDTO);
-    }
+
 
     public void  emailEnviarInscricao(Inscricao inscricao){
         EmailDTO emailDTO = new EmailDTO();

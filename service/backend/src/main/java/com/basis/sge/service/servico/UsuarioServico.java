@@ -2,8 +2,10 @@ package com.basis.sge.service.servico;
 import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.repositorio.UsuarioRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
+import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
+import com.basis.sge.service.servico.producer.ProdutorServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ public class UsuarioServico {
 
     private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
-    private final EmailServico emailServico;
+    private final ProdutorServico produtorServico;
 
     public List<UsuarioDTO> listar() {
         List<Usuario> usuarios = usuarioRepositorio.findAll();
@@ -42,9 +44,9 @@ public class UsuarioServico {
             verificarUsuario(usuarioDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         usuario.setChave(UUID.randomUUID().toString());
-        emailServico.emailEnviarCadastro(usuario);
-        Usuario usuarioSalvo = usuarioRepositorio.save(usuario);
-        return usuarioMapper.toDto(usuarioSalvo);
+        usuarioRepositorio.save(usuario);
+        emailCriarCadastro(usuario);
+        return usuarioMapper.toDto(usuario);
 
     }
 
@@ -81,7 +83,14 @@ public class UsuarioServico {
 
         }
 
+        private  void  emailCriarCadastro(Usuario usuario){
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setAssunto("Cadastro SGE");
+        emailDTO.setCorpo("Obrigado por se cadastrar na nossa plataforma! Sua chave de acesso será: "  + usuario.getChave());
+        emailDTO.setDestinatario(usuario.getEmail());
+         this.produtorServico.enviarEmail(emailDTO);
 
+    }
 
 
 }

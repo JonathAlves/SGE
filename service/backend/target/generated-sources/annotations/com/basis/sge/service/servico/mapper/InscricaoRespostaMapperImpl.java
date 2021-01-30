@@ -12,18 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2021-01-29T14:01:44-0300",
+    date = "2021-01-30T15:35:07-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
-=======
-<<<<<<< HEAD
-    date = "2021-01-25T14:33:28-0300",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.9.1 (Ubuntu)"
-=======
-    date = "2021-01-28T22:37:04-0300",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
->>>>>>> 62b7406a3988ee19d1ca6f30df7fe966aca0ad16
->>>>>>> 31c54247e79c9a0dcf0253f8994cf6aaeb289717
 )
 @Component
 public class InscricaoRespostaMapperImpl implements InscricaoRespostaMapper {
