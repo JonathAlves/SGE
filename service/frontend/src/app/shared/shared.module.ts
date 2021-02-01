@@ -15,7 +15,8 @@ import { PRIMENG_IMPORTS } from './primeng-imports';
     ],
     exports: [
         PRIMENG_IMPORTS,
-        CardComponent
+        CardComponent,
+    
     ]
 })
 export class SharedModule { }

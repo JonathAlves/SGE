@@ -3,6 +3,7 @@ package com.basis.sge.service.servico;
 import com.basis.sge.service.dominio.Evento;
 import com.basis.sge.service.dominio.EventoPergunta;
 import com.basis.sge.service.dominio.Usuario;
+import com.basis.sge.service.repositorio.EventoPerguntaRepositorio;
 import com.basis.sge.service.repositorio.EventoRepositorio;
 import com.basis.sge.service.repositorio.TipoEventoRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
@@ -12,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,7 +24,7 @@ public class EventoServico {
     private final EventoRepositorio eventoRepositorio;
     private final TipoEventoRepositorio tipoEventoRepositorio;
     private final EventoMapper eventoMapper;
-    //private final EventoPerguntaRepositorio eventoPerguntaRepositorio;
+    private final EventoPerguntaRepositorio eventoPerguntaRepositorio;
 
     public List<EventoDTO> listar() {
         List<Evento> eventos = eventoRepositorio.findAll();
@@ -48,19 +50,14 @@ public class EventoServico {
         if(eventoDTO.getTipoInscricao() == null){
             throw new RegraNegocioException("Tipo de inscrição não pode ser NULO!");
         }
+
         Evento novoEvento = eventoMapper.toEntity(eventoDTO);
-
-
         List<EventoPergunta> perguntas = novoEvento.getPerguntas();
-        novoEvento.setPerguntas(perguntas);
+        novoEvento.setPerguntas(new ArrayList<>());
         eventoRepositorio.save(novoEvento);
 
-        if (perguntas != null && !perguntas.isEmpty()) {
-            perguntas.forEach(eventoPergunta -> {
-                eventoPergunta.setEvento(novoEvento);
-            });
-            //eventoPerguntaRepositorio.saveAll(perguntas);
-        }
+        perguntas.forEach(pergunta -> pergunta.setEvento(novoEvento));
+        eventoPerguntaRepositorio.saveAll(perguntas);
 
         return eventoMapper.toDto(novoEvento);
     }

@@ -1,0 +1,35 @@
+.btnCadastrar{
+    background-color :#ecf0f1;
+    color: black;
+    font-weight: bold;
+    border: none;
+    height: 40px;
+    margin: 5px;
+    transform: none;
+    border-radius: 10px;
+
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+input{
+    height: 45px;
+    width: 100%;
+    border-radius: 10px;
+
+}
+
+
+.label-input{
+    display: flex;
+    align-items: center;
+    margin: 8px;
+    border-radius: 10px;
+}
+.icon-modify{
+    color: #ecf0f1;
+    padding: 0 5px;
+}

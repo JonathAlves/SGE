@@ -7,7 +7,7 @@ import com.basis.sge.service.servico.dto.UsuarioDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring", uses = Usuario.class)
+@Mapper(componentModel = "spring", uses = {})
 
 public interface UsuarioMapper extends EntityMapper<UsuarioDTO, Usuario>{
 
