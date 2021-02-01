@@ -3,17 +3,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Inscricao } from 'src/app/dominios/inscricao';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InscricaoService {
 
-  url = `${environment.apiUrl}/eventos`;
+  url = `${environment.apiUrl}/inscricoes`;
 
   constructor(private http: HttpClient) { }
 
   buscarEventoPorId(id: number): Observable<Evento> {
     return this.http.get<Evento>(`${this.url}/${id}`);
+  }
+
+  salvarInscricao(inscricao: Inscricao): Observable<Inscricao>{
+    return this.http.post<Inscricao>(this.url, inscricao)
   }
 }

@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Inscricao } from "src/app/dominios/inscricao";
 import { InscricaoService } from './../../servicos/inscricao.service';
-import { Usuario } from 'src/app/dominios/usuario';
+
 
 @Component({
   selector: 'app-inscricao-formulario',
@@ -26,12 +26,22 @@ export class InscricaoFormularioComponent implements OnInit {
 
   ngOnInit(): void {
     this.formInscricao = this.fb.group({
-        resposta1: this.inscricao.respostas[0],
-        resposta2: this.inscricao.respostas[1],
-        resposta3: this.inscricao.respostas[2],
-        resposta4: this.inscricao.respostas[3]
-    })
 
+    })  
+  }
+  salvar(){
+    if (this.formInscricao.invalid) {
+      alert('Formulário inválido');
+      return;
+    }
+
+      this.inscricaoService.salvarInscricao(this.inscricao)
+      .subscribe(inscricao => {
+        console.log('inscricao salva', inscricao);
+        alert('Inscrição Salva!')
+      }, (erro: HttpErrorResponse) => {
+        alert(erro.error.message);
+      });
+    }
   }
 
-}

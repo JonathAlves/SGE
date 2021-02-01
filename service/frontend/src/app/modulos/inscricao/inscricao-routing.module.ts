@@ -5,8 +5,8 @@ import { InscricaoFormularioComponent } from './components/inscricao-formulario/
 
 const routes: Routes = [
   //{ path: '', component: ListagemComponent },
-  { path: 'inscricao-formulario', component: InscricaoFormularioComponent },
-  { path: 'inscricao-formulario/:id', component: InscricaoFormularioComponent }
+  { path: '', component: InscricaoFormularioComponent },
+
 ];
 
 @NgModule({
