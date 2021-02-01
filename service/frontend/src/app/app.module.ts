@@ -16,6 +16,9 @@ import { BlockUIModule } from 'ng-block-ui';
 import {ToolbarModule} from 'primeng/toolbar';
 import {CardModule} from 'primeng/card';
 import {TabViewModule} from 'primeng/tabview';
+import {ButtonModule} from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+import {DialogModule} from 'primeng/dialog';
 
 @NgModule({
     declarations: [
@@ -41,7 +44,10 @@ import {TabViewModule} from 'primeng/tabview';
         MenuModule,
         ToolbarModule,
         CardModule,
-        TabViewModule
+        TabViewModule,
+        ButtonModule,
+        FormsModule,
+        DialogModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

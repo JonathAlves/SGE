@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Evento } from "src/app/dominios/evento";
@@ -12,9 +12,14 @@ import { EventoService } from '../../services/evento.service';
 })
 export class FormularioComponent implements OnInit {
 
-  edicao = false;
-  formEvento: FormGroup;
-  evento = new Evento();
+
+  @Input() evento = new Evento();
+  @Input() edicao = false;
+  @Output() eventoSalvo = new EventEmitter<Evento>();
+  formularioEdicao: boolean;
+  statuses
+
+  public formEvento: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -70,8 +75,10 @@ export class FormularioComponent implements OnInit {
         alert(erro.error.message);
       });
     }
+  }
 
-
+  fecharDialog(eventoSalvo: Evento) {
+    this.eventoSalvo.emit(eventoSalvo);
   }
 
 }
