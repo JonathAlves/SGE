@@ -1,5 +1,21 @@
 <form [formGroup]="formEvento">
-    <ng-template pTemplate="content">
+    <div class="p-grid p-dri-col">
+
+        <input type="text" [(ngModel)]="evento.titulo" placeholder="Titulo Evento" formControlName="titulo" pInputText />
+        <div *ngIf="formEvento.get('titulo').invalid">Titulo inválido</div>
+
+        <input type="text" [(ngModel)]="evento.dataInicio" placeholder="Data de Inicio" formControlName="dataInicio" pInputText />
+        <input type="text" [(ngModel)]="evento.dataTermino" placeholder="Data de Termino" formControlName="dataTermino" pInputText />
+        <input type="text" [(ngModel)]="evento.descricao" placeholder="Descricao" formControlName="descricao" pInputText />
+        <input type="text" [(ngModel)]="evento.qtVagas" placeholder="Quantidade de vagas" formControlName="qtVagas" pInputText />
+        <input type="text" [(ngModel)]="evento.valor" placeholder="Valor" formControlName="valor" pInputText />
+        <input type="text" [(ngModel)]="evento.local" placeholder="Local do evento" formControlName="local" pInputText />
+        <input type="text" [(ngModel)]="evento.tipoInscricao" placeholder="Tipo de Inscricao" formControlName="tipoInscricao" pInputText />
+        <input type="text" [(ngModel)]="evento.idTipoEvento" placeholder="Tipo de Evento" formControlName="idTipoEvento" pInputText />
+    </div>
+</form>>
+<button (click)="salvar()" pButton type="button" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
+    <!--<ng-template pTemplate="content">
         <div class="p-field">
             <label for="titulo">Título</label>
             <input type="text" pInputText id="titulo" [(ngModel)]="evento.titulo" required autofocus />
@@ -47,22 +63,6 @@
     
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="fecharDialog()"></button>
-        <!--<button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="salvarEvento()"></button>-->
-    </ng-template>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="salvarEvento()"></button>
+    </ng-template>-->
 
-    <!--<div class="p-grid p-dri-col">
-
-        <input type="text" [(ngModel)]="evento.titulo" placeholder="Titulo Evento" formControlName="titulo" pInputText />
-        <div *ngIf="formEvento.get('titulo').invalid">Titulo inválido</div>
-
-        <input type="text" [(ngModel)]="evento.dataInicio" placeholder="Data de Inicio" formControlName="dataInicio" pInputText />
-        <input type="text" [(ngModel)]="evento.dataTermino" placeholder="Data de Termino" formControlName="dataTermino" pInputText />
-        <input type="text" [(ngModel)]="evento.descricao" placeholder="Descricao" formControlName="descricao" pInputText />
-        <input type="text" [(ngModel)]="evento.qtVagas" placeholder="Quantidade de vagas" formControlName="qtVagas" pInputText />
-        <input type="text" [(ngModel)]="evento.valor" placeholder="Valor" formControlName="valor" pInputText />
-        <input type="text" [(ngModel)]="evento.local" placeholder="Local do evento" formControlName="local" pInputText />
-        <input type="text" [(ngModel)]="evento.tipoInscricao" placeholder="Tipo de Inscricao" formControlName="tipoInscricao" pInputText />
-        <input type="text" [(ngModel)]="evento.idTipoEvento" placeholder="Tipo de Evento" formControlName="idTipoEvento" pInputText />
-    </div>-->
-</form>>
-<button (click)="salvar()" pButton type="button" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
