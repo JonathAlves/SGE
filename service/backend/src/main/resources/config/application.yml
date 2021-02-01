@@ -7,6 +7,7 @@ application:
 spring:
   application:
     name: sgeservice
+
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/sge
@@ -45,5 +46,15 @@ spring:
             enable: true
             required: true
           quitwait: false
+
+          rabbitmq:
+            username:
+            password:
+
+            cloud:
+              stream:
+                bindings:
+                  mailer:
+                    destination: mailer
   server:
-    port: 80802
+    port: 8080

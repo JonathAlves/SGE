@@ -3,5 +3,4 @@ export class InscricaoResposta{
     idPergunta: number;
     idInscricao: number;
     resposta: string;
-
 }
