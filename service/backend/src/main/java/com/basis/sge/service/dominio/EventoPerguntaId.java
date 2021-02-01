@@ -6,12 +6,12 @@ import lombok.Setter;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 
-@Embeddable
+
 @Getter
 @Setter
+@Embeddable
 public class EventoPerguntaId implements Serializable {
 
-    private Integer idEvento;
-
     private Integer idPergunta;
+    private Integer idEvento;
 }

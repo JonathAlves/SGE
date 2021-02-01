@@ -1,5 +1,4 @@
 <form [formGroup]="formEvento">
-
     <div class="p-grid p-dri-col">
 
         <input type="text" [(ngModel)]="evento.titulo" placeholder="Titulo Evento" formControlName="titulo" pInputText />
@@ -16,3 +15,54 @@
     </div>
 </form>>
 <button (click)="salvar()" pButton type="button" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
+    <!--<ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="titulo">Título</label>
+            <input type="text" pInputText id="titulo" [(ngModel)]="evento.titulo" required autofocus />
+            <small class="p-error" *ngIf="formularioEdicao && !evento.titulo">Nome do titulo é requerido.</small>
+        </div>
+        <div class="p-field">
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" pInputTextarea [(ngModel)]="evento.descricao" required rows="3" cols="20"></textarea>
+        </div>
+        <div class="p-field">
+            <label for="tipoInscricao">Tipo de Inscrição</label>
+            <p-dropdown [(ngModel)]="evento.tipoInscricao" inputId="inventoryStatus" [options]="statuses" placeholder="Select">
+                <ng-template let-option pTemplate="item">
+                    <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+                </ng-template>
+            </p-dropdown>
+        </div>
+
+        <div class="p-field">
+            <label class="p-mb-3">Tipo de Evento</label>
+            <div class="p-formgrid p-grid">
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category1" name="category" value="Workshop" [(ngModel)]="evento.idTipoEvento"></p-radioButton>
+                    <label for="category1">Workshop</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category2" name="category" value="Minicurso" [(ngModel)]="evento.idTipoEvento"></p-radioButton>
+                    <label for="category2">Minicurso</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category3" name="category" value="Treinamento" [(ngModel)]="evento.idTipoEvento"></p-radioButton>
+                    <label for="category3">Treinamento</label>
+                </div>
+                <div class="p-field-radiobutton p-col-6">
+                    <p-radioButton id="category4" name="category" value="Palestra" [(ngModel)]="evento.idTipoEvento"></p-radioButton>
+                    <label for="category4">Palestra</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-formgrid p-grid">
+
+        </div>
+    </ng-template>
+    
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="fecharDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="salvarEvento()"></button>
+    </ng-template>-->
+
