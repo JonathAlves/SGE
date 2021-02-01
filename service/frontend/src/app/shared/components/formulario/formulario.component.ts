@@ -1,9 +1,10 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/dominios/usuario';
-import { UsuarioService } from '../../services/usuario.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-formulario',

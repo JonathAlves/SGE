@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { FormularioComponent } from '../evento/components/formulario/formulario.component';
 import { ListagemInformacoesComponent } from './components/listagem-informacoes/listagem-informacoes.component';
 
 
 const routes: Routes = [
-{path: 'minha-conta', component: ListagemInformacoesComponent},
+  {
+    path: 'formulario',
+component: FormularioComponent},
+
+{path: '', component: ListagemInformacoesComponent},
 
 ];
 
