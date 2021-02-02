@@ -11,7 +11,4 @@ export class TelaInicialService {
   url = `${environment.apiUrl}/tela-inicial`;
   constructor(http: HttpClient) { }
 
-  buscarEventoPorId(id: number): Observable<Evento> {
-    return this.http.get<Evento>(`${this.url}/${id}`);
-  }
 }

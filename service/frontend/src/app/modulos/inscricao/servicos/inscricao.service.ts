@@ -14,8 +14,8 @@ export class InscricaoService {
 
   constructor(private http: HttpClient) { }
 
-  buscarEventoPorId(id: number): Observable<Evento> {
-    return this.http.get<Evento>(`${this.url}/${id}`);
+  buscarInscricaoPorId(id: number): Observable<Inscricao> {
+    return this.http.get<Inscricao>(`${this.url}/${id}`);
   }
 
   salvarInscricao(inscricao: Inscricao): Observable<Inscricao>{

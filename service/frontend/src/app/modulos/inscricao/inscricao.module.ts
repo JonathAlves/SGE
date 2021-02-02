@@ -6,6 +6,7 @@ import { InscricaoFormularioComponent } from './components/inscricao-formulario/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { InscricaoResposta } from 'src/app/dominios/inscricao-resposta';
 
 
 @NgModule({
@@ -17,6 +18,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     InscricaoRoutingModule,
     SharedModule,
     HttpClientModule
+  ],
+  providers: [
+    InscricaoResposta
   ]
 })
 export class InscricaoModule { }

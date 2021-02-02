@@ -208,7 +208,7 @@
             <column name="id_pergunta" type="NUMBER" >
                 <constraints nullable="false"></constraints>
             </column>
-            <column name="respota" type="VARCHAR(255)" >
+            <column name="resposta" type="VARCHAR(255)" >
                 <constraints nullable="true"></constraints>
             </column>
 

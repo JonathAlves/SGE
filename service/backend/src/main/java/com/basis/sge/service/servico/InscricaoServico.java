@@ -4,8 +4,10 @@ import com.basis.sge.service.dominio.InscricaoResposta;
 import com.basis.sge.service.repositorio.InscricaoRepositorio;
 import com.basis.sge.service.repositorio.TipoSituacaoRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
+import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
 import com.basis.sge.service.servico.mapper.InscricaoMapper;
+import com.basis.sge.service.servico.producer.ProdutorServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,8 +22,7 @@ public class InscricaoServico {
     private final InscricaoMapper inscricaoMapper;
     private final TipoSituacaoRepositorio tipoSituacaoRepositorio;
     private final EmailServico emailServico;
-
-
+    private final ProdutorServico produtorServico;
 
 
     public List<InscricaoDTO> listar(){
@@ -48,8 +49,8 @@ public class InscricaoServico {
                 inscricaoResposta.setInscricao(inscricao);
             });
         }
-        emailServico.emailEnviarInscricao(inscricao);
         Inscricao novaInscricao = inscricaoRepositorio.save(inscricao);
+//        emailInscricao(inscricao);
         return inscricaoMapper.toDto(novaInscricao);
 
 
@@ -73,4 +74,13 @@ public class InscricaoServico {
             throw new RegraNegocioException("Esse Tipo de situação não existe");
         }
     }
+//
+//    private  void  emailInscricao(Inscricao inscricao){
+//        EmailDTO emailDTO = new EmailDTO();
+//        emailDTO.setAssunto("Confirmação de Inscrição");
+//        emailDTO.setCorpo("Obrigado por se inscrever no evento!");
+//        emailDTO.setDestinatario(inscricao.getUsuario().getEmail());
+//        this.produtorServico.enviarEmail(emailDTO);
+//
+//    }
 }

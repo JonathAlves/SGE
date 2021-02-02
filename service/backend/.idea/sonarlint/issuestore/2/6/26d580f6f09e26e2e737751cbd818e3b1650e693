@@ -1,0 +1,13 @@
+
+9
+java:S1128"Remove this duplicated import.(Óæ˜¾þÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(£¤•Þüÿÿÿÿ
+R
+java:S1854'"<Remove this useless assignment to local variable "pergunta".(ßÙÊµ
+R
+java:S1854<"<Remove this useless assignment to local variable "pergunta".(’Ù®Ç
+V	java:S125:"<This block of commented-out lines of code should be removed.(Ðõâ”ûÿÿÿÿ
+C
+java:S1481'"-Remove this unused "pergunta" local variable.(ßÙÊµ
+C
+java:S1481<"-Remove this unused "pergunta" local variable.(’Ù®Ç

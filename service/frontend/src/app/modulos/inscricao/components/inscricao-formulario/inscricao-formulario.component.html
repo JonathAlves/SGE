@@ -1,9 +1,11 @@
-<app-card class="titulo"  [titulo]="'Inscrição'"></app-card>
+<app-card class="titulo"  [titulo]="'Inscrição'">
 
-<form [formGroup]="formInscricao">
-    <div class="p-grid p-dir-col">
-        <input type="text" pInputText [(ngModel)]="inscricao.idUsuario"formControlName="idUsuario"/>
-    </div>
-</form>
+    <form [formGroup]="formInscricao">
+        <div class="p-grid p-dir-col">
+            <input type="text" pInputText [(ngModel)]="inscricaoResposta.resposta" placeholder="Resposta" formControlName="resposta1"/>
+        </div>
+    </form>
 
-<button (click)="salvar()" pButton type="button" [label]="'Inscrever-se'"></button>
+    
+</app-card>
+<button (click)="inscrever()" pButton type="button" [label]="'Inscrever-se'"></button>

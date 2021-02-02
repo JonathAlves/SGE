@@ -16,6 +16,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import {ToolbarModule} from 'primeng/toolbar';
 import {CardModule} from 'primeng/card';
 import {TabViewModule} from 'primeng/tabview';
+import { CardsEventosComponent } from './modulos/tela-inicial/components/cards-eventos/cards-eventos.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import {TabViewModule} from 'primeng/tabview';
         AppTopbarComponent,
         AppFooterComponent,
         DiarioErrosComponent,
+        CardsEventosComponent,
     
     ],
     imports: [

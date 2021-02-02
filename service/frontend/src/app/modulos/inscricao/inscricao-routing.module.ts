@@ -5,7 +5,7 @@ import { InscricaoFormularioComponent } from './components/inscricao-formulario/
 
 const routes: Routes = [
   //{ path: '', component: ListagemComponent },
-  { path: '', component: InscricaoFormularioComponent },
+  { path: ':idEvento', component: InscricaoFormularioComponent },
 
 ];
 

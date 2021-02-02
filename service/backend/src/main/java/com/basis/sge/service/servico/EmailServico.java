@@ -39,14 +39,6 @@ public class EmailServico {
         }
 
 
-    public void  emailEnviarInscricao(Inscricao inscricao){
-        EmailDTO emailDTO = new EmailDTO();
-        emailDTO.setAssunto("Inscrição no evento");
-        emailDTO.setCorpo("Obrigado por se inscrever no nosso evento!");
-        emailDTO.setDestinatario(inscricao.getUsuario().getEmail());
-        sendMail(emailDTO);
-    }
-
 
 
 }

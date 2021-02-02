@@ -1,0 +1,13 @@
+
+T
+java:S4973B"9Use the "equals" method if value comparison was intended.(û´¶“ùÿÿÿÿ
+]	java:S125N"<This block of commented-out lines of code should be removed.(ØÐ¢†ÿÿÿÿÿ8åê°¢ö.
+G
+java:S16020",Remove useless curly braces around statement(‚‚óöùÿÿÿÿ
+S
+java:S1854<"=Remove this useless assignment to local variable "inscricao".(Á«Ïì
+D
+java:S1481<".Remove this unused "inscricao" local variable.(Á«Ïì
+T
+java:S4973B"9Use the "equals" method if value comparison was intended.(û´¶“ùÿÿÿÿ
+X	java:S1255"<This block of commented-out lines of code should be removed.(Å½ÈÎ8¼©±¢ö.
