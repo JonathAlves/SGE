@@ -1,1 +1,45 @@
-<p>listagem-informacoes works!</p>
+
+
+
+    <div class="card">
+        <p-table [value]="usuarios" styleClass="p-datatable-sm">
+            <ng-template pTemplate="caption">
+                Editar
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Data Nascimento</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-usuario>
+                <tr>
+                    <td>{{usuario.nome}}</td>
+                    <td>{{usuario.cpf}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+                    <td class="p-d-flex p-jc-center">
+                        <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
+                        <button (click)="mostrarDialogEditar(usuario.id)" pButton type="button" icon="pi pi-pencil"></button>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+<app-card [titulo]="'Meus eventos'">
+
+</app-card>
+
+<p-dialog header="Olá + {{usuario.nome}}" [(visible)]="exibirDialog">
+
+    <app-formulario
+    [usuario]="usuario"
+    [edicao]="formularioEdicao"
+    (usuarioSalvo)="fecharDialog($event)"
+></app-formulario>
+
+
+</p-dialog>
+

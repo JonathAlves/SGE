@@ -1,6 +1,6 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormularioComponent } from './components/formulario/formulario.component';
+import { FormularioComponent } from 'src/app/shared/components/formulario/formulario.component';
 import { ListagemComponent } from './components/listagem/listagem.component';
 
 
