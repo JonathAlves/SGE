@@ -17,7 +17,6 @@ export class FormularioComponent implements OnInit {
   @Input() edicao = false;
   @Output() eventoSalvo = new EventEmitter<Evento>();
   formularioEdicao: boolean;
-  statuses
 
   public formEvento: FormGroup;
 
