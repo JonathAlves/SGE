@@ -12,12 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2021-01-29T16:38:23-0300",
-=======
-    date = "2021-01-30T15:35:07-0300",
->>>>>>> 3d5ddd2c1a7abd71d6f5d435b26bbf0bae1e51ee
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
+    date = "2021-02-01T16:04:36-0300",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_282 (Amazon.com Inc.)"
 )
 @Component
 public class EventoMapperImpl implements EventoMapper {
@@ -116,8 +112,6 @@ public class EventoMapperImpl implements EventoMapper {
         EventoPergunta eventoPergunta = new EventoPergunta();
 
         eventoPergunta.setId( eventoPerguntaDTO.getId() );
-        eventoPergunta.setEvento( eventoPerguntaDTO.getEvento() );
-        eventoPergunta.setPergunta( eventoPerguntaDTO.getPergunta() );
 
         return eventoPergunta;
     }
@@ -158,8 +152,6 @@ public class EventoMapperImpl implements EventoMapper {
         EventoPerguntaDTO eventoPerguntaDTO = new EventoPerguntaDTO();
 
         eventoPerguntaDTO.setId( eventoPergunta.getId() );
-        eventoPerguntaDTO.setEvento( eventoPergunta.getEvento() );
-        eventoPerguntaDTO.setPergunta( eventoPergunta.getPergunta() );
 
         return eventoPerguntaDTO;
     }
