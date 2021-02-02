@@ -6,14 +6,7 @@ import { EventoService } from '../../services/evento.service';
 @Component({
   selector: 'app-listagem',
   templateUrl: './listagem.component.html',
-  styleUrls: ['./listagem.component.css'],
-  styles: [`
-        :host ::ng-deep .p-dialog .product-image {
-            width: 150px;
-            margin: 0 auto 2rem auto;
-            display: block;
-        }
-    `]
+  styleUrls: ['./listagem.component.css']
 })
 export class ListagemComponent implements OnInit {
 

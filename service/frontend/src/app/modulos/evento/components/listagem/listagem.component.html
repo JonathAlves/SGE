@@ -24,7 +24,6 @@
                 </th>
                 
                 <th pSortableColumn="titulo">Título <p-sortIcon field="titulo"></p-sortIcon></th>
-                <th>Image</th>
                 <th pSortableColumn="inico">Inicio <p-sortIcon field="inico"></p-sortIcon></th>
                 <th pSortableColumn="termino">Término <p-sortIcon field="termino"></p-sortIcon></th>
                 <th pSortableColumn="valor">Valor <p-sortIcon field="valor"></p-sortIcon></th>
@@ -42,7 +41,6 @@
                     <p-tableCheckbox [value]="evento"></p-tableCheckbox>
                 </td>
                 <td>{{evento.titulo}}</td>
-                <td><img [src]="'assets/showcase/images/demo/evento/' + evento.image" [alt]="evento.name" width="100" class="p-shadow-4" /></td>
                 <td>{{evento.dataInicio | date: 'dd/MM/yyyy HH:mm'}}</td>
                 <td>{{evento.dataTermino | date: 'dd/MM/yyyy HH:mm'}}</td>
                 <td>{{evento.valor | currency:'R$'}}</td>
@@ -63,10 +61,8 @@
         </ng-template>
     </p-table>
 
-    <p-dialog [(visible)]="exibirDialog" [style]="{width: '450px'}" header="Evento Detalhes" [modal]="true" styleClass="p-fluid">
+    <p-dialog [(visible)]="exibirDialog" [style]="{width: '450px'}" header="Evento Detalhes">
         <app-formulario ></app-formulario>
-
-       
     </p-dialog>
     
     <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
