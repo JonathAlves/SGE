@@ -5,6 +5,7 @@ import { ConfirmationService } from 'primeng';
 import { UsuarioService } from './components/services/usuario.service';
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -12,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     declarations: [
         CardComponent,
         FormularioComponent,
+        LoginComponent,
     ],
     imports: [
         PRIMENG_IMPORTS,

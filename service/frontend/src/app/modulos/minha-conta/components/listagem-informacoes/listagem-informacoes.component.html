@@ -1,6 +1,4 @@
 
-
-
     <div class="card">
         <p-table [value]="usuarios" styleClass="p-datatable-sm">
             <ng-template pTemplate="caption">
@@ -12,6 +10,7 @@
                     <th>CPF</th>
                     <th>Email</th>
                     <th>Data Nascimento</th>
+                    <th style="width: 80px;">Ações</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-usuario>
@@ -28,11 +27,35 @@
         </p-table>
     </div>
 
-<app-card [titulo]="'Meus eventos'">
+    <div class="card">
+        <p-table [value]="usuarios" styleClass="p-datatable-sm">
+            <ng-template pTemplate="caption">
+                Minhas Incrições
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nome</th>
+                    <th>CPF</th>
+                    <th>Email</th>
+                    <th>Data Nascimento</th>
+                    <th style="width: 80px;">Ações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-inscricao>
+                <tr>
+                    <td>{{inscricao.id}}</td>
+                    <td>{{usuario.cpf}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+                    <td class="p-d-flex p-jc-center">
+                        <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
+                        <button (click)="mostrarDialogEditar(usuario.id)" pButton type="button" icon="pi pi-pencil"></button>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
 
-</app-card>
-
-<p-dialog header="Olá + {{usuario.nome}}" [(visible)]="exibirDialog">
+<p-dialog header="Olá {{usuario.nome}}" [(visible)]="exibirDialog">
 
     <app-formulario
     [usuario]="usuario"

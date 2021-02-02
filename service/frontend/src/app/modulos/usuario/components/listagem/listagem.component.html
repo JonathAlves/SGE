@@ -12,7 +12,7 @@
               <th>CPF</th>
               <th>Email</th>
               <th>Data de Nascimento</th>
-              <th style="width: 80px;">Ações</th>
+              <th style="width: 90px;">Ações</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-usuario>
@@ -32,7 +32,7 @@
 
 </app-card>
 
-<p-dialog header="Title" [(visible)]="exibirDialog">
+<p-dialog header="Novo Usuario" [(visible)]="exibirDialog">
     <app-formulario
     [usuario]="usuario"
     [edicao]="formularioEdicao"
