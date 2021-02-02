@@ -23,7 +23,8 @@ import {TabViewModule} from 'primeng/tabview';
         AppTopbarComponent,
         AppFooterComponent,
         DiarioErrosComponent,
-    
+
+
     ],
     imports: [
         BlockUIModule.forRoot({

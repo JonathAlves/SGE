@@ -36,11 +36,11 @@ export class FormularioComponent implements OnInit {
       });
 
       this.formUsuario = this.fb.group({
-        nome: ['', Validators.minLength(3)],
-        cpf:  ['', Validators.maxLength(11)],
-        email: ['', Validators.email],
-        telefone: ['', Validators.maxLength(14)],
-        dataNascimento: '',
+        nome: ['',Validators.required, Validators.minLength(3)],
+        cpf:  ['',Validators.required, Validators.maxLength(11)],
+        email: ['',Validators.required, Validators.email],
+        telefone: ['',Validators.required, Validators.maxLength(14)],
+        dataNascimento: ['', Validators.required],
       });
 
   }
@@ -58,7 +58,7 @@ export class FormularioComponent implements OnInit {
 
     if (this.edicao) {
       this.usuarioService.editarUsuario(this.usuario)
-        .subscribe(usuario => {   
+        .subscribe(usuario => {
           alert('Usuário Editado');
           this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
