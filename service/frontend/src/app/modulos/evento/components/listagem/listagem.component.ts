@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConfirmationService } from 'primeng';
+import { ConfirmationService, MessageService } from 'primeng';
 import { Evento } from 'src/app/dominios/evento';
 import { EventoService } from '../../services/evento.service';
 
@@ -20,16 +20,13 @@ export class ListagemComponent implements OnInit {
 
   constructor(
     private servico: EventoService,
+    private messageService: MessageService,
     private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit(): void {
     this.buscarEventos();
     
-    this.statuses = [
-      {label: 'INSTOCK', value: 'instock'},
-      {label: 'LOWSTOCK', value: 'lowstock'},
-  ];
   }
 
   private buscarEventos() {
@@ -67,14 +64,35 @@ export class ListagemComponent implements OnInit {
     });
   }
 
-  deletarEvento(id: number) {
-    this.servico.deletarEvento(id)
-    .subscribe(() => {
-      alert('Evento deletado!');
-      this.buscarEventos();
-    },
-    err => alert(err));
+  deletarTodosEvento() {
+    this.confirmationService.confirm({
+      message: 'Você tem certeza que quer deletar todos os eventos? ',
+      header: 'Confirma',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.eventos.forEach(evento => {
+          this.servico.deletarEvento(evento.id).subscribe(() => { 
+            this.messageService.add({severity:'success', summary: 'Successo', detail: 'Eventos Deletados', life: 3000});
+            this.buscarEventos();
+          }, err => alert(err));
+        });
+      }
+  });
   }
 
+  deletarEvento(id?: number) {
+    this.confirmationService.confirm({
+      message: 'Você tem certeza que quer deletar o evento ' + this.evento.titulo + '?',
+      header: 'Confirma',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.servico.deletarEvento(id).subscribe(() => { 
+          this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Deletado', life: 3000});
+          this.buscarEventos();
+        }, err => alert(err));
+        
+      }
+  });
+  }
 
 }
