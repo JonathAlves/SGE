@@ -13,7 +13,8 @@ import { UsuarioService } from '../services/usuario.service';
 export class LoginComponent implements OnInit {
 
     @Output() emitUsuario: EventEmitter<Usuario> = new EventEmitter
-
+    exibirDialog = false;
+    formularioLogin: boolean;
     chaveInput: string;
     formChave: FormGroup;
     chave = new Chave();
@@ -28,6 +29,17 @@ export class LoginComponent implements OnInit {
       this.formChave = this.fbuilder.group({ chave: '' })
 
     }
+
+    mostrarDialog(edicao = false) {
+      this.exibirDialog = true;
+      this.formularioLogin = edicao;
+    }
+  
+    fecharDialog(usuarioSalvo: Usuario) {
+      console.log(usuarioSalvo);
+      this.exibirDialog = false;
+    }
+
     pegarUsuarioLocal() {
         const usuario = JSON.parse(window.localStorage.getItem("usuario"));
         this.emitUsuario.emit(usuario);

@@ -1,9 +1,10 @@
+<div *ngIf="!usuario.admin">
 <app-card [titulo]="'Lista de usuários'">
 
     <div class="p-d-flex p-jc-end">
         <button class="btn" routerLink="formulario" pButton type="button" label="Cadastrar" ></button>
-        <button class="p-ml-2" type="button" (click)="mostrarDialog()" pButton label="Cadastrar Usuário Dialog"></button>
     </div>
+
 
     <p-table [value]="usuarios">
       <ng-template pTemplate="header">
@@ -12,7 +13,7 @@
               <th>CPF</th>
               <th>Email</th>
               <th>Data de Nascimento</th>
-              <th style="width: 90px;">Ações</th>
+              <th style="width: 95px;">Ações</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-usuario>
@@ -30,7 +31,9 @@
       </ng-template>
     </p-table>
 
+
 </app-card>
+
 
 <p-dialog header="Novo Usuario" [(visible)]="exibirDialog">
     <app-formulario
@@ -41,3 +44,4 @@
 </p-dialog>
 
 <p-confirmDialog header="Confirmar Remover Usuário" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+</div>

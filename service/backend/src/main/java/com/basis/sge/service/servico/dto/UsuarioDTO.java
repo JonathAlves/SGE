@@ -21,6 +21,7 @@ public class UsuarioDTO{
     @Email
     private String email;
     private String chave;
+    private Boolean admin;
 
 
 

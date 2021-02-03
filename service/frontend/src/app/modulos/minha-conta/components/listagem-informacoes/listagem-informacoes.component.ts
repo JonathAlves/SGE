@@ -17,7 +17,7 @@ export class ListagemInformacoesComponent implements OnInit {
   @Input() edicao = false;
   @Output() usuarioSalvo = new EventEmitter<Usuario>();
 
-  usuarios: Usuario[] = [];
+  usuarios: Usuario;
   exibirDialog = false;
   formularioEdicao: boolean;
   formEditarUsuario: FormGroup;
@@ -28,19 +28,14 @@ export class ListagemInformacoesComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.pegarUsuarioLocal()
-    //this.buscarUsuarios();
+
   }
   pegarUsuarioLocal() {
-    const usuario = JSON.parse(window.localStorage.getItem("usuario"));
-    this.usuarioSalvo.emit(usuario);
+    const usuarioLocal = JSON.parse(window.localStorage.getItem("usuario"));
+    this.usuarioSalvo.emit(usuarioLocal);
+    return [usuarioLocal];
   }
 
-  private buscarUsuarios() {
-    this.usuarioService.getUsuarios()
-      .subscribe((usuarios: Usuario[]) => {
-        this.usuarios = usuarios;
-      });
-  }
 
   mostrarDialogEditar(id: number) {
     this.usuarioService.buscarUsuarioPorId(id)
