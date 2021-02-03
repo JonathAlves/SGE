@@ -24,8 +24,15 @@
         <div class="layout-main">
             <breadcrumb></breadcrumb>
             <div class="layout-content">
-                <router-outlet></router-outlet>
+
+                <div *ngIf="usuarioLogado">
+                    <router-outlet [user]= "usuarioLogado"></router-outlet>
+                </div>
+                <div *ngIf="!usuarioLogado">
+                    <app-login (emitUsuario) = "logarUsuario($event)"></app-login>
+                </div>
                 <app-footer></app-footer>
+
             </div>
         </div>
         <basis-page-notification></basis-page-notification>

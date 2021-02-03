@@ -1,0 +1,13 @@
+ <p-card styleClass="login" header="Login" >
+     <input [(ngModel)]="chaveInput" type="text" pInputText placeholder="Insira sua chave de inscrição" />
+    <button pButton (click)="logarUsuario(chaveInput)" type="button" label="Entrar" class="p-button-sm" styleClass="loginbutton" ></button>
+    
+    <button class="p-ml-2" type="button" (click)="mostrarDialog()" pButton label="Cadastrar Usuário Dialog"></button>
+    </p-card>
+
+    <p-dialog header="Novo Usuario" [(visible)]="exibirDialog">
+        <app-formulario-usuario
+        [edicao]="formularioLogin"    
+      (usuarioSalvo)="fecharDialog($event)"
+    ></app-formulario-usuario>
+    </p-dialog>
