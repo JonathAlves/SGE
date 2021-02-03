@@ -1,4 +1,5 @@
-<div *ngIf="!usuario.admin">
+
+<div *ngIf="usuarioLogado?.admin">
 <app-card [titulo]="'Lista de usuários'">
 
     <div class="p-d-flex p-jc-end">
