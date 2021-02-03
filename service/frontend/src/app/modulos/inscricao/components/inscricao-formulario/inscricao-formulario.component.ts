@@ -2,7 +2,7 @@ import { Evento } from 'src/app/dominios/evento';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Inscricao } from "src/app/dominios/inscricao";
 import { InscricaoService } from './../../servicos/inscricao.service';
 import { InscricaoResposta } from 'src/app/dominios/inscricao-resposta';
@@ -17,12 +17,14 @@ import { UsuarioService } from 'src/app/modulos/usuario/services/usuario.service
   styleUrls: ['./inscricao-formulario.component.css']
 })
 export class InscricaoFormularioComponent implements OnInit {
+  
+  @Input() usuario = new Usuario();
+  @Input() evento = new Evento();
+  @Output() inscricaoSalva = new EventEmitter<Inscricao>();
 
   formInscricao: FormGroup;
-  inscricao = new Inscricao;
+  @Input() inscricao = new Inscricao;
   respostas: InscricaoResposta[] = [];
-  evento = new Evento();
-  usuario = new Usuario();
 
   private eventoService: EventoService
   private usuarioService: UsuarioService
@@ -32,37 +34,57 @@ export class InscricaoFormularioComponent implements OnInit {
     private fb: FormBuilder,
     private inscricaoService: InscricaoService,
     private route: ActivatedRoute,
-    private inscricaoResposta: InscricaoResposta
+    public inscricaoResposta: InscricaoResposta
     
   ) {
     
    }
 
   ngOnInit(): void {
-    this.formInscricao = this.fb.group({
-      resposta1: this.inscricaoResposta.resposta
-    })  
+    this.inscrever();
   }
   
-
   inscrever(){
-    
+    this.route.params.subscribe(params => {
+      if (params.id) {
+        this.getIdUsuario(params.id);
+        this.getIdEvento(params.id);
+      }
+    });
+
+    this.inscricao.idTipoSituacao = 1;
+
+    this.formInscricao = this.fb.group({
+      resposta1: '',
+    })  
+  }
+
+
+  getIdUsuario(id: number){
+      this.usuarioService.buscarUsuarioPorId(id)
+      .subscribe(usuario => this.usuario = usuario);
+  }
+
+  getIdEvento(id: number){
+    this.eventoService.buscarEventoPorId(id)
+    .subscribe(evento => this.evento = evento);
+  }
+
+
+salvar() {
     if (this.formInscricao.invalid) {
       alert('Formulário inválido');
       return;
     }
-
-    this.eventoService.buscarEventoPorId(this.evento.id)
-    this.inscricao.idEvento = 
-    this.inscricao.idTipoSituacao = 1
-    
       this.inscricaoService.salvarInscricao(this.inscricao)
-      .subscribe(inscricao => {
-        console.log('inscricao salva', inscricao);
-        alert('Inscrição Salva!')
-      }, (erro: HttpErrorResponse) => {
-        alert(erro.error.message);
-      });
-    }
+        .subscribe(inscricao => {
+          alert('Inscrição Salva!');
+          this.fecharDialog(inscricao);
+        }, (erro: HttpErrorResponse) => {
+          alert(erro.error.message);
+        });
   }
-
+  fecharDialog(inscricaoSalva: Inscricao) {
+    this.inscricaoSalva.emit(inscricaoSalva);
+  }
+}

@@ -19,6 +19,14 @@ export class InscricaoService {
   }
 
   salvarInscricao(inscricao: Inscricao): Observable<Inscricao>{
-    return this.http.post<Inscricao>(this.url, inscricao)
+    return this.http.post<Inscricao>(this.url, inscricao);
+  }
+
+  getInscricoes(): Observable<Inscricao[]>{
+    return this.http.get<Inscricao[]>(`${this.url}`);
+  }
+
+  deletarInscricao(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`);
   }
 }

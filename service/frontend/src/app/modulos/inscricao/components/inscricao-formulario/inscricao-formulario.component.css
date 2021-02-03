@@ -1,3 +1,17 @@
 input{
     margin: 20px;
 }
+
+.p-button-rounded{
+
+}
+
+.btInscrever{
+    background-color :#971b1b;
+    color: rgb(255, 255, 255);
+    border: none;
+    height: 40px;
+    margin: 5px;
+    transform: none;
+    border-radius: 10px;
+}

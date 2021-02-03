@@ -1,3 +1,4 @@
+import { InscricaoService } from './servicos/inscricao.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,10 +8,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { InscricaoResposta } from 'src/app/dominios/inscricao-resposta';
+import { InscricaoListagemComponent } from './components/inscricao-listagem/inscricao-listagem.component';
 
 
 @NgModule({
-  declarations: [InscricaoFormularioComponent],
+  declarations: [InscricaoFormularioComponent, InscricaoListagemComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,7 +22,7 @@ import { InscricaoResposta } from 'src/app/dominios/inscricao-resposta';
     HttpClientModule
   ],
   providers: [
-    InscricaoResposta
+    InscricaoService
   ]
 })
 export class InscricaoModule { }
