@@ -29836,7 +29836,7 @@ body .ui-button.ui-button-text-icon-left, body .ui-datepicker-buttonpane > butto
   padding-left: 2.5em;
 }
 body .ui-button.ui-button-text-icon-right, body .ui-datepicker-buttonpane > button.ui-button-text-icon-right {
-  padding-right: 2.5em;
+  padding-right: 0;
 }
 body .ui-button.secondary, body .ui-button.ui-secondary-button, body .ui-datepicker-buttonpane > button.secondary, body .ui-datepicker-buttonpane > button.ui-secondary-button {
   background-color: #5180ce;

@@ -2,16 +2,25 @@ package com.basis.sge.service.servico;
 
 import com.basis.sge.service.dominio.Evento;
 import com.basis.sge.service.dominio.EventoPergunta;
+import com.basis.sge.service.dominio.Pergunta;
 import com.basis.sge.service.dominio.Usuario;
+import com.basis.sge.service.repositorio.EventoPerguntaRepositorio;
 import com.basis.sge.service.repositorio.EventoRepositorio;
+import com.basis.sge.service.repositorio.InscricaoRepositorio;
+import com.basis.sge.service.repositorio.PerguntaRepositorio;
 import com.basis.sge.service.repositorio.TipoEventoRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
+import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.EventoDTO;
+import com.basis.sge.service.servico.dto.InscricaoDTO;
+import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.EventoMapper;
+import com.basis.sge.service.servico.producer.ProdutorServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -22,7 +31,13 @@ public class EventoServico {
     private final EventoRepositorio eventoRepositorio;
     private final TipoEventoRepositorio tipoEventoRepositorio;
     private final EventoMapper eventoMapper;
-    //private final EventoPerguntaRepositorio eventoPerguntaRepositorio;
+    private final EventoPerguntaRepositorio eventoPerguntaRepositorio;
+    private final PerguntaRepositorio perguntaRepositorio;
+    private final ProdutorServico produtorServico;
+    private final EmailServico emailServico;
+    private final InscricaoServico inscricaoServico;
+    private final InscricaoRepositorio inscricaoRepositorio;
+    private final UsuarioServico usuarioServico;
 
     public List<EventoDTO> listar() {
         List<Evento> eventos = eventoRepositorio.findAll();
@@ -35,10 +50,6 @@ public class EventoServico {
         return eventoMapper.toDto(evento);
     }
 
-//    private Evento obter(Integer id) {
-//        return eventoRepositorio.findById(id)
-//                .orElseThrow(() -> new RegraNegocioException("Evento não encontrado"));
-//    }
 
     public EventoDTO salvar(EventoDTO eventoDTO) {
         verificaTitulo(eventoDTO.getTitulo());
@@ -48,19 +59,14 @@ public class EventoServico {
         if(eventoDTO.getTipoInscricao() == null){
             throw new RegraNegocioException("Tipo de inscrição não pode ser NULO!");
         }
+
         Evento novoEvento = eventoMapper.toEntity(eventoDTO);
-
-
         List<EventoPergunta> perguntas = novoEvento.getPerguntas();
-        novoEvento.setPerguntas(perguntas);
+        novoEvento.setPerguntas(new ArrayList<>());
         eventoRepositorio.save(novoEvento);
 
-        if (perguntas != null && !perguntas.isEmpty()) {
-            perguntas.forEach(eventoPergunta -> {
-                eventoPergunta.setEvento(novoEvento);
-            });
-            //eventoPerguntaRepositorio.saveAll(perguntas);
-        }
+        perguntas.forEach(pergunta -> pergunta.setEvento(novoEvento));
+        eventoPerguntaRepositorio.saveAll(perguntas);
 
         return eventoMapper.toDto(novoEvento);
     }
@@ -78,11 +84,23 @@ public class EventoServico {
         eventoRecebido.setValor(eventoDTO.getValor());
         eventoRecebido.setLocal(eventoDTO.getLocal());
         eventoRecebido.setTipoInscricao(eventoDTO.getTipoInscricao());
-//        if (eventoRepositorio.existsByTitulo(eventoDTO.getTitulo())) {
-//            throw new RegraNegocioException("Um evento com esse titulo já existe");
-//        } else {
-//            eventoRepositorio.save(eventoRecebido);
-//        }
+
+        Evento eventopergunta = eventoRepositorio.findById(eventoDTO.getId()).orElseThrow(()
+                -> new RegraNegocioException("Evento não encontrado"));
+
+        List<Pergunta> listPergunta = new ArrayList<>();
+        eventopergunta.getPerguntas().forEach(eventoPergunta -> listPergunta.add(perguntaRepositorio.
+                findById(eventoPergunta.getPergunta().getId()).orElseThrow(
+                () -> new RegraNegocioException("Pergunta não encontrado"))));
+        List<InscricaoDTO> inscricaoDTOS = inscricaoServico.buscarInscricaoPorIdEvento(eventoDTO.getId());
+        List<UsuarioDTO> usuariosDtos = new ArrayList<>();
+
+        for (InscricaoDTO inscricao: inscricaoDTOS) {
+            usuariosDtos.add(usuarioServico.obterPorId(inscricao.getIdUsuario()));
+        }
+
+        enviarEmail(usuariosDtos, eventoDTO.getTitulo());
+
         eventoRepositorio.save(eventoRecebido);
         return eventoMapper.toDto(eventoRecebido);
     }
@@ -117,6 +135,18 @@ public class EventoServico {
     public void verificaIdEvento(Integer idEvento) {
         if (!eventoRepositorio.existsById(idEvento)) {
             throw new RegraNegocioException("Evento Não Existe");
+        }
+    }
+
+    private void enviarEmail(List<UsuarioDTO> usuarioDTOS, String titulo){
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setAssunto("Aviso");
+        emailDTO.setCorpo("O evento "+ titulo +" foi editado");
+        emailDTO.setCopias(new ArrayList<>());
+
+        for (UsuarioDTO usuarioDTO: usuarioDTOS) {
+            emailDTO.setDestinatario(usuarioDTO.getEmail());
+            this.produtorServico.enviarEmail(emailDTO);
         }
     }
 

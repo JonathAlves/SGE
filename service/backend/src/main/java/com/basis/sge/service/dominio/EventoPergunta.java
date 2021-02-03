@@ -21,13 +21,15 @@ public class EventoPergunta implements Serializable {
     @EmbeddedId
     private EventoPerguntaId id;
 
-    @MapsId("idEvento")
+
     @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("idEvento")
     @JoinColumn(name = "id_evento")
     private Evento evento;
 
-    @MapsId("idPergunta")
+
     @ManyToOne(fetch = FetchType.LAZY)
+    @MapsId("idPergunta")
     @JoinColumn(name = "id_pergunta")
     private Pergunta pergunta;
 

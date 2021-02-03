@@ -6,8 +6,8 @@
     </p-card>
 
     <p-dialog header="Novo Usuario" [(visible)]="exibirDialog">
-        <app-formulario
+        <app-formulario-usuario
         [edicao]="formularioLogin"    
       (usuarioSalvo)="fecharDialog($event)"
-    ></app-formulario>
+    ></app-formulario-usuario>
     </p-dialog>

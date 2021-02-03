@@ -36,11 +36,11 @@
 
 
 <p-dialog header="Novo Usuario" [(visible)]="exibirDialog">
-    <app-formulario
+    <app-formulario-usuario
     [usuario]="usuario"
     [edicao]="formularioEdicao"
     (usuarioSalvo)="fecharDialog($event)"
-></app-formulario>
+></app-formulario-usuario>
 </p-dialog>
 
 <p-confirmDialog header="Confirmar Remover Usuário" icon="pi pi-exclamation-triangle"></p-confirmDialog>

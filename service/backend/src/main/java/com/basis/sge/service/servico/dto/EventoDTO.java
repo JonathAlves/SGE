@@ -30,5 +30,5 @@ public class EventoDTO implements Serializable {
 
     private Integer idTipoEvento;
 
-    private List<EventoPerguntaDTO> perguntas = new ArrayList<>();
+    private List<EventoPerguntaDTO> perguntas;
 }

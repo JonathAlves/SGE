@@ -58,11 +58,11 @@
 
 <p-dialog header="Olá {{usuario.nome}}" [(visible)]="exibirDialog">
 
-    <app-formulario
+    <app-formulario-usuario
     [usuario]="usuario"
     [edicao]="formularioEdicao"
     (usuarioSalvo)="fecharDialog($event)"
-></app-formulario>
+></app-formulario-usuario>
 
 
 </p-dialog>

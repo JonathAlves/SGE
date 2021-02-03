@@ -7,7 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { UsuarioService } from '../services/usuario.service';
 
 @Component({
-  selector: 'app-formulario',
+  selector: 'app-formulario-usuario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
