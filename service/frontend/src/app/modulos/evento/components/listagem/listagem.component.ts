@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng';
 import { Evento } from 'src/app/dominios/evento';
 import { EventoService } from '../../services/evento.service';
+import { Inscricao } from 'src/app/dominios/inscricao';
 
 @Component({
   selector: 'app-listagem',
