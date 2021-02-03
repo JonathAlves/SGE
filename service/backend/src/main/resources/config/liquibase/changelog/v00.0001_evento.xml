@@ -116,28 +116,27 @@
                 <constraints nullable="false"/>
             </column>
             <column name="descricao" type="VARCHAR(255)">
-                <constraints nullable="false"></constraints>
             </column>
         </createTable>
 
         <insert tableName="tipo_situacao">
-            <column name="id">1</column>
-            <column name="descricao">Aguardando aprovação</column>
+            <column name="id" value="1"/>
+            <column name="descricao" value="Aguardando aprovação"/>
         </insert>
 
         <insert tableName="tipo_situacao">
-            <column name="id">2</column>
-            <column name="descricao">Aprovada</column>
+            <column name="id" value="2"/>
+            <column name="descricao" value="Aprovada"/>
         </insert>
 
         <insert tableName="tipo_situacao">
-            <column name="id">3</column>
-            <column name="descricao">Recusada</column>
+            <column name="id" value="3"/>
+            <column name="descricao" value="Recusada"/>
         </insert>
 
         <insert tableName="tipo_situacao">
-            <column name="id">4</column>
-            <column name="descricao">Cancelada</column>
+            <column name="id" value="4"/>
+            <column name="descricao" value="Cancelada"/>
         </insert>
 
         <addPrimaryKey tableName="tipo_situacao" columnNames="id" constraintName="pk_tipo_situacao"/>
