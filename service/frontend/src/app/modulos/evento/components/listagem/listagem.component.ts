@@ -57,7 +57,7 @@ export class ListagemComponent implements OnInit {
 
   confirmarDeletarevento(id: number) {
     this.confirmationService.confirm({
-        message: 'Tem certeza que deseja excluir o usuário?',
+        message: 'Tem certeza que deseja excluir o evento?',
         accept: () => {
           this.deletarEvento(id);
         }

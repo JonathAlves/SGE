@@ -11,12 +11,12 @@
 
         <label class="p-field">
             <label for="tipoInscricao">Data de Início</label>
-            <p-calendar [(ngModel)]="evento.dataInicio" [showTime]="true" inputId="time"></p-calendar>
+            <input type="text" [(ngModel)]="evento.dataInicio" placeholder="Data de Inicio" formControlName="dataInicio" pInputText />
         </label>
 
         <label class="p-field">
             <label for="tipoInscricao">Data de Término</label>
-            <p-calendar [(ngModel)]="evento.dataTermino" [showTime]="true" inputId="time"></p-calendar>
+            <input type="text" [(ngModel)]="evento.dataTermino" placeholder="Data de Termino" formControlName="dataTermino" pInputText />
         </label>
 
         <div class="p-field">
@@ -61,4 +61,3 @@
 </form>
 <button class="btnCadastrar" pButton type="button" (click)="salvar()" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
 </app-card>
-
