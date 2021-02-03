@@ -16,7 +16,7 @@ export class ListagemInformacoesComponent implements OnInit {
   @Input() usuario = new Usuario();
   @Input() edicao = false;
   @Output() usuarioSalvo = new EventEmitter<Usuario>();
-  
+
   usuarios: Usuario[] = [];
   exibirDialog = false;
   formularioEdicao: boolean;
@@ -24,10 +24,15 @@ export class ListagemInformacoesComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-   
+
   ) { }
   ngOnInit(): void {
-    this.buscarUsuarios();
+    this.pegarUsuarioLocal()
+    //this.buscarUsuarios();
+  }
+  pegarUsuarioLocal() {
+    const usuario = JSON.parse(window.localStorage.getItem("usuario"));
+    this.usuarioSalvo.emit(usuario);
   }
 
   private buscarUsuarios() {
@@ -42,7 +47,7 @@ export class ListagemInformacoesComponent implements OnInit {
       .subscribe(usuario => {
         this.usuario = usuario
         this.mostrarDialog(true);
-      }); 
+      });
   }
 
   mostrarDialog(edicao = false) {
@@ -50,7 +55,7 @@ export class ListagemInformacoesComponent implements OnInit {
     this.formularioEdicao = edicao;
   }
 
- 
+
   salvar() {
     if (this.formEditarUsuario.invalid) {
       alert('Formulário inválido');
@@ -59,7 +64,7 @@ export class ListagemInformacoesComponent implements OnInit {
 
     if (this.edicao) {
       this.usuarioService.editarUsuario(this.usuario)
-        .subscribe(usuario => {   
+        .subscribe(usuario => {
           alert('Usuário Editado');
           this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
@@ -78,6 +83,10 @@ export class ListagemInformacoesComponent implements OnInit {
 
   fecharDialog(usuarioSalvo: Usuario) {
     this.usuarioSalvo.emit(usuarioSalvo);
+  }
+    logout(){
+    localStorage.clear()
+    location.reload()
   }
 
 }

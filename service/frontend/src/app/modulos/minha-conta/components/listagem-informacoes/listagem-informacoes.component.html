@@ -1,5 +1,6 @@
 
     <div class="card">
+        <button class="btnLogout" (click)="logout()" pButton type="button" [label]="'Logout'"></button>
         <p-table [value]="usuarios" styleClass="p-datatable-sm">
             <ng-template pTemplate="caption">
                 Editar

@@ -29,6 +29,7 @@ import { LoginComponent } from './components/login/login.component';
         PRIMENG_IMPORTS,
         CardComponent,
         FormularioComponent,
+        LoginComponent,
     ]
 })
 export class SharedModule { }

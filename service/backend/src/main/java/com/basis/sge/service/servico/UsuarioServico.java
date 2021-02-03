@@ -2,6 +2,7 @@ package com.basis.sge.service.servico;
 import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.repositorio.UsuarioRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
+import com.basis.sge.service.servico.dto.ChaveDTO;
 import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
@@ -33,13 +34,21 @@ public class UsuarioServico {
         return usuarioMapper.toDto(usuario);
     }
 
+    public UsuarioDTO obterPorChave(ChaveDTO chaveDTO){
+        Usuario usuario = usuarioRepositorio.findByChave(chaveDTO.getChave());
+        if(usuario == null){
+            throw  new RegraNegocioException("Acesso do usuario não encontrado!");
+        }
+        return usuarioMapper.toDto(usuario);
+    }
+
 
 
     public UsuarioDTO adicionar (UsuarioDTO usuarioDTO){
-        verificarCPF(usuarioDTO);
-        verificarEmail(usuarioDTO);
         if(usuarioDTO.getId() != null){
             obterPorId(usuarioDTO.getId());
+            verificarCPF(usuarioDTO);
+            verificarEmail(usuarioDTO);
 
         }else
             verificarUsuario(usuarioDTO);

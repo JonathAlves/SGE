@@ -1,1 +1,5 @@
-<p>login works!</p>
+ <p-card styleClass="login" header="Login" >
+     <input [(ngModel)]="chaveInput" type="text" pInputText placeholder="Insira sua chave de inscrição" />
+    <button pButton (click)="logarUsuario(chaveInput)" type="button" label="Entrar" class="p-button-sm" styleClass="loginbutton" ></button>
+    <button class="btn" routerLink="formulario" pButton type="button" label="Cadastrar"></button>
+    </p-card>

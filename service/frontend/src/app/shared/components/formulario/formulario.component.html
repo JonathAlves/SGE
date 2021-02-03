@@ -6,25 +6,25 @@
         <label class="label-input">
             <i class="pi pi-user icon-modify"></i>
             <input type="text" pTooltip="Insira seu nome" [(ngModel)]="usuario.nome" placeholder="Nome" formControlName="nome" pInputText />
-            
+
         </label>
 
         <label class="label-input">
             <i class="pi pi-id-card icon-modify"></i>
             <input pTooltip="Insira seu CPF" type="text" [(ngModel)]="usuario.cpf" placeholder="CPF" formControlName="cpf" pInputText />
-      
+
         </label>
 
       <label class="label-input">
         <i class="pi pi-envelope icon-modify"></i>
         <input type="text" pTooltip="Insira seu Email" [(ngModel)]="usuario.email" placeholder="Email" formControlName="email" pInputText />
-       
+
       </label>
 
     <label class="label-input">
         <i class="pi pi-mobile icon-modify"></i>
         <input type="text" pTooltip="Insira seu Telefone" [(ngModel)]="usuario.telefone" placeholder="telefone" formControlName="telefone" pInputText>
-       
+
     </label>
 
     <label class="label-input">
@@ -36,4 +36,6 @@
 
   </form>
   <button class="btnCadastrar" (click)="salvar()" pButton type="button" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
+  
+
 </app-card>

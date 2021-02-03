@@ -80,4 +80,5 @@ export class FormularioComponent implements OnInit {
     this.usuarioSalvo.emit(usuarioSalvo);
   }
 
+
 }
