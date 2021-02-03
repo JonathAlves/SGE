@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: 'minha-conta', loadChildren:() => MinhaContaModule},
     { path: 'diario-erros', component: DiarioErrosComponent, data: { breadcrumb: 'Diário de Erros'} },
     { path: 'login-success', component: LoginSuccessComponent },
-  
+
 ];
 
 @NgModule({

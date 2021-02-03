@@ -26,7 +26,8 @@ import {DialogModule} from 'primeng/dialog';
         AppTopbarComponent,
         AppFooterComponent,
         DiarioErrosComponent,
-    
+
+
     ],
     imports: [
         BlockUIModule.forRoot({

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-02-01T16:26:59-0300",
+    date = "2021-02-03T15:09:05-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -21,13 +21,13 @@ public class EventoMapperImpl implements EventoMapper {
     private EventoPerguntaMapper eventoPerguntaMapper;
 
     @Override
-    public List<Evento> toEntity(List<EventoDTO> arg0) {
-        if ( arg0 == null ) {
+    public List<Evento> toEntity(List<EventoDTO> dtoList) {
+        if ( dtoList == null ) {
             return null;
         }
 
-        List<Evento> list = new ArrayList<Evento>( arg0.size() );
-        for ( EventoDTO eventoDTO : arg0 ) {
+        List<Evento> list = new ArrayList<Evento>( dtoList.size() );
+        for ( EventoDTO eventoDTO : dtoList ) {
             list.add( toEntity( eventoDTO ) );
         }
 
@@ -35,13 +35,13 @@ public class EventoMapperImpl implements EventoMapper {
     }
 
     @Override
-    public List<EventoDTO> toDto(List<Evento> arg0) {
-        if ( arg0 == null ) {
+    public List<EventoDTO> toDto(List<Evento> entityList) {
+        if ( entityList == null ) {
             return null;
         }
 
-        List<EventoDTO> list = new ArrayList<EventoDTO>( arg0.size() );
-        for ( Evento evento : arg0 ) {
+        List<EventoDTO> list = new ArrayList<EventoDTO>( entityList.size() );
+        for ( Evento evento : entityList ) {
             list.add( toDto( evento ) );
         }
 

@@ -1,12 +1,13 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/dominios/usuario';
-import { UsuarioService } from '../../services/usuario.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
-  selector: 'app-formulario',
+  selector: 'app-formulario-usuario',
   templateUrl: './formulario.component.html',
   styleUrls: ['./formulario.component.css']
 })
@@ -40,7 +41,7 @@ export class FormularioComponent implements OnInit {
         cpf:  ['', Validators.maxLength(11)],
         email: ['', Validators.email],
         telefone: ['', Validators.maxLength(14)],
-        dataNascimento: '',
+        dataNascimento: ['', Validators.required],
       });
 
   }
@@ -58,7 +59,7 @@ export class FormularioComponent implements OnInit {
 
     if (this.edicao) {
       this.usuarioService.editarUsuario(this.usuario)
-        .subscribe(usuario => {   
+        .subscribe(usuario => {
           alert('Usuário Editado');
           this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
@@ -78,5 +79,6 @@ export class FormularioComponent implements OnInit {
   fecharDialog(usuarioSalvo: Usuario) {
     this.usuarioSalvo.emit(usuarioSalvo);
   }
+
 
 }

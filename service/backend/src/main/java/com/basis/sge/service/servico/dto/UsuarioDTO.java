@@ -20,6 +20,8 @@ public class UsuarioDTO{
     private String telefone;
     @Email
     private String email;
+    private String chave;
+    private Boolean admin;
 
 
 

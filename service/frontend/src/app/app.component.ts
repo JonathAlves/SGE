@@ -1,13 +1,14 @@
 import { Component, AfterViewInit, ElementRef, Renderer2, ViewChild, OnDestroy, OnInit, NgZone } from '@angular/core';
 import { ScrollPanel } from 'primeng';
 import { MenusService, MenuOrientation } from '@nuvem/primeng-components';
+import { Usuario } from './dominios/usuario';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'
 })
 export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
-
+    usuarioLogado : Usuario ;
     layoutCompact = true;
 
     darkMenu = false;
@@ -52,10 +53,13 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
         this.menuService.itens = [
             { label: 'Evento', icon: 'event_note', routerLink: ['/eventos'] },
             { label: 'Usuario', icon: 'account_circle', routerLink: ['/usuarios'] },
-            { label: 'Minhas informações', icon: 'dashboard', routerLink: ['/minha-conta'] },
+            { label: 'Perfil', icon: 'dashboard', routerLink: ['/minha-conta'] },
         ];
 
 
+    }
+    logarUsuario(usuario){
+        this.usuarioLogado = usuario;
     }
 
     bindRipple() {
