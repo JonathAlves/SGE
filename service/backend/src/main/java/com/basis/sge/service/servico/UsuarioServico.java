@@ -2,6 +2,7 @@ package com.basis.sge.service.servico;
 import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.repositorio.UsuarioRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
+import com.basis.sge.service.servico.dto.ChaveDTO;
 import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
@@ -33,13 +34,22 @@ public class UsuarioServico {
         return usuarioMapper.toDto(usuario);
     }
 
+    public UsuarioDTO obterPorChave(ChaveDTO chaveDTO){
+        Usuario usuario = usuarioRepositorio.findByChave(chaveDTO.getChave());
+        if(usuario == null){
+            throw  new RegraNegocioException("Acesso do usuario não encontrado!");
+        }
+        return usuarioMapper.toDto(usuario);
+    }
+
 
 
     public UsuarioDTO adicionar (UsuarioDTO usuarioDTO){
         if(usuarioDTO.getId() != null){
             obterPorId(usuarioDTO.getId());
-            verificarUsuarioAtualizar(usuarioDTO);
-             verificarUsuarioAtualizar(usuarioDTO);
+            verificarCPF(usuarioDTO);
+            verificarEmail(usuarioDTO);
+
         }else
             verificarUsuario(usuarioDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
@@ -68,18 +78,17 @@ public class UsuarioServico {
                     }
                 }
 
-
-        public void verificarUsuarioAtualizar (UsuarioDTO usuarioNovo){
-            UsuarioDTO usuarioAntigo = obterPorId(usuarioNovo.getId());
-
-            if (usuarioRepositorio.findByCpf(usuarioNovo.getCpf()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf())){
-                throw new RegraNegocioException("CPF já cadastrado!");
+    private void verificarCPF(UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
+        if(usuario != null && !usuario.getId().equals(usuarioDTO.getId())) {
+            throw new RegraNegocioException("CPF já cadastrado");
+        }
+    }
+        public void verificarEmail (UsuarioDTO usuarioDTO){
+            Usuario usuario = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
+            if(usuario != null && !usuario.getId().equals(usuarioDTO.getId())) {
+                throw new RegraNegocioException("Email já cadastrado");
             }
-
-            else if (usuarioRepositorio.findByEmail(usuarioNovo.getEmail()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf())){
-                throw new RegraNegocioException("Email já existente!");
-            }
-
 
         }
 

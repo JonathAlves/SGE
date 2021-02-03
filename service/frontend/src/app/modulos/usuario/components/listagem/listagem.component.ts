@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService } from 'primeng';
 import { Usuario } from 'src/app/dominios/usuario';
-import { UsuarioService } from '../../services/usuario.service';
+import { UsuarioService } from 'src/app/shared/components/services/usuario.service';
+
 
 @Component({
   selector: 'app-listagem',
