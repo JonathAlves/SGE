@@ -3,7 +3,12 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Evento } from "src/app/dominios/evento";
+import { Pergunta } from 'src/app/dominios/pergunta';
+import { PerguntaEvento } from 'src/app/dominios/pergunta-evento';
+import { PerguntaService } from 'src/app/modulos/pergunta/services/pergunta.service';
 import { EventoService } from '../../services/evento.service';
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-formulario',
@@ -17,13 +22,22 @@ export class FormularioComponent implements OnInit {
   @Input() edicao = false;
   @Output() eventoSalvo = new EventEmitter<Evento>();
   formularioEdicao: boolean;
+  perguntas: Pergunta[] = [];
+  pergunta = new Pergunta;
+  perguntaEvento: PerguntaEvento;
+  perguntaObrigatoria: boolean;
+  submetido: boolean;
+  dataHora: Date;
 
   public formEvento: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private eventoService: EventoService,
-    private route: ActivatedRoute
+    private perguntaService: PerguntaService,
+    private route: ActivatedRoute,
+    private messageService: MessageService, 
+    private confirmationService: ConfirmationService
     ) { }
 
   ngOnInit(): void {
@@ -32,6 +46,7 @@ export class FormularioComponent implements OnInit {
       if (params.id){
         this.edicao = true;
         this.buscarEvento(params.id);
+        this.buscarPergunta(params.id);
       }
     })
 
@@ -45,6 +60,7 @@ export class FormularioComponent implements OnInit {
       local:'',
       tipoInscricao:'',
       idTipoEvento:'',
+      perguntas:''
     })
   }
 
@@ -54,30 +70,50 @@ export class FormularioComponent implements OnInit {
   }
 
   salvar() {
+    this.submetido = true;
     if (this.formEvento.invalid) {
-      alert('Formulário inválido');
+      this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Criado', life: 3000});
       return;
     }
     if (this.edicao) {
       this.eventoService.editarEvento(this.evento)
       .subscribe(evento => {
-        alert('Evento Editado!')
+        this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Editado', life: 3000});
       }, (erro: HttpErrorResponse) => {
-        alert(erro.error.message);
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Evento não Editado', life: 3000});
       });
     } else {
       this.eventoService.salvarEvento(this.evento)
-      .subscribe(usuario => {
-        console.log('usuario salvo', usuario);
-        alert('Evento Salvo')
+      .subscribe(evento => {
+        this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Editado', life: 3000});
       }, (erro: HttpErrorResponse) => {
-        alert(erro.error.message);
+        this.messageService.add({severity:'error', summary: 'Error', detail: 'Evento não Criado', life: 3000});
       });
     }
   }
 
   fecharDialog(eventoSalvo: Evento) {
     this.eventoSalvo.emit(eventoSalvo);
+    this.submetido = false;
+  }
+
+  buscarPergunta(id: number) {
+    this.perguntaService.buscarPerguntaPorId(id)
+    .subscribe(pergunta => this.pergunta = pergunta);
+  }
+
+  salvarPergunta() {
+    this.perguntaService.salvarPergunta(this.pergunta)
+    .subscribe(pergunta => {
+      alert('Pergunta Salva')
+      this.perguntaObrigatoria = false;
+    }, (erro: HttpErrorResponse) => {
+      alert(erro.error.message);
+    });
+  }
+
+  obrigatoria() {
+    this.perguntaObrigatoria = true;
   }
 
 }

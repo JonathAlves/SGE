@@ -8,12 +8,15 @@ import { EventoService} from './services/evento.service';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PerguntaService } from '../pergunta/services/pergunta.service';
+import {CalendarModule} from 'primeng/calendar';
+
 
 
 @NgModule({
   declarations: [FormularioComponent, ListagemComponent],
   providers: [
-    EventoService
+    EventoService, PerguntaService
   ],
   imports: [
     CommonModule,
@@ -21,7 +24,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     EventoRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    CalendarModule
   ]
 })
 export class EventoModule { }

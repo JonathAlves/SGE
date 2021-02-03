@@ -1,19 +1,17 @@
-<p-toolbar styleClass="p-mb-4">
-    <ng-container >
-        <button pButton type="button" icon="pi pi-plus" (click)="mostrarDialog()" pButton label="Evento" style="height: 3rem; padding-left: 0.5em;"></button>
-    </ng-container>
-</p-toolbar>
-
 <app-card [titulo]="'Lista de eventos'">
-    <p-table #ev [value]="eventos" [rows]="10" [paginator]="true" [globalFilterFields]="['titulo','country.name','representative.name','status']"
-        [(selection)]="selectedEvento" [rowHover]="true" dataKey="id"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+
+    <div class="p-d-flex p-jc-end">
+        <button class="btn" pButton type="button" icon="pi pi-plus" (click)="mostrarDialog()" pButton label="Evento"></button>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="deletarTodosEvento()" [disabled]="!selectedEvento || !selectedEvento.length"></button>
+    </div>
+
+    <p-table #ev [value]="eventos" [rows]="10">
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
                 <h3 class="p-m-0">Eventos</h3>
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="ev.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+                    <input pInputText type="text" (input)="ev.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
                 </span>
             </div>
         </ng-template>
@@ -56,12 +54,12 @@
         </ng-template>
         <ng-template pTemplate="summary">
             <div class="p-d-flex p-ai-center p-jc-between">
-                In total there are {{eventos ? eventos.length : 0 }} products.
+                Existem no total {{eventos ? eventos.length : 0 }} eventos.
             </div>
         </ng-template>
     </p-table>
 
-    <p-dialog [(visible)]="exibirDialog" [style]="{width: '450px'}" header="Evento Detalhes">
+    <p-dialog [(visible)]="exibirDialog" [style]="{width: '450px'}" header="Evento Detalhes" styleClass="p-fluid">
         <app-formulario ></app-formulario>
     </p-dialog>
     

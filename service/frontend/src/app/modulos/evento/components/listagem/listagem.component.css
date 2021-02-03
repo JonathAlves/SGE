@@ -1,11 +1,30 @@
 input {
-    background-color: #fff;
-    border: 1px solid #000;
-  }
+  background-color: #fff;
+  border: 1px solid #000;
+}
   
-  p-table {
-    padding: 20px;
-  }
+p-table {
+  padding: 20px;
+}
 
-  
+.btn{
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  margin: 5px;
+  transform: none;
+  border-radius: 10px;
+  bottom: 40px;
+}
+
+.p-button-danger {
+  background-color: rgb(233, 22, 22);
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  margin: 5px;
+  transform: none;
+  border-radius: 10px;
+  bottom: 38px;
+}
 

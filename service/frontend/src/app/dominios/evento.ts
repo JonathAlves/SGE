@@ -1,3 +1,5 @@
+import { PerguntaEvento } from "./pergunta-evento";
+
 export class Evento {
     id: number;
 
@@ -19,7 +21,7 @@ export class Evento {
 
     idTipoEvento: number;
 
-    //perguntas: EventoPergunta[];
+    perguntas: PerguntaEvento[] = [];
 
     constructor() {}
 }
