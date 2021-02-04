@@ -1,7 +1,7 @@
 <app-card [titulo]="'Lista de inscrições'">
 
     <div class="p-d-flex p-jc-end">
-        <button routerLink="inscricao-formulario" icon="pi pi-plus" pButton type="button" label="Inscrição" ></button>
+        <button routerLink='formulario' icon="pi pi-plus" pButton type="button" label="Inscrição" ></button>
     </div>
     <p-tabView>
         <p-tabPanel header="Inscricoes">
@@ -22,6 +22,7 @@
                         <td class="p-d-flex p-jc-center">
                          <button (click)="deletarInscricao(inscricao.id)" class="p-ml-2" pButton type="button" icon="pi pi-trash"></button>
                         </td>
+                        
                     </tr>
                 </ng-template>
             </p-table>

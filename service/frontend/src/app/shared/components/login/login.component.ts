@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     pegarUsuarioLocal() {
         const usuario = JSON.parse(window.localStorage.getItem("usuario"));
         this.emitUsuario.emit(usuario);
-      }
+    }
       logarUsuario(chaveInput: string){
         this.chave.chave = chaveInput
         this.usuarioService.buscarUsuarioPorChave(this.chave).subscribe((usuario :Usuario)=>{

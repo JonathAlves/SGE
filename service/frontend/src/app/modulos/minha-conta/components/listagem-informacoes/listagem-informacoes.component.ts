@@ -21,6 +21,8 @@ export class ListagemInformacoesComponent implements OnInit {
   exibirDialog = false;
   formularioEdicao: boolean;
   formEditarUsuario: FormGroup;
+  
+
 
   constructor(
     private usuarioService: UsuarioService,
@@ -35,7 +37,6 @@ export class ListagemInformacoesComponent implements OnInit {
     this.usuarioSalvo.emit(usuarioLocal);
     return [usuarioLocal];
   }
-
 
   mostrarDialogEditar(id: number) {
     this.usuarioService.buscarUsuarioPorId(id)

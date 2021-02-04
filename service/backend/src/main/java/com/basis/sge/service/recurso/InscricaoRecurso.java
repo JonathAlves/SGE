@@ -4,6 +4,7 @@ package com.basis.sge.service.recurso;
 import com.basis.sge.service.servico.InscricaoServico;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/inscricoes")
 @RequiredArgsConstructor
-public class InscricaoRecurso   {
+public class InscricaoRecurso {
 
+    @Autowired
     private final InscricaoServico inscricaoServico;
 
     @GetMapping

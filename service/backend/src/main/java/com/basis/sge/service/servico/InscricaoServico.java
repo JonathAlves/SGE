@@ -42,14 +42,14 @@ public class InscricaoServico {
         verificaTipoSituacao(inscricaoDTO.getIdTipoSituacao());
 
         Inscricao inscricao = inscricaoMapper.toEntity(inscricaoDTO);
-        List<InscricaoResposta> respostas = inscricao.getRespostas();
-        inscricao.setRespostas(respostas);
+//        List<InscricaoResposta> respostas = inscricao.getRespostas();
+//        inscricao.setRespostas(respostas);
 
-        if(respostas != null && !respostas.isEmpty()){
-            respostas.forEach(inscricaoResposta -> {
-                inscricaoResposta.setInscricao(inscricao);
-            });
-        }
+//        if(respostas != null && !respostas.isEmpty()){
+//            respostas.forEach(inscricaoResposta -> {
+//                inscricaoResposta.setInscricao(inscricao);
+//            });
+//        }
         Inscricao novaInscricao = inscricaoRepositorio.save(inscricao);
 //        emailInscricao(inscricao);
         return inscricaoMapper.toDto(novaInscricao);
