@@ -1,13 +1,17 @@
- <p-card styleClass="login" header="Login" >
-     <input [(ngModel)]="chaveInput" type="text" pInputText placeholder="Insira sua chave de inscrição" />
-    <button pButton (click)="logarUsuario(chaveInput)" type="button" label="Entrar" class="p-button-sm" styleClass="loginbutton" ></button>
-    
-    <button class="p-ml-2" type="button" (click)="mostrarDialog()" pButton label="Cadastrar Usuário Dialog"></button>
+ <p-card>
+     <div class="ui-g">
+        <div class="ui-g-12">
+            Login
+     </div>
+     <input class="ui-g-12 ui-fluid" [(ngModel)]="chaveInput" type="text" pInputText placeholder="Insira sua chave de inscrição" />
+    <button class="p-ml-2" pButton (click)="logarUsuario(chaveInput)" type="button" label="Entrar" class="p-button-sm" styleClass="loginbutton" ></button>
+    <button class="p-ml-2" type="button" (click)="mostrarDialog()" pButton label="Cadastrar"></button>
+</div>
     </p-card>
 
     <p-dialog header="Novo Usuario" [(visible)]="exibirDialog">
         <app-formulario-usuario
-        [edicao]="formularioLogin"    
+        [edicao]="formularioLogin"
       (usuarioSalvo)="fecharDialog($event)"
     ></app-formulario-usuario>
     </p-dialog>

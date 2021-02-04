@@ -51,13 +51,7 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
     ngOnInit() {
         this.zone.runOutsideAngular(() => { this.bindRipple(); });
 
-        /*this.loginService.verificarLogoni().subscribe(usuario => {
-            if (usuario.admin) {
-
-            } else {
-
-            }
-        });*/
+    
         this.menuService.itens = [
             { label: 'Evento', icon: 'event_note', routerLink: ['/eventos'] },
             { label: 'Administrador', icon: 'account_circle', routerLink: ['/usuarios'] },
