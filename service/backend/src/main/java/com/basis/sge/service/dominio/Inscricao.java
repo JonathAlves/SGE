@@ -17,11 +17,11 @@ public class Inscricao implements Serializable{
     @Column(name="id")
     private Integer id;
 
-    @ManyToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name="id_evento")
     private Evento evento;
 
-    @ManyToOne(cascade=CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     @JoinColumn(name="id_usuario")
     private Usuario usuario;
 

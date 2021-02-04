@@ -1,6 +1,8 @@
 package com.basis.sge.service.recurso;
 
+import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.UsuarioServico;
+import com.basis.sge.service.servico.dto.ChaveDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,11 @@ public class UsuarioRecurso {
         return ResponseEntity.ok(usuarioDTO);
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<UsuarioDTO>obterPorChave(@RequestBody ChaveDTO chaveDTO){
+        UsuarioDTO usuario = usuarioServico.obterPorChave(chaveDTO);
+        return ResponseEntity.ok(usuario);
+    }
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> inserir(@Valid @RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {

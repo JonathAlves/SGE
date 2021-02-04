@@ -15,7 +15,7 @@ describe('ListagemInformacoesComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ListagemInformacoesComponent);
-    component = fixture.componentInstance;
+    component = fixture.componentInstance; 
     fixture.detectChanges();
   });
 

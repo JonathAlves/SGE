@@ -1,18 +1,64 @@
+<app-card class="titulo" [titulo]="'Cadastro de Evento'">
 <form [formGroup]="formEvento">
 
     <div class="p-grid p-dri-col">
 
-        <input type="text" [(ngModel)]="evento.titulo" placeholder="Titulo Evento" formControlName="titulo" pInputText />
-        <div *ngIf="formEvento.get('titulo').invalid">Titulo inválido</div>
+        <label class="p-field">
+            <label for="titulo">Título do evento</label>
+            <input type="text" pInputText id="titulo" [(ngModel)]="evento.titulo" required autofocus placeholder="Titulo Evento" formControlName="titulo"  />
+            <div *ngIf="formEvento.get('titulo').invalid">Título inválido</div>
+        </label>
 
-        <input type="text" [(ngModel)]="evento.dataInicio" placeholder="Data de Inicio" formControlName="dataInicio" pInputText />
-        <input type="text" [(ngModel)]="evento.dataTermino" placeholder="Data de Termino" formControlName="dataTermino" pInputText />
-        <input type="text" [(ngModel)]="evento.descricao" placeholder="Descricao" formControlName="descricao" pInputText />
-        <input type="text" [(ngModel)]="evento.qtVagas" placeholder="Quantidade de vagas" formControlName="qtVagas" pInputText />
-        <input type="text" [(ngModel)]="evento.valor" placeholder="Valor" formControlName="valor" pInputText />
-        <input type="text" [(ngModel)]="evento.local" placeholder="Local do evento" formControlName="local" pInputText />
-        <input type="text" [(ngModel)]="evento.tipoInscricao" placeholder="Tipo de Inscricao" formControlName="tipoInscricao" pInputText />
-        <input type="text" [(ngModel)]="evento.idTipoEvento" placeholder="Tipo de Evento" formControlName="idTipoEvento" pInputText />
+        <label class="p-field">
+            <label for="tipoInscricao">Data de Início</label>
+            <p-calendar [(ngModel)]="evento.dataInicio" [showTime]="true" inputId="time"></p-calendar>
+        </label>
+
+        <label class="p-field">
+            <label for="tipoInscricao">Data de Término</label>
+            <p-calendar [(ngModel)]="evento.dataTermino" [showTime]="true" inputId="time"></p-calendar>
+        </label>
+
+        <div class="p-field">
+            <label for="descricao" > Descricão do evento</label>
+            <textarea id="descricao" pInputTextarea [(ngModel)]="evento.descricao" required rows="3" cols="20"></textarea>
+        </div>
+
+        <label class="p-field">
+            <label for="tipoInscricao">Quantidade de vagas</label>
+            <input type="text" [(ngModel)]="evento.qtVagas" placeholder="Quantidade de vagas" formControlName="qtVagas" pInputText />
+        </label>
+
+        <label class="p-field">
+            <label for="tipoInscricao">Valor</label>
+            <input type="text" [(ngModel)]="evento.valor" placeholder="Valor" formControlName="valor" pInputText />
+        </label>
+         
+        <label class="p-field">
+            <label for="tipoInscricao">Local do evento</label>
+            <input type="text" [(ngModel)]="evento.local" placeholder="Local do evento" formControlName="local" pInputText />
+        </label>
+
+        <label class="p-field">
+            <label for="tipoInscricao">Tipo de inscrição</label>
+            <input type="text" [(ngModel)]="evento.tipoInscricao" placeholder="Tipo de Inscricao" formControlName="tipoInscricao" pInputText />
+        </label>
+
+        <label class="p-field">
+            <label for="tipoInscricao">Tipo de evento</label>
+            <input type="text" [(ngModel)]="evento.idTipoEvento" placeholder="Tipo de Evento" formControlName="idTipoEvento" pInputText />
+        </label>
+        
+        <div class="p-field">
+            <label for="tipoInscricao">Adicionar uma pergunta</label>
+            <input type="text" pInputText id="pergunta" [(ngModel)]="evento.perguntas" required autofocus />
+            <i class="pi pi-bars"></i>
+            <p-checkbox  [(ngModel)]="pergunta.obrigatoriedade" [binary]="true" *ngIf="perguntaObrigatoria" formControlName="pergunta"></p-checkbox>
+            <i class="pi pi-bars"></i>
+            <button pButton (click)="salvarPergunta(pergunta)" label="Save" icon="pi pi-check" styleClass="p-button-warning" *ngIf="perguntaObrigatoria"></button>
+        </div>
     </div>
-</form>>
-<button (click)="salvar()" pButton type="button" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
+</form>
+<button class="btnCadastrar" pButton type="button" (click)="salvar()" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
+</app-card>
+

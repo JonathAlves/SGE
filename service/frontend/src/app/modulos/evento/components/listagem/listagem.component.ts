@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfirmationService, MessageService } from 'primeng';
 import { Evento } from 'src/app/dominios/evento';
 import { EventoService } from '../../services/evento.service';
+import { Inscricao } from 'src/app/dominios/inscricao';
 
 @Component({
   selector: 'app-listagem',
@@ -10,13 +12,22 @@ import { EventoService } from '../../services/evento.service';
 export class ListagemComponent implements OnInit {
 
   eventos: Evento[] = [];
+  evento = new Evento();
+  selectedEvento: Evento[] = [];
+  formularioEdicao: boolean;
+  exibirDialog = false;
+
+  statuses: any[];
 
   constructor(
-    private servico: EventoService
+    private servico: EventoService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit(): void {
     this.buscarEventos();
+    
   }
 
   private buscarEventos() {
@@ -26,13 +37,63 @@ export class ListagemComponent implements OnInit {
     });
   }
 
-  deletarEvento(id: number) {
-    this.servico.deletarEvento(id)
-    .subscribe(() => {
-      alert('Evento deletado!');
-      this.buscarEventos();
-    },
-    err => alert(err));
+  mostrarDialogEditar(id: number) {
+    this.servico.buscarEventoPorId(id)
+      .subscribe(evento => {
+        this.evento = evento
+        this.mostrarDialog();
+      }); 
+  }
+
+  mostrarDialog(idicao = false) {
+
+    this.exibirDialog = true;
+    this.formularioEdicao = idicao;
+  }
+
+  fecharDialog(eventoSalvo: Evento) {
+    this.exibirDialog = false;
+    this.buscarEventos();
+  }
+
+  confirmarDeletarevento(id: number) {
+    this.confirmationService.confirm({
+        message: 'Tem certeza que deseja excluir o usuário?',
+        accept: () => {
+          this.deletarEvento(id);
+        }
+    });
+  }
+
+  deletarTodosEvento() {
+    this.confirmationService.confirm({
+      message: 'Você tem certeza que quer deletar todos os eventos? ',
+      header: 'Confirma',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.eventos.forEach(evento => {
+          this.servico.deletarEvento(evento.id).subscribe(() => { 
+            this.messageService.add({severity:'success', summary: 'Successo', detail: 'Eventos Deletados', life: 3000});
+            this.buscarEventos();
+          }, err => alert(err));
+        });
+      }
+  });
+  }
+
+  deletarEvento(id?: number) {
+    this.confirmationService.confirm({
+      message: 'Você tem certeza que quer deletar o evento ' + this.evento.titulo + '?',
+      header: 'Confirma',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.servico.deletarEvento(id).subscribe(() => { 
+          this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Deletado', life: 3000});
+          this.buscarEventos();
+        }, err => alert(err));
+        
+      }
+  });
   }
 
 }

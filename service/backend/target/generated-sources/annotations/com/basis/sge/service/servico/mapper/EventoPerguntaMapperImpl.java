@@ -2,6 +2,7 @@ package com.basis.sge.service.servico.mapper;
 
 import com.basis.sge.service.dominio.Evento;
 import com.basis.sge.service.dominio.EventoPergunta;
+import com.basis.sge.service.dominio.EventoPerguntaId;
 import com.basis.sge.service.dominio.Pergunta;
 import com.basis.sge.service.servico.dto.EventoPerguntaDTO;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-02-02T22:36:46-0300",
+    date = "2021-02-03T15:09:05-0300",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -53,9 +54,9 @@ public class EventoPerguntaMapperImpl implements EventoPerguntaMapper {
 
         EventoPergunta eventoPergunta = new EventoPergunta();
 
-        eventoPergunta.setEvento( eventoPerguntaDTOToEvento( eventoPerguntaDTO ) );
+        eventoPergunta.setId( eventoPerguntaDTOToEventoPerguntaId( eventoPerguntaDTO ) );
         eventoPergunta.setPergunta( eventoPerguntaDTOToPergunta( eventoPerguntaDTO ) );
-        eventoPergunta.setId( eventoPerguntaDTO.getId() );
+        eventoPergunta.setEvento( eventoPerguntaDTOToEvento( eventoPerguntaDTO ) );
 
         return eventoPergunta;
     }
@@ -70,21 +71,21 @@ public class EventoPerguntaMapperImpl implements EventoPerguntaMapper {
 
         eventoPerguntaDTO.setIdPergunta( eventoPerguntaPerguntaId( eventoPergunta ) );
         eventoPerguntaDTO.setIdEvento( eventoPerguntaEventoId( eventoPergunta ) );
-        eventoPerguntaDTO.setId( eventoPergunta.getId() );
 
         return eventoPerguntaDTO;
     }
 
-    protected Evento eventoPerguntaDTOToEvento(EventoPerguntaDTO eventoPerguntaDTO) {
+    protected EventoPerguntaId eventoPerguntaDTOToEventoPerguntaId(EventoPerguntaDTO eventoPerguntaDTO) {
         if ( eventoPerguntaDTO == null ) {
             return null;
         }
 
-        Evento evento = new Evento();
+        EventoPerguntaId eventoPerguntaId = new EventoPerguntaId();
 
-        evento.setId( eventoPerguntaDTO.getIdEvento() );
+        eventoPerguntaId.setIdEvento( eventoPerguntaDTO.getIdEvento() );
+        eventoPerguntaId.setIdPergunta( eventoPerguntaDTO.getIdPergunta() );
 
-        return evento;
+        return eventoPerguntaId;
     }
 
     protected Pergunta eventoPerguntaDTOToPergunta(EventoPerguntaDTO eventoPerguntaDTO) {
@@ -97,6 +98,18 @@ public class EventoPerguntaMapperImpl implements EventoPerguntaMapper {
         pergunta.setId( eventoPerguntaDTO.getIdPergunta() );
 
         return pergunta;
+    }
+
+    protected Evento eventoPerguntaDTOToEvento(EventoPerguntaDTO eventoPerguntaDTO) {
+        if ( eventoPerguntaDTO == null ) {
+            return null;
+        }
+
+        Evento evento = new Evento();
+
+        evento.setId( eventoPerguntaDTO.getIdEvento() );
+
+        return evento;
     }
 
     private Integer eventoPerguntaPerguntaId(EventoPergunta eventoPergunta) {

@@ -1,7 +1,7 @@
 <app-card class="titulo"  [titulo]="'Inscrição'">
     <form [formGroup]="formInscricao">
         <div class="p-grid p-dir-col">
-            <input type="text" pInputText [(ngModel)]="inscricaoResposta.resposta" placeholder="Resposta" formControlName="resposta1"/>
+            <input type="text" pInputText [(ngModel)]="inscricao.respostas[0].resposta" placeholder="Resposta" formControlName="resposta1"/>
         </div>
     </form>
 </app-card>
