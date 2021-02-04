@@ -49,7 +49,7 @@
                 <td class="p-d-flex p-jc-center">
                     <button [routerLink]="['formulario', evento.id]" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
                     <button (click)="deletarEvento(evento.id)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button>
-                     <button [routerLink]="['/inscricoes/formulario']" pButton pRipple icon="pi pi-link" class="p-button-rounded p-button-warning" ></button>
+                    <button [routerLink]="['/inscricoes/formulario', evento.id]" pButton pRipple icon="pi pi-link" class="p-button-rounded p-button-warning" ></button>
                 </td>
             </tr>
         </ng-template>
