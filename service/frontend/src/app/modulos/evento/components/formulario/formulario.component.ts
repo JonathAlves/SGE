@@ -11,6 +11,7 @@ import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import * as moment from 'moment';
 import { TipoEvento } from 'src/app/dominios/tipo-evento';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-formulario',
@@ -25,12 +26,13 @@ export class FormularioComponent implements OnInit {
   @Output() eventoSalvo = new EventEmitter<Evento>();
   formularioEdicao: boolean;
   perguntas: Pergunta[] = [];
+  perguntasEventos: Pergunta[] =[];
   pergunta = new Pergunta;
   perguntaEvento: PerguntaEvento;
-  perguntaObrigatoria: boolean;
-  submetido: boolean;
+  novaPergunta: boolean;
   tipoInscricao: boolean = false;
   tipoEventos: TipoEvento[] = []
+  tipoEvento: TipoEvento
 
   public formEvento: FormGroup;
 
@@ -63,7 +65,10 @@ export class FormularioComponent implements OnInit {
       local:'',
       tipoInscricao:'',
       idTipoEvento:'',
-      perguntas:''
+      perguntas:'',
+      pergunta:'',
+      perguntaEvento:'',
+      obrigatoriedade: ''
     })
   }
 
@@ -73,7 +78,17 @@ export class FormularioComponent implements OnInit {
   }
 
   salvar() {
-    this.submetido = true;
+    
+    this.evento.tipoInscricao = this.tipoInscricao;
+    console.log(this.perguntasEventos)
+    for (let perg of this.perguntasEventos) {
+      this.perguntaEvento = new PerguntaEvento
+      this.perguntaEvento.idEvento = null
+      this.perguntaEvento.idPergunta = perg.id
+
+      this.evento.perguntas.push(this.perguntaEvento)
+    };
+    
     if (this.formEvento.invalid) {
       this.messageService.add({severity:'warn', summary: 'Atenção', detail: 'Preencha os campos solicitados', life: 3000});
       return;
@@ -97,7 +112,6 @@ export class FormularioComponent implements OnInit {
 
   fecharDialog(eventoSalvo: Evento) {
     this.eventoSalvo.emit(eventoSalvo);
-    this.submetido = false;
   }
 
   buscarPergunta(id: number) {
@@ -105,18 +119,22 @@ export class FormularioComponent implements OnInit {
     .subscribe(pergunta => this.pergunta = pergunta);
   }
 
-  salvarPergunta() {
-    this.perguntaService.salvarPergunta(this.pergunta)
+  salvarPergunta(pergunta: Pergunta) {
+    if(this.pergunta.obrigatoriedade == null){
+      this.pergunta.obrigatoriedade = false;
+    }
+    this.perguntaService.salvarPergunta(pergunta)
     .subscribe(pergunta => {
+      this.perguntasEventos.push(pergunta)
       alert('Pergunta Salva')
-      this.perguntaObrigatoria = false;
+      this.novaPergunta = false;
     }, (erro: HttpErrorResponse) => {
       alert(erro.error.message);
     });
   }
 
-  obrigatoria() {
-    this.perguntaObrigatoria = true;
+  novasPerguntas(){
+    this.novaPergunta = true
   }
 
 }

@@ -26,10 +26,7 @@
 
         <label class="p-field">
             <label for="tipoEvento">Tipo de evento</label>
-            
-            <p-dropdown [options]="tipoEventos" placeholder="Selecione o Tipo do Evento" 
-            [(ngModel)]="tipoEventos" formControlName="idTipoEvento"
-            optionLabel="descricao" optionValue="id"></p-dropdown>
+            <input type="number" [(ngModel)]="evento.idTipoEvento" placeholder="Tipo Evento" formControlName="idTipoEvento" pInputText />
         </label>
 
         <label class="p-field">
@@ -51,15 +48,18 @@
             <label for="dataTermino">Data e hora do termino do evento</label>
             <input class="input" type="datetime-local"  [(ngModel)]="evento.dataTermino"  formControlName="dataTermino" pInputText/>
         </label>
-        
-        <div class="p-field">
-            <label for="tipoInscricao">Adicionar uma pergunta</label>
-            <input type="text" pInputText id="pergunta" [(ngModel)]="evento.perguntas" required autofocus />
-            <i class="pi pi-bars"></i>
-            <p-checkbox  [(ngModel)]="pergunta.obrigatoriedade" [binary]="true" *ngIf="perguntaObrigatoria" formControlName="pergunta"></p-checkbox>
-            <i class="pi pi-bars"></i>
-            <button pButton (click)="salvarPergunta(pergunta)" label="Save" icon="pi pi-check" styleClass="p-button-warning" *ngIf="perguntaObrigatoria"></button>
-        </div>
+        <p-toolbar>
+            <div class="p-toolbar-group-center">
+                <label for="pergunta">Adicionar uma pergunta</label>
+                <p-button (click)="novasPerguntas()" label="Novo" icon="pi pi-plus" ></p-button>
+                
+                <input type="text" pInputText [(ngModel)]="pergunta.titulo" formControlName="pergunta" *ngIf="novaPergunta"/>
+                
+                <p-checkbox  [(ngModel)]="pergunta.obrigatoriedade" [binary]="true" *ngIf="novaPergunta" formControlName="pergunta"></p-checkbox>
+                
+                <p-button pButton (click)="salvarPergunta(pergunta)" label="Save" icon="pi pi-check" styleClass="p-button-warning" *ngIf="novaPergunta"></p-button>
+            </div>
+    </p-toolbar>
     </div>
 </form>
 <button class="btnCadastrar" pButton type="button" (click)="salvar()" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>

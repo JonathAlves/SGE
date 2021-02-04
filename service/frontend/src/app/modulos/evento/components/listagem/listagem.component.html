@@ -1,7 +1,7 @@
 <app-card [titulo]="'Lista de eventos'">
 
     <div class="p-d-flex p-jc-end">
-        <button class="btn" pButton type="button" icon="pi pi-plus" (click)="mostrarDialog()" pButton label="Evento"></button>
+        <button class="btn" pButton type="button" icon="pi pi-plus"  [routerLink]="['formulario']" pButton label="Evento"></button>
         <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="deletarTodosEvento()" [disabled]="!selectedEvento || !selectedEvento.length"></button>
     </div>
 

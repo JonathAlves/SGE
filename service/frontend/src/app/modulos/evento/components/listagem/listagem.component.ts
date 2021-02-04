@@ -70,7 +70,8 @@ export class ListagemComponent implements OnInit {
       header: 'Confirma',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.eventos.forEach(evento => {
+        this.eventos = this.eventos.filter(val => !this.selectedEvento.includes(val));
+        this.selectedEvento.forEach(evento => {
           this.servico.deletarEvento(evento.id).subscribe(() => { 
             this.messageService.add({severity:'success', summary: 'Successo', detail: 'Eventos Deletados', life: 3000});
             this.buscarEventos();
