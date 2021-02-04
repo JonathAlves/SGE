@@ -18,4 +18,9 @@ export class AppTopbarComponent {
     isAuthenticated() {
         return this._authentication.isAuthenticated();
     }
+
+    logout(){
+        localStorage.clear()
+        location.reload()
+      }
 }

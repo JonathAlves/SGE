@@ -1,6 +1,6 @@
 
 <div *ngIf="usuarioLogado?.admin">
-<app-card [titulo]="'Lista de usuários'">
+<app-card [titulo]="'Lista de Usuários ADM'">
 
     <div class="p-d-flex p-jc-end">
         <button class="btn" routerLink="formulario" pButton type="button" label="Cadastrar" ></button>
@@ -25,7 +25,7 @@
               <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
               <td class="p-d-flex p-jc-center">
                 <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
-                <button (click)="mostrarDialogEditar(usuario.id)" class="p-ml-2"  pButton type="button" icon="pi pi-pencil"></button>
+                <button (click)="mostrarDialogEditar(usuario.id)"  pButton type="button" icon="pi pi-pencil"></button>
                 <button (click)="confirmarDeletarUsuario(usuario.id)" class="p-ml-2" pButton type="button" icon="pi pi-trash"></button>
               </td>
           </tr>
@@ -45,4 +45,72 @@
 </p-dialog>
 
 <p-confirmDialog header="Confirmar Remover Usuário" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+</div>
+
+<div *ngIf="!usuarioLogado?.admin">
+
+    <div class="card">
+        <p-table [value]="pegarUsuarioLocal()" styleClass="p-datatable-sm">
+            <ng-template pTemplate="caption">
+                Editar
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Data Nascimento</th>
+                    <th style="width: 80px;">Ações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-usuario>
+                <tr>
+                    <td>{{usuario.nome}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.telefone}}</td>
+                    <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+                    <td class="p-d-flex p-jc-center">
+                        <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
+                        <button (click)="mostrarDialogEditar(usuario.id)" class="p-ml-2" pButton type="button" icon="pi pi-pencil"></button>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+    <div class="card">
+        <p-table [value]="usuarios" styleClass="p-datatable-sm">
+            <ng-template pTemplate="caption">
+                Minhas Incrições
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Data Nascimento</th>
+                    <th style="width: 80px;">Ações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-inscricao>
+                <tr>
+                    <td>{{inscricao.id}}</td>
+                    <td>{{usuario.cpf}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
+                    <td class="p-d-flex p-jc-center">
+                        <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
+                        <button (click)="mostrarDialogEditar(usuario.id)" class="p-ml-2"  pButton type="button" icon="pi pi-pencil"></button>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+
+<p-dialog header="Olá {{usuario.nome}}" [(visible)]="exibirDialog">
+
+    <app-formulario-usuario
+    [usuario]="usuario"
+    [edicao]="formularioEdicao"
+    (usuarioSalvo)="fecharDialog($event)"
+></app-formulario-usuario>
+</p-dialog>
 </div>

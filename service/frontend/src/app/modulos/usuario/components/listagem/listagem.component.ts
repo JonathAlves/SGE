@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { ConfirmationService } from 'primeng';
 import { Usuario } from 'src/app/dominios/usuario';
 import { UsuarioService } from 'src/app/shared/components/services/usuario.service';
@@ -10,7 +10,7 @@ import { UsuarioService } from 'src/app/shared/components/services/usuario.servi
   styleUrls: ['./listagem.component.css']
 })
 export class ListagemComponent implements OnInit {
-
+  @Output() usuarioSalvo = new EventEmitter<Usuario>();
   usuarios: Usuario[] = [];
   usuario = new Usuario();
   exibirDialog = false;
@@ -26,6 +26,11 @@ export class ListagemComponent implements OnInit {
   ngOnInit(): void {
     this.buscarUsuarios();
     this.usuarioLogado = JSON.parse(localStorage.getItem('usuario')) as Usuario;
+  }
+  pegarUsuarioLocal() {
+    const usuarioLocal = JSON.parse(window.localStorage.getItem("usuario"));
+    this.usuarioSalvo.emit(usuarioLocal);
+    return [usuarioLocal];
   }
 
   private buscarUsuarios() {

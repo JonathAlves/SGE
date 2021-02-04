@@ -44,11 +44,15 @@ public class UsuarioServico {
 
 
 
+
+
     public UsuarioDTO adicionar (UsuarioDTO usuarioDTO){
+
         if(usuarioDTO.getId() != null){
             obterPorId(usuarioDTO.getId());
             verificarCPF(usuarioDTO);
             verificarEmail(usuarioDTO);
+
 
         }else
             verificarUsuario(usuarioDTO);
@@ -60,6 +64,11 @@ public class UsuarioServico {
 
     }
 
+    public UsuarioDTO salvar(UsuarioDTO usuarioDTO){
+        return null;
+    }
+
+
 
     public void remover(Integer id) {
         Usuario usuario = usuarioRepositorio.findById(id).orElseThrow(() -> new RegraNegocioException("Usuario nao encontrado"));
@@ -67,16 +76,16 @@ public class UsuarioServico {
     }
 
 
-        public void verificarUsuario (UsuarioDTO usuarioDTO){
+    public void verificarUsuario (UsuarioDTO usuarioDTO){
 
-                     if (usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null)
-                        throw new RegraNegocioException("Email já cadastrado");
+        if (usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null)
+            throw new RegraNegocioException("Email já cadastrado");
 
-                    else if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf()) != null) {
-                        throw new RegraNegocioException("CPF já cadastrado");
+        else if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf()) != null) {
+            throw new RegraNegocioException("CPF já cadastrado");
 
-                    }
-                }
+        }
+    }
 
     private void verificarCPF(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
@@ -84,20 +93,20 @@ public class UsuarioServico {
             throw new RegraNegocioException("CPF já cadastrado");
         }
     }
-        public void verificarEmail (UsuarioDTO usuarioDTO){
-            Usuario usuario = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
-            if(usuario != null && !usuario.getId().equals(usuarioDTO.getId())) {
-                throw new RegraNegocioException("Email já cadastrado");
-            }
-
+    public void verificarEmail (UsuarioDTO usuarioDTO){
+        Usuario usuario = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
+        if(usuario != null && !usuario.getId().equals(usuarioDTO.getId())) {
+            throw new RegraNegocioException("Email já cadastrado");
         }
 
-        private  void  emailCriarCadastro(Usuario usuario){
+    }
+
+    private  void  emailCriarCadastro(Usuario usuario){
         EmailDTO emailDTO = new EmailDTO();
         emailDTO.setAssunto("Cadastro SGE");
         emailDTO.setCorpo("Obrigado por se cadastrar na nossa plataforma! Sua chave de acesso será: "  + usuario.getChave());
         emailDTO.setDestinatario(usuario.getEmail());
-         this.produtorServico.enviarEmail(emailDTO);
+        this.produtorServico.enviarEmail(emailDTO);
 
     }
 

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Usuario } from 'src/app/dominios/usuario';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UsuarioService } from '../services/usuario.service';
+import { MessageService } from 'primeng';
 
 @Component({
   selector: 'app-formulario-usuario',
@@ -21,12 +22,14 @@ export class FormularioComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit(): void {
     this.criarUsuario();
   }
+  
 
   criarUsuario(){
     this.route.params.subscribe(params => {
@@ -35,7 +38,7 @@ export class FormularioComponent implements OnInit {
           this.buscarUsuario(params.id);
         }
       });
-
+      
       this.usuario.admin = false;
       this.formUsuario = this.fb.group({
         nome: ['', Validators.minLength(3)],
@@ -43,6 +46,9 @@ export class FormularioComponent implements OnInit {
         email: ['', Validators.email],
         telefone: ['', Validators.maxLength(14)],
         dataNascimento: ['', Validators.required],
+        
+        
+        
         
       });
 
@@ -55,14 +61,14 @@ export class FormularioComponent implements OnInit {
 
   salvar() {
     if (this.formUsuario.invalid) {
-      alert('Formulário inválido');
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Formulario Invalido!', life: 3000});
       return;
     }
 
     if (this.edicao) {
       this.usuarioService.editarUsuario(this.usuario)
         .subscribe(usuario => {
-          alert('Usuário Editado');
+          this.messageService.add({severity:'success', summary: 'Successo', detail: 'Usuario editado com sucesso!', life: 3000});
           this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
           alert(erro.error.message);
@@ -70,10 +76,11 @@ export class FormularioComponent implements OnInit {
     } else {
       this.usuarioService.salvarUsuario(this.usuario)
         .subscribe(usuario => {
-          alert('Usuário Salvo');
+          this.messageService.add({severity:'success', summary: 'Successo', detail: 'Usuario Cadastrado com sucesso!', life: 3000});
           this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
-          alert(erro.error.message);
+          this.messageService.add({severity:'error', summary: 'Error', detail: erro.error.message, life: 3000});
+      
         });
     }
   }
