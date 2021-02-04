@@ -31,3 +31,9 @@ g
 7src/main/java/com/basis/sge/service/dominio/Evento.java,0/0/002bf2b9d8167c88ddee3a0d33e18c9fca615874
 j
 :src/main/java/com/basis/sge/service/dominio/Inscricao.java,4/9/49cd393db28c81ad0f5cd5166064903db8eed6cc
+m
+=src/main/java/com/basis/sge/service/dominio/TipoSituacao.java,8/6/8670bef7a73bfc1d3afd823b4c48899aec7fb2fd
+h
+8src/main/java/com/basis/sge/service/dominio/Usuario.java,e/5/e5074b44dd3e31a6be836c468e65ef6b87c415cd
+n
+>src/main/java/com/basis/sge/service/servico/EventoServico.java,4/3/43e39b40256405c7dd19983d92829a4dbedd9e08

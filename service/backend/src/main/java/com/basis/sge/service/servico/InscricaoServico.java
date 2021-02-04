@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -83,4 +84,15 @@ public class InscricaoServico {
 //        this.produtorServico.enviarEmail(emailDTO);
 //
 //    }
+
+    public List<InscricaoDTO> buscarInscricaoPorIdEvento(Integer id){
+        List<InscricaoDTO> inscricoesPorIdEvento = new ArrayList<InscricaoDTO>();
+        List<InscricaoDTO> inscricoes = inscricaoMapper.toDto(inscricaoRepositorio.findAll());
+        for (InscricaoDTO inscricao: inscricoes) {
+            if(inscricao.getIdEvento() == id){
+                inscricoesPorIdEvento.add(inscricao);
+            }
+        }
+        return inscricoesPorIdEvento;
+    }
 }
