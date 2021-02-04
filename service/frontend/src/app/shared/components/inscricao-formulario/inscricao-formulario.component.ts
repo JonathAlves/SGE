@@ -1,11 +1,15 @@
+import { UsuarioService } from './../services/usuario.service';
+import { ActivatedRoute } from '@angular/router';
+import { EventoService } from './../../../modulos/evento/services/evento.service';
+import { ListagemComponent } from './../../../modulos/evento/components/listagem/listagem.component';
+import { ListagemInformacoesComponent } from './../../../modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component';
 import { Evento } from 'src/app/dominios/evento';
 import { Usuario } from 'src/app/dominios/usuario';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Inscricao } from "src/app/dominios/inscricao";
-import { InscricaoService } from './../../servicos/inscricao.service';
+import { InscricaoService } from '../../../modulos/inscricao/servicos/inscricao.service';
 
 
 @Component({
@@ -21,11 +25,16 @@ export class InscricaoFormularioComponent implements OnInit {
  
   formInscricao: FormGroup;
   inscricao = new Inscricao;
+  usrLogado: ListagemInformacoesComponent;
+  eventoList: ListagemComponent;
+  eventoService: EventoService
+  route: ActivatedRoute;
+  usuarioService: UsuarioService;
 
   constructor(
     private fb: FormBuilder,
     private inscricaoService: InscricaoService,
-    private route: ActivatedRoute,  
+    
   ) {}
 
   ngOnInit(): void {
@@ -33,37 +42,18 @@ export class InscricaoFormularioComponent implements OnInit {
   }
   
   inscrever(){
-    this.route.params.subscribe(params => {
-      if (params.id) {
-      }
-    });
-    this.inscricao.id = Math.random();
-    this.inscricao.idEvento = this.evento.id
-    this.inscricao.idUsuario = this.usuario.id;
-    this.inscricao.idTipoSituacao = 1;
     
-    
-    this.formInscricao = this.fb.group({
-      resposta1: '',
-    }) 
   }
+ 
+     
 
   salvar() {
-    if (this.formInscricao.invalid) {
-      alert('Formulário inválido');
-      return;
-    } else {
       this.inscricaoService.salvarInscricao(this.inscricao)
         .subscribe(inscricao => {
           alert('Inscricao salva!');
-          this.fecharDialog(inscricao);
         }, (erro: HttpErrorResponse) => {
           alert(erro.error.message);
         });
     }
-  }
-
-  fecharDialog(inscricaoSalva: Inscricao) {
-    this.inscricaoSalva.emit(inscricaoSalva);
-  }
 }
+

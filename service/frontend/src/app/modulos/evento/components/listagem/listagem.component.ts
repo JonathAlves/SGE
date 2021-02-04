@@ -1,3 +1,4 @@
+import { Usuario } from './../../../../usuario/usuario';
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng';
 import { Evento } from 'src/app/dominios/evento';
@@ -13,16 +14,20 @@ export class ListagemComponent implements OnInit {
 
   eventos: Evento[] = [];
   evento = new Evento();
+  usuario = new Usuario();
+  inscricao = new Inscricao();
   selectedEvento: Evento[] = [];
   formularioEdicao: boolean;
   exibirDialog = false;
+
 
   statuses: any[];
 
   constructor(
     private servico: EventoService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+   
   ) { }
 
   ngOnInit(): void {
