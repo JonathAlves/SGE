@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.usuarioService.buscarUsuarioPorChave(this.chave).subscribe((usuario :Usuario)=>{
           this.emitUsuario.emit(usuario);
           localStorage.setItem("usuario", JSON.stringify(usuario));
-          this.router.navigate(['/']);
+          //this.router.navigate(['/']);
 
         })
 
