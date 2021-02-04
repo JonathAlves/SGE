@@ -5,7 +5,9 @@
         <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="deletarTodosEvento()" [disabled]="!selectedEvento || !selectedEvento.length"></button>
     </div>
 
-    <p-table #ev [value]="eventos" [rows]="10">
+    <p-table #ev [value]="eventos" [rows]="10" [paginator]="true" [globalFilterFields]="['titulo','country.titulo','representative.titulo','status']"
+    [(selection)]="selectedEvento" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="p-d-flex p-ai-center p-jc-between">
                 <h3 class="p-m-0">Eventos</h3>

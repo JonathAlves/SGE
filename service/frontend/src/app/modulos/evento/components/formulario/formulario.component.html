@@ -9,44 +9,47 @@
             <div *ngIf="formEvento.get('titulo').invalid">Título inválido</div>
         </label>
 
-        <label class="p-field">
-            <label for="tipoInscricao">Data de Início</label>
-            <input type="text" [(ngModel)]="evento.dataInicio" placeholder="Data de Inicio" formControlName="dataInicio" pInputText />
-        </label>
-
-        <label class="p-field">
-            <label for="tipoInscricao">Data de Término</label>
-            <input type="text" [(ngModel)]="evento.dataTermino" placeholder="Data de Termino" formControlName="dataTermino" pInputText />
-        </label>
-
         <div class="p-field">
             <label for="descricao" > Descricão do evento</label>
-            <textarea id="descricao" pInputTextarea [(ngModel)]="evento.descricao" required rows="3" cols="20"></textarea>
+            <input class="input" type="text"  [(ngModel)]="evento.descricao" placeholder="Descrição do evento:" formControlName="descricao" pInputText/>
         </div>
 
         <label class="p-field">
-            <label for="tipoInscricao">Quantidade de vagas</label>
-            <input type="text" [(ngModel)]="evento.qtVagas" placeholder="Quantidade de vagas" formControlName="qtVagas" pInputText />
-        </label>
-
-        <label class="p-field">
-            <label for="tipoInscricao">Valor</label>
-            <input type="text" [(ngModel)]="evento.valor" placeholder="Valor" formControlName="valor" pInputText />
+            <label for="qtVagas">Quantidade de vagas</label>
+            <input type="number" [(ngModel)]="evento.qtVagas" placeholder="Quantidade de vagas" formControlName="qtVagas" pInputText />
         </label>
          
         <label class="p-field">
-            <label for="tipoInscricao">Local do evento</label>
+            <label for="local">Local do evento</label>
             <input type="text" [(ngModel)]="evento.local" placeholder="Local do evento" formControlName="local" pInputText />
         </label>
 
         <label class="p-field">
-            <label for="tipoInscricao">Tipo de inscrição</label>
-            <input type="text" [(ngModel)]="evento.tipoInscricao" placeholder="Tipo de Inscricao" formControlName="tipoInscricao" pInputText />
+            <label for="tipoEvento">Tipo de evento</label>
+            
+            <p-dropdown [options]="tipoEventos" placeholder="Selecione o Tipo do Evento" 
+            [(ngModel)]="tipoEventos" formControlName="idTipoEvento"
+            optionLabel="descricao" optionValue="id"></p-dropdown>
         </label>
 
         <label class="p-field">
-            <label for="tipoInscricao">Tipo de evento</label>
-            <input type="text" [(ngModel)]="evento.idTipoEvento" placeholder="Tipo de Evento" formControlName="idTipoEvento" pInputText />
+            <label for="tipoInscricao">Tipo de inscrição</label>
+            <p-inputSwitch class="input" [(ngModel)]="tipoInscricao" formControlName="tipoInscricao" ></p-inputSwitch>
+        </label>
+
+        <label class="p-field">
+            <label for="valor">Valor da Inscrição</label>
+            <input type="number" [(ngModel)]="evento.valor" placeholder="Valor" formControlName="valor" pInputText *ngIf="tipoInscricao == true"/>
+        </label>
+
+        <label class="p-field">
+            <label for="dataInicio">Data e hora do inicio do evento</label>
+             <input class="input" type="datetime-local"  [(ngModel)]="evento.dataInicio"  formControlName="dataInicio" pInputText/>
+        </label>
+
+        <label class="p-field">
+            <label for="dataTermino">Data e hora do termino do evento</label>
+            <input class="input" type="datetime-local"  [(ngModel)]="evento.dataTermino"  formControlName="dataTermino" pInputText/>
         </label>
         
         <div class="p-field">

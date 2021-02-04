@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Evento } from "src/app/dominios/evento";
 import { Pergunta } from 'src/app/dominios/pergunta';
@@ -9,6 +9,8 @@ import { PerguntaService } from 'src/app/modulos/pergunta/services/pergunta.serv
 import { EventoService } from '../../services/evento.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import * as moment from 'moment';
+import { TipoEvento } from 'src/app/dominios/tipo-evento';
 
 @Component({
   selector: 'app-formulario',
@@ -27,7 +29,8 @@ export class FormularioComponent implements OnInit {
   perguntaEvento: PerguntaEvento;
   perguntaObrigatoria: boolean;
   submetido: boolean;
-  dataHora: Date;
+  tipoInscricao: boolean = false;
+  tipoEventos: TipoEvento[] = []
 
   public formEvento: FormGroup;
 
@@ -51,7 +54,7 @@ export class FormularioComponent implements OnInit {
     })
 
     this.formEvento = this.fb.group({
-      titulo: '',
+      titulo: ['', Validators.required],
       dataInicio:'',
       dataTermino:'',
       descricao:'',
@@ -72,7 +75,7 @@ export class FormularioComponent implements OnInit {
   salvar() {
     this.submetido = true;
     if (this.formEvento.invalid) {
-      this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Criado', life: 3000});
+      this.messageService.add({severity:'warn', summary: 'Atenção', detail: 'Preencha os campos solicitados', life: 3000});
       return;
     }
     if (this.edicao) {
@@ -85,7 +88,7 @@ export class FormularioComponent implements OnInit {
     } else {
       this.eventoService.salvarEvento(this.evento)
       .subscribe(evento => {
-        this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Editado', life: 3000});
+        this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Criado', life: 3000});
       }, (erro: HttpErrorResponse) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Evento não Criado', life: 3000});
       });
