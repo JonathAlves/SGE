@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng';
 import { Evento } from 'src/app/dominios/evento';
+import { Usuario } from 'src/app/dominios/usuario';
 import { EventoService } from '../../services/evento.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { EventoService } from '../../services/evento.service';
   templateUrl: './listagem.component.html',
   styleUrls: ['./listagem.component.css']
 })
+
 export class ListagemComponent implements OnInit {
 
   eventos: Evento[] = [];

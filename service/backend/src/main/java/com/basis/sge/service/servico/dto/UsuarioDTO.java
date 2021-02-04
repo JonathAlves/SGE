@@ -24,6 +24,4 @@ public class UsuarioDTO{
     private Boolean admin;
 
 
-
-
 }

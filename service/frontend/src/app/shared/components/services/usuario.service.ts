@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuario } from 'src/app/dominios/usuario';
@@ -9,6 +9,8 @@ import { Chave } from 'src/app/dominios/chave';
 export class UsuarioService {
   url = `${environment.apiUrl}/usuarios`;
 
+  mostrarMenu = new EventEmitter<boolean>();
+
   constructor( private  http: HttpClient) { }
 
   buscarUsuarioPorId(id: number): Observable<Usuario> {
@@ -16,6 +18,7 @@ export class UsuarioService {
   }
   buscarUsuarioPorChave(chave: Chave){
     return this.http.post<Usuario>(`${this.url}/login`, chave);
+
   }
 
   getUsuarios(): Observable<Usuario[]>{

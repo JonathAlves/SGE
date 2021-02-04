@@ -22,15 +22,13 @@ input {
   }
 
 .p-ml-2{
-    background-color: #ecf0f1;
-    color: black;
+  background-color: black;
+    color: #FFF;
     font-weight: bold;
     border: none;
     height: 40px;
-    margin: 5px;
     transform: none;
     border-radius: 10px;
-    bottom: 40px;
-
 }
+ 
 
