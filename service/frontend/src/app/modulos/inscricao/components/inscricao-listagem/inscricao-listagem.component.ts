@@ -1,5 +1,5 @@
+import { InscricaoService } from '../../servicos/inscricao.service';
 import { Usuario } from 'src/app/dominios/usuario';
-import { InscricaoService } from './../../servicos/inscricao.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Inscricao } from 'src/app/dominios/inscricao';
 
