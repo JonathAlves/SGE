@@ -5,7 +5,7 @@
 
         <label class="p-field">
             <label for="titulo">Título do evento</label>
-            <input type="text" pInputText id="titulo" [(ngModel)]="evento.titulo" required autofocus placeholder="Titulo Evento" formControlName="titulo"  />
+            <input type="text" pInputText id="titulo" [(ngModel)]="evento.titulo" required autofocus placeholder="Titulo Evento" formControlName="titulo" />
             <div *ngIf="formEvento.get('titulo').invalid">Título inválido</div>
         </label>
 

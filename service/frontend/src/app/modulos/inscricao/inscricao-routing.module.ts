@@ -1,7 +1,7 @@
+import { InscricaoListagemComponent } from './components/inscricao-listagem/inscricao-listagem.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { InscricaoFormularioComponent } from '../../shared/components/inscricao-formulario/inscricao-formulario.component';
-import { InscricaoListagemComponent } from './components/inscricao-listagem/inscricao-listagem.component';
 
 
 const routes: Routes = [

@@ -1,4 +1,3 @@
-import { Usuario } from './../../../../usuario/usuario';
 import { Component, OnInit} from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng';
 import { Evento } from 'src/app/dominios/evento';

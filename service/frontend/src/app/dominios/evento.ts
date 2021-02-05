@@ -1,6 +1,7 @@
 import { PerguntaEvento } from "./pergunta-evento";
 
 export class Evento {
+    [x: string]: any;
     id: number;
 
     titulo: string;
