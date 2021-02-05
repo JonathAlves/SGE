@@ -36,12 +36,14 @@ export class FormularioComponent implements OnInit {
         }
       });
 
+      this.usuario.admin = false;
       this.formUsuario = this.fb.group({
         nome: ['', Validators.minLength(3)],
         cpf:  ['', Validators.maxLength(11)],
         email: ['', Validators.email],
         telefone: ['', Validators.maxLength(14)],
         dataNascimento: ['', Validators.required],
+        
       });
 
   }

@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="" />
+    <list default="true" id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/EventoServico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +54,6 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="restartRequiresConfirmation" value="false" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RunManager" selected="Application.ServiceApplication">
@@ -110,9 +112,7 @@
       <workItem from="1612206260035" duration="726000" />
       <workItem from="1612283271451" duration="7982000" />
       <workItem from="1612370118344" duration="6439000" />
-      <workItem from="1612454647723" duration="5641000" />
-      <workItem from="1612470660395" duration="1162000" />
-      <workItem from="1612540792641" duration="296000" />
+      <workItem from="1612454647723" duration="344000" />
     </task>
     <task id="LOCAL-00001" summary="att">
       <created>1612454785418</created>
@@ -128,12 +128,12 @@
       <option name="project" value="LOCAL" />
       <updated>1612454876334</updated>
     </task>
-    <task id="LOCAL-00003" summary="att">
-      <created>1612541133866</created>
+    <task id="LOCAL-00003" summary="att2">
+      <created>1612485660486</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1612541133866</updated>
+      <updated>1612485660486</updated>
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
@@ -154,8 +154,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="attf" />
     <MESSAGE value="att" />
-    <option name="LAST_COMMIT_MESSAGE" value="att" />
+    <MESSAGE value="attf" />
+    <MESSAGE value="att2" />
+    <option name="LAST_COMMIT_MESSAGE" value="att2" />
   </component>
 </project>
