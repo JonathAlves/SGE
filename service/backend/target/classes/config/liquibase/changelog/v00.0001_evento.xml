@@ -105,7 +105,7 @@
 
 
         <addPrimaryKey tableName="usuario" columnNames="id" constraintName="pk_usuario"/>
-        <createSequence sequenceName="sq_usuario"  incrementBy="1" startValue="1"/>
+        <createSequence sequenceName="sq_usuario"  incrementBy="1" startValue="2"/>
         <addUniqueConstraint tableName="usuario" columnNames="cpf" constraintName="un_usuario_cpf"/>
         <addUniqueConstraint tableName="usuario" columnNames="email" constraintName="un_usuario_email"/>
         <addUniqueConstraint tableName="usuario" columnNames="chave" constraintName="un_usuario_chave"/>
