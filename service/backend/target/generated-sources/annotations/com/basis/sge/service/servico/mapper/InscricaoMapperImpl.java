@@ -2,9 +2,11 @@ package com.basis.sge.service.servico.mapper;
 
 import com.basis.sge.service.dominio.Evento;
 import com.basis.sge.service.dominio.Inscricao;
+import com.basis.sge.service.dominio.InscricaoResposta;
 import com.basis.sge.service.dominio.TipoSituacao;
 import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
+import com.basis.sge.service.servico.dto.InscricaoRespostaDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Generated;
@@ -12,7 +14,11 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
+<<<<<<< HEAD
+    date = "2021-02-03T22:21:07-0300",
+=======
     date = "2021-02-03T16:33:24-0300",
+>>>>>>> e8d2af942b6982557cb52c049299274036bc5f00
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
@@ -58,6 +64,7 @@ public class InscricaoMapperImpl implements InscricaoMapper {
         inscricao.setUsuario( inscricaoDTOToUsuario( inscricaoDTO ) );
         inscricao.setEvento( inscricaoDTOToEvento( inscricaoDTO ) );
         inscricao.setId( inscricaoDTO.getId() );
+        inscricao.setRespostas( inscricaoRespostaDTOListToInscricaoRespostaList( inscricaoDTO.getRespostas() ) );
 
         return inscricao;
     }
@@ -74,6 +81,7 @@ public class InscricaoMapperImpl implements InscricaoMapper {
         inscricaoDTO.setIdUsuario( inscricaoUsuarioId( inscricao ) );
         inscricaoDTO.setIdEvento( inscricaoEventoId( inscricao ) );
         inscricaoDTO.setId( inscricao.getId() );
+        inscricaoDTO.setRespostas( inscricaoRespostaListToInscricaoRespostaDTOList( inscricao.getRespostas() ) );
 
         return inscricaoDTO;
     }
@@ -112,6 +120,32 @@ public class InscricaoMapperImpl implements InscricaoMapper {
         evento.setId( inscricaoDTO.getIdEvento() );
 
         return evento;
+    }
+
+    protected InscricaoResposta inscricaoRespostaDTOToInscricaoResposta(InscricaoRespostaDTO inscricaoRespostaDTO) {
+        if ( inscricaoRespostaDTO == null ) {
+            return null;
+        }
+
+        InscricaoResposta inscricaoResposta = new InscricaoResposta();
+
+        inscricaoResposta.setId( inscricaoRespostaDTO.getId() );
+        inscricaoResposta.setResposta( inscricaoRespostaDTO.getResposta() );
+
+        return inscricaoResposta;
+    }
+
+    protected List<InscricaoResposta> inscricaoRespostaDTOListToInscricaoRespostaList(List<InscricaoRespostaDTO> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<InscricaoResposta> list1 = new ArrayList<InscricaoResposta>( list.size() );
+        for ( InscricaoRespostaDTO inscricaoRespostaDTO : list ) {
+            list1.add( inscricaoRespostaDTOToInscricaoResposta( inscricaoRespostaDTO ) );
+        }
+
+        return list1;
     }
 
     private Integer inscricaoTipoSituacaoId(Inscricao inscricao) {
@@ -157,5 +191,31 @@ public class InscricaoMapperImpl implements InscricaoMapper {
             return null;
         }
         return id;
+    }
+
+    protected InscricaoRespostaDTO inscricaoRespostaToInscricaoRespostaDTO(InscricaoResposta inscricaoResposta) {
+        if ( inscricaoResposta == null ) {
+            return null;
+        }
+
+        InscricaoRespostaDTO inscricaoRespostaDTO = new InscricaoRespostaDTO();
+
+        inscricaoRespostaDTO.setId( inscricaoResposta.getId() );
+        inscricaoRespostaDTO.setResposta( inscricaoResposta.getResposta() );
+
+        return inscricaoRespostaDTO;
+    }
+
+    protected List<InscricaoRespostaDTO> inscricaoRespostaListToInscricaoRespostaDTOList(List<InscricaoResposta> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<InscricaoRespostaDTO> list1 = new ArrayList<InscricaoRespostaDTO>( list.size() );
+        for ( InscricaoResposta inscricaoResposta : list ) {
+            list1.add( inscricaoRespostaToInscricaoRespostaDTO( inscricaoResposta ) );
+        }
+
+        return list1;
     }
 }
