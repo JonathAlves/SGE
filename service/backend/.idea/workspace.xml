@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/dominio/Inscricao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/dominio/Inscricao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/InscricaoServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/InscricaoServico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Inscricao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Inscricao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/InscricaoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/InscricaoRecurso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoSituacaoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoSituacaoRecurso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,6 +112,7 @@
       <workItem from="1612370118344" duration="6439000" />
       <workItem from="1612454647723" duration="5641000" />
       <workItem from="1612470660395" duration="1162000" />
+      <workItem from="1612540792641" duration="296000" />
     </task>
     <task id="LOCAL-00001" summary="att">
       <created>1612454785418</created>
@@ -143,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612454876334</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="att">
+      <created>1612541133866</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1612541133866</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,8 +154,8 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="att" />
     <MESSAGE value="attf" />
-    <option name="LAST_COMMIT_MESSAGE" value="attf" />
+    <MESSAGE value="att" />
+    <option name="LAST_COMMIT_MESSAGE" value="att" />
   </component>
 </project>
