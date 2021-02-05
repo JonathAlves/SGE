@@ -1,8 +1,18 @@
-<app-card class="titulo"  [titulo]="'Inscrição'">
+<p-card class="ui-g-12" header="{{evento.titulo}}" subheader="{{evento.descricao}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
+    <p><b>Inicio:</b> {{evento.dataInicio | date:'dd/mm/yyyy'}} às {{evento.dataInicio | date: 'h:mm'}}</p>
+    <p><b>Encerramento:</b> {{evento.dataTermino | date:'dd/mm/yyyy'}} às {{evento.dataInicio | date: 'h:mm'}}</p>
+    <p><b>Local:</b> {{evento.local}}</p>
+
     <form [formGroup]="formInscricao">
         <div class="p-grid p-dir-col">
-            <!-- <input type="text" pInputText [(ngModel)]="inscricaoResposta." placeholder="Resposta" formControlName="resposta1"/> -->
+            <input type="text" pInputText [(ngModel)]="inscricao.respostas" placeholder="Resposta" formControlName="resposta1"/>
         </div>
     </form>
-</app-card>
-<button class="btInscrever" (click)="salvar()" pButton pRipple type="button" label="Inscrever-se"></button>
+    
+    <div class="p-d-inline-flex">Preço: R$ {{evento.valor}}</div>
+    <button class="btInscrever" (click)="salvar()" pButton pRipple type="button" label="Inscrever-se"></button>
+    
+</p-card>
+
+
+

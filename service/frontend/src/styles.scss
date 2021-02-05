@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 body .ui-button.ui-button-text-only .ui-button-text {
     padding: 0 1em !important;
@@ -16,5 +17,15 @@ body .ui-widget, body .ui-widget .ui-widget{
     border-radius: 15px;
 
 }
+
+body .ui-card{
+    background-color: #b1b1b1;
+}
+
+body .ui-card-body .ui-g-12{
+    justify-content: center;
+}
+
+
 
 

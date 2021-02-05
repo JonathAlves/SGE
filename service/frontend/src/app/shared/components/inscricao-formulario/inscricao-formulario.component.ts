@@ -8,6 +8,7 @@ import { Inscricao } from "src/app/dominios/inscricao";
 import { Usuario } from 'src/app/dominios/usuario';
 import { InscricaoService } from '../../../modulos/inscricao/servicos/inscricao.service';
 
+
 @Component({
   selector: 'app-inscricao-formulario',
   templateUrl: './inscricao-formulario.component.html',
@@ -48,6 +49,9 @@ export class InscricaoFormularioComponent implements OnInit {
       this.formInscricao = this.fb.group({
       resposta1: '',
     })
+
+    this.inscricaoResposta.idEvento = this.inscricao.idEvento
+    this.inscricaoResposta.idInscricao = this.inscricao.id
   }
 
 

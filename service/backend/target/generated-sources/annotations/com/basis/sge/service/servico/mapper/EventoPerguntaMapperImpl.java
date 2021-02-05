@@ -12,12 +12,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-<<<<<<< HEAD
-    date = "2021-02-03T22:21:07-0300",
-=======
-    date = "2021-02-03T16:33:24-0300",
->>>>>>> e8d2af942b6982557cb52c049299274036bc5f00
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
+    date = "2021-02-05T13:32:07-0300",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_282 (Amazon.com Inc.)"
 )
 @Component
 public class EventoPerguntaMapperImpl implements EventoPerguntaMapper {
