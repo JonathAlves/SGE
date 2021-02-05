@@ -1,17 +1,20 @@
 
-Z
-java:S1854="=Remove this useless assignment to local variable "inscricao".(Á«Ïì8ñÙÖÊö.
 X	java:S1256"<This block of commented-out lines of code should be removed.(Å½ÈÎ8ñÙÖÊö.
 [
 java:S4973C"9Use the "equals" method if value comparison was intended.(û´¶“ùÿÿÿÿ8ñÙÖÊö.
-]	java:S125O"<This block of commented-out lines of code should be removed.(ØĞ¢†ÿÿÿÿÿ8ñÙÖÊö.
-N
-java:S16021",Remove useless curly braces around statement(‚‚óöùÿÿÿÿ8ñÙÖÊö.
-[
-java:S4973C"9Use the "equals" method if value comparison was intended.(û´¶“ùÿÿÿÿ8ñÙÖÊö.
-V
-java:S4973\"9Use the "equals" method if value comparison was intended.(ÈØÿã8•îÊö.
-v
-java:S2293Y"YReplace the type specification in this constructor call with the diamond operator ("<>").(ü¸œ¦8•îÊö.
+Z
+java:S1854="=Remove this useless assignment to local variable "inscricao".(Á«Ïì8ñÙÖÊö.
 K
 java:S1481=".Remove this unused "inscricao" local variable.(Á«Ïì8ñÙÖÊö.
+V
+java:S4973T"9Use the "equals" method if value comparison was intended.(ÈØÿã8•îÊö.
+v
+java:S2293Q"YReplace the type specification in this constructor call with the diamond operator ("<>").(ü¸œ¦8•îÊö.
+[
+java:S4973C"9Use the "equals" method if value comparison was intended.(û´¶“ùÿÿÿÿ8ñÙÖÊö.
+i
+java:S1128"GRemove this unused import 'com.basis.sge.service.servico.dto.EmailDTO'.(í˜ç–ÿÿÿÿÿ8÷Éüõö.
+]	java:S125*"<This block of commented-out lines of code should be removed.(åôªıÿÿÿÿ8÷Éüõö.
+X	java:S125-"<This block of commented-out lines of code should be removed.(õêüì8÷Éüõö.
+X	java:S1250"<This block of commented-out lines of code should be removed.(¹èò8÷Éüõö.
+]	java:S125I"<This block of commented-out lines of code should be removed.(ò›Ç‰ıÿÿÿÿ8÷Éüõö.
