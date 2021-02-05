@@ -37,3 +37,7 @@ h
 8src/main/java/com/basis/sge/service/dominio/Usuario.java,e/5/e5074b44dd3e31a6be836c468e65ef6b87c415cd
 n
 >src/main/java/com/basis/sge/service/servico/EventoServico.java,4/3/43e39b40256405c7dd19983d92829a4dbedd9e08
+t
+Dsrc/main/java/com/basis/sge/service/recurso/TipoSituacaoRecurso.java,f/f/ffeaa68191c5c4e77464b2fa577c231a934652ef
+|
+Lsrc/main/java/com/basis/sge/service/repositorio/TipoSituacaoRepositorio.java,1/0/103df2e9baed9b38cb5b12d8a69a2a478ffd83c4

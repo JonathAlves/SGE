@@ -39,7 +39,7 @@ public class InscricaoServico {
 
     public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){
         verificaInscricaoExistente(inscricaoDTO.getIdUsuario(), inscricaoDTO.getIdEvento());
-        verificaTipoSituacao(inscricaoDTO.getIdTipoSituacao());
+//        verificaTipoSituacao(inscricaoDTO.getIdTipoSituacao());
 
         Inscricao inscricao = inscricaoMapper.toEntity(inscricaoDTO);
         List<InscricaoResposta> respostas = inscricao.getRespostas();
@@ -70,20 +70,12 @@ public class InscricaoServico {
         }
     }
 
-    public void verificaTipoSituacao(Integer idTipoSituacao) {
-        if(!tipoSituacaoRepositorio.existsById(idTipoSituacao)){
-            throw new RegraNegocioException("Esse Tipo de situação não existe");
-        }
-    }
-//
-//    private  void  emailInscricao(Inscricao inscricao){
-//        EmailDTO emailDTO = new EmailDTO();
-//        emailDTO.setAssunto("Confirmação de Inscrição");
-//        emailDTO.setCorpo("Obrigado por se inscrever no evento!");
-//        emailDTO.setDestinatario(inscricao.getUsuario().getEmail());
-//        this.produtorServico.enviarEmail(emailDTO);
-//
+//    public void verificaTipoSituacao(Integer idTipoSituacao) {
+//        if(!tipoSituacaoRepositorio.existsById(idTipoSituacao)){
+//            throw new RegraNegocioException("Esse Tipo de situação não existe");
+//        }
 //    }
+//
 
     public List<InscricaoDTO> buscarInscricaoPorIdEvento(Integer id){
         List<InscricaoDTO> inscricoesPorIdEvento = new ArrayList<InscricaoDTO>();

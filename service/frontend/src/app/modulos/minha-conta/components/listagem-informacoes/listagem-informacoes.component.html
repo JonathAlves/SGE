@@ -49,7 +49,7 @@
                     <td>{{usuario.email}}</td>
                     <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
                     <td class="p-d-flex p-jc-center">
-                        <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
+                        <button [routerLink]="['inscricoes', usuario.id]" pButton type="button" icon="pi pi-pencil"></button>
                         <button (click)="mostrarDialogEditar(usuario.id)" pButton type="button" icon="pi pi-pencil"></button>
                 </tr>
             </ng-template>

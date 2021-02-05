@@ -2,10 +2,6 @@ input{
     margin: 20px;
 }
 
-.p-button-rounded{
-
-}
-
 .btInscrever{
     background-color :#971b1b;
     color: rgb(255, 255, 255);
@@ -14,4 +10,18 @@ input{
     margin: 5px;
     transform: none;
     border-radius: 10px;
+}
+
+.p-d-inline-flex{
+    background-color :#228B22;
+    color: rgb(255, 255, 255);
+    border: none;
+    height: 40px;
+    margin: 15px;
+    transform: none;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
