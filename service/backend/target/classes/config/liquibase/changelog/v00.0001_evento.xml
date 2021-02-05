@@ -245,5 +245,16 @@
     </changeSet>
 
 
-
+<changeSet id="10" author="tiago.santiago">
+    <insert tableName="usuario">
+        <column name="id" >1</column>
+        <column name="nome" >Admin</column>
+        <column name="cpf">80781713072</column>
+        <column name="email">equipe4basis@gmail.com</column>
+        <column name="telefone">91955370</column>
+        <column name="data_nascimento">1999-01-01</column>
+        <column name="chave">admin</column>
+        <column name="admin">true</column>
+    </insert>
+</changeSet>
 </databaseChangeLog>

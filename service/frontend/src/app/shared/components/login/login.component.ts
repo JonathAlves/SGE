@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from 'src/app/dominios/usuario';
 import { Chave } from 'src/app/dominios/chave';
 import { UsuarioService } from '../services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
 
 
 
-    constructor(public usuarioService: UsuarioService, private fbuilder: FormBuilder) { }
+    constructor(public usuarioService: UsuarioService, private fbuilder: FormBuilder, private router: Router) { }
 
     ngOnInit(): void {
       this.pegarUsuarioLocal();
@@ -34,7 +35,7 @@ export class LoginComponent implements OnInit {
       this.exibirDialog = true;
       this.formularioLogin = edicao;
     }
-  
+
     fecharDialog(usuarioSalvo: Usuario) {
       console.log(usuarioSalvo);
       this.exibirDialog = false;
@@ -49,6 +50,8 @@ export class LoginComponent implements OnInit {
         this.usuarioService.buscarUsuarioPorChave(this.chave).subscribe((usuario :Usuario)=>{
           this.emitUsuario.emit(usuario);
           localStorage.setItem("usuario", JSON.stringify(usuario));
+          //this.router.navigate(['/']);
+
         })
 
       }

@@ -1,0 +1,17 @@
+.p-ml-2{
+    background-color: black;
+      color: #FFF;
+      font-weight: bold;
+      border: none;
+      height: 40px;
+      transform: none;
+      border-radius: 10px;
+  }
+
+  .btnLogout{
+      background-color: #ecf0f1;
+      color: black;
+      font-weight: bold;
+      height: 40px;
+      border: none;
+  }

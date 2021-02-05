@@ -16,6 +16,8 @@ export class ListagemComponent implements OnInit {
   exibirDialog = false;
   formularioEdicao: boolean;
 
+  usuarioLogado: Usuario;
+
   constructor(
     private servico: UsuarioService,
     private confirmationService: ConfirmationService
@@ -23,6 +25,7 @@ export class ListagemComponent implements OnInit {
 
   ngOnInit(): void {
     this.buscarUsuarios();
+    this.usuarioLogado = JSON.parse(localStorage.getItem('usuario')) as Usuario;
   }
 
   private buscarUsuarios() {
@@ -35,7 +38,7 @@ export class ListagemComponent implements OnInit {
   mostrarDialogEditar(id: number) {
     this.servico.buscarUsuarioPorId(id)
       .subscribe(usuario => {
-        this.usuario = usuario
+        this.usuario = usuario;
         this.mostrarDialog(true);
       }); 
   }
