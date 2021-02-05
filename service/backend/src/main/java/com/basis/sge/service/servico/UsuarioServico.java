@@ -9,7 +9,6 @@ import com.basis.sge.service.servico.mapper.UsuarioMapper;
 import com.basis.sge.service.servico.producer.ProdutorServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
@@ -18,7 +17,6 @@ import java.util.UUID;
 @Service
 @Transactional
 public class UsuarioServico {
-
     private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
     private final ProdutorServico produtorServico;
@@ -42,7 +40,22 @@ public class UsuarioServico {
         return usuarioMapper.toDto(usuario);
     }
 
+    /* public UsuarioDTO salvar(UsuarioDTO usuarioDTO){
+        verificarUsuario(usuarioDTO);
+        verificarCPF(usuarioDTO);
+        verificarEmail(usuarioDTO);
+        Usuario usuario = usuarioRepositorio.save(usuarioDTO);
+        emailCriarCadastro(usuario);
+        return usuarioMapper.toDto(usuario);
+    }*/
 
+
+   /*public UsuarioDTO editar (UsuarioDTO usuarioDTO){
+        obterPorId(usuarioDTO.getId());
+        verificiarEditar(usuarioDTO);
+       Usuario usuario = usuarioRepositorio.save(usuarioDTO);
+       return usuarioMapper.toDto(usuario);
+    }*/
 
 
 
@@ -64,8 +77,16 @@ public class UsuarioServico {
 
     }
 
-    public UsuarioDTO salvar(UsuarioDTO usuarioDTO){
-        return null;
+
+
+
+
+    public void verificiarEditar(UsuarioDTO usuarioDTO) {
+        if (usuarioDTO.getId() != null) {
+            obterPorId(usuarioDTO.getId());
+            verificarCPF(usuarioDTO);
+            verificarEmail(usuarioDTO);
+        }
     }
 
 

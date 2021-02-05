@@ -10,7 +10,6 @@ export class UsuarioService {
   url = `${environment.apiUrl}/usuarios`;
 
 
-
   constructor( private  http: HttpClient) { }
 
   buscarUsuarioPorId(id: number): Observable<Usuario> {

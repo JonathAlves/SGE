@@ -14,6 +14,7 @@ import { MessageService } from 'primeng';
 export class LoginComponent implements OnInit {
 
     @Output() emitUsuario: EventEmitter<Usuario> = new EventEmitter
+    mostrarMenu: boolean = false;
     exibirDialog = false;
     formularioLogin: boolean;
     chaveInput: string;
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     chave = new Chave();
 
 
-    mostrarMenu = new EventEmitter <boolean>();
+
 
     constructor(public usuarioService: UsuarioService, private fbuilder: FormBuilder, private messageService: MessageService) { }
 
@@ -51,19 +52,16 @@ export class LoginComponent implements OnInit {
         this.chave.chave = chaveInput
         this.usuarioService.buscarUsuarioPorChave(this.chave).subscribe((usuario :Usuario)=>{
           this.emitUsuario.emit(usuario);
-          this.mostrarMenu.emit(true);
           localStorage.setItem("usuario", JSON.stringify(usuario));
           this.messageService.add({severity:'success', summary: 'Successo', detail:'Usuario Logado com sucesso!  ', life: 3000});
           return;
-          
 
-        }) 
-          this.mostrarMenu.emit(false);
-        
-         
-        
+
+        })
 
       }
+
+    
 
       logout(){
         localStorage.clear()

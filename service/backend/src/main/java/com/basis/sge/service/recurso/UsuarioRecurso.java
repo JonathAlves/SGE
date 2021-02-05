@@ -1,6 +1,4 @@
 package com.basis.sge.service.recurso;
-
-import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.servico.UsuarioServico;
 import com.basis.sge.service.servico.dto.ChaveDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
