@@ -24,13 +24,23 @@ export class ListagemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.buscarUsuarioLogado();
     this.buscarUsuarios();
+    
+    
+  }
+
+
+  buscarUsuarioLogado(){
     this.usuarioLogado = JSON.parse(localStorage.getItem('usuario')) as Usuario;
   }
+  
+
   pegarUsuarioLocal() {
     const usuarioLocal = JSON.parse(window.localStorage.getItem("usuario"));
     this.usuarioSalvo.emit(usuarioLocal);
     return [usuarioLocal];
+    
   }
 
   private buscarUsuarios() {
@@ -39,6 +49,9 @@ export class ListagemComponent implements OnInit {
         this.usuarios = usuarios;
       });
   }
+
+ 
+
 
   mostrarDialogEditar(id: number) {
     this.servico.buscarUsuarioPorId(id)

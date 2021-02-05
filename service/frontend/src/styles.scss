@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    justify-content: center;
 }
 body .ui-button.ui-button-text-only .ui-button-text {
     padding: 0 1em !important;
@@ -14,7 +14,9 @@ body .ui-button.ui-button-text-only .ui-button-text {
 body .ui-widget, body .ui-widget .ui-widget{
     margin: 10px;
     border-radius: 15px;
+    justify-content: center;
 
 }
+
 
 

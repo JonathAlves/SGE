@@ -11,7 +11,8 @@
 
         <label class="label-input">
             <i class="pi pi-id-card icon-modify"></i>
-            <input pTooltip="Insira seu CPF" type="text" [(ngModel)]="usuario.cpf" placeholder="000.000.000-00" formControlName="cpf" maxlength="11" minlength="11" mask="999.999.999-99" pInputText />
+            <p-inputMask pTooltip="Insira seu CPF" [(ngModel)]="usuario.cpf" mask="999.999.999-99" characterPattern="[А-Яа-я]" placeholder="000.000.000-00" formControlName="cpf" formControlName="cpf" ></p-inputMask>
+
 
         </label>
 
@@ -23,13 +24,13 @@
 
     <label class="label-input">
         <i class="pi pi-mobile icon-modify"></i>
-        <input type="text" pTooltip="Insira seu Telefone" [(ngModel)]="usuario.telefone" placeholder="+55 00 00000-0000" formControlName="telefone" mask="+55 99 99999-9999" pInputText>
+        <p-inputMask pTooltip="Insira seu Telefone" [(ngModel)]="usuario.telefone" mask="+55 (99) 9 9999-9999" characterPattern="[А-Яа-я]" placeholder="+55 (00) 9 00000-0000" formControlName="telefone" ></p-inputMask>
 
     </label>
 
     <label class="label-input">
         <i class="pi pi-calendar-plus icon-modify"></i>
-        <input type="text" pTooltip="Insira sua Data de Nascimento" [(ngModel)]="usuario.dataNascimento"  placeholder="Data de Nascimento" formControlName="dataNascimento" pInputText />
+        <input pTooltip="Data de Nascimento" [(ngModel)]="usuario.dataNascimento" placeholder="99/99/9999" formControlName="dataNascimento"  pInputText/>
     </label>
 
     </div>

@@ -40,45 +40,24 @@ public class UsuarioServico {
         return usuarioMapper.toDto(usuario);
     }
 
-    /* public UsuarioDTO salvar(UsuarioDTO usuarioDTO){
+    public UsuarioDTO salvar(UsuarioDTO usuarioDTO){
         verificarUsuario(usuarioDTO);
         verificarCPF(usuarioDTO);
         verificarEmail(usuarioDTO);
-        Usuario usuario = usuarioRepositorio.save(usuarioDTO);
-        emailCriarCadastro(usuario);
-        return usuarioMapper.toDto(usuario);
-    }*/
-
-
-   /*public UsuarioDTO editar (UsuarioDTO usuarioDTO){
-        obterPorId(usuarioDTO.getId());
-        verificiarEditar(usuarioDTO);
-       Usuario usuario = usuarioRepositorio.save(usuarioDTO);
-       return usuarioMapper.toDto(usuario);
-    }*/
-
-
-
-    public UsuarioDTO adicionar (UsuarioDTO usuarioDTO){
-
-        if(usuarioDTO.getId() != null){
-            obterPorId(usuarioDTO.getId());
-            verificarCPF(usuarioDTO);
-            verificarEmail(usuarioDTO);
-
-
-        }else
-            verificarUsuario(usuarioDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         usuario.setChave(UUID.randomUUID().toString());
         usuarioRepositorio.save(usuario);
         emailCriarCadastro(usuario);
         return usuarioMapper.toDto(usuario);
-
     }
 
 
-
+    public UsuarioDTO editar(UsuarioDTO usuarioDTO){
+        verificiarEditar(usuarioDTO);
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        usuarioRepositorio.save(usuario);
+        return usuarioMapper.toDto(usuario);
+    }
 
 
     public void verificiarEditar(UsuarioDTO usuarioDTO) {
@@ -86,7 +65,8 @@ public class UsuarioServico {
             obterPorId(usuarioDTO.getId());
             verificarCPF(usuarioDTO);
             verificarEmail(usuarioDTO);
-        }
+        } else
+            throw  new RegraNegocioException("Usuario não encontrado!");
     }
 
 
