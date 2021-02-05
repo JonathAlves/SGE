@@ -1201,12 +1201,12 @@ body a {
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 .layout-container .topbar .logo {
-  display: inline-block;
+  display: flex;
   vertical-align: middle;
-  width: 200px;
-  height: 30px;
-  background: url("../images/logo2x.png") top left no-repeat;
-  background-size: 200px 30px;
+  width: 120px;
+  height: 50px;
+  background: url("../images/logoSGE.png") top left no-repeat;
+  background-size: 120px 55px;
 }
 .layout-container .topbar .topbar-left {
   box-sizing: border-box;

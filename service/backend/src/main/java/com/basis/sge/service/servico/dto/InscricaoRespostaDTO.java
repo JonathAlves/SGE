@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 public class InscricaoRespostaDTO {
 
-    IdInscricaoResposta id;
+    private IdInscricaoResposta id;
     private Integer idEvento;
     private Integer idPergunta;
     private Integer idInscricao;

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/001dc6480ebbf21791ecaf9bb41891c5de0cac75" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/0/002bf2b9d8167c88ddee3a0d33e18c9fca615874" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/7/0783a7d16526aa6470acb004d365581c6fe7817a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/26d580f6f09e26e2e737751cbd818e3b1650e693" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/a/2a05af5e33caf049fa57b4e13ebe6d0f50b73ff7" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/9/39831342b1546159783d619e7ad39dc0b3b71dae" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/0/402891cedb9f9da2c10b929bd5dec82e7fed4e9b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/1/4140ae9394b2cf74855187ddaae72a917ec3130b" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43e39b40256405c7dd19983d92829a4dbedd9e08" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/9/49cd393db28c81ad0f5cd5166064903db8eed6cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5fd459a9c04430b5888cdb9ecdb79aa560bb7e07" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/a/6a7bac33ed8c50efcb851dfbca5cffae900c83bc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/7/7739203e519fc9aa07097af8a12d2dffadc36ccd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/8670bef7a73bfc1d3afd823b4c48899aec7fb2fd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6123451f8afb44eae3b506cfd452e3854569737" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b93e3007648d4e14f9e21595197d24c57d498587" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/5/e5074b44dd3e31a6be836c468e65ef6b87c415cd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/5/f5cc2a6dce9b5b9e0ec7651eaa6eee82c7ec1453" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f88a34356754fbf086b8e4a8923ab21d55928f53" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/dominios/evento-pergunta-id.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/dominios/evento-pergunta.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/dominios/id-inscricao-resposta.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-listagem/inscricao-listagem.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-listagem/inscricao-listagem.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-listagem/inscricao-listagem.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-listagem/inscricao-listagem.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/inscricao-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/inscricao.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/servicos/inscricao.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/servicos/inscricao.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/tela-inicial/components/cards-eventos/cards-eventos.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/tela-inicial/components/cards-eventos/cards-eventos.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/tela-inicial/components/cards-eventos/cards-eventos.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/tela-inicial/components/cards-eventos/cards-eventos.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/tela-inicial/services/tela-inicial.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/tela-inicial/services/tela-inicial.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/shared/components/inscricao-formulario/inscricao-formulario.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/shared/components/inscricao-formulario/inscricao-formulario.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/shared/components/inscricao-formulario/inscricao-formulario.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../frontend/src/app/shared/components/inscricao-formulario/inscricao-formulario.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/dominio/Inscricao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/dominio/Inscricao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/recurso/InscricaoRecurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/recurso/InscricaoRecurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/recurso/TipoSituacaoRecurso.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/recurso/TipoSituacaoRecurso.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/EmailServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/EmailServico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/InscricaoServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/InscricaoServico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/dto/InscricaoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/dto/InscricaoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/dto/InscricaoRespostaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/dto/InscricaoRespostaDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/v00.0001_evento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/v00.0001_evento.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/ServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/ServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/configuracao/ApplicationProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/configuracao/ApplicationProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Evento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Evento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/EventoPergunta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/EventoPergunta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/EventoPerguntaId.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/EventoPerguntaId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/IdInscricaoResposta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/IdInscricaoResposta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Inscricao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Inscricao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/InscricaoResposta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/InscricaoResposta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Pergunta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Pergunta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/TipoEvento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/TipoEvento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/TipoSituacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/TipoSituacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/EventoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/EventoRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/InscricaoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/InscricaoRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/PerguntaRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/PerguntaRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoEventoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoEventoRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoSituacaoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoSituacaoRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/UsuarioRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/UsuarioRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/EventoRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/EventoRepositorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/InscricaoRespostaRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/InscricaoRespostaRepositorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/PerguntaRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/PerguntaRepositorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/UsuarioRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/UsuarioRepositorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/ConsumidorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/ConsumidorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/EmailServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/EmailServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/EventoServico.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/Exception/RegraNegocioException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/Exception/RegraNegocioException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/PerguntaServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/PerguntaServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/TipoEventoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/TipoEventoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/TipoSituacaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/TipoSituacaoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/UsuarioServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/UsuarioServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/ChaveDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/ChaveDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EmailDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EmailDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EventoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EventoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EventoPerguntaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EventoPerguntaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/InscricaoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/InscricaoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/InscricaoRespostaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/InscricaoRespostaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/PerguntaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/PerguntaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/TipoSituacaoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/TipoSituacaoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/UsuarioDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/UsuarioDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EntityMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EntityMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoPerguntaMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoPerguntaMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoRespostaMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoRespostaMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoSituacaoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoSituacaoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/producer/ProdutorServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/producer/ProdutorServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/v00.0001_evento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/v00.0001_evento.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dominios/evento.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/dominios/evento.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dominios/inscricao.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/dominios/inscricao.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dominios/pergunta.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/dominios/pergunta.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dominios/tipo-situacao.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/formulario/formulario.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/formulario/formulario.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/services/evento.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/services/evento.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/components/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/components/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/shared.module.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="31c54247e79c9a0dcf0253f8994cf6aaeb289717" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1nZRVnnm3HH4xtf9BPi8t86cigx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+  </component>
+  <component name="RunManager" selected="Application.ServiceApplication">
+    <configuration name="ServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.basis.sge.service.ServiceApplication" />
+      <module name="service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.basis.sge.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventoRecursoIT" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.basis.sge.service.recurso.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.basis.sge.service.recurso" />
+      <option name="MAIN_CLASS_NAME" value="com.basis.sge.service.recurso.EventoRecursoIT" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.basis.sge.service.ServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ServiceApplication" />
+        <item itemvalue="JUnit.EventoRecursoIT" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="" />
+      <created>1611595655758</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611595655758</updated>
+      <workItem from="1612202056169" duration="1229000" />
+      <workItem from="1612205155573" duration="1063000" />
+      <workItem from="1612206260035" duration="726000" />
+      <workItem from="1612283271451" duration="7982000" />
+      <workItem from="1612370118344" duration="6439000" />
+      <workItem from="1612454647723" duration="344000" />
+    </task>
+    <task id="LOCAL-00001" summary="att">
+      <created>1612454785418</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612454785418</updated>
+    </task>
+    <task id="LOCAL-00002" summary="attf">
+      <created>1612454876334</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1612454876334</updated>
+    </task>
+    <task id="LOCAL-00003" summary="att2">
+      <created>1612485660486</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1612485660486</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="att" />
+    <MESSAGE value="attf" />
+    <MESSAGE value="att2" />
+    <option name="LAST_COMMIT_MESSAGE" value="att2" />
+  </component>
+</project>

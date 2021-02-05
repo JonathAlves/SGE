@@ -6,6 +6,8 @@ import { Usuario } from 'src/app/dominios/usuario';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UsuarioService } from '../services/usuario.service';
 import { MessageService } from 'primeng';
+import { ValueConverter } from '@angular/compiler/src/render3/view/template';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-formulario-usuario',
@@ -48,7 +50,7 @@ export class FormularioComponent implements OnInit {
         dataNascimento: ['', Validators.required],
         
         
-        
+      
         
       });
 
@@ -60,9 +62,11 @@ export class FormularioComponent implements OnInit {
   }
 
   salvar() {
+  
     if (this.formUsuario.invalid) {
       this.messageService.add({severity:'error', summary: 'Error', detail: 'Formulario Invalido!', life: 3000});
       return;
+    
     }
 
     if (this.edicao) {
