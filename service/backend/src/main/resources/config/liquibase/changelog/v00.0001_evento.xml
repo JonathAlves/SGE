@@ -187,7 +187,7 @@
         </createTable>
 
         <addPrimaryKey tableName="inscricao" columnNames="id" constraintName="pk_inscricao"/>
-        <createSequence sequenceName="sq_inscricao" cycle="false" cacheSize="20" incrementBy="1" startValue="1"/>
+        <createSequence sequenceName="sq_inscricao" incrementBy="1" startValue="1"/>
         <addForeignKeyConstraint baseTableName="inscricao" baseColumnNames="id_evento"
                                  constraintName="fk_inscricao_evento" referencedTableName="evento"
                                  referencedColumnNames="id"/>
