@@ -1,9 +1,10 @@
 import { Usuario } from './../../../../usuario/usuario';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng';
 import { Evento } from 'src/app/dominios/evento';
 import { EventoService } from '../../services/evento.service';
 import { Inscricao } from 'src/app/dominios/inscricao';
+
 
 @Component({
   selector: 'app-listagem',
@@ -19,7 +20,7 @@ export class ListagemComponent implements OnInit {
   selectedEvento: Evento[] = [];
   formularioEdicao: boolean;
   exibirDialog = false;
-
+  idEvento: number;
 
   statuses: any[];
 
@@ -33,6 +34,14 @@ export class ListagemComponent implements OnInit {
   ngOnInit(): void {
     this.buscarEventos();
     
+  }
+
+  setId(id: number){
+    this.idEvento = this.evento.id;
+  }
+
+  getId(){
+    return this.idEvento;
   }
 
   private buscarEventos() {

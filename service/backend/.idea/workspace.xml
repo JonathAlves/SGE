@@ -37,6 +37,7 @@
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/pom.xml" />
@@ -107,21 +108,22 @@
       <workItem from="1612205155573" duration="1063000" />
       <workItem from="1612206260035" duration="726000" />
       <workItem from="1612283271451" duration="7982000" />
-      <workItem from="1612370118344" duration="3883000" />
+      <workItem from="1612370118344" duration="6439000" />
+      <workItem from="1612454647723" duration="344000" />
     </task>
-    <task id="LOCAL-00001" summary="att2">
-      <created>1612398213268</created>
+    <task id="LOCAL-00001" summary="att">
+      <created>1612454785418</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1612398213268</updated>
+      <updated>1612454785418</updated>
     </task>
-    <task id="LOCAL-00002" summary="att">
-      <created>1612485207267</created>
+    <task id="LOCAL-00002" summary="attf">
+      <created>1612454876334</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1612485207267</updated>
+      <updated>1612454876334</updated>
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
@@ -142,8 +144,8 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="att2" />
     <MESSAGE value="att" />
-    <option name="LAST_COMMIT_MESSAGE" value="att" />
+    <MESSAGE value="attf" />
+    <option name="LAST_COMMIT_MESSAGE" value="attf" />
   </component>
 </project>
