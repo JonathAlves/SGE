@@ -4,40 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/dominio/Inscricao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/dominio/Inscricao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/InscricaoServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/InscricaoServico.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/v00.0001_evento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/liquibase/changelog/v00.0001_evento.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Inscricao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Inscricao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/InscricaoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/InscricaoRecurso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoSituacaoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoSituacaoRecurso.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/v00.0001_evento.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/liquibase/changelog/v00.0001_evento.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-formulario/inscricao-formulario.component.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-formulario/inscricao-formulario.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-formulario/inscricao-formulario.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-formulario/inscricao-formulario.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-listagem/inscricao-listagem.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-listagem/inscricao-listagem.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-listagem/inscricao-listagem.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/components/inscricao-listagem/inscricao-listagem.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/inscricao-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/inscricao-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/inscricao.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/inscricao.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/components/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/components/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/shared.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/shared.module.ts" afterDir="false" />
-    </list>
+    <list default="true" id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612398213268</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="att">
+      <created>1612485207267</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1612485207267</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +143,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="att2" />
-    <option name="LAST_COMMIT_MESSAGE" value="att2" />
+    <MESSAGE value="att" />
+    <option name="LAST_COMMIT_MESSAGE" value="att" />
   </component>
 </project>
