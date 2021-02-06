@@ -1,6 +1,7 @@
 com/basis/sge/service/servico/dto/TipoSituacaoDTO.class
 com/basis/sge/service/servico/dto/TipoEventoDTO.class
 com/basis/sge/service/repositorio/InscricaoRepositorio.class
+com/basis/sge/service/servico/dto/ChaveDTO.class
 com/basis/sge/service/recurso/EventoRecurso.class
 com/basis/sge/service/servico/mapper/PerguntaMapper.class
 com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.class

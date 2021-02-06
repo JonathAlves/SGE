@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Evento } from "src/app/dominios/evento";
 import { Pergunta } from 'src/app/dominios/pergunta';
@@ -9,6 +9,8 @@ import { PerguntaService } from 'src/app/modulos/pergunta/services/pergunta.serv
 import { EventoService } from '../../services/evento.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import * as moment from 'moment';
+import { TipoEvento } from 'src/app/dominios/tipo-evento';
 
 @Component({
   selector: 'app-formulario',
@@ -23,11 +25,13 @@ export class FormularioComponent implements OnInit {
   @Output() eventoSalvo = new EventEmitter<Evento>();
   formularioEdicao: boolean;
   perguntas: Pergunta[] = [];
+  perguntasEventos: Pergunta[] =[];
   pergunta = new Pergunta;
   perguntaEvento: PerguntaEvento;
-  perguntaObrigatoria: boolean;
-  submetido: boolean;
-  dataHora: Date;
+  novaPergunta: boolean;
+  tipoInscricao: boolean = false;
+  tipoEventos: TipoEvento[] = []
+  tipoEvento: TipoEvento
 
   public formEvento: FormGroup;
 
@@ -49,9 +53,11 @@ export class FormularioComponent implements OnInit {
         this.buscarPergunta(params.id);
       }
     })
+    this.buscarTipoEventos()
+    this.buscarPerguntas()
 
     this.formEvento = this.fb.group({
-      titulo: '',
+      titulo: ['', Validators.required],
       dataInicio:'',
       dataTermino:'',
       descricao:'',
@@ -60,7 +66,10 @@ export class FormularioComponent implements OnInit {
       local:'',
       tipoInscricao:'',
       idTipoEvento:'',
-      perguntas:''
+      perguntas:'',
+      pergunta:'',
+      perguntaEvento:'',
+      obrigatoriedade: ''
     })
   }
 
@@ -70,9 +79,18 @@ export class FormularioComponent implements OnInit {
   }
 
   salvar() {
-    this.submetido = true;
+    this.evento.tipoInscricao = this.tipoInscricao;
+
+    for (let perg of this.perguntasEventos) {
+      this.perguntaEvento = new PerguntaEvento
+      this.perguntaEvento.idEvento = null
+      this.perguntaEvento.idPergunta = perg.id
+
+      this.evento.perguntas.push(this.perguntaEvento)
+    };
+    
     if (this.formEvento.invalid) {
-      this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Criado', life: 3000});
+      this.messageService.add({severity:'warn', summary: 'Atenção', detail: 'Preencha os campos solicitados', life: 3000});
       return;
     }
     if (this.edicao) {
@@ -85,7 +103,7 @@ export class FormularioComponent implements OnInit {
     } else {
       this.eventoService.salvarEvento(this.evento)
       .subscribe(evento => {
-        this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Editado', life: 3000});
+        this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Criado', life: 3000});
       }, (erro: HttpErrorResponse) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Evento não Criado', life: 3000});
       });
@@ -94,7 +112,6 @@ export class FormularioComponent implements OnInit {
 
   fecharDialog(eventoSalvo: Evento) {
     this.eventoSalvo.emit(eventoSalvo);
-    this.submetido = false;
   }
 
   buscarPergunta(id: number) {
@@ -102,18 +119,46 @@ export class FormularioComponent implements OnInit {
     .subscribe(pergunta => this.pergunta = pergunta);
   }
 
-  salvarPergunta() {
-    this.perguntaService.salvarPergunta(this.pergunta)
+  salvarPergunta(pergunta: Pergunta) {
+    if(this.pergunta.obrigatoriedade == null){
+      this.pergunta.obrigatoriedade = false;
+    }
+    this.perguntaService.salvarPergunta(pergunta)
     .subscribe(pergunta => {
+      this.perguntasEventos.push(pergunta)
       alert('Pergunta Salva')
-      this.perguntaObrigatoria = false;
+      this.novaPergunta = false;
     }, (erro: HttpErrorResponse) => {
       alert(erro.error.message);
     });
   }
 
-  obrigatoria() {
-    this.perguntaObrigatoria = true;
+  novasPerguntas(){
+    this.novaPergunta = true
+  }
+
+  buscarTipoEventos(){
+    this.eventoService.getTipoEventos().subscribe((tipoEventos: TipoEvento[]) =>{
+      this.tipoEventos = tipoEventos;
+    })
+  }
+
+  buscarTipoEvento(id: number){
+    this.eventoService.getTipoEvento(id).subscribe(tipoEvento => 
+      this.tipoEvento = tipoEvento
+      )
+  }
+
+  buscarPerguntas(){
+    this.perguntaService.getPerguntas().subscribe((perguntas: Pergunta[]) =>{
+      this.perguntas = perguntas
+    })
+  }
+
+  buscarPerguntaPorId(id: number){
+    this.perguntaService.buscarPerguntaPorId(id).subscribe((pergunta: Pergunta) =>{
+      this.pergunta = pergunta;
+    })
   }
 
 }

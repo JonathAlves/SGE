@@ -6,6 +6,7 @@ import { Usuario } from './dominios/usuario';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html'
+    
 })
 export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
     usuarioLogado : Usuario ;

@@ -1,4 +1,5 @@
 /home/alexandre/SGE/service/backend/src/main/java/com/basis/sge/service/recurso/TipoSituacaoRecurso.java
+/home/alexandre/SGE/service/backend/src/main/java/com/basis/sge/service/servico/dto/ChaveDTO.java
 /home/alexandre/SGE/service/backend/src/main/java/com/basis/sge/service/servico/dto/InscricaoRespostaDTO.java
 /home/alexandre/SGE/service/backend/src/main/java/com/basis/sge/service/servico/EventoServico.java
 /home/alexandre/SGE/service/backend/src/main/java/com/basis/sge/service/servico/mapper/EventoPerguntaMapper.java

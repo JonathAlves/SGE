@@ -1,10 +1,8 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng';
 import { Evento } from 'src/app/dominios/evento';
 import { Usuario } from 'src/app/dominios/usuario';
 import { EventoService } from '../../services/evento.service';
-import { Inscricao } from 'src/app/dominios/inscricao';
-
 
 @Component({
   selector: 'app-listagem',
@@ -16,33 +14,22 @@ export class ListagemComponent implements OnInit {
 
   eventos: Evento[] = [];
   evento = new Evento();
-  usuario = new Usuario();
-  inscricao = new Inscricao();
   selectedEvento: Evento[] = [];
   formularioEdicao: boolean;
   exibirDialog = false;
-  idEvento: number;
-
+  usuarioLogado: Usuario;
   statuses: any[];
 
   constructor(
     private servico: EventoService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService,
-   
+    private confirmationService: ConfirmationService
   ) { }
 
   ngOnInit(): void {
     this.buscarEventos();
+    this.usuarioLogado = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     
-  }
-
-  setId(id: number){
-    this.idEvento = this.evento.id;
-  }
-
-  getId(){
-    return this.idEvento;
   }
 
   private buscarEventos() {
@@ -73,7 +60,7 @@ export class ListagemComponent implements OnInit {
 
   confirmarDeletarevento(id: number) {
     this.confirmationService.confirm({
-        message: 'Tem certeza que deseja excluir o usuário?',
+        message: 'Tem certeza que deseja excluir o evento?',
         accept: () => {
           this.deletarEvento(id);
         }
@@ -86,10 +73,12 @@ export class ListagemComponent implements OnInit {
       header: 'Confirma',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        this.eventos.forEach(evento => {
+        this.eventos = this.eventos.filter(val => !this.selectedEvento.includes(val));
+        this.selectedEvento.forEach(evento => {
           this.servico.deletarEvento(evento.id).subscribe(() => { 
             this.messageService.add({severity:'success', summary: 'Successo', detail: 'Eventos Deletados', life: 3000});
             this.buscarEventos();
+            this.selectedEvento = [];
           }, err => alert(err));
         });
       }
