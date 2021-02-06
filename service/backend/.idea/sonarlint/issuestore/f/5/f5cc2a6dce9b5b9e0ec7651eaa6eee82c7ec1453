@@ -1,0 +1,17 @@
+
+Z
+java:S1854="=Remove this useless assignment to local variable "inscricao".(Á«Ïì8ñÙÖÊö.
+X	java:S1256"<This block of commented-out lines of code should be removed.(Å½ÈÎ8ñÙÖÊö.
+[
+java:S4973C"9Use the "equals" method if value comparison was intended.(û´¶“ùÿÿÿÿ8ñÙÖÊö.
+]	java:S125O"<This block of commented-out lines of code should be removed.(ØĞ¢†ÿÿÿÿÿ8ñÙÖÊö.
+N
+java:S16021",Remove useless curly braces around statement(‚‚óöùÿÿÿÿ8ñÙÖÊö.
+[
+java:S4973C"9Use the "equals" method if value comparison was intended.(û´¶“ùÿÿÿÿ8ñÙÖÊö.
+V
+java:S4973\"9Use the "equals" method if value comparison was intended.(ÈØÿã8•îÊö.
+v
+java:S2293Y"YReplace the type specification in this constructor call with the diamond operator ("<>").(ü¸œ¦8•îÊö.
+K
+java:S1481=".Remove this unused "inscricao" local variable.(Á«Ïì8ñÙÖÊö.

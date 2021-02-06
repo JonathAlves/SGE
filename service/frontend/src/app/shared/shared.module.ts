@@ -1,3 +1,4 @@
+import { InscricaoFormularioComponent } from './components/inscricao-formulario/inscricao-formulario.component';
 import { NgModule } from '@angular/core';
 import { CardComponent } from './components/card/card.component';
 import { PRIMENG_IMPORTS } from './primeng-imports';
@@ -14,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
         CardComponent,
         FormularioComponent,
         LoginComponent,
+        InscricaoFormularioComponent
     ],
     imports: [
         PRIMENG_IMPORTS,
@@ -30,6 +32,7 @@ import { LoginComponent } from './components/login/login.component';
         CardComponent,
         FormularioComponent,
         LoginComponent,
+        InscricaoFormularioComponent
     ]
 })
 export class SharedModule { }
