@@ -32,3 +32,6 @@ input{
 p.toolbar {
     background-color: black;
 }
+small {
+    color: red;
+}

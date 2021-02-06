@@ -17,7 +17,7 @@ export class ListagemComponent implements OnInit {
   selectedEvento: Evento[] = [];
   formularioEdicao: boolean;
   exibirDialog = false;
-
+  usuarioLogado: Usuario;
   statuses: any[];
 
   constructor(
@@ -28,6 +28,7 @@ export class ListagemComponent implements OnInit {
 
   ngOnInit(): void {
     this.buscarEventos();
+    this.usuarioLogado = JSON.parse(localStorage.getItem('usuario')) as Usuario;
     
   }
 
@@ -77,6 +78,7 @@ export class ListagemComponent implements OnInit {
           this.servico.deletarEvento(evento.id).subscribe(() => { 
             this.messageService.add({severity:'success', summary: 'Successo', detail: 'Eventos Deletados', life: 3000});
             this.buscarEventos();
+            this.selectedEvento = [];
           }, err => alert(err));
         });
       }

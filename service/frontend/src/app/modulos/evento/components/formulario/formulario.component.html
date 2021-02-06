@@ -1,54 +1,55 @@
 <app-card class="titulo" [titulo]="'Cadastro de Evento'">
 <form [formGroup]="formEvento">
 
-    <div class="p-grid p-dri-col">
+    <div class="p-fluid">
 
-        <label class="p-field">
-            <label for="titulo">Título do evento</label>
-            <input type="text" pInputText id="titulo" [(ngModel)]="evento.titulo" required autofocus placeholder="Titulo Evento" formControlName="titulo"  />
-            <div *ngIf="formEvento.get('titulo').invalid">Título inválido</div>
-        </label>
+        <div class="p-field p-grid">
+            <label for="titulo" class="p-col-fixed" style="width:100px">Título </label>
+                <input type="text" pInputText id="titulo" [(ngModel)]="evento.titulo" required autofocus placeholder="Titulo Evento" formControlName="titulo"  />
+                <small *ngIf="formEvento.get('titulo').invalid">Título inválido</small>
+        </div>
 
         <div class="p-field">
             <label for="descricao" > Descricão do evento</label>
             <input class="input" type="text"  [(ngModel)]="evento.descricao" placeholder="Descrição do evento:" formControlName="descricao" pInputText/>
         </div>
 
-        <label class="p-field">
+        <div class="p-field">
             <label for="qtVagas">Quantidade de vagas</label>
             <input type="number" [(ngModel)]="evento.qtVagas" placeholder="Quantidade de vagas" formControlName="qtVagas" pInputText />
-        </label>
+        </div>
          
-        <label class="p-field">
+        <div class="p-field">
             <label for="local">Local do evento</label>
             <input type="text" [(ngModel)]="evento.local" placeholder="Local do evento" formControlName="local" pInputText />
-        </label>
+        </div>
 
-        <label class="p-field">
-            <label for="tipoEvento">Tipo de evento</label>
-            <input type="number" [(ngModel)]="evento.idTipoEvento" placeholder="Tipo Evento" formControlName="idTipoEvento" pInputText />
-        </label>
+        <div class="p-field">
+            <p-dropdown [options]="tipoEventos" placeholder="Selecione ..." 
+            [(ngModel)]="tipoEvento" formControlName="idTipoEvento" optionLabel="descricao" optionValue="id"
+            ></p-dropdown>
+        </div>
 
-        <label class="p-field">
+        <div class="p-field">
             <label for="tipoInscricao">Tipo de inscrição</label>
             <p-inputSwitch class="input" [(ngModel)]="tipoInscricao" formControlName="tipoInscricao" ></p-inputSwitch>
-        </label>
+        </div>
 
-        <label class="p-field">
+        <div class="p-field">
             <label for="valor">Valor da Inscrição</label>
             <input type="number" [(ngModel)]="evento.valor" placeholder="Valor" formControlName="valor" pInputText *ngIf="tipoInscricao == true"/>
-        </label>
+        </div>
 
-        <label class="p-field">
+        <div class="p-field">
             <label for="dataInicio">Data e hora do inicio do evento</label>
              <input class="input" type="datetime-local"  [(ngModel)]="evento.dataInicio"  formControlName="dataInicio" pInputText/>
-        </label>
+        </div>
 
-        <label class="p-field">
+        <div class="p-field">
             <label for="dataTermino">Data e hora do termino do evento</label>
             <input class="input" type="datetime-local"  [(ngModel)]="evento.dataTermino"  formControlName="dataTermino" pInputText/>
-        </label>
-        <p-toolbar>
+        </div>
+
             <div class="p-toolbar-group-center">
                 <label for="pergunta">Adicionar uma pergunta</label>
                 <p-button (click)="novasPerguntas()" label="Novo" icon="pi pi-plus" ></p-button>
@@ -57,9 +58,9 @@
                 
                 <p-checkbox  [(ngModel)]="pergunta.obrigatoriedade" [binary]="true" *ngIf="novaPergunta" formControlName="pergunta"></p-checkbox>
                 
-                <p-button pButton (click)="salvarPergunta(pergunta)" label="Save" icon="pi pi-check" styleClass="p-button-warning" *ngIf="novaPergunta"></p-button>
+                <p-button  (click)="salvarPergunta(pergunta)" label="Save" icon="pi pi-check" *ngIf="novaPergunta"></p-button>
             </div>
-    </p-toolbar>
+
     </div>
 </form>
 <button class="btnCadastrar" pButton type="button" (click)="salvar()" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>

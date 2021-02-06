@@ -11,7 +11,6 @@ import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import * as moment from 'moment';
 import { TipoEvento } from 'src/app/dominios/tipo-evento';
-import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-formulario',
@@ -54,6 +53,8 @@ export class FormularioComponent implements OnInit {
         this.buscarPergunta(params.id);
       }
     })
+    this.buscarTipoEventos()
+    this.buscarPerguntas()
 
     this.formEvento = this.fb.group({
       titulo: ['', Validators.required],
@@ -78,9 +79,8 @@ export class FormularioComponent implements OnInit {
   }
 
   salvar() {
-    
     this.evento.tipoInscricao = this.tipoInscricao;
-    console.log(this.perguntasEventos)
+
     for (let perg of this.perguntasEventos) {
       this.perguntaEvento = new PerguntaEvento
       this.perguntaEvento.idEvento = null
@@ -135,6 +135,30 @@ export class FormularioComponent implements OnInit {
 
   novasPerguntas(){
     this.novaPergunta = true
+  }
+
+  buscarTipoEventos(){
+    this.eventoService.getTipoEventos().subscribe((tipoEventos: TipoEvento[]) =>{
+      this.tipoEventos = tipoEventos;
+    })
+  }
+
+  buscarTipoEvento(id: number){
+    this.eventoService.getTipoEvento(id).subscribe(tipoEvento => 
+      this.tipoEvento = tipoEvento
+      )
+  }
+
+  buscarPerguntas(){
+    this.perguntaService.getPerguntas().subscribe((perguntas: Pergunta[]) =>{
+      this.perguntas = perguntas
+    })
+  }
+
+  buscarPerguntaPorId(id: number){
+    this.perguntaService.buscarPerguntaPorId(id).subscribe((pergunta: Pergunta) =>{
+      this.pergunta = pergunta;
+    })
   }
 
 }

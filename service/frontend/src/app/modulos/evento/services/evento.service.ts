@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Evento } from 'src/app/dominios/evento';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TipoEvento } from 'src/app/dominios/tipo-evento';
 
 @Injectable()
 export class EventoService {
@@ -31,5 +32,13 @@ export class EventoService {
 
   deletarEvento(id:number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
+  }
+
+  getTipoEventos(): Observable<TipoEvento[]>{
+    return this.http.get<TipoEvento[]>(`${this.url}/tipo_evento`)
+  }
+
+  getTipoEvento(id: number): Observable<TipoEvento>{
+    return this.http.get<TipoEvento>(`${this.url}/tipo_evento/${id}`)
   }
 }
