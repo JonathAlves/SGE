@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-02-05T13:32:08-0300",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_282 (Amazon.com Inc.)"
+    date = "2021-02-06T19:38:08-0300",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_275 (Private Build)"
 )
 @Component
 public class TipoEventoMapperImpl implements TipoEventoMapper {
@@ -23,6 +23,9 @@ public class TipoEventoMapperImpl implements TipoEventoMapper {
 
         TipoEvento tipoEvento = new TipoEvento();
 
+        tipoEvento.setId( dto.getId() );
+        tipoEvento.setDescricao( dto.getDescricao() );
+
         return tipoEvento;
     }
 
@@ -33,6 +36,9 @@ public class TipoEventoMapperImpl implements TipoEventoMapper {
         }
 
         TipoEventoDTO tipoEventoDTO = new TipoEventoDTO();
+
+        tipoEventoDTO.setId( entity.getId() );
+        tipoEventoDTO.setDescricao( entity.getDescricao() );
 
         return tipoEventoDTO;
     }
