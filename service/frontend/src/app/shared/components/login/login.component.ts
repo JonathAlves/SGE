@@ -27,9 +27,9 @@ export class LoginComponent implements OnInit {
     constructor(public usuarioService: UsuarioService, private fbuilder: FormBuilder, private messageService: MessageService) { }
 
     ngOnInit(): void {
+      this.formChave = this.fbuilder.group({ chave: '' })
       this.pegarUsuarioLocal();
 
-      this.formChave = this.fbuilder.group({ chave: '' })
 
     }
 
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
 
       }
 
-    
+
 
       logout(){
         localStorage.clear()

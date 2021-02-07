@@ -31,7 +31,7 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {
     this.criarUsuario();
   }
-  
+
 
   criarUsuario(){
     this.route.params.subscribe(params => {
@@ -40,18 +40,17 @@ export class FormularioComponent implements OnInit {
           this.buscarUsuario(params.id);
         }
       });
-      
+
       this.usuario.admin = false;
       this.formUsuario = this.fb.group({
-        nome: ['', Validators.minLength(3)],
-        cpf:  ['', Validators.maxLength(15)],
-        email: ['', Validators.email],
-        telefone: ['', Validators.maxLength(20)],
+        nome: ['', [Validators.required, Validators.minLength(3)]],
+        cpf:  ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        telefone: ['', [Validators.required, Validators.minLength(13), Validators.maxLength(20)]],
         dataNascimento: ['', Validators.required],
-        
-        
-      
-        
+
+
+
       });
 
   }
@@ -62,11 +61,11 @@ export class FormularioComponent implements OnInit {
   }
 
   salvar() {
-  
+
     if (this.formUsuario.invalid) {
       this.messageService.add({severity:'error', summary: 'Error', detail: 'Formulario Invalido!', life: 3000});
       return;
-    
+
     }
 
     if (this.edicao) {
@@ -80,17 +79,32 @@ export class FormularioComponent implements OnInit {
     } else {
       this.usuarioService.salvarUsuario(this.usuario)
         .subscribe(usuario => {
+            this.removerMask();
           this.messageService.add({severity:'success', summary: 'Successo', detail: 'Usuario Cadastrado com sucesso!', life: 3000});
           this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
           this.messageService.add({severity:'error', summary: 'Error', detail: erro.error.message, life: 3000});
-      
+
         });
     }
   }
 
   fecharDialog(usuarioSalvo: Usuario) {
     this.usuarioSalvo.emit(usuarioSalvo);
+  }
+
+  removerMask(){
+      var removerMaskCPF = this.formUsuario.get('cpf').value.replace('.','').replace('.', '').replace('-', '');
+      var removerMaskTelefone = this.formUsuario.get('telefone').value.replace('+','').replace('()', '').replace('', '').replace('', '').replace('-', '');
+
+      this.formUsuario.setValue({
+          nome: this.formUsuario.get('nome').value,
+          cpf: removerMaskCPF,
+          email: this.formUsuario.get('email').value,
+          telefone: removerMaskTelefone,
+          dataNascimento: this.formUsuario.get('dataNascimento').value,
+
+      })
   }
 
 

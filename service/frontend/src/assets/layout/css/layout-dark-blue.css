@@ -1155,7 +1155,7 @@
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .landing-wrapper .header .header-top .logo {
-    background: url("../images/logo2x.png") top left no-repeat;
+    background: url("../images/logo.png") top left no-repeat;
     background-size: 200px 30px;
   }
 }
@@ -1201,12 +1201,14 @@ body a {
   -moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 .layout-container .topbar .logo {
-  display: flex;
+  display: block;
   vertical-align: middle;
-  width: 120px;
-  height: 50px;
-  background: url("../images/logoSGE.png") top left no-repeat;
-  background-size: 120px 55px;
+  width: 160px;
+  margin-top: -5px;
+
+  height: 90px;
+  background: url("../images/logoSGE2.png") top left no-repeat;
+  background-size: 150px 45px;
 }
 .layout-container .topbar .topbar-left {
   box-sizing: border-box;

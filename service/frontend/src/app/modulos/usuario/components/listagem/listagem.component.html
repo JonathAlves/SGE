@@ -3,7 +3,7 @@
 <app-card [titulo]="'Lista de Usuários ADM'">
 
     <div class="p-d-flex p-jc-end">
-        <button class="btn" routerLink="formulario" pButton type="button" label="Cadastrar" ></button>
+        <button class="p-ml-2" type="button" (click)="mostrarDialog()" pButton label="Cadastrar"></button>
     </div>
 
 
@@ -25,7 +25,7 @@
               <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
               <td class="p-d-flex p-jc-center">
                 <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
-                <button (click)="mostrarDialogEditar(usuario.id)"  pButton type="button" icon="pi pi-pencil"></button>
+                <button (click)="mostrarDialogEditar(usuario.id)" class="p-ml-2" pButton type="button" icon="pi pi-pencil"></button>
                 <button (click)="confirmarDeletarUsuario(usuario.id)" class="p-ml-2" pButton type="button" icon="pi pi-trash"></button>
               </td>
           </tr>
