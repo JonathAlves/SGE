@@ -80,6 +80,7 @@ export class FormularioComponent implements OnInit {
 
   salvar() {
     this.evento.tipoInscricao = this.tipoInscricao;
+    this.evento.idTipoEvento = this.tipoEvento.id;
 
     for (let perg of this.perguntasEventos) {
       this.perguntaEvento = new PerguntaEvento
