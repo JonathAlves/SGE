@@ -4,3 +4,75 @@
    text-align: center;
    font-weight: bold;
 }
+  
+
+.box{
+    
+    height: 70vh; 
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #191919;
+    text-align: center;
+    border-radius: 24px;
+}
+
+.box h2{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.box input[type = "text"]{
+    align-items: center;
+    max-width: 400px;
+    min-width: 400px;
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.box input[type = "text"]:focus{
+    border-color: #3498db;
+    background: #3498db;
+    
+}
+
+.box button{
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    min-width: 400px;
+    padding: 15px 10px;
+    border: 0;
+    background: none;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.box button:hover{
+    background: #2ecc71;
+}
