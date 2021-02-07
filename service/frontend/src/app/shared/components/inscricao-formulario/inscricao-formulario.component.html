@@ -1,11 +1,12 @@
-<p-card class="ui-g-12" header="{{evento.titulo}}" subheader="{{evento.descricao}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
-    <p><b>Inicio:</b> {{evento.dataInicio | date:'dd/mm/yyyy'}} às {{evento.dataInicio | date: 'h:mm'}}</p>
-    <p><b>Encerramento:</b> {{evento.dataTermino | date:'dd/mm/yyyy'}} às {{evento.dataInicio | date: 'h:mm'}}</p>
+<p-card class="ui-g-12" header="{{evento.titulo}}" subheader="{{evento.descricao}}" [style]="{width: '1000px'}" styleClass="p-card-shadow">
+    <p><b>Data:</b> {{evento.dataInicio | date:'dd/mm/yyyy'}} às {{evento.dataInicio | date: 'h:mm'}} horas</p>
+    <p><b>Encerramento:</b> {{evento.dataTermino | date:'dd/mm/yyyy'}} às {{evento.dataInicio | date: 'h:mm'}} horas</p>
     <p><b>Local:</b> {{evento.local}}</p>
-
+    <span>{{pergunta.titulo}}</span>
     <form [formGroup]="formInscricao">
-        <div class="p-grid p-dir-col">
-            <input type="text" pInputText [(ngModel)]="inscricao.respostas" placeholder="Resposta" formControlName="resposta1"/>
+        
+        <div class="p-col-12 p-md-6 p-lg-4">
+
         </div>
     </form>
     

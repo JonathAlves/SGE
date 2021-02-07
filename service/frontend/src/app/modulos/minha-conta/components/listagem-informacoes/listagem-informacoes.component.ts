@@ -1,9 +1,11 @@
+import { MinhaContaService } from './../../service/minha-conta.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Usuario } from 'src/app/dominios/usuario';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UsuarioService } from 'src/app/shared/components/services/usuario.service';
+import { Inscricao } from 'src/app/dominios/inscricao';
+import { Evento } from 'src/app/dominios/evento';
 
 
 @Component({
@@ -18,6 +20,10 @@ export class ListagemInformacoesComponent implements OnInit {
   @Output() usuarioSalvo = new EventEmitter<Usuario>();
 
   usuarios: Usuario;
+  usrEvento: Usuario;
+  eventos: Evento[] = [];
+  evento: Evento;
+  inscricoes: Inscricao[] = [];
   exibirDialog = false;
   formularioEdicao: boolean;
   formEditarUsuario: FormGroup;
@@ -26,10 +32,13 @@ export class ListagemInformacoesComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-
+    private servico: MinhaContaService
   ) { }
   ngOnInit(): void {
     this.pegarUsuarioLocal()
+    this.buscarInscricoes();
+    this.buscarEvento();
+    
 
   }
   pegarUsuarioLocal() {
@@ -38,6 +47,27 @@ export class ListagemInformacoesComponent implements OnInit {
     return [usuarioLocal];
   }
 
+  buscarInscricoes() {
+    const usrLocal: Usuario = JSON.parse(window.localStorage.getItem("usuario"));
+    this.servico.getInscricoes()
+    .subscribe((inscricoes: Inscricao[]) => {
+      this.inscricoes = inscricoes
+    });
+    this.usrEvento = usrLocal
+    
+  }
+  
+  buscarEvento(){
+      this.servico.getEventos()
+      .subscribe((eventos: Evento[]) => {
+        for (let i = 0; i < this.inscricoes.length; i++) {
+            if(this.inscricoes[i].idEvento == eventos[i].id){
+              this.eventos[i] = eventos[i]
+            }
+        }
+      });
+    }
+    
   mostrarDialogEditar(id: number) {
     this.usuarioService.buscarUsuarioPorId(id)
       .subscribe(usuario => {

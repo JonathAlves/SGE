@@ -1,3 +1,4 @@
+import { PerguntaEvento } from 'src/app/dominios/pergunta-evento';
 import { InscricaoResposta } from './../../../dominios/inscricao-resposta';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit } from '@angular/core';
@@ -7,6 +8,7 @@ import { Evento } from 'src/app/dominios/evento';
 import { Inscricao } from "src/app/dominios/inscricao";
 import { Usuario } from 'src/app/dominios/usuario';
 import { InscricaoService } from '../../../modulos/inscricao/servicos/inscricao.service';
+import { Pergunta } from 'src/app/dominios/pergunta';
 
 
 @Component({
@@ -18,6 +20,8 @@ export class InscricaoFormularioComponent implements OnInit {
   
   usuario = new Usuario();
   evento = new Evento();
+  perguntaEvento: PerguntaEvento;
+  pergunta = new Pergunta();
   @Input() inscricaoSalva = new EventEmitter<Inscricao>();
   @Input() inscricao = new Inscricao;
   usuarios: Usuario
@@ -33,6 +37,7 @@ export class InscricaoFormularioComponent implements OnInit {
 
   ngOnInit(): void {
     this.inscrever();
+    // this.buscarPergunta();
   }
   
   inscrever(){
@@ -44,16 +49,10 @@ export class InscricaoFormularioComponent implements OnInit {
         this.buscarEvento(params.id)
         this.inscricao.idEvento = params.id
       }
-    });    
-
-      this.formInscricao = this.fb.group({
-      resposta1: '',
-    })
-
-    this.inscricaoResposta.idEvento = this.inscricao.idEvento
-    this.inscricaoResposta.idInscricao = this.inscricao.id
+    });      
   }
 
+  
 
   buscarEvento(id: number){
     this.inscricaoService.buscarEventoPorId(id)

@@ -21,7 +21,6 @@ export class ListagemComponent implements OnInit {
   selectedEvento: Evento[] = [];
   formularioEdicao: boolean;
   exibirDialog = false;
-  idEvento: number;
 
   statuses: any[];
 
@@ -35,14 +34,6 @@ export class ListagemComponent implements OnInit {
   ngOnInit(): void {
     this.buscarEventos();
     
-  }
-
-  setId(id: number){
-    this.idEvento = this.evento.id;
-  }
-
-  getId(){
-    return this.idEvento;
   }
 
   private buscarEventos() {

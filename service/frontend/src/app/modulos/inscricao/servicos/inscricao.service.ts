@@ -4,13 +4,10 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Inscricao } from 'src/app/dominios/inscricao';
-import { map } from 'rxjs/operators';
 import { Pergunta } from 'src/app/dominios/pergunta';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class InscricaoService {
 
   url = `${environment.apiUrl}/inscricoes`;

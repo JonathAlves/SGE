@@ -21,36 +21,29 @@
                     <td>{{usuario.email}}</td>
                     <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
                     <td class="p-d-flex p-jc-center">
-                        <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
+                        <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button>
                         <button (click)="mostrarDialogEditar(usuario.id)" class="p-ml-2" pButton type="button" icon="pi pi-pencil"></button>
                 </tr>
             </ng-template>
         </p-table>
-    </div>
-
-    <div class="card">
-        <p-table [value]="usuarios" styleClass="p-datatable-sm">
+        <p-table [value]="inscricoes" styleClass="p-datatable-sm">
             <ng-template pTemplate="caption">
-                Minhas Incrições
+                Meus eventos
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Email</th>
-                    <th>Data Nascimento</th>
-                    <th style="width: 80px;">Ações</th>
+                    <th>Evento</th>
+                    <th>Data</th>
+                    <th>Local</th>
+                    <th>Valor</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-inscricao>
-                <tr>
-                    <td>{{inscricao.id}}</td>
-                    <td>{{usuario.cpf}}</td>
-                    <td>{{usuario.email}}</td>
-                    <td>{{usuario.dataNascimento | date: 'dd/MM/yyyy'}}</td>
-                    <td class="p-d-flex p-jc-center">
-                        <button [routerLink]="['inscricoes', usuario.id]" pButton type="button" icon="pi pi-pencil"></button>
-                        <button (click)="mostrarDialogEditar(usuario.id)" pButton type="button" icon="pi pi-pencil"></button>
+                <tr *ngFor="let evento of eventos">
+                    <td>{{evento.titulo}}</td>
+                    <td>{{evento.dataInicio | date: 'dd/mm/yyyy'}}</td>
+                    <td>{{evento.local}}</td>
+                    <td>{{evento.valor}}</td>
                 </tr>
             </ng-template>
         </p-table>
