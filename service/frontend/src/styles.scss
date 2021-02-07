@@ -12,7 +12,7 @@ body .ui-button.ui-button-text-only .ui-button-text {
 }
 
 body .ui-widget, body .ui-widget .ui-widget{
-    margin: 10px;
+
     border-radius: 15px;
     justify-content: center;
 
@@ -39,4 +39,38 @@ input {
     border-image: none;
     border-width: thin;
 }
+body .ui-button.ui-button-text-icon-left{
+    padding-left: 0.4em;
+}
 
+body .ui-button .ui-button-text{
+    line-height: 0;
+}
+
+.ui-table .ui-paginator-bottom {
+    padding-top: 10px;
+    border-top: 2px;
+    border-width: 0 0 1px 0;
+    border-radius: 0;
+}
+
+body .ui-paginator .ui-paginator-current {
+    line-height: 3.4em;
+}
+
+.ui-table {
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+body .ui-table .ui-table-tbody > tr > td {
+    background-color: inherit;
+    border: 1px solid #c8c8c8;
+    transition: box-shadow 0.2s;
+    text-align: left;
+    border: 1px solid #e9ecef;
+    border-width: 0 0 1px 0;
+    padding: 1rem 1rem;
+}

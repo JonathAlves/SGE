@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tipo_evento")
+@RequestMapping("/api/eventos/tipo_evento")
 @RequiredArgsConstructor
 public class TipoEventoRecurso {
-    @Autowired
+
     private final TipoEventoServico tipoEventoServico;
 
 
