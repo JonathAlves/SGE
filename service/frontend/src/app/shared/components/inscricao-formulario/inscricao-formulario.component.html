@@ -9,7 +9,7 @@
         
     <div class="ui-fluid">
             <label for="pergunta" *ngFor="let pergunta of perguntas; let i = index" style="margin: 20px;">
-                <td>
+                <td>                    
                     <b>Pergunta {{i+1}}</b>: {{pergunta.titulo}}
                     <input  id="resposta" type="text" pInputText [(ngModel)]="inscricao.respostas" placeholder="Resposta" formControlName="resposta[i]"/>
                 </td>

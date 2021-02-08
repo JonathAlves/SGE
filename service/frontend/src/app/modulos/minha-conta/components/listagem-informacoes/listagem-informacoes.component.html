@@ -39,11 +39,14 @@
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-inscricao>
-                <tr *ngFor="let evento of eventos">
-                    <td>{{evento.titulo}}</td>
-                    <td>{{evento.dataInicio | date: 'dd/MM/yyyy'}}</td>
-                    <td>{{evento.local}}</td>
-                    <td>R$ {{evento.valor}}</td>
+                <tr *ngFor="let evento of eventos;let i = index;">
+                    <td *ngIf="eventos[i].id == inscricoes[i].idEvento">{{evento.titulo}}</td>
+                    <td *ngIf="eventos[i].id == inscricoes[i].idEvento">{{evento.dataInicio | date: 'dd/MM/yyyy'}}</td>
+                    <td *ngIf="eventos[i].id == inscricoes[i].idEvento">{{evento.local}}</td>
+                    <td *ngIf="eventos[i].id == inscricoes[i].idEvento">R$ {{evento.valor}}</td>
+                    <td class="p-d-flex p-jc-center">
+                        <button (click)="confirmarDeletarInscricao(inscricoes[i].id)" class="p-ml-2" pButton type="button" icon="pi pi-trash"></button>
+                      </td>
                 </tr>
             </ng-template>
         </p-table>

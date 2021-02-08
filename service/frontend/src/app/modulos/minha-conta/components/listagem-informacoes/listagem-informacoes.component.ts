@@ -1,3 +1,4 @@
+import { InscricaoService } from './../../../inscricao/servicos/inscricao.service';
 import { MinhaContaService } from './../../service/minha-conta.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Usuario } from 'src/app/dominios/usuario';
@@ -6,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { UsuarioService } from 'src/app/shared/components/services/usuario.service';
 import { Inscricao } from 'src/app/dominios/inscricao';
 import { Evento } from 'src/app/dominios/evento';
+import { ConfirmationService, MessageService } from 'primeng';
 
 
 @Component({
@@ -32,12 +34,14 @@ export class ListagemInformacoesComponent implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
-    private servico: MinhaContaService
+    private servico: MinhaContaService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
   ) { }
   ngOnInit(): void {
     this.pegarUsuarioLocal()
     this.buscarInscricoes();
-    this.buscarEvento();
+
     
 
   }
@@ -54,7 +58,7 @@ export class ListagemInformacoesComponent implements OnInit {
       this.inscricoes = inscricoes
     });
     this.usrEvento = usrLocal
-    
+    this.buscarEvento();
   }
   
   buscarEvento(){
@@ -62,10 +66,14 @@ export class ListagemInformacoesComponent implements OnInit {
       .subscribe((eventos: Evento[]) => {
         for (let i = 0; i < this.inscricoes.length; i++) {
             if(this.inscricoes[i].idEvento == eventos[i].id){
-              this.eventos[i] = eventos[i]
+              this.eventos = eventos
+              
             }
+            console.log(this.inscricoes.length)
         }
+        
       });
+      
     }
     
   mostrarDialogEditar(id: number) {
@@ -105,6 +113,26 @@ export class ListagemInformacoesComponent implements OnInit {
           alert(erro.error.message);
         });
     }
+  }  
+
+
+  confirmarDeletarInscricao(id: number) {
+    this.confirmationService.confirm({
+      message: 'Você tem certeza que quer cancelar a inscrição ?',
+      accept: () => {
+        this.servico.deletarInscricao(id)
+        
+      }
+    });
+  }
+
+  deletarInscricao(id?: number) {
+    this.servico.deletarInscricao(id)
+      .subscribe(() => {
+        alert('Inscrição deletada');
+        this.buscarInscricoes();
+      },
+      err => alert(err));
   }
 
   fecharDialog(usuarioSalvo: Usuario) {

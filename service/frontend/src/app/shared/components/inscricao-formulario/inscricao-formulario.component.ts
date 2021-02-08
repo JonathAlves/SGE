@@ -1,3 +1,4 @@
+import { InscricaoService } from './../../../modulos/inscricao/servicos/inscricao.service';
 import { PerguntaService } from 'src/app/modulos/pergunta/services/pergunta.service';
 import { PerguntaEvento } from 'src/app/dominios/pergunta-evento';
 import { InscricaoResposta } from './../../../dominios/inscricao-resposta';
@@ -8,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Evento } from 'src/app/dominios/evento';
 import { Inscricao } from "src/app/dominios/inscricao";
 import { Usuario } from 'src/app/dominios/usuario';
-import { InscricaoService } from '../../../modulos/inscricao/servicos/inscricao.service';
 import { Pergunta } from 'src/app/dominios/pergunta';
 
 
@@ -22,7 +22,8 @@ export class InscricaoFormularioComponent implements OnInit {
   usuario = new Usuario();
   evento = new Evento();
   perguntas: Pergunta[] = [];
-  perguntasEventos: Pergunta[] =[];
+  perguntaSeparada: Pergunta[] = [];
+  perguntasEventos: PerguntaEvento[] =[];
   pergunta = new Pergunta;
   perguntaEvento: PerguntaEvento;
   @Input() inscricaoSalva = new EventEmitter<Inscricao>();
@@ -58,7 +59,7 @@ export class InscricaoFormularioComponent implements OnInit {
         this.inscricao.idEvento = params.id
       }
     });    
-    
+
     for (let resp of this.inscricoesResp) {
       this.inscricaoResposta = new InscricaoResposta;
       this.inscricaoResposta.idEvento = this.inscricao.idEvento;
@@ -66,22 +67,23 @@ export class InscricaoFormularioComponent implements OnInit {
       this.respostas.push(this.inscricaoResposta.resposta);
       this.inscricao.respostas.push(this.inscricaoResposta);
     };
-  }
+    this.buscarPerguntas();
+      }
 
 
   buscarEvento(id: number){
     this.inscricaoService.buscarEventoPorId(id)
       .subscribe(evento => {
         this.evento = evento
-      }); 
-    this.buscarPerguntas(this.evento);
+        this.perguntasEventos = this.evento.perguntas
+      })   
   }
 
-  buscarPerguntas(evento: Evento){
+  buscarPerguntas(){
     this.inscricaoService.getPerguntas()
     .subscribe((perguntas: Pergunta[]) => {
-      this.perguntas = perguntas
-    })
+      this.perguntas = perguntas;
+    });
   }
 
   salvar() {

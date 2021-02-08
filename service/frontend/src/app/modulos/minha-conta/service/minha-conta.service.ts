@@ -28,4 +28,8 @@ export class MinhaContaService {
   getEventos(): Observable<Evento[]>{
     return this.http.get<Evento[]>(`${this.urlEvento}`);
   }
+
+  deletarInscricao(id: number): Observable<Inscricao>{
+    return this.http.delete<Inscricao>(`${this.urlInscricao}/${id}`)
+  }
 }
