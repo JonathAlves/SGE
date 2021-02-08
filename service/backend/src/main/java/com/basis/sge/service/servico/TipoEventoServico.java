@@ -18,7 +18,6 @@ import java.util.List;
 public class TipoEventoServico {
 
     private final TipoEventoRepositorio tipoEventoRepositorio;
-
     private final TipoEventoMapper tipoEventoMapper;
 
 

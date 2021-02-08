@@ -1,0 +1,17 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(İâçÌıÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.PostMapping'.(äƒà°ùÿÿÿÿ
+S
+java:S1128"8Remove this unused import 'java.net.URISyntaxException'.(Ä®íÿÿÿÿÿ
+k
+java:S1128"PRemove this unused import 'org.springframework.web.bind.annotation.RequestBody'.(â­½Àıÿÿÿÿ
+j
+java:S1128"ORemove this unused import 'org.springframework.web.bind.annotation.PutMapping'.(›¥÷ˆûÿÿÿÿ
+?
+java:S1128")Remove this unused import 'java.net.URI'.(Ö¦¨°
+m
+java:S1128"RRemove this unused import 'org.springframework.web.bind.annotation.DeleteMapping'.(­ìÎªşÿÿÿÿ
+f
+java:S1128"KRemove this unused import 'com.basis.sge.service.servico.dto.InscricaoDTO'.(¤¤›ëüÿÿÿÿ

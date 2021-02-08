@@ -1,0 +1,48 @@
+input {
+  background-color: #fff;
+  border: 1px solid #000;
+}
+  
+p-table {
+  padding: 20px;
+}
+
+.btn{
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  margin: 5px;
+  transform: none;
+  border-radius: 10px;
+  bottom: 40px;
+}
+
+.p-button-danger {
+  background-color: rgb(233, 22, 22);
+  font-weight: bold;
+  border: none;
+  height: 40px;
+  margin: 5px;
+  transform: none;
+  border-radius: 10px;
+  bottom: 38px;
+}
+
+#table {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#table div input{
+  color: #000;
+  margin-left: 2px;
+}
+
+#table div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

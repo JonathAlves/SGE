@@ -4,12 +4,15 @@ import com.basis.sge.service.dominio.InscricaoResposta;
 import com.basis.sge.service.repositorio.InscricaoRepositorio;
 import com.basis.sge.service.repositorio.TipoSituacaoRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
+import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.InscricaoDTO;
 import com.basis.sge.service.servico.mapper.InscricaoMapper;
+import com.basis.sge.service.servico.producer.ProdutorServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,8 +23,7 @@ public class InscricaoServico {
     private final InscricaoMapper inscricaoMapper;
     private final TipoSituacaoRepositorio tipoSituacaoRepositorio;
     private final EmailServico emailServico;
-
-
+    private final ProdutorServico produtorServico;
 
 
     public List<InscricaoDTO> listar(){
@@ -37,7 +39,7 @@ public class InscricaoServico {
 
     public InscricaoDTO salvar(InscricaoDTO inscricaoDTO){
         verificaInscricaoExistente(inscricaoDTO.getIdUsuario(), inscricaoDTO.getIdEvento());
-        verificaTipoSituacao(inscricaoDTO.getIdTipoSituacao());
+//        verificaTipoSituacao(inscricaoDTO.getIdTipoSituacao());
 
         Inscricao inscricao = inscricaoMapper.toEntity(inscricaoDTO);
         List<InscricaoResposta> respostas = inscricao.getRespostas();
@@ -47,10 +49,9 @@ public class InscricaoServico {
             respostas.forEach(inscricaoResposta -> {
                 inscricaoResposta.setInscricao(inscricao);
             });
-            //eventoPerguntaRepositorio.saveAll(perguntas);
         }
-        emailServico.emailEnviarInscricao(inscricao);
         Inscricao novaInscricao = inscricaoRepositorio.save(inscricao);
+//        emailInscricao(inscricao);
         return inscricaoMapper.toDto(novaInscricao);
 
 
@@ -69,9 +70,21 @@ public class InscricaoServico {
         }
     }
 
-    public void verificaTipoSituacao(Integer idTipoSituacao) {
-        if(!tipoSituacaoRepositorio.existsById(idTipoSituacao)){
-            throw new RegraNegocioException("Esse Tipo de situação não existe");
+//    public void verificaTipoSituacao(Integer idTipoSituacao) {
+//        if(!tipoSituacaoRepositorio.existsById(idTipoSituacao)){
+//            throw new RegraNegocioException("Esse Tipo de situação não existe");
+//        }
+//    }
+//
+
+    public List<InscricaoDTO> buscarInscricaoPorIdEvento(Integer id){
+        List<InscricaoDTO> inscricoesPorIdEvento = new ArrayList<InscricaoDTO>();
+        List<InscricaoDTO> inscricoes = inscricaoMapper.toDto(inscricaoRepositorio.findAll());
+        for (InscricaoDTO inscricao: inscricoes) {
+            if(inscricao.getIdEvento() == id){
+                inscricoesPorIdEvento.add(inscricao);
+            }
         }
+        return inscricoesPorIdEvento;
     }
 }

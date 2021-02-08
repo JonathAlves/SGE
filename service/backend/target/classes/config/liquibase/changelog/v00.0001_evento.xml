@@ -89,7 +89,7 @@
             <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="telefone" type="VARCHAR(14)">
+            <column name="telefone" type="VARCHAR(20)">
                 <constraints nullable="true"/>
             </column>
             <column name="data_nascimento" type="DATE">
@@ -98,11 +98,14 @@
             <column name="chave" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
+            <column name="admin" type="Boolean">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
 
         <addPrimaryKey tableName="usuario" columnNames="id" constraintName="pk_usuario"/>
-        <createSequence sequenceName="sq_usuario"  incrementBy="1" startValue="1"/>
+        <createSequence sequenceName="sq_usuario"  incrementBy="1" startValue="2"/>
         <addUniqueConstraint tableName="usuario" columnNames="cpf" constraintName="un_usuario_cpf"/>
         <addUniqueConstraint tableName="usuario" columnNames="email" constraintName="un_usuario_email"/>
         <addUniqueConstraint tableName="usuario" columnNames="chave" constraintName="un_usuario_chave"/>
@@ -116,28 +119,27 @@
                 <constraints nullable="false"/>
             </column>
             <column name="descricao" type="VARCHAR(255)">
-                <constraints nullable="false"></constraints>
             </column>
         </createTable>
 
         <insert tableName="tipo_situacao">
-            <column name="id">1</column>
-            <column name="descricao">Aguardando aprovação</column>
+            <column name="id" value="1"/>
+            <column name="descricao" value="Aguardando aprovação"/>
         </insert>
 
         <insert tableName="tipo_situacao">
-            <column name="id">2</column>
-            <column name="descricao">Aprovada</column>
+            <column name="id" value="2"/>
+            <column name="descricao" value="Aprovada"/>
         </insert>
 
         <insert tableName="tipo_situacao">
-            <column name="id">3</column>
-            <column name="descricao">Recusada</column>
+            <column name="id" value="3"/>
+            <column name="descricao" value="Recusada"/>
         </insert>
 
         <insert tableName="tipo_situacao">
-            <column name="id">4</column>
-            <column name="descricao">Cancelada</column>
+            <column name="id" value="4"/>
+            <column name="descricao" value="Cancelada"/>
         </insert>
 
         <addPrimaryKey tableName="tipo_situacao" columnNames="id" constraintName="pk_tipo_situacao"/>
@@ -185,7 +187,7 @@
         </createTable>
 
         <addPrimaryKey tableName="inscricao" columnNames="id" constraintName="pk_inscricao"/>
-        <createSequence sequenceName="sq_inscricao" cycle="false" cacheSize="20" incrementBy="1" startValue="1"/>
+        <createSequence sequenceName="sq_inscricao" incrementBy="1" startValue="1"/>
         <addForeignKeyConstraint baseTableName="inscricao" baseColumnNames="id_evento"
                                  constraintName="fk_inscricao_evento" referencedTableName="evento"
                                  referencedColumnNames="id"/>
@@ -208,7 +210,7 @@
             <column name="id_pergunta" type="NUMBER" >
                 <constraints nullable="false"></constraints>
             </column>
-            <column name="respota" type="VARCHAR(255)" >
+            <column name="resposta" type="VARCHAR(255)" >
                 <constraints nullable="true"></constraints>
             </column>
 
@@ -243,5 +245,16 @@
     </changeSet>
 
 
-
+<changeSet id="10" author="tiago.santiago">
+    <insert tableName="usuario">
+        <column name="id" >1</column>
+        <column name="nome" >Admin</column>
+        <column name="cpf">68769981000</column>
+        <column name="email">equipe4basis@gmail.com</column>
+        <column name="telefone">558391955370</column>
+        <column name="data_nascimento">1999-01-01</column>
+        <column name="chave">admin</column>
+        <column name="admin">true</column>
+    </insert>
+</changeSet>
 </databaseChangeLog>

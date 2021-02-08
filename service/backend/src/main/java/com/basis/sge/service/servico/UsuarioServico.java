@@ -2,11 +2,13 @@ package com.basis.sge.service.servico;
 import com.basis.sge.service.dominio.Usuario;
 import com.basis.sge.service.repositorio.UsuarioRepositorio;
 import com.basis.sge.service.servico.Exception.RegraNegocioException;
+import com.basis.sge.service.servico.dto.ChaveDTO;
+import com.basis.sge.service.servico.dto.EmailDTO;
 import com.basis.sge.service.servico.dto.UsuarioDTO;
 import com.basis.sge.service.servico.mapper.UsuarioMapper;
+import com.basis.sge.service.servico.producer.ProdutorServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
@@ -15,10 +17,9 @@ import java.util.UUID;
 @Service
 @Transactional
 public class UsuarioServico {
-
     private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
-    private final EmailServico emailServico;
+    private final ProdutorServico produtorServico;
 
     public List<UsuarioDTO> listar() {
         List<Usuario> usuarios = usuarioRepositorio.findAll();
@@ -31,21 +32,43 @@ public class UsuarioServico {
         return usuarioMapper.toDto(usuario);
     }
 
+    public UsuarioDTO obterPorChave(ChaveDTO chaveDTO){
+        Usuario usuario = usuarioRepositorio.findByChave(chaveDTO.getChave());
+        if(usuario == null){
+            throw  new RegraNegocioException("Acesso do usuario não encontrado!");
+        }
+        return usuarioMapper.toDto(usuario);
+    }
 
-    public UsuarioDTO adicionar (UsuarioDTO usuarioDTO){
-        if(usuarioDTO.getId() != null){
-            obterPorId(usuarioDTO.getId());
-            verificarUsuarioAtualizar(usuarioDTO);
-             verificarUsuarioAtualizar(usuarioDTO);
-        }else
-            verificarUsuario(usuarioDTO);
+    public UsuarioDTO salvar(UsuarioDTO usuarioDTO){
+        verificarUsuario(usuarioDTO);
+        verificarCPF(usuarioDTO);
+        verificarEmail(usuarioDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         usuario.setChave(UUID.randomUUID().toString());
-        emailServico.emailEnviarCadastro(usuario);
-        Usuario usuarioSalvo = usuarioRepositorio.save(usuario);
-        return usuarioMapper.toDto(usuarioSalvo);
-
+        usuarioRepositorio.save(usuario);
+        emailCriarCadastro(usuario);
+        return usuarioMapper.toDto(usuario);
     }
+
+
+    public UsuarioDTO editar(UsuarioDTO usuarioDTO){
+        verificiarEditar(usuarioDTO);
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        usuarioRepositorio.save(usuario);
+        return usuarioMapper.toDto(usuario);
+    }
+
+
+    public void verificiarEditar(UsuarioDTO usuarioDTO) {
+        if (usuarioDTO.getId() != null) {
+            obterPorId(usuarioDTO.getId());
+            verificarCPF(usuarioDTO);
+            verificarEmail(usuarioDTO);
+        } else
+            throw  new RegraNegocioException("Usuario não encontrado!");
+    }
+
 
 
     public void remover(Integer id) {
@@ -54,36 +77,40 @@ public class UsuarioServico {
     }
 
 
-        public void verificarUsuario (UsuarioDTO usuarioDTO){
+    public void verificarUsuario (UsuarioDTO usuarioDTO){
 
-                     if (usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null)
-                        throw new RegraNegocioException("Email já cadastrado");
+        if (usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null)
+            throw new RegraNegocioException("Email já cadastrado");
 
-                    else if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf()) != null) {
-                        throw new RegraNegocioException("CPF já cadastrado");
-
-                    }
-                }
-
-
-
-
-
-        public void verificarUsuarioAtualizar (UsuarioDTO usuarioNovo){
-            UsuarioDTO usuarioAntigo = obterPorId(usuarioNovo.getId());
-
-            if (usuarioRepositorio.findByCpf(usuarioNovo.getCpf()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf())){
-                throw new RegraNegocioException("CPF já cadastrado!");
-            }
-
-            else if (usuarioRepositorio.findByEmail(usuarioNovo.getEmail()) != null && !usuarioAntigo.getCpf().equals(usuarioNovo.getCpf())){
-                throw new RegraNegocioException("Email já existente!");
-            }
-
+        else if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf()) != null) {
+            throw new RegraNegocioException("CPF já cadastrado");
 
         }
+    }
 
-        
+    private void verificarCPF(UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
+        if(usuario != null && !usuario.getId().equals(usuarioDTO.getId())) {
+            throw new RegraNegocioException("CPF já cadastrado");
+        }
+    }
+    public void verificarEmail (UsuarioDTO usuarioDTO){
+        Usuario usuario = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
+        if(usuario != null && !usuario.getId().equals(usuarioDTO.getId())) {
+            throw new RegraNegocioException("Email já cadastrado");
+        }
+
+    }
+
+    private  void  emailCriarCadastro(Usuario usuario){
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setAssunto("Cadastro SGE");
+        emailDTO.setCorpo("Obrigado por se cadastrar na nossa plataforma! Sua chave de acesso será: "  + usuario.getChave());
+        emailDTO.setDestinatario(usuario.getEmail());
+        this.produtorServico.enviarEmail(emailDTO);
+
+    }
+
 
 }
 

@@ -13,13 +13,22 @@ import { PageNotificationModule, BreadcrumbModule, MenuModule, ErrorStackModule 
 import { SecurityModule, VersionTagModule } from '@nuvem/angular-base';
 import { DiarioErrosComponent } from './components/diario-erros/diario-erros.component';
 import { BlockUIModule } from 'ng-block-ui';
+import {ToolbarModule} from 'primeng/toolbar';
+import {CardModule} from 'primeng/card';
+import {TabViewModule} from 'primeng/tabview';
+import {ButtonModule} from 'primeng/button';
+import { FormsModule } from '@angular/forms';
+import {DialogModule} from 'primeng/dialog';
+import {DataViewModule} from 'primeng/dataview';
 
 @NgModule({
     declarations: [
         AppComponent,
         AppTopbarComponent,
         AppFooterComponent,
-        DiarioErrosComponent
+        DiarioErrosComponent,
+
+
     ],
     imports: [
         BlockUIModule.forRoot({
@@ -35,7 +44,14 @@ import { BlockUIModule } from 'ng-block-ui';
         ErrorStackModule,
         VersionTagModule,
         SecurityModule.forRoot(environment.auth),
-        MenuModule
+        MenuModule,
+        ToolbarModule,
+        CardModule,
+        TabViewModule,
+        ButtonModule,
+        FormsModule,
+        DialogModule,
+        DataViewModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

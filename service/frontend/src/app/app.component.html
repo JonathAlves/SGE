@@ -13,19 +13,30 @@
             'layout-menu-static-inactive': menuService.staticMenuDesktopInactive,
             'layout-menu-static-active': menuService.staticMenuMobileActive
         }">
+        <div *ngIf="usuarioLogado">
         <app-topbar></app-topbar>
+        </div>
 
+        <div *ngIf="usuarioLogado">
         <div class="layout-menu" [ngClass]="{ 'layout-menu-dark': darkMenu }" (click)="onMenuClick($event)">
             <p-scrollPanel #scrollPanel [style]="{ height: '100%' }">
                 <app-menu></app-menu>
             </p-scrollPanel>
         </div>
+        </div>
 
         <div class="layout-main">
-            <breadcrumb></breadcrumb>
+
             <div class="layout-content">
-                <router-outlet></router-outlet>
+
+                <div *ngIf="usuarioLogado">
+                    <router-outlet [user]= "usuarioLogado"></router-outlet>
+                </div>
+                <div *ngIf="!usuarioLogado">
+                    <app-login (emitUsuario) = "logarUsuario($event)"></app-login>
+                </div>
                 <app-footer></app-footer>
+
             </div>
         </div>
         <basis-page-notification></basis-page-notification>

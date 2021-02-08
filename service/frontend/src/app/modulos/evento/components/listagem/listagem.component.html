@@ -1,0 +1,125 @@
+
+<div *ngIf="usuarioLogado?.admin" >
+<app-card [titulo]="'Lista de eventos'">
+
+    <div class="p-d-flex p-jc-end">
+        <button class="btn" pButton type="button" icon="pi pi-plus"  [routerLink]="['formulario']" pButton label="Evento"></button>
+        <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="deletarTodosEvento()" [disabled]="!selectedEvento || !selectedEvento.length"></button>
+    </div>
+
+    <p-table #ev [value]="eventos" [rows]="10" [paginator]="true" [globalFilterFields]="['titulo','country.titulo','representative.titulo','status']"
+    [(selection)]="selectedEvento" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div id="table" >
+                <h3 class="p-m-0">Eventos</h3>
+                <div>
+                    <input pInputText type="text" (input)="ev.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
+                </div>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox id="checbox"></p-tableHeaderCheckbox>
+                </th>
+                
+                <th pSortableColumn="titulo">Título <p-sortIcon field="titulo"></p-sortIcon></th>
+                <th pSortableColumn="inico">Inicio <p-sortIcon field="inico"></p-sortIcon></th>
+                <th pSortableColumn="termino">Término <p-sortIcon field="termino"></p-sortIcon></th>
+                <th pSortableColumn="valor">Valor <p-sortIcon field="valor"></p-sortIcon></th>
+                <th pSortableColumn="qtVagas">Vagas <p-sortIcon field="qtVagas"></p-sortIcon></th>
+                <th pSortableColumn="local">Local <p-sortIcon field="local"></p-sortIcon></th>
+
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-evento>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="evento"></p-tableCheckbox>
+                </td>
+                <td>{{evento.titulo}}</td>
+                <td>{{evento.dataInicio | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{evento.dataTermino | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{evento.valor | currency:'R$'}}</td>
+                <td>{{evento.qtVagas}}</td>
+                <td>{{evento.local}}</td>
+                <td>
+                    <button [routerLink]="['formulario', evento.id]" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
+                    <button (click)="deletarEvento(evento.id)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                Existem no total {{eventos ? eventos.length : 0 }} eventos.
+            </div>
+        </ng-template>
+    </p-table>
+    
+    <p-dialog [(visible)]="exibirDialog" [style]="{width: '450px'}" header="Evento Detalhes" styleClass="p-fluid">
+       <app-formulario></app-formulario>
+    </p-dialog>
+    
+    <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+       
+</app-card>
+</div>
+
+<div *ngIf="!usuarioLogado?.admin"> 
+   
+<app-card [titulo]="'Lista de eventos'">
+    
+    <p-table #ev [value]="eventos" [rows]="10" [paginator]="true" [globalFilterFields]="['titulo','country.titulo','representative.titulo','status']"
+    [(selection)]="selectedEvento" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                <h3 class="p-m-0">Eventos</h3>
+                <span class="p-input-icon-left">
+                    <input pInputText type="text" (input)="ev.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                    
+                <th pSortableColumn="titulo">Título <p-sortIcon field="titulo"></p-sortIcon></th>
+                <th pSortableColumn="inico">Inicio <p-sortIcon field="inico"></p-sortIcon></th>
+                <th pSortableColumn="termino">Término <p-sortIcon field="termino"></p-sortIcon></th>
+                <th pSortableColumn="valor">Valor <p-sortIcon field="valor"></p-sortIcon></th>
+                <th pSortableColumn="qtVagas">Vagas <p-sortIcon field="qtVagas"></p-sortIcon></th>
+                <th pSortableColumn="local">Local <p-sortIcon field="local"></p-sortIcon></th>
+                <th pSortableColumn="descricao">Descrição <p-sortIcon field="descricao"></p-sortIcon></th>
+                <th pSortableColumn="descricao"></th>
+    
+                
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-evento>
+            <tr>
+                <td>{{evento.titulo}}</td>
+                <td>{{evento.dataInicio | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{evento.dataTermino | date: 'dd/MM/yyyy HH:mm'}}</td>
+                <td>{{evento.valor | currency:'R$'}}</td>
+                <td>{{evento.qtVagas}}</td>
+                <td>{{evento.local}}</td>  
+                <td>{{evento.descricao}}</td>   
+                <td>
+                    <button [routerLink]="['/inscricoes/formulario', evento.id]" pButton pRipple label="Ver" class="p-button-rounded p-button-warning" ></button>
+                </td>      
+            </tr>
+            
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="p-d-flex p-ai-center p-jc-between">
+                Existem no total {{eventos ? eventos.length : 0 }} eventos.
+            </div>
+        </ng-template>
+    </p-table>
+    
+       
+           
+</app-card>
+</div>

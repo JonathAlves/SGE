@@ -1,0 +1,17 @@
+<div class="box">
+    <h2 class="title title-primary">Login</h2>
+    <input class="ui-g-12 ui-fluid" [(ngModel)]="chaveInput" type="text" pInputText placeholder="Insira sua chave de inscrição" />
+    <button class="p-ml-2" pButton (click)="logarUsuario(chaveInput)" type="button" class="p-button-sm">
+        <span>Entrar</span>
+    </button>
+    <button class="p-ml-2" pButton (click)="mostrarDialog()" type="button" class="p-button-sm">
+        <span>Cadastrar</span>
+    </button>
+</div>
+
+    <p-dialog header="Novo Usuario" [(visible)]="exibirDialog">
+        <app-formulario-usuario
+        [edicao]="formularioLogin"
+      (usuarioSalvo)="fecharDialog($event)"
+    ></app-formulario-usuario>
+    </p-dialog>

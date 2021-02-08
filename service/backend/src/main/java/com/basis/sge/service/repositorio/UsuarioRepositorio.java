@@ -10,11 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface UsuarioRepositorio extends JpaRepository<Usuario, Integer> {
 
-      Boolean  findByCpf(String cpf);
-      Boolean  findByEmail(String email);
-
-
-
+      Usuario findByCpf(String cpf);
+      Usuario findByEmail(String email);
+      Usuario findByChave(String chave);
 
 
 }
