@@ -5,8 +5,8 @@
 /home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/recurso/EventoRecursoIT.java
 /home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/recurso/UsuarioRecursoIT.java
 /home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/builder/CustomizacaoEntidade.java
-/home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/builder/UsuarioBuilder.java
 /home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/builder/ConstrutorDeEntidade.java
+/home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/builder/UsuarioBuilder.java
 /home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/recurso/PerguntaRecursoIT.java
 /home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/builder/InscricaoBuilder.java
 /home/basis/SGE/service/backend/src/test/java/com/basis/sge/service/util/TestUtil.java

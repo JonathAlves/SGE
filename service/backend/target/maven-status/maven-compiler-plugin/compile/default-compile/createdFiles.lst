@@ -56,11 +56,11 @@ com/basis/sge/service/servico/dto/InscricaoDTO.class
 com/basis/sge/service/servico/mapper/InscricaoMapper.class
 com/basis/sge/service/repositorio/EventoRepositorio.class
 com/basis/sge/service/servico/mapper/EntityMapper.class
-com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/servico/TipoSituacaoServico.class
+com/basis/sge/service/servico/dto/EventoPerguntaDTO.class
 com/basis/sge/service/repositorio/TipoEventoRepositorio.class
 com/basis/sge/service/servico/InscricaoServico.class
 com/basis/sge/service/recurso/TipoSituacaoRecurso.class
 com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.class
-com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class
 com/basis/sge/service/servico/TipoEventoServico.class
+com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class

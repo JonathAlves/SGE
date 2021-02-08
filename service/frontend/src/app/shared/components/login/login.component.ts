@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Usuario } from 'src/app/dominios/usuario';
 import { Chave } from 'src/app/dominios/chave';
 import { UsuarioService } from '../services/usuario.service';
-import { Router } from '@angular/router';
+import { MessageService } from 'primeng';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
     @Output() emitUsuario: EventEmitter<Usuario> = new EventEmitter
+    mostrarMenu: boolean = false;
     exibirDialog = false;
     formularioLogin: boolean;
     chaveInput: string;
@@ -22,12 +23,13 @@ export class LoginComponent implements OnInit {
 
 
 
-    constructor(public usuarioService: UsuarioService, private fbuilder: FormBuilder, private router: Router) { }
+
+    constructor(public usuarioService: UsuarioService, private fbuilder: FormBuilder, private messageService: MessageService) { }
 
     ngOnInit(): void {
+      this.formChave = this.fbuilder.group({ chave: '' })
       this.pegarUsuarioLocal();
 
-      this.formChave = this.fbuilder.group({ chave: '' })
 
     }
 
@@ -50,11 +52,15 @@ export class LoginComponent implements OnInit {
         this.usuarioService.buscarUsuarioPorChave(this.chave).subscribe((usuario :Usuario)=>{
           this.emitUsuario.emit(usuario);
           localStorage.setItem("usuario", JSON.stringify(usuario));
-          //this.router.navigate(['/']);
+          this.messageService.add({severity:'success', summary: 'Successo', detail:'Usuario Logado com sucesso!  ', life: 3000});
+          return;
+
 
         })
 
       }
+
+
 
       logout(){
         localStorage.clear()

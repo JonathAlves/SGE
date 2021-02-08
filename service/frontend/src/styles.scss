@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    justify-content: center;
 }
 body .ui-button.ui-button-text-only .ui-button-text {
     padding: 0 1em !important;
@@ -12,11 +12,35 @@ body .ui-button.ui-button-text-only .ui-button-text {
 }
 
 body .ui-widget, body .ui-widget .ui-widget{
-    
+
     border-radius: 15px;
+    justify-content: center;
 
 }
 
+/*body .ui-table .ui-table-thead > tr > th {
+    padding: 0.571em 0.857em;
+    border: 1px solid black;
+    font-weight: 700;
+    color: #FFF;
+    background-color: black;
+}*/
+/*body .ui-table .ui-table-caption, body .ui-table .ui-table-summary {
+    color: #FFF;
+    text-align: center;
+    height: 75px;
+    background-image: linear-gradient(#212121,#333333);
+    border-color: #212121;
+    border-bottom: 0 none;
+
+}*/
+input {
+    height: 35px;
+    border-radius: 10px;
+    border-style: solid;
+    border-image: none;
+    border-width: thin;
+}
 body .ui-button.ui-button-text-icon-left{
     padding-left: 0.4em;
 }
@@ -45,10 +69,9 @@ body .ui-paginator .ui-paginator-current {
 
 body .ui-table .ui-table-tbody > tr > td {
     background-color: inherit;
-    border: 1px solid #c8c8c8;
+    border: 1px solid ;
     transition: box-shadow 0.2s;
     text-align: left;
-    border: 1px solid #e9ecef;
     border-width: 0 0 1px 0;
     padding: 1rem 1rem;
 }
@@ -56,19 +79,24 @@ body .ui-table .ui-table-tbody > tr > td {
 body .ui-table .ui-table-thead > tr > th {
     text-align: left;
     padding: 0.571em 0.857em;
-    border: 1px solid #c8c8c8;
+    border: 1px solid ;
     font-weight: 700;
-    color: #333333;
-    background-color: #f4f4f4;
+    color: #FFF;
+    background-color: black;
     border-width: 0 0 1px 0;
 }
 
 body .ui-table .ui-table-caption {
     border-bottom: 0 none;
-    background: #f8f9fa;
-    color: #495057;
-    border: 1px solid #e9ecef;
+    color: #FFF;
+    border: 1px solid black;
     border-width: 1px 0 1px 0;
     padding: 1rem 1rem;
     font-weight: 600;
+    background-image: linear-gradient(#212121,#333333);
+}
+
+body .ui-paginator .ui-paginator-pages .ui-paginator-page.ui-state-active {
+    background-color: #0f0f0f;
+    color: #ffffff;
 }

@@ -89,7 +89,7 @@
             <column name="email" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="telefone" type="VARCHAR(14)">
+            <column name="telefone" type="VARCHAR(20)">
                 <constraints nullable="true"/>
             </column>
             <column name="data_nascimento" type="DATE">
@@ -249,9 +249,9 @@
     <insert tableName="usuario">
         <column name="id" >1</column>
         <column name="nome" >Admin</column>
-        <column name="cpf">80781713072</column>
+        <column name="cpf">68769981000</column>
         <column name="email">equipe4basis@gmail.com</column>
-        <column name="telefone">91955370</column>
+        <column name="telefone">558391955370</column>
         <column name="data_nascimento">1999-01-01</column>
         <column name="chave">admin</column>
         <column name="admin">true</column>

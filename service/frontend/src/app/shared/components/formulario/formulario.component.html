@@ -1,4 +1,4 @@
-<app-card class="titulo"  [titulo]="'Cadastro'">
+<app-card class="titulo">
 <form [formGroup]="formUsuario">
 
     <div class="p-grid p-dir-col">
@@ -11,31 +11,34 @@
 
         <label class="label-input">
             <i class="pi pi-id-card icon-modify"></i>
-            <input pTooltip="Insira seu CPF" type="text" [(ngModel)]="usuario.cpf" placeholder="CPF" formControlName="cpf" pInputText />
+            <p-inputMask pTooltip="Insira seu CPF" [(ngModel)]="usuario.cpf" mask="999.999.999-99" characterPattern="[А-Яа-я]" placeholder="000.000.000-00" formControlName="cpf" ></p-inputMask>
+
 
         </label>
 
-      <label class="label-input">
-        <i class="pi pi-envelope icon-modify"></i>
-        <input type="text" pTooltip="Insira seu Email" [(ngModel)]="usuario.email" placeholder="Email" formControlName="email" pInputText />
+        <label class="label-input">
+            <i class="pi pi-envelope icon-modify"></i>
+            <input type="text" pTooltip="Insira seu Email" [(ngModel)]="usuario.email" placeholder="Email" formControlName="email" pInputText />
+
+
 
       </label>
 
     <label class="label-input">
         <i class="pi pi-mobile icon-modify"></i>
-        <input type="text" pTooltip="Insira seu Telefone" [(ngModel)]="usuario.telefone" placeholder="telefone" formControlName="telefone" pInputText>
+        <p-inputMask  pTooltip="Insira seu Telefone" [(ngModel)]="usuario.telefone" mask="+55(99) 9999-9999" characterPattern="[А-Яа-я]" placeholder="+55(00) 0000-0000" formControlName="telefone" ></p-inputMask>
 
     </label>
 
     <label class="label-input">
         <i class="pi pi-calendar-plus icon-modify"></i>
-        <input type="text" pTooltip="Insira sua Data de Nascimento" [(ngModel)]="usuario.dataNascimento"  placeholder="Data de Nascimento" formControlName="dataNascimento" pInputText />
+        <input type="date" pTooltip="Data de Nascimento"  [(ngModel)]="usuario.dataNascimento"   formControlName="dataNascimento">
     </label>
 
     </div>
 
   </form>
-  <button class="btnCadastrar" (click)="salvar()" pButton type="button" [label]="edicao ? 'Editar' : 'Cadastrar'" ></button>
-  
+  <button class="btnCadastrar" (click)="salvar()" pButton type="submit" [label]="edicao ? 'Editar' : 'Cadastrar'" [disabled]="formUsuario.invalid" ></button>
+
 
 </app-card>

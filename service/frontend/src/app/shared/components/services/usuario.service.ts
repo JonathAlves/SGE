@@ -9,7 +9,6 @@ import { Chave } from 'src/app/dominios/chave';
 export class UsuarioService {
   url = `${environment.apiUrl}/usuarios`;
 
-  mostrarMenu = new EventEmitter<boolean>();
 
   constructor( private  http: HttpClient) { }
 

@@ -3,7 +3,7 @@
 <app-card [titulo]="'Lista de eventos'">
 
     <div class="p-d-flex p-jc-end">
-        <button class="btn" pButton type="button" icon="pi pi-plus"  (click)="mostrarDialog()" pButton label="Evento"></button>
+        <button class="btn" pButton type="button" icon="pi pi-plus"  [routerLink]="['formulario']" pButton label="Evento"></button>
         <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="deletarTodosEvento()" [disabled]="!selectedEvento || !selectedEvento.length"></button>
     </div>
 
@@ -14,7 +14,6 @@
             <div id="table" >
                 <h3 class="p-m-0">Eventos</h3>
                 <div>
-                    <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="ev.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
                 </div>
             </div>
@@ -32,7 +31,6 @@
                 <th pSortableColumn="qtVagas">Vagas <p-sortIcon field="qtVagas"></p-sortIcon></th>
                 <th pSortableColumn="local">Local <p-sortIcon field="local"></p-sortIcon></th>
 
-
                 <th></th>
             </tr>
         </ng-template>
@@ -49,8 +47,9 @@
                 <td>{{evento.local}}</td>
               
                 <td class="p-d-flex p-jc-center">
-                    <button (click)="mostrarDialogEditar(evento.id)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
+                    <button [routerLink]="['formulario', evento.id]" pButton type="button" icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
                     <button (click)="deletarEvento(evento.id)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button>
+                    <button [routerLink]="['/inscricoes/formulario', evento.id]" pButton pRipple icon="pi pi-link" class="p-button-rounded p-button-warning" ></button>
                 </td>
             </tr>
         </ng-template>
@@ -71,8 +70,8 @@
 </div>
 
 <div *ngIf="!usuarioLogado?.admin"> 
+   
 <app-card [titulo]="'Lista de eventos'">
-    
     
     <p-table #ev [value]="eventos" [rows]="10" [paginator]="true" [globalFilterFields]="['titulo','country.titulo','representative.titulo','status']"
     [(selection)]="selectedEvento" [rowHover]="true" dataKey="id"
@@ -81,7 +80,6 @@
             <div class="p-d-flex p-ai-center p-jc-between">
                 <h3 class="p-m-0">Eventos</h3>
                 <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="ev.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
                 </span>
             </div>
@@ -95,8 +93,7 @@
                 <th pSortableColumn="valor">Valor <p-sortIcon field="valor"></p-sortIcon></th>
                 <th pSortableColumn="qtVagas">Vagas <p-sortIcon field="qtVagas"></p-sortIcon></th>
                 <th pSortableColumn="local">Local <p-sortIcon field="local"></p-sortIcon></th>
-                <th pSortableColumn="tipoInscricao">Inscrição <p-sortIcon field="tipoInscricao"></p-sortIcon></th>
-                <th pSortableColumn="idTipoEvento">Tipo <p-sortIcon field="idTipoEvento"></p-sortIcon></th>
+                <th pSortableColumn="descricao">Descrição <p-sortIcon field="descricao"></p-sortIcon></th>
     
                 
             </tr>
@@ -108,13 +105,8 @@
                 <td>{{evento.dataTermino | date: 'dd/MM/yyyy HH:mm'}}</td>
                 <td>{{evento.valor | currency:'R$'}}</td>
                 <td>{{evento.qtVagas}}</td>
-                <td>{{evento.local}}</td>
-                <td>{{evento.tipoInscricao}}</td>
-                <td>{{evento.idTipoEvento}}</td>
-                <td class="p-d-flex p-jc-center">
-                    <button pButton pRipple type="button" label="Ver" [routerLink]="['/inscricoes/formulario', evento.id]"  class="p-button-rounded p-button-danger" style="bottom: 5px;right: 30px;"></button>
-                </td>
-
+                <td>{{evento.local}}</td>  
+                <td>{{evento.descricao}}</td>         
             </tr>
             
         </ng-template>

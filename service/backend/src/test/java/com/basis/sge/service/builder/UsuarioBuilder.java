@@ -36,7 +36,7 @@ public class UsuarioBuilder extends ConstrutorDeEntidade<Usuario> {
     @Override
     protected Usuario persistir(Usuario entidade) {
         UsuarioDTO usuarioDTO = usuarioMapper.toDto(entidade);
-        UsuarioDTO salvo = usuarioServico.adicionar(usuarioDTO);
+        UsuarioDTO salvo = usuarioServico.salvar(usuarioDTO);
         return usuarioMapper.toEntity(salvo);
     }
 
