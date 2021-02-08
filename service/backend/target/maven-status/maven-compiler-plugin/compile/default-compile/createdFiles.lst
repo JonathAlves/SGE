@@ -3,6 +3,7 @@ com/basis/sge/service/servico/dto/TipoSituacaoDTO.class
 com/basis/sge/service/repositorio/InscricaoRepositorio.class
 com/basis/sge/service/servico/dto/ChaveDTO.class
 com/basis/sge/service/recurso/EventoRecurso.class
+com/basis/sge/service/servico/dto/ChaveDTO.class
 com/basis/sge/service/servico/mapper/PerguntaMapper.class
 com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.class
 com/basis/sge/service/servico/dto/UsuarioDTO.class
@@ -13,8 +14,8 @@ com/basis/sge/service/servico/mapper/UsuarioMapper.class
 com/basis/sge/service/dominio/Pergunta.class
 com/basis/sge/service/servico/ConsumidorService.class
 com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.class
-com/basis/sge/service/servico/mapper/TipoEventoMapper.class
 com/basis/sge/service/servico/dto/InscricaoRespostaDTO.class
+com/basis/sge/service/servico/mapper/TipoEventoMapper.class
 com/basis/sge/service/dominio/Inscricao.class
 com/basis/sge/service/repositorio/EventoPerguntaRepositorio.class
 com/basis/sge/service/servico/dto/EmailDTO.class

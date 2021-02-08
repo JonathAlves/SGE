@@ -4,13 +4,10 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Inscricao } from 'src/app/dominios/inscricao';
-import { map } from 'rxjs/operators';
 import { Pergunta } from 'src/app/dominios/pergunta';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class InscricaoService {
 
   url = `${environment.apiUrl}/inscricoes`;
@@ -39,7 +36,14 @@ export class InscricaoService {
     return this.http.get<Inscricao[]>(`${this.url}`);
   }
 
+  getPerguntas(): Observable<Pergunta[]>{
+    return this.http.get<Pergunta[]>(`${this.urlPergunta}`);
+  }
+
   deletarInscricao(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
+  }
+  getEventos(): Observable<Evento[]>{
+    return this.http.get<Evento[]>(`${this.urlEvento}`);
   }
 }

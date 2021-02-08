@@ -1,8 +1,22 @@
-<app-card class="titulo"  [titulo]="'Inscrição'">
-    <form [formGroup]="formInscricao">
-        <div class="p-grid p-dir-col">
-            <!-- <input type="text" pInputText [(ngModel)]="inscricaoResposta." placeholder="Resposta" formControlName="resposta1"/> -->
-        </div>
-    </form>
-</app-card>
-<button class="btInscrever" (click)="salvar()" pButton pRipple type="button" label="Inscrever-se"></button>
+<p-card class="p-jc-center" header="{{evento.titulo}}" subheader="{{evento.descricao}}">
+    <p><b>Data:</b> {{evento.dataInicio | date:'dd/MM/yyyy'}} às {{evento.dataInicio | date: 'H:mm'}} horas</p>
+    <p><b>Encerramento:</b> {{evento.dataTermino | date:'dd/MM/yyyy'}} às {{evento.dataTermino | date: 'H:mm'}} horas</p>
+    <p><b>Local:</b> {{evento.local}}</p> 
+    <div *ngIf="evento.tipoInscricao == false" class="preco" style="text-align: center;">Preço: R$ 00.00</div>
+    <div *ngIf="evento.tipoInscricao == true" class="preco" style="text-align: center;">Preço: R$ {{evento.valor}}</div>
+</p-card>
+
+
+<form [formGroup]="formInscricao">
+    <div class="p-field">
+            <label for="pergunta" *ngFor="let pergunta of perguntas; let i = index" style="margin: 10px;">
+                <td>                    
+                    <b>Pergunta {{i+1}}</b>: {{pergunta.titulo}}
+                    <input  id="resposta" type="text" pInputText [(ngModel)]="inscricao.respostas" placeholder="Resposta" formControlName="resposta[i]"/>
+                </td>
+            </label>
+    </div>
+</form>
+
+
+<button class="btInscrever" (click)="salvar()" pButton pRipple type="button" label="Inscrever-se" style="position: right;"></button>  

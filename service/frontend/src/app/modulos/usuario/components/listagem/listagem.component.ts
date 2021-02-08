@@ -1,5 +1,7 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { ConfirmationService } from 'primeng';
+import { Evento } from 'src/app/dominios/evento';
+import { Inscricao } from 'src/app/dominios/inscricao';
 import { Usuario } from 'src/app/dominios/usuario';
 import { UsuarioService } from 'src/app/shared/components/services/usuario.service';
 
@@ -16,7 +18,12 @@ export class ListagemComponent implements OnInit {
   exibirDialog = false;
   formularioEdicao: boolean;
 
+
+  eventoLogado: Evento[] = [];
   usuarioLogado: Usuario;
+  inscricoes: Inscricao[] = [];
+  eventos: Evento[] = [];
+  evento: Evento;
 
   constructor(
     private servico: UsuarioService,
@@ -25,9 +32,8 @@ export class ListagemComponent implements OnInit {
 
   ngOnInit(): void {
     this.buscarUsuarioLogado();
-    this.buscarUsuarios();
-    
-    
+    this.buscarUsuarios();    
+    this.buscarInscricoes();  
   }
 
 
@@ -50,8 +56,22 @@ export class ListagemComponent implements OnInit {
       });
   }
 
- 
+  buscarEvento(){
+    this.inscricoes.forEach(inscricao => {
+      this.servico.buscarEventoPorId(inscricao.idEvento).
+      subscribe(evento => {
+        this.evento = evento
+      })
+    });
+  }
 
+  buscarInscricoes(){
+    this.servico.getInscricoes()
+    .subscribe((inscricoes: Inscricao[]) => {
+      this.inscricoes = inscricoes
+    })
+    
+  }
 
   mostrarDialogEditar(id: number) {
     this.servico.buscarUsuarioPorId(id)

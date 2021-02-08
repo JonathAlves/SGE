@@ -2,8 +2,10 @@ input{
     margin: 20px;
 }
 
-.p-button-rounded{
-
+.p-field{
+    background-color :#201a1a;
+    border-radius: 10px;
+    color: white;
 }
 
 .btInscrever{
@@ -15,3 +17,20 @@ input{
     transform: none;
     border-radius: 10px;
 }
+
+.preco{
+    background-color :#228B22;
+    color: rgb(255, 255, 255);
+    border: none;
+    height: 40px;
+    margin: 15px;
+    transform: none;
+    border-radius: 20px;
+    font-weight: bolder;
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+
