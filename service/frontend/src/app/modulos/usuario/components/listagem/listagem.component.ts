@@ -36,7 +36,6 @@ export class ListagemComponent implements OnInit {
     this.buscarInscricoes();  
   }
 
-
   buscarUsuarioLogado(){
     this.usuarioLogado = JSON.parse(localStorage.getItem('usuario')) as Usuario;
   }
@@ -56,14 +55,6 @@ export class ListagemComponent implements OnInit {
       });
   }
 
-  buscarEvento(){
-    this.inscricoes.forEach(inscricao => {
-      this.servico.buscarEventoPorId(inscricao.idEvento).
-      subscribe(evento => {
-        this.evento = evento
-      })
-    });
-  }
 
   buscarInscricoes(){
     this.servico.getInscricoes()

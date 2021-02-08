@@ -80,26 +80,6 @@
             <ng-template pTemplate="caption">
                 Meus eventos
             </ng-template>
-            <ng-template pTemplate="header">
-                <tr>
-                    <th>Evento</th>
-                    <th>Descricao</th>
-                    <th>Local</th>
-                    <th>Data</th>
-                    <th style="width: 80px;">Ações</th>
-                </tr>
-            </ng-template>
-            <ng-template pTemplate="body" let-inscricao>
-                <tr>
-                    <td >{{evento.titulo}}</td>
-                    <td >{{evento.descricao}}</td>
-                    <td >{{evento.local}}</td>
-                    <td >{{evento.dataInicio | date: 'dd/MM/yyyy'}}</td>
-                    <td class="p-d-flex p-jc-center">
-                        <!-- <button [routerLink]="['formulario', usuario.id]" pButton type="button" icon="pi pi-pencil"></button> -->
-                        <button (click)="mostrarDialogEditar(usuario.id)" class="p-ml-2"  pButton type="button" icon="pi pi-pencil"></button>
-                </tr>
-            </ng-template>
         </p-table>
     </div>
     <button class="p-ml-2" type="button" [routerLink]="['/inscricoes']" pButton label="Inscricoes"></button>

@@ -86,7 +86,7 @@ export class ListagemComponent implements OnInit {
   });
   }
 
-  deletarEvento(id?: number) {
+  deletarEvento(id: number) {
     this.confirmationService.confirm({
       message: 'Você tem certeza que quer deletar este evento?',
       header: 'Confirme',
@@ -96,9 +96,7 @@ export class ListagemComponent implements OnInit {
           this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Deletado', life: 3000});
           this.buscarEventos();
         }, err => alert(err));
-        
       }
-  });
+    });
   }
-
 }

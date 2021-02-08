@@ -83,7 +83,7 @@
             <column name="nome" type="VARCHAR(255)">
                 <constraints nullable="false"/>
             </column>
-            <column name="cpf" type="VARCHAR(11)">
+            <column name="cpf" type="VARCHAR(14)">
                 <constraints nullable="false"/>
             </column>
             <column name="email" type="VARCHAR(255)">
