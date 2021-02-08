@@ -6,8 +6,8 @@ com/basis/sge/service/recurso/PerguntaRecursoIT.class
 com/basis/sge/service/builder/InscricaoBuilder.class
 com/basis/sge/service/recurso/TipoEventoRecursoIT.class
 com/basis/sge/service/util/TestUtil$ZonedDateTimeMatcher.class
-com/basis/sge/service/ServiceApplicationTests.class
 com/basis/sge/service/recurso/InscricaoRecursoIT.class
+com/basis/sge/service/ServiceApplicationTests.class
 com/basis/sge/service/builder/EventoBuilder.class
 com/basis/sge/service/builder/PerguntaBuilder.class
 com/basis/sge/service/builder/UsuarioBuilder.class
