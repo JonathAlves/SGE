@@ -51,7 +51,6 @@
                 <td class="p-d-flex p-jc-center">
                     <button (click)="mostrarDialogEditar(evento.id)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2"></button>
                     <button (click)="deletarEvento(evento.id)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" ></button>
-                    <button [routerLink]="['/inscricoes/formulario', evento.id]" pButton pRipple icon="pi pi-link" class="p-button-rounded p-button-warning" ></button>
                 </td>
             </tr>
         </ng-template>
@@ -96,7 +95,7 @@
                 <th pSortableColumn="valor">Valor <p-sortIcon field="valor"></p-sortIcon></th>
                 <th pSortableColumn="qtVagas">Vagas <p-sortIcon field="qtVagas"></p-sortIcon></th>
                 <th pSortableColumn="local">Local <p-sortIcon field="local"></p-sortIcon></th>
-                <th pSortableColumn="tipoInscricao">Inscrião <p-sortIcon field="tipoInscricao"></p-sortIcon></th>
+                <th pSortableColumn="tipoInscricao">Inscrição <p-sortIcon field="tipoInscricao"></p-sortIcon></th>
                 <th pSortableColumn="idTipoEvento">Tipo <p-sortIcon field="idTipoEvento"></p-sortIcon></th>
     
                 
@@ -112,7 +111,10 @@
                 <td>{{evento.local}}</td>
                 <td>{{evento.tipoInscricao}}</td>
                 <td>{{evento.idTipoEvento}}</td>
-           
+                <td class="p-d-flex p-jc-center">
+                    <button pButton pRipple type="button" label="Ver" [routerLink]="['/inscricoes/formulario', evento.id]"  class="p-button-rounded p-button-danger" style="bottom: 5px;right: 30px;"></button>
+                </td>
+
             </tr>
             
         </ng-template>

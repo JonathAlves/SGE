@@ -1,3 +1,4 @@
+import { PerguntaService } from 'src/app/modulos/pergunta/services/pergunta.service';
 import { PerguntaEvento } from 'src/app/dominios/pergunta-evento';
 import { InscricaoResposta } from './../../../dominios/inscricao-resposta';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -20,24 +21,31 @@ export class InscricaoFormularioComponent implements OnInit {
   
   usuario = new Usuario();
   evento = new Evento();
+  perguntas: Pergunta[] = [];
+  perguntasEventos: Pergunta[] =[];
+  pergunta = new Pergunta;
   perguntaEvento: PerguntaEvento;
-  pergunta = new Pergunta();
   @Input() inscricaoSalva = new EventEmitter<Inscricao>();
   @Input() inscricao = new Inscricao;
-  usuarios: Usuario
+  usuarios: Usuario;
   formInscricao: FormGroup;
   inscricaoResposta: InscricaoResposta;
-  
+  inscricoesResp: InscricaoResposta[] = [];
+  perguntaService: PerguntaService;
+  respostas: string[];
 
   constructor(
     private fb: FormBuilder,
     private inscricaoService: InscricaoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
     this.inscrever();
-    // this.buscarPergunta();
+
+    this.formInscricao = this.fb.group({
+      resposta: ''
+    })
   }
   
   inscrever(){
@@ -49,18 +57,33 @@ export class InscricaoFormularioComponent implements OnInit {
         this.buscarEvento(params.id)
         this.inscricao.idEvento = params.id
       }
-    });      
+    });    
+    
+    for (let resp of this.inscricoesResp) {
+      this.inscricaoResposta = new InscricaoResposta;
+      this.inscricaoResposta.idEvento = this.inscricao.idEvento;
+      this.inscricaoResposta.idPergunta = resp.idPergunta;
+      this.respostas.push(this.inscricaoResposta.resposta);
+      this.inscricao.respostas.push(this.inscricaoResposta);
+    };
   }
 
-  
 
   buscarEvento(id: number){
     this.inscricaoService.buscarEventoPorId(id)
       .subscribe(evento => {
         this.evento = evento
       }); 
+    this.buscarPerguntas(this.evento);
   }
-  
+
+  buscarPerguntas(evento: Evento){
+    this.inscricaoService.getPerguntas()
+    .subscribe((perguntas: Pergunta[]) => {
+      this.perguntas = perguntas
+    })
+  }
+
   salvar() {
       this.inscricaoService.salvarInscricao(this.inscricao)
         .subscribe(inscricao => {

@@ -1,7 +1,7 @@
 import { MinhaContaService } from './../../service/minha-conta.service';
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Usuario } from 'src/app/dominios/usuario';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { UsuarioService } from 'src/app/shared/components/services/usuario.service';
 import { Inscricao } from 'src/app/dominios/inscricao';

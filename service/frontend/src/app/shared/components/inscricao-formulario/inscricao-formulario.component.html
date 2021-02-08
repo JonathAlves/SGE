@@ -1,19 +1,24 @@
-<p-card class="ui-g-12" header="{{evento.titulo}}" subheader="{{evento.descricao}}" [style]="{width: '1000px'}" styleClass="p-card-shadow">
-    <p><b>Data:</b> {{evento.dataInicio | date:'dd/mm/yyyy'}} às {{evento.dataInicio | date: 'h:mm'}} horas</p>
-    <p><b>Encerramento:</b> {{evento.dataTermino | date:'dd/mm/yyyy'}} às {{evento.dataInicio | date: 'h:mm'}} horas</p>
-    <p><b>Local:</b> {{evento.local}}</p>
-    <span>{{pergunta.titulo}}</span>
-    <form [formGroup]="formInscricao">
-        
-        <div class="p-col-12 p-md-6 p-lg-4">
-
-        </div>
-    </form>
-    
-    <div class="p-d-inline-flex">Preço: R$ {{evento.valor}}</div>
-    <button class="btInscrever" (click)="salvar()" pButton pRipple type="button" label="Inscrever-se"></button>
-    
+<p-card class="ui-g-12" header="{{evento.titulo}}" subheader="{{evento.descricao}}">
+    <p><b>Data:</b> {{evento.dataInicio | date:'dd/MM/yyyy'}} às {{evento.dataInicio | date: 'H:mm'}} horas</p>
+    <p><b>Encerramento:</b> {{evento.dataTermino | date:'dd/MM/yyyy'}} às {{evento.dataTermino | date: 'H:mm'}} horas</p>
+    <p><b>Local:</b> {{evento.local}}</p> 
 </p-card>
 
 
+<form [formGroup]="formInscricao">
+        
+    <div class="ui-fluid">
+            <label for="pergunta" *ngFor="let pergunta of perguntas; let i = index" style="margin: 20px;">
+                <td>
+                    <b>Pergunta {{i+1}}</b>: {{pergunta.titulo}}
+                    <input  id="resposta" type="text" pInputText [(ngModel)]="inscricao.respostas" placeholder="Resposta" formControlName="resposta[i]"/>
+                </td>
+            </label>
+    </div>
+</form>
 
+<p-card class="ui-g-12"> 
+    <div *ngIf="evento.tipoInscricao == false" class="p-d-inline-flex" style="position: right;">Preço: R$ 00.00</div>
+    <div *ngIf="evento.tipoInscricao == true" class="p-d-inline-flex" style="position: right;">Preço: R$ {{evento.valor}}</div>
+    <button class="btInscrever" (click)="salvar()" pButton pRipple type="button" label="Inscrever-se" style="position: right;"></button>  
+</p-card>
