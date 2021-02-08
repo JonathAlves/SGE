@@ -5,6 +5,9 @@
     margin: 5px;
     transform: none;
     border-radius: 10px;
+    text-align: right;
+    position: relative;
+    
 }
 
 form{
@@ -35,3 +38,5 @@ p.toolbar {
 small {
     color: red;
 }
+
+

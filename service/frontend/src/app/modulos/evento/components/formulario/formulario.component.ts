@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Evento } from "src/app/dominios/evento";
 import { Pergunta } from 'src/app/dominios/pergunta';
 import { PerguntaEvento } from 'src/app/dominios/pergunta-evento';
@@ -11,6 +11,7 @@ import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
 import * as moment from 'moment';
 import { TipoEvento } from 'src/app/dominios/tipo-evento';
+import { isValidDate } from '@fullcalendar/core';
 
 @Component({
   selector: 'app-formulario',
@@ -23,7 +24,7 @@ export class FormularioComponent implements OnInit {
   @Input() evento = new Evento();
   @Input() edicao = false;
   @Output() eventoSalvo = new EventEmitter<Evento>();
-  formularioEdicao: boolean;
+  
   perguntas: Pergunta[] = [];
   perguntasEventos: Pergunta[] =[];
   pergunta = new Pergunta;
@@ -32,6 +33,7 @@ export class FormularioComponent implements OnInit {
   tipoInscricao: boolean = false;
   tipoEventos: TipoEvento[] = []
   tipoEvento: TipoEvento
+  submitted: boolean;
 
   public formEvento: FormGroup;
 
@@ -41,6 +43,7 @@ export class FormularioComponent implements OnInit {
     private perguntaService: PerguntaService,
     private route: ActivatedRoute,
     private messageService: MessageService, 
+    private router: Router,
     private confirmationService: ConfirmationService
     ) { }
 
@@ -58,14 +61,14 @@ export class FormularioComponent implements OnInit {
 
     this.formEvento = this.fb.group({
       titulo: ['', Validators.required],
-      dataInicio:'',
-      dataTermino:'',
+      dataInicio:['', Validators.required],
+      dataTermino:['', Validators.required],
       descricao:'',
       qtVagas:'',
       valor: '',
-      local:'',
-      tipoInscricao:'',
-      idTipoEvento:'',
+      local:['', Validators.required],
+      tipoInscricao:['', Validators.required],
+      idTipoEvento:['', Validators.required],
       perguntas:'',
       pergunta:'',
       perguntaEvento:'',
@@ -79,21 +82,13 @@ export class FormularioComponent implements OnInit {
   }
 
   salvar() {
-    this.evento.tipoInscricao = this.tipoInscricao;
-    this.evento.idTipoEvento = this.tipoEvento.id;
-
-    for (let perg of this.perguntasEventos) {
+      for (let perg of this.perguntasEventos) {
       this.perguntaEvento = new PerguntaEvento
       this.perguntaEvento.idEvento = null
       this.perguntaEvento.idPergunta = perg.id
 
       this.evento.perguntas.push(this.perguntaEvento)
     };
-    
-    if (this.formEvento.invalid) {
-      this.messageService.add({severity:'warn', summary: 'Atenção', detail: 'Preencha os campos solicitados', life: 3000});
-      return;
-    }
     if (this.edicao) {
       this.eventoService.editarEvento(this.evento)
       .subscribe(evento => {
@@ -101,7 +96,10 @@ export class FormularioComponent implements OnInit {
       }, (erro: HttpErrorResponse) => {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Evento não Editado', life: 3000});
       });
-    } else {
+    }
+     else {
+      this.evento.tipoInscricao = this.tipoInscricao;
+      this.evento.idTipoEvento = this.tipoEvento.id;
       this.eventoService.salvarEvento(this.evento)
       .subscribe(evento => {
         this.messageService.add({severity:'success', summary: 'Successo', detail: 'Evento Criado', life: 3000});
@@ -109,10 +107,6 @@ export class FormularioComponent implements OnInit {
         this.messageService.add({severity:'error', summary: 'Error', detail: 'Evento não Criado', life: 3000});
       });
     }
-  }
-
-  fecharDialog(eventoSalvo: Evento) {
-    this.eventoSalvo.emit(eventoSalvo);
   }
 
   buscarPergunta(id: number) {
@@ -127,10 +121,10 @@ export class FormularioComponent implements OnInit {
     this.perguntaService.salvarPergunta(pergunta)
     .subscribe(pergunta => {
       this.perguntasEventos.push(pergunta)
-      alert('Pergunta Salva')
+      this.messageService.add({severity:'success', summary: 'Successo', detail: 'Pergunta Criada', life: 3000});
       this.novaPergunta = false;
     }, (erro: HttpErrorResponse) => {
-      alert(erro.error.message);
+      this.messageService.add({severity:'error', summary: 'Error', detail: 'Pergunta não Criada', life: 3000});
     });
   }
 

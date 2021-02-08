@@ -19,6 +19,7 @@ import {TabViewModule} from 'primeng/tabview';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import {DialogModule} from 'primeng/dialog';
+import {DataViewModule} from 'primeng/dataview';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import {DialogModule} from 'primeng/dialog';
         TabViewModule,
         ButtonModule,
         FormsModule,
-        DialogModule
+        DialogModule,
+        DataViewModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

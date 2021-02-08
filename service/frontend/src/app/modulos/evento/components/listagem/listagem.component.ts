@@ -11,12 +11,13 @@ import { EventoService } from '../../services/evento.service';
 })
 
 export class ListagemComponent implements OnInit {
+  
 
   eventos: Evento[] = [];
   evento = new Evento();
   selectedEvento: Evento[] = [];
   formularioEdicao: boolean;
-  exibirDialog = false;
+  exibirDialog: boolean = false;
   usuarioLogado: Usuario;
   statuses: any[];
 
@@ -42,15 +43,15 @@ export class ListagemComponent implements OnInit {
   mostrarDialogEditar(id: number) {
     this.servico.buscarEventoPorId(id)
       .subscribe(evento => {
-        this.evento = evento
-        this.mostrarDialog();
+        this.evento = evento;
+        this.mostrarDialog(true);
       }); 
   }
 
-  mostrarDialog(idicao = false) {
-
+  mostrarDialog(edicao = false) {
+    console.log(edicao)
     this.exibirDialog = true;
-    this.formularioEdicao = idicao;
+    this.formularioEdicao = edicao;
   }
 
   fecharDialog(eventoSalvo: Evento) {
@@ -69,8 +70,8 @@ export class ListagemComponent implements OnInit {
 
   deletarTodosEvento() {
     this.confirmationService.confirm({
-      message: 'Você tem certeza que quer deletar todos os eventos? ',
-      header: 'Confirma',
+      message: 'Você tem certeza que quer deletar os eventos selecionados? ',
+      header: 'Confirme',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.eventos = this.eventos.filter(val => !this.selectedEvento.includes(val));
@@ -87,8 +88,8 @@ export class ListagemComponent implements OnInit {
 
   deletarEvento(id?: number) {
     this.confirmationService.confirm({
-      message: 'Você tem certeza que quer deletar o evento ' + this.evento.titulo + '?',
-      header: 'Confirma',
+      message: 'Você tem certeza que quer deletar este evento?',
+      header: 'Confirme',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         this.servico.deletarEvento(id).subscribe(() => { 
