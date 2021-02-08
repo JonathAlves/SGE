@@ -43,4 +43,7 @@ export class InscricaoService {
   deletarInscricao(id: number): Observable<any> {
     return this.http.delete(`${this.url}/${id}`);
   }
+  getEventos(): Observable<Evento[]>{
+    return this.http.get<Evento[]>(`${this.urlEvento}`);
+  }
 }

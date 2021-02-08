@@ -2,6 +2,12 @@ input{
     margin: 20px;
 }
 
+.p-field{
+    background-color :#201a1a;
+    border-radius: 10px;
+    color: white;
+}
+
 .btInscrever{
     background-color :#971b1b;
     color: rgb(255, 255, 255);
@@ -12,7 +18,7 @@ input{
     border-radius: 10px;
 }
 
-.p-d-inline-flex{
+.preco{
     background-color :#228B22;
     color: rgb(255, 255, 255);
     border: none;
@@ -25,4 +31,6 @@ input{
     padding-left: 30px;
     padding-right: 30px;
 }
+
+
 
