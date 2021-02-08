@@ -3,10 +3,10 @@
 
         <div class="p-fluid">
 
-            <div class="p-field p-grid">
-                <label for="titulo" class="p-col-fixed" style="width:100px">Título </label>
+            <div >
+                <label for="titulo"  style="width:100px">Título </label>
                     <input type="text" pInputText id="titulo" [(ngModel)]="evento.titulo" required autofocus placeholder="Titulo Evento" formControlName="titulo"  />
-                    <small *ngIf="formEvento.get('titulo').invalid">Título inválido</small>
+                    <small *ngIf="formEvento.get('titulo').invalid">Informe o título do evento</small>
             </div>
 
             <div class="p-field">

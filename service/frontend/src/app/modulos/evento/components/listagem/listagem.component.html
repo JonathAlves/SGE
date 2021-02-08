@@ -14,7 +14,6 @@
             <div id="table" >
                 <h3 class="p-m-0">Eventos</h3>
                 <div>
-                    <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="ev.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
                 </div>
             </div>
@@ -81,7 +80,6 @@
             <div class="p-d-flex p-ai-center p-jc-between">
                 <h3 class="p-m-0">Eventos</h3>
                 <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="ev.filterGlobal($event.target.value, 'contains')" placeholder="Pesquisar..." />
                 </span>
             </div>

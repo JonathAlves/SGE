@@ -37,6 +37,10 @@ p.toolbar {
 }
 small {
     color: red;
+    font-weight: bold;
+}
+label {
+    font-weight: bold;
 }
 
 
