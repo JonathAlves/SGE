@@ -4,9 +4,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b2cb184-50ca-4fbf-9a61-3176d993e0bf" name="Default Changelist" comment="">
+    <list default="true" id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/ServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/ServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/configuracao/ApplicationProperties.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/configuracao/ApplicationProperties.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Evento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Evento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/EventoPergunta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/EventoPergunta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/EventoPerguntaId.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/EventoPerguntaId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/IdInscricaoResposta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/IdInscricaoResposta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Inscricao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Inscricao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/InscricaoResposta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/InscricaoResposta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Pergunta.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Pergunta.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/TipoEvento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/TipoEvento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/TipoSituacao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/TipoSituacao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/dominio/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/EventoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/EventoRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/InscricaoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/InscricaoRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/PerguntaRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/PerguntaRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoSituacaoRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/TipoSituacaoRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/UsuarioRecurso.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/recurso/UsuarioRecurso.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/EventoRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/EventoRepositorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/InscricaoRespostaRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/InscricaoRespostaRepositorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/PerguntaRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/PerguntaRepositorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/UsuarioRepositorio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/repositorio/UsuarioRepositorio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/ConsumidorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/ConsumidorService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/EmailServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/EmailServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/Exception/RegraNegocioException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/Exception/RegraNegocioException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/PerguntaServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/PerguntaServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/TipoSituacaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/TipoSituacaoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/UsuarioServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/UsuarioServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/ChaveDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/ChaveDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EmailDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EmailDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EventoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EventoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EventoPerguntaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/EventoPerguntaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/InscricaoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/InscricaoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/InscricaoRespostaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/InscricaoRespostaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/PerguntaDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/PerguntaDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/TipoSituacaoDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/TipoSituacaoDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/UsuarioDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/dto/UsuarioDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EntityMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EntityMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoPerguntaMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoPerguntaMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoRespostaMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoRespostaMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/InscricaoRespostaMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/PerguntaMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoSituacaoMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoSituacaoMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/producer/ProdutorServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/producer/ProdutorServico.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" afterDir="false" />
@@ -15,6 +65,23 @@
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/ConstrutorDeEntidade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/ConstrutorDeEntidade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/CustomizacaoEntidade.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/CustomizacaoEntidade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/EventoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/EventoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/InscricaoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/InscricaoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/PerguntaBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/PerguntaBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/UsuarioBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/builder/UsuarioBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/util/TestUtil$ZonedDateTimeMatcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/util/TestUtil$ZonedDateTimeMatcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/util/TestUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/basis/sge/service/util/TestUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/servicos/inscricao.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/inscricao/servicos/inscricao.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/minha-conta/components/listagem-informacoes/listagem-informacoes.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/components/inscricao-formulario/inscricao-formulario.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/components/inscricao-formulario/inscricao-formulario.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/components/inscricao-formulario/inscricao-formulario.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/components/inscricao-formulario/inscricao-formulario.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/styles.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612485660486</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="conflitos resolvidos">
+      <created>1612667419999</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1612667419999</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +239,7 @@
     <MESSAGE value="att" />
     <MESSAGE value="attf" />
     <MESSAGE value="att2" />
-    <option name="LAST_COMMIT_MESSAGE" value="att2" />
+    <MESSAGE value="conflitos resolvidos" />
+    <option name="LAST_COMMIT_MESSAGE" value="conflitos resolvidos" />
   </component>
 </project>
