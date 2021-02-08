@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5b2cb184-50ca-4fbf-9a61-3176d993e0bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/basis/sge/service/servico/InscricaoServico.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/PerguntaServico.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/PerguntaServico.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/dto/EventoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/dto/EventoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/dto/PerguntaDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/basis/sge/service/servico/dto/PerguntaDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/EventoPerguntaMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/InscricaoMapperImpl.java" afterDir="false" />
@@ -15,6 +17,12 @@
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoEventoMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/TipoSituacaoMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/basis/sge/service/servico/mapper/UsuarioMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/dominios/evento.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/dominios/evento.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/formulario/formulario.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/formulario/formulario.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/formulario/formulario.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/formulario/formulario.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/formulario/formulario.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/formulario/formulario.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/modulos/evento/components/listagem/listagem.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +118,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b06eb7a2-d219-4e92-b387-9e7d291ae264" name="Default Changelist" comment="" />
+      <changelist id="5b2cb184-50ca-4fbf-9a61-3176d993e0bf" name="Default Changelist" comment="" />
       <created>1611595655758</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
