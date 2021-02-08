@@ -77,9 +77,10 @@ export class FormularioComponent implements OnInit {
           alert(erro.error.message);
         });
     } else {
+        this.removerMask();
       this.usuarioService.salvarUsuario(this.usuario)
         .subscribe(usuario => {
-            this.removerMask();
+
           this.messageService.add({severity:'success', summary: 'Successo', detail: 'Usuario Cadastrado com sucesso!', life: 3000});
           this.fecharDialog(usuario);
         }, (erro: HttpErrorResponse) => {
@@ -95,7 +96,7 @@ export class FormularioComponent implements OnInit {
 
   removerMask(){
       var removerMaskCPF = this.formUsuario.get('cpf').value.replace('.','').replace('.', '').replace('-', '');
-      var removerMaskTelefone = this.formUsuario.get('telefone').value.replace('+','').replace('()', '').replace('', '').replace('', '').replace('-', '');
+      var removerMaskTelefone = this.formUsuario.get('telefone').value.replace('+','').replace('()', '').replace('', '').replace('-', '');
 
       this.formUsuario.setValue({
           nome: this.formUsuario.get('nome').value,
