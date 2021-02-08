@@ -2,6 +2,8 @@ import { Component, AfterViewInit, ElementRef, Renderer2, ViewChild, OnDestroy, 
 import { ScrollPanel } from 'primeng';
 import { MenusService, MenuOrientation } from '@nuvem/primeng-components';
 import { Usuario } from './dominios/usuario';
+import { LoginComponent } from './shared/components/login/login.component';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-root',
@@ -11,11 +13,11 @@ import { Usuario } from './dominios/usuario';
 export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
     usuarioLogado : Usuario ;
     layoutCompact = true;
-
+    
     darkMenu = false;
 
     profileMode = 'inline';
-
+    mostrarMenu : boolean = false;
     rotateMenuButton: boolean;
 
     topbarMenuActive: boolean;
@@ -50,18 +52,21 @@ export class AppComponent implements AfterViewInit, OnDestroy, OnInit {
          public renderer2: Renderer2, public zone: NgZone, public menuService: MenusService) { }
 
     ngOnInit() {
+    
         this.zone.runOutsideAngular(() => { this.bindRipple(); });
 
     
         this.menuService.itens = [
             { label: 'Evento', icon: 'event_note', routerLink: ['/eventos'] },
-            // { label: 'Inscrições', icon: 'dashboard', routerLink: ['/inscricoes'] },
-            { label: 'Administrador', icon: 'account_circle', routerLink: ['/usuarios'] },
-            { label: 'Perfil', icon: 'dashboard', routerLink: ['/minha-conta'] },
+            { label: 'Usuario', icon: 'account_circle', routerLink: ['/usuarios'] },
+
         ];
 
 
     }
+
+   
+
     logarUsuario(usuario){
         this.usuarioLogado = usuario;
     }

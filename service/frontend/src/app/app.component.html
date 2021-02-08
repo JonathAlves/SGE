@@ -13,16 +13,20 @@
             'layout-menu-static-inactive': menuService.staticMenuDesktopInactive,
             'layout-menu-static-active': menuService.staticMenuMobileActive
         }">
+        <div *ngIf="usuarioLogado">
         <app-topbar></app-topbar>
+        </div>
 
+        <div *ngIf="usuarioLogado">
         <div class="layout-menu" [ngClass]="{ 'layout-menu-dark': darkMenu }" (click)="onMenuClick($event)">
             <p-scrollPanel #scrollPanel [style]="{ height: '100%' }">
                 <app-menu></app-menu>
             </p-scrollPanel>
         </div>
+        </div>
 
         <div class="layout-main">
-            
+
             <div class="layout-content">
 
                 <div *ngIf="usuarioLogado">

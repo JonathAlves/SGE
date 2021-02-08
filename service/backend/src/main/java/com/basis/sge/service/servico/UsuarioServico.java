@@ -9,7 +9,6 @@ import com.basis.sge.service.servico.mapper.UsuarioMapper;
 import com.basis.sge.service.servico.producer.ProdutorServico;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
@@ -18,7 +17,6 @@ import java.util.UUID;
 @Service
 @Transactional
 public class UsuarioServico {
-
     private final UsuarioRepositorio usuarioRepositorio;
     private final UsuarioMapper usuarioMapper;
     private final ProdutorServico produtorServico;
@@ -42,23 +40,35 @@ public class UsuarioServico {
         return usuarioMapper.toDto(usuario);
     }
 
-
-
-    public UsuarioDTO adicionar (UsuarioDTO usuarioDTO){
-        if(usuarioDTO.getId() != null){
-            obterPorId(usuarioDTO.getId());
-            verificarCPF(usuarioDTO);
-            verificarEmail(usuarioDTO);
-
-        }else
-            verificarUsuario(usuarioDTO);
+    public UsuarioDTO salvar(UsuarioDTO usuarioDTO){
+        verificarUsuario(usuarioDTO);
+        verificarCPF(usuarioDTO);
+        verificarEmail(usuarioDTO);
         Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
         usuario.setChave(UUID.randomUUID().toString());
         usuarioRepositorio.save(usuario);
         emailCriarCadastro(usuario);
         return usuarioMapper.toDto(usuario);
-
     }
+
+
+    public UsuarioDTO editar(UsuarioDTO usuarioDTO){
+        verificiarEditar(usuarioDTO);
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        usuarioRepositorio.save(usuario);
+        return usuarioMapper.toDto(usuario);
+    }
+
+
+    public void verificiarEditar(UsuarioDTO usuarioDTO) {
+        if (usuarioDTO.getId() != null) {
+            obterPorId(usuarioDTO.getId());
+            verificarCPF(usuarioDTO);
+            verificarEmail(usuarioDTO);
+        } else
+            throw  new RegraNegocioException("Usuario não encontrado!");
+    }
+
 
 
     public void remover(Integer id) {
@@ -67,16 +77,16 @@ public class UsuarioServico {
     }
 
 
-        public void verificarUsuario (UsuarioDTO usuarioDTO){
+    public void verificarUsuario (UsuarioDTO usuarioDTO){
 
-                     if (usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null)
-                        throw new RegraNegocioException("Email já cadastrado");
+        if (usuarioRepositorio.findByEmail(usuarioDTO.getEmail()) != null)
+            throw new RegraNegocioException("Email já cadastrado");
 
-                    else if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf()) != null) {
-                        throw new RegraNegocioException("CPF já cadastrado");
+        else if (usuarioRepositorio.findByCpf(usuarioDTO.getCpf()) != null) {
+            throw new RegraNegocioException("CPF já cadastrado");
 
-                    }
-                }
+        }
+    }
 
     private void verificarCPF(UsuarioDTO usuarioDTO) {
         Usuario usuario = usuarioRepositorio.findByCpf(usuarioDTO.getCpf());
@@ -84,20 +94,20 @@ public class UsuarioServico {
             throw new RegraNegocioException("CPF já cadastrado");
         }
     }
-        public void verificarEmail (UsuarioDTO usuarioDTO){
-            Usuario usuario = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
-            if(usuario != null && !usuario.getId().equals(usuarioDTO.getId())) {
-                throw new RegraNegocioException("Email já cadastrado");
-            }
-
+    public void verificarEmail (UsuarioDTO usuarioDTO){
+        Usuario usuario = usuarioRepositorio.findByEmail(usuarioDTO.getEmail());
+        if(usuario != null && !usuario.getId().equals(usuarioDTO.getId())) {
+            throw new RegraNegocioException("Email já cadastrado");
         }
 
-        private  void  emailCriarCadastro(Usuario usuario){
+    }
+
+    private  void  emailCriarCadastro(Usuario usuario){
         EmailDTO emailDTO = new EmailDTO();
         emailDTO.setAssunto("Cadastro SGE");
         emailDTO.setCorpo("Obrigado por se cadastrar na nossa plataforma! Sua chave de acesso será: "  + usuario.getChave());
         emailDTO.setDestinatario(usuario.getEmail());
-         this.produtorServico.enviarEmail(emailDTO);
+        this.produtorServico.enviarEmail(emailDTO);
 
     }
 
